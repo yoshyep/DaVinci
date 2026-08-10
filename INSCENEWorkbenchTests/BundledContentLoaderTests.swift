@@ -83,14 +83,99 @@ struct BundledContentLoaderTests {
         }
     }
 
-    @Test func bundledDetailsUseResolveTerminologyInEnglish() throws {
+    @Test func bundledWorkflowDetailsUseProfessionalPostProductionEnglish() throws {
         let content = try BundledContentLoader().load()
+
+        let fine = try #require(content.stages.first { $0.id == "stage-fine" })
+        #expect(fine.quickSteps[2].en == "Check action matches and eyelines")
+
+        let audio = try #require(content.stages.first { $0.id == "stage-audio" })
+        #expect(audio.quickSteps[0].en == "Organize tracks")
+
+        let color = try #require(content.stages.first { $0.id == "stage-color" })
+        #expect(color.quickSteps[1].en == "Open the scopes and make a primary correction")
+
+        let subtitles = try #require(content.stages.first { $0.id == "stage-title" })
+        #expect(subtitles.proSteps[5].en == "Before export, decide whether to burn in subtitles, deliver a sidecar SRT, or provide both.")
+
+        let qc = try #require(content.stages.first { $0.id == "stage-qc" })
+        #expect(qc.quickSteps[0].en == "Story pass")
+
+        let delivery = try #require(content.stages.first { $0.id == "stage-export" })
+        #expect(delivery.proSteps[0].en == "Work backward from the delivery requirements to choose the container, codec, resolution, bitrate, audio settings, and color tags.")
+
+        let archive = try #require(content.stages.first { $0.id == "stage-archive" })
+        #expect(archive.proSteps[1].en == "When using Media Management to collect used media, retain adequate handles and spot-check the relink.")
+    }
+
+    @Test func bundledShortcutAndRecipeDetailsUseResolveVocabulary() throws {
+        let content = try BundledContentLoader().load()
+
+        let insert = try #require(content.shortcuts.first { $0.id == "edit-insert" })
+        #expect(insert.category.en == "Three-point editing")
+
+        let trim = try #require(content.shortcuts.first { $0.id == "trim-extend" })
+        #expect(trim.category.en == "Trim")
+
+        let dialogue = try #require(content.recipes.first { $0.id == "recipe-dialogue" })
+        #expect(dialogue.steps[0].en == "Use clip gain first to bring perceived loudness into line")
+
+        let nodes = try #require(content.recipes.first { $0.id == "recipe-nodes" })
+        #expect(nodes.doneCheck.en == "Nodes are clearly named, and their purpose remains obvious when each node is bypassed.")
+
+        let matchFrame = try #require(content.recipes.first { $0.id == "recipe-match-frame" })
+        #expect(matchFrame.scene.en == "Replacing shots and finding head or tail handles.")
+    }
+
+    @Test func bundledColorDetailsUseGradingScopesAndGrainVocabulary() throws {
+        let content = try BundledContentLoader().load()
+
+        let input = try #require(content.colorPasses.first { $0.id == "color-input" })
+        #expect(input.steps[1].en == "Choose either an RCM or CST workflow")
+
+        let balance = try #require(content.colorPasses.first { $0.id == "color-balance" })
+        #expect(balance.commonMistakes[1].en == "Crushing blacks to manufacture contrast")
+
         let finish = try #require(content.colorPasses.first { $0.id == "color-finish" })
-        #expect(finish.steps.contains { $0.en == "Finally, add film grain to unify the texture." })
-        #expect(finish.commonMistakes.first?.en == "Overdoing noise reduction creates a waxy look or motion smearing.")
+        #expect(finish.steps[0].en == "Complete the primary grade, then add a small amount of sharpening")
+        #expect(finish.tools[2].en == "Film grain")
+        #expect(finish.commonMistakes[0].en == "Overdoing noise reduction creates a waxy look or motion smearing.")
+    }
+
+    @Test func bundledExportDetailsUseDeliveryCodecBitrateAndHandleVocabulary() throws {
+        let content = try BundledContentLoader().load()
+
+        let vertical = try #require(content.exports.first { $0.id == "ex-vertical" })
+        #expect(vertical.subtitles[0].en == "Keep subtitles clear of the vertical platform UI safe areas; specify whether they are burned in or delivered as sidecar files.")
+
+        let master = try #require(content.exports.first { $0.id == "ex-master" })
+        #expect(master.specification[3].label.en == "Codec")
+        #expect(master.bitrate.en == "Bitrate is determined by the ProRes or DNxHR codec profile; no target bitrate is entered manually.")
+
+        let colorTurnover = try #require(content.exports.first { $0.id == "ex-color" })
+        #expect(colorTurnover.risk.en == "Confirm the turnover and round-trip workflow, handles, retiming, reframing, subtitles, and Fusion work with the colorist before handoff.")
+        #expect(colorTurnover.fileChecks[1].en == "Check handles, timecode, retiming, and reframing")
+
+        let broadcast = try #require(content.exports.first { $0.id == "ex-broadcast" })
+        #expect(broadcast.specification[4].value.en == "Meet the legal-range and bitrate requirements")
+
+        let alpha = try #require(content.exports.first { $0.id == "ex-alpha" })
+        #expect(alpha.bitrate.en == "Bitrate is determined by the ProRes 4444 or DNxHR 444 codec profile, or by the PNG image sequence.")
+    }
+
+    @Test func bundledEmergencyDetailsUseProxyOriginalMediaAndRelinkVocabulary() throws {
+        let content = try BundledContentLoader().load()
+
+        let offline = try #require(content.emergencies.first { $0.id == "em-offline" })
+        #expect(offline.fix[2].en == "If only proxy media is offline, switch to the originals or relink the proxy media")
+
+        let lag = try #require(content.emergencies.first { $0.id == "em-lag" })
+        #expect(lag.prevent.en == "Edit with proxy media and switch back to the original media for final output; keep the render cache on a separate fast drive.")
 
         let proxy = try #require(content.emergencies.first { $0.id == "em-proxy" })
         #expect(proxy.fix[1].en == "Disable proxy media, then relink the correct files.")
-        #expect(proxy.prevent.en == "Standardize proxy presets and naming; do not use unknown low-bitrate files.")
+
+        let subtitle = try #require(content.emergencies.first { $0.id == "em-subtitle" })
+        #expect(subtitle.deep.en == "Distinguish among burn-in, embedded, and sidecar subtitle delivery.")
     }
 }
