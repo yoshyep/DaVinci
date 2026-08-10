@@ -3,19 +3,23 @@ import SwiftUI
 struct RootTabView: View {
     let settings: SettingsStore
     @State private var router: AppRouter
+    @State private var workbenchViewModel: WorkbenchViewModel
     @State private var isShowingSettings = false
     @State private var isShowingOnboarding: Bool
 
-    init(settings: SettingsStore) {
+    init(settings: SettingsStore, repository: GuideContentRepository) {
         self.settings = settings
         _router = State(initialValue: AppRouter(settings: settings))
+        _workbenchViewModel = State(
+            initialValue: WorkbenchViewModel(repository: repository, settings: settings)
+        )
         _isShowingOnboarding = State(initialValue: !settings.hasCompletedOnboarding)
     }
 
     var body: some View {
         TabView(selection: $router.selectedTab) {
-            NavigationStack {
-                WorkbenchPlaceholderView {
+            NavigationStack(path: $router.workbenchPath) {
+                WorkbenchView(viewModel: workbenchViewModel, router: router) {
                     isShowingSettings = true
                 }
             }
@@ -77,54 +81,6 @@ struct RootTabView: View {
         case .system: nil
         case .dark: .dark
         case .light: .light
-        }
-    }
-}
-
-private struct WorkbenchPlaceholderView: View {
-    let showSettings: () -> Void
-
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
-                HStack(spacing: 16) {
-                    BrandLogoView(variant: .symbol)
-                        .frame(width: 56, height: 56)
-                        .padding(6)
-                        .background(Color.white, in: RoundedRectangle(cornerRadius: 14))
-
-                    Text("workbench.title")
-                        .font(.title.bold())
-                        .foregroundStyle(.white)
-                }
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Label("workbench.search.title", systemImage: "magnifyingglass")
-                        .font(.headline)
-                    Text("workbench.search.placeholder")
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(18)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18))
-
-                Text("workbench.placeholder")
-                    .font(.body)
-                    .foregroundStyle(.white.opacity(0.8))
-            }
-            .padding(20)
-        }
-        .background(Color.black.ignoresSafeArea())
-        .navigationTitle(Text("tab.workbench"))
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: showSettings) {
-                    Image(systemName: "gearshape")
-                        .frame(minWidth: 44, minHeight: 44)
-                }
-                .accessibilityLabel(Text("settings.title"))
-                .accessibilityIdentifier("workbench.settings")
-            }
         }
     }
 }

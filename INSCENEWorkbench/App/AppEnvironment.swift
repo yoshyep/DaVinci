@@ -6,13 +6,24 @@ import SwiftData
 final class AppEnvironment {
     let settings: SettingsStore
     let modelContainer: ModelContainer
+    let repository: GuideContentRepository
 
-    init(settings: SettingsStore = SettingsStore(), modelContainer: ModelContainer? = nil) {
+    init(
+        settings: SettingsStore = SettingsStore(),
+        modelContainer: ModelContainer? = nil,
+        repository: GuideContentRepository? = nil,
+        isStoredInMemoryOnly: Bool = false
+    ) {
         self.settings = settings
-        self.modelContainer = modelContainer ?? Self.makeModelContainer()
+        self.modelContainer = modelContainer ?? Self.makeModelContainer(isStoredInMemoryOnly: isStoredInMemoryOnly)
+        do {
+            self.repository = try repository ?? GuideContentRepository()
+        } catch {
+            fatalError("Unable to load bundled guide content: \(error)")
+        }
     }
 
-    private static func makeModelContainer() -> ModelContainer {
+    private static func makeModelContainer(isStoredInMemoryOnly: Bool) -> ModelContainer {
         let schema = Schema([
             ProjectSession.self,
             StageProgress.self,
@@ -21,7 +32,11 @@ final class AppEnvironment {
             Favorite.self,
             RecentActivity.self
         ])
-        let configuration = ModelConfiguration(schema: schema, cloudKitDatabase: .none)
+        let configuration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: isStoredInMemoryOnly,
+            cloudKitDatabase: .none
+        )
 
         do {
             return try ModelContainer(for: schema, configurations: [configuration])

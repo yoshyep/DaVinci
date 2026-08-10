@@ -23,13 +23,41 @@ struct INSCENEWorkbenchApp: App {
             settings = SettingsStore()
         }
 
-        _appEnvironment = State(initialValue: AppEnvironment(settings: settings))
+        let environment = AppEnvironment(
+            settings: settings,
+            isStoredInMemoryOnly: arguments.contains("-uiTesting")
+        )
+        if arguments.contains("-uiTesting") && arguments.contains("-seedWorkbenchSession") {
+            Self.seedWorkbenchSession(in: environment.modelContainer.mainContext)
+        }
+        _appEnvironment = State(initialValue: environment)
     }
 
     var body: some Scene {
         WindowGroup {
-            RootTabView(settings: appEnvironment.settings)
+            RootTabView(
+                settings: appEnvironment.settings,
+                repository: appEnvironment.repository
+            )
                 .modelContainer(appEnvironment.modelContainer)
         }
+    }
+
+    private static func seedWorkbenchSession(in context: ModelContext) {
+        let session = ProjectSession(name: "Interview Cut", templateID: "template-interview-edit")
+        session.stageProgress = [
+            StageProgress(contentID: "stage-project", isCompleted: true),
+            StageProgress(contentID: "stage-media", isCompleted: true)
+        ]
+        session.checklistStates = [
+            ChecklistItemState(contentID: "delivery-picture", isCompleted: true),
+            ChecklistItemState(contentID: "delivery-audio", isCompleted: false)
+        ]
+        context.insert(session)
+        context.insert(RecentActivity(contentID: "delete-ripple", action: "open"))
+        context.insert(RecentActivity(contentID: "recipe-skin", action: "open"))
+        context.insert(Favorite(contentID: "recipe-skin"))
+        context.insert(UserNote(contentID: "stage-rough", body: "Open on the strongest answer."))
+        try? context.save()
     }
 }
