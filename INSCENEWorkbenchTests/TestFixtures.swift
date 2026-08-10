@@ -1,4 +1,5 @@
 import Foundation
+import SwiftData
 @testable import INSCENEWorkbench
 
 enum TestFixtures {
@@ -57,5 +58,62 @@ enum TestFixtures {
         get throws {
             try JSONDecoder().decode(GuideContent.self, from: Data(validJSON.utf8))
         }
+    }
+}
+
+// MARK: - Test AppState
+
+@MainActor
+struct TestAppState {
+    let modelContainer: ModelContainer
+    let settings: SettingsStore
+    let repository: GuideContentRepository
+
+    var modelContext: ModelContext {
+        modelContainer.mainContext
+    }
+
+    var snapshot: UserDataArchive {
+        try! ImportExportService().exportArchive(from: modelContext, settings: settings)
+    }
+
+    static func populated() throws -> TestAppState {
+        let container = try TestModelContainer.make()
+        let context = container.mainContext
+
+        let suiteName = "com.inscene.test.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        let settings = SettingsStore(defaults: defaults)
+
+        let content = try TestFixtures.sample
+        let repository = GuideContentRepository(content: content)
+
+        let session = ProjectSession(name: "Test Project", templateID: "template-test")
+        let stage = StageProgress(contentID: "stage-one", isCompleted: true)
+        session.stageProgress = [stage]
+        let checklist = ChecklistItemState(contentID: "checklist-one", isCompleted: false)
+        session.checklistStates = [checklist]
+        context.insert(session)
+
+        context.insert(UserNote(contentID: "stage-one", sessionID: session.id, body: "Test note"))
+        context.insert(Favorite(contentID: "shortcut-one"))
+        context.insert(RecentActivity(contentID: "recipe-one", action: "open"))
+
+        try context.save()
+
+        return TestAppState(modelContainer: container, settings: settings, repository: repository)
+    }
+
+    static func empty() throws -> TestAppState {
+        let container = try TestModelContainer.make()
+
+        let suiteName = "com.inscene.test.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        let settings = SettingsStore(defaults: defaults)
+
+        let content = try TestFixtures.sample
+        let repository = GuideContentRepository(content: content)
+
+        return TestAppState(modelContainer: container, settings: settings, repository: repository)
     }
 }

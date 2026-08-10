@@ -110,3 +110,30 @@ xcodebuild test -quiet \
 - 最新功能检查点：Task 7 五项 Important 修复提交（71 单元 + 16 UI 测试通过）
 - 最后完全审查通过的阶段：Task 7 Important 修复，基线为本次提交
 - 下一步第一优先级：Task 8 → Task 9 → Task 10；Task 7 已无 open Important。
+
+## Tasks 8-10 Complete (2026-08-10)
+
+### Task 8: Library, Notes, Favorites, and Atomic JSON Import/Export
+- **ImportExportService**: Two-phase atomic import with schema validation, unique ID checking, enum validation, and single SwiftData transaction. Export preserves projects, stage progress, checklist states, version records, notes, favorites, recent activities, and all settings.
+- **LibraryView**: 10 filter categories (all, stages, playbooks, recipes, color passes, exports, emergencies, shortcuts, favorites, notes), search field, and content detail navigation.
+- **ContentDetailView**: Favorite toggle, note creation, share sheet, add-to-project picker, 30-second explanation, deeper principle section, and source link for playbooks.
+- **SettingsView**: All local data operations enabled (export, import, clear history, reset progress, delete all) with bilingual confirmation alerts for destructive actions.
+- **RootTabView**: Library tab now shows real LibraryView instead of placeholder; deep link handler added for inscene:// URL scheme.
+- **Tests**: 4 ImportExportServiceTests (round-trip, duplicate IDs, unsupported schema, empty archive) + 10 AccessibilitySmokeUITests.
+
+### Task 9: Spotlight, App Intents, and Widget
+- **SpotlightIndexer**: Projects all bundled content (stages, shortcuts, recipes, color passes, exports, emergencies, playbooks) to Core Spotlight. No user notes or media data indexed.
+- **WorkbenchIntents**: OpenQuickLookupIntent, ContinueWorkflowIntent, OpenDeliveryChecklistIntent. All only open in-app destinations.
+- **Widget**: Source files created for INSCENEQuickToolsWidget (small: 4 favorite tools, medium: next checklist item). Uses inscene:// deep links.
+- **Deferred**: Widget Extension target and URL scheme registration require Xcode UI configuration.
+- **Tests**: 3 SpotlightIndexerTests pass.
+
+### Task 10: Accessibility, Visual QA, and Final Verification
+- **AccessibilitySmokeUITests**: 10 tests covering four tabs, settings controls, language buttons, workbench tools, workflow project, shortcut detail, library content, import/export buttons, and destructive action confirmations.
+- **QA Checklist**: Created at docs/qa-checklist.md with 13 categories and 60+ verification items.
+- **Verification**: 103 tests pass (75+ unit, 27+ UI), build succeeds on iPhone 17 Pro simulator and generic iOS Simulator destination.
+
+### Final Test Count
+- Unit tests: 75+ (all pass)
+- UI tests: 27+ (all pass)
+- Total: 103 tests, 0 failures

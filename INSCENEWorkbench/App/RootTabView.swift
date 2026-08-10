@@ -66,11 +66,7 @@ struct RootTabView: View {
             .tag(AppTab.workflows)
 
             NavigationStack {
-                FeaturePlaceholderView(
-                    titleKey: "tab.library",
-                    messageKey: "library.placeholder",
-                    systemImage: "books.vertical"
-                )
+                LibraryView(repository: repository, settings: settings)
             }
             .tabItem { Label("tab.library", systemImage: "books.vertical") }
             .tag(AppTab.library)
@@ -89,6 +85,31 @@ struct RootTabView: View {
             .environment(\.locale, activeLocale)
             .interactiveDismissDisabled()
         }
+        .onOpenURL { url in
+            handleDeepLink(url)
+        }
+    }
+
+    private func handleDeepLink(_ url: URL) {
+        guard url.scheme == "inscene" else { return }
+        let host = url.host ?? ""
+        let pathComponents = url.pathComponents.filter { $0 != "/" }
+
+        switch host {
+        case "workbench":
+            router.selectedTab = .workbench
+        case "lookup":
+            router.selectedTab = .lookup
+            if let id = pathComponents.first {
+                router.lookupPath = [.record(id)]
+            }
+        case "workflows":
+            router.selectedTab = .workflows
+        case "library":
+            router.selectedTab = .library
+        default:
+            break
+        }
     }
 
     private var activeLocale: Locale {
@@ -101,20 +122,5 @@ struct RootTabView: View {
         case .dark: .dark
         case .light: .light
         }
-    }
-}
-
-private struct FeaturePlaceholderView: View {
-    let titleKey: LocalizedStringKey
-    let messageKey: LocalizedStringKey
-    let systemImage: String
-
-    var body: some View {
-        ContentUnavailableView {
-            Label(titleKey, systemImage: systemImage)
-        } description: {
-            Text(messageKey)
-        }
-        .navigationTitle(Text(titleKey))
     }
 }

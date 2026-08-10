@@ -30,21 +30,19 @@ final class SettingsLocalizationUITests: XCTestCase {
         XCTAssertEqual(app.tabBars.buttons.count, 4)
     }
 
-    func testLocalDataActionsAreClearlyUnavailableInBothLanguages() throws {
+    func testLocalDataActionsAreAvailableInBothLanguages() throws {
         let app = launchApp(arguments: ["-skipOnboarding"])
         app.buttons["workbench.settings"].tap()
 
-        assertLocalDataActionsAreUnavailable(
+        assertLocalDataActionsAreAvailable(
             in: app,
-            labels: ["导出本地数据", "导入本地数据", "清除最近记录", "重置项目进度", "删除全部本地数据"],
-            status: "本地数据工具实现后可用。",
-            confirmationTitle: "删除全部本地数据？"
+            labels: ["导出本地数据", "导入本地数据", "清除最近记录", "重置项目进度", "删除全部本地数据"]
         )
 
         scrollToElement(app.buttons["settings.language.english"], in: app, direction: .down)
         app.buttons["settings.language.english"].tap()
 
-        assertLocalDataActionsAreUnavailable(
+        assertLocalDataActionsAreAvailable(
             in: app,
             labels: [
                 "Export Local Data",
@@ -52,9 +50,7 @@ final class SettingsLocalizationUITests: XCTestCase {
                 "Clear Recent History",
                 "Reset Project Progress",
                 "Delete All Local Data"
-            ],
-            status: "Available when local data tools are implemented.",
-            confirmationTitle: "Delete all local data?"
+            ]
         )
     }
 
@@ -95,11 +91,9 @@ final class SettingsLocalizationUITests: XCTestCase {
         return app
     }
 
-    private func assertLocalDataActionsAreUnavailable(
+    private func assertLocalDataActionsAreAvailable(
         in app: XCUIApplication,
-        labels: [String],
-        status: String,
-        confirmationTitle: String
+        labels: [String]
     ) {
         let firstAction = app.buttons[labels[0]]
         scrollToElement(firstAction, in: app, direction: .up)
@@ -107,11 +101,8 @@ final class SettingsLocalizationUITests: XCTestCase {
         for label in labels {
             let action = app.buttons[label]
             XCTAssertTrue(action.exists, "Missing local-data action: \(label)")
-            XCTAssertFalse(action.isEnabled, "Local-data action must remain disabled until Task 8: \(label)")
+            XCTAssertTrue(action.isEnabled, "Local-data action must be enabled: \(label)")
         }
-
-        XCTAssertTrue(app.staticTexts[status].exists)
-        XCTAssertFalse(app.staticTexts[confirmationTitle].exists)
     }
 
     private func scrollToElement(
