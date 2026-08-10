@@ -12,12 +12,22 @@ struct SettingsStoreTests {
         store.language = .en
         store.platform = .windows
         store.contentLevel = .professional
+        store.defaultTab = .workflows
         store.appearance = .dark
+        store.showsSources = false
+        store.showsProfessionalRecommendations = false
+        store.hapticsEnabled = false
+        store.hasCompletedOnboarding = true
 
         let reloadedStore = SettingsStore(defaults: suite)
         #expect(reloadedStore.language == .en)
         #expect(reloadedStore.platform == .windows)
         #expect(reloadedStore.contentLevel == .professional)
+        #expect(reloadedStore.defaultTab == .workflows)
         #expect(reloadedStore.appearance == .dark)
+        #expect(reloadedStore.showsSources == false)
+        #expect(reloadedStore.showsProfessionalRecommendations == false)
+        #expect(reloadedStore.hapticsEnabled == false)
+        #expect(reloadedStore.hasCompletedOnboarding == true)
     }
 }
