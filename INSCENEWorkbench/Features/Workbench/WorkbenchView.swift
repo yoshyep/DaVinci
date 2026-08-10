@@ -11,7 +11,6 @@ struct WorkbenchView: View {
     @Query(sort: \RecentActivity.updatedAt, order: .reverse) private var recentActivities: [RecentActivity]
     @Query(sort: \Favorite.updatedAt, order: .reverse) private var favorites: [Favorite]
     @Query(sort: \UserNote.updatedAt, order: .reverse) private var notes: [UserNote]
-    @State private var searchText = ""
 
     private var snapshot: WorkbenchViewModel.Snapshot {
         viewModel.snapshot(
@@ -83,28 +82,35 @@ struct WorkbenchView: View {
     }
 
     private var commandSearch: some View {
-        HStack(spacing: 10) {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
-            TextField("workbench.search.placeholder", text: $searchText)
-                .submitLabel(.search)
-                .onSubmit { router.open(.search) }
-                .accessibilityLabel(Text("workbench.search.title"))
-                .accessibilityIdentifier("workbench.search")
-            if !searchText.isEmpty {
-                Button {
-                    searchText = ""
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
+        Button {
+            router.openQuickLookup()
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.blue)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("tab.lookup")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("workbench.search.routeHint")
+                        .font(.caption)
                         .foregroundStyle(.secondary)
-                        .frame(minWidth: 44, minHeight: 44)
+                        .lineLimit(2)
                 }
-                .accessibilityLabel(Text("workbench.search.clear"))
+                Spacer()
+                Image(systemName: "arrow.right")
+                    .font(.caption.bold())
+                    .foregroundStyle(.secondary)
             }
+            .padding(.horizontal, 15)
+            .frame(maxWidth: .infinity, minHeight: 54)
+            .contentShape(Rectangle())
         }
-        .padding(.leading, 15)
-        .frame(minHeight: 50)
+        .buttonStyle(.plain)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
+        .accessibilityLabel(Text("tab.lookup"))
+        .accessibilityHint(Text("workbench.search.routeHint"))
+        .accessibilityIdentifier("workbench.quickLookup")
         .listRowSeparator(.hidden)
         .listRowBackground(Color.clear)
     }
@@ -112,55 +118,91 @@ struct WorkbenchView: View {
     @ViewBuilder
     private var currentProject: some View {
         Section {
-            if let projectName = snapshot.projectName,
-               let stage = viewModel.stage(id: snapshot.currentStageID) {
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(projectName)
-                            .font(.title3.bold())
-                        Spacer()
-                        Text("\(snapshot.completedStages)/\(snapshot.totalStages)")
-                            .font(.caption.monospacedDigit().weight(.semibold))
-                            .foregroundStyle(.green)
-                    }
-
-                    Text(stage.title.resolved(for: viewModel.settings.language))
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.blue)
-
-                    ProgressView(
-                        value: Double(snapshot.completedStages),
-                        total: Double(max(snapshot.totalStages, 1))
-                    )
-                    .tint(.green)
-
-                    if let task = snapshot.currentTask {
-                        Label {
-                            Text(task.resolved(for: viewModel.settings.language))
-                        } icon: {
-                            Image(systemName: "target")
-                                .foregroundStyle(.yellow)
+            switch snapshot.projectState {
+            case .active:
+                if let projectName = snapshot.projectName,
+                   let stage = viewModel.stage(id: snapshot.currentStageID) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(projectName)
+                                .font(.title3.bold())
+                            Spacer()
+                            Text("\(snapshot.completedStages)/\(snapshot.totalStages)")
+                                .font(.caption.monospacedDigit().weight(.semibold))
+                                .foregroundStyle(.green)
+                                .accessibilityIdentifier("workbench.project.progress")
                         }
-                        .font(.subheadline)
-                    }
 
-                    Button {
-                        router.open(.workflowStage(stage.id))
-                    } label: {
-                        Label("workbench.continue", systemImage: "play.fill")
-                            .frame(maxWidth: .infinity, minHeight: 44)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .accessibilityIdentifier("workbench.continue")
+                        Text(stage.title.resolved(for: viewModel.settings.language))
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.blue)
 
-                    Button("workbench.explain") {
-                        router.open(.workflowStage(stage.id))
+                        ProgressView(
+                            value: Double(snapshot.completedStages),
+                            total: Double(max(snapshot.totalStages, 1))
+                        )
+                        .tint(.green)
+
+                        if let task = snapshot.currentTask {
+                            Label {
+                                Text(task.resolved(for: viewModel.settings.language))
+                            } icon: {
+                                Image(systemName: "target")
+                                    .foregroundStyle(.yellow)
+                            }
+                            .font(.subheadline)
+                        }
+
+                        Button {
+                            router.open(.workflowStage(stage.id))
+                        } label: {
+                            Label("workbench.continue", systemImage: "play.fill")
+                                .frame(maxWidth: .infinity, minHeight: 44)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .accessibilityIdentifier("workbench.continue")
+
+                        Button("workbench.explain") {
+                            router.open(.workflowStage(stage.id))
+                        }
+                        .font(.footnote.weight(.semibold))
+                        .frame(minHeight: 44)
                     }
-                    .font(.footnote.weight(.semibold))
-                    .frame(minHeight: 44)
+                    .padding(.vertical, 6)
                 }
-                .padding(.vertical, 6)
-            } else {
+            case .completed:
+                if let projectName = snapshot.projectName {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(projectName)
+                                .font(.title3.bold())
+                            Spacer()
+                            Text("\(snapshot.completedStages)/\(snapshot.totalStages)")
+                                .font(.caption.monospacedDigit().weight(.semibold))
+                                .foregroundStyle(.green)
+                                .accessibilityIdentifier("workbench.project.progress")
+                        }
+
+                        ProgressView(value: 1, total: 1)
+                            .tint(.green)
+
+                        Label("workbench.project.completed", systemImage: "checkmark.seal.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.green)
+                            .accessibilityIdentifier("workbench.project.completed")
+
+                        Button {
+                            router.open(.deliveryChecklist)
+                        } label: {
+                            Label("workbench.reviewDelivery", systemImage: "checklist")
+                                .frame(maxWidth: .infinity, minHeight: 44)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .accessibilityIdentifier("workbench.reviewDelivery")
+                    }
+                    .padding(.vertical, 6)
+                }
+            case .noProject:
                 VStack(alignment: .leading, spacing: 12) {
                     Label("workbench.startWorkflow", systemImage: "play.rectangle.on.rectangle")
                         .font(.title3.bold())
@@ -434,12 +476,6 @@ struct WorkbenchView: View {
     @ViewBuilder
     private func destinationView(_ destination: WorkbenchDestination) -> some View {
         switch destination {
-        case .search:
-            ContentUnavailableView(
-                "workbench.search.title",
-                systemImage: "magnifyingglass",
-                description: Text("workbench.search.routeHint")
-            )
         case .quickAction(let action):
             WorkbenchRecordDetailView(
                 record: viewModel.record(id: viewModel.contentID(for: action)),
@@ -451,7 +487,7 @@ struct WorkbenchView: View {
                 WorkbenchStageDetailView(stage: stage, viewModel: viewModel)
             }
         case .deliveryChecklist:
-            WorkbenchDeliveryChecklistView(stages: viewModel.stages, settings: viewModel.settings)
+            WorkbenchDeliveryChecklistView(items: snapshot.checklistItems, settings: viewModel.settings)
         case .recentRecords:
             WorkbenchContextListView(
                 titleKey: "workbench.project.recent",
@@ -612,31 +648,43 @@ private struct WorkbenchRecordDetailView: View {
 }
 
 private struct WorkbenchDeliveryChecklistView: View {
-    let stages: [WorkflowStage]
+    let items: [WorkbenchViewModel.ChecklistEntry]
     let settings: SettingsStore
 
     var body: some View {
-        List(stages, id: \.id) { stage in
-            HStack(alignment: .top, spacing: 12) {
-                Image(systemName: "circle")
-                    .foregroundStyle(.green)
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(stage.title.resolved(for: settings.language))
-                        .font(.headline)
-                    Text(stage.doneCheck.resolved(for: settings.language))
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+        List {
+            Section {
+                ForEach(items) { item in
+                    HStack(alignment: .center, spacing: 12) {
+                        Image(systemName: item.isCompleted ? "checkmark.circle.fill" : "circle")
+                            .foregroundStyle(item.isCompleted ? .green : .secondary)
+                            .accessibilityHidden(true)
+                            .accessibilityIdentifier(
+                                "workbench.delivery.\(item.contentID).\(item.isCompleted ? "completed" : "pending")"
+                            )
+                        Text(item.title.resolved(for: settings.language))
+                            .font(.body.weight(.semibold))
+                        Spacer()
+                    }
+                    .frame(minHeight: 44)
+                    .accessibilityElement(children: .contain)
                 }
+            } header: {
+                HStack {
+                    Text("workbench.delivery.detail")
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                        .accessibilityIdentifier("workbench.delivery.detail")
+                    Spacer()
+                    Text("\(items.filter(\.isCompleted).count)/\(items.count)")
+                        .font(.caption.monospacedDigit().weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("workbench.delivery.progress")
+                }
+                .textCase(nil)
             }
-            .frame(minHeight: 44)
         }
         .navigationTitle(Text("workbench.project.deliveryChecklist"))
-        .overlay(alignment: .topLeading) {
-            Text("workbench.delivery.detail")
-                .font(.caption2)
-                .opacity(0.01)
-                .accessibilityIdentifier("workbench.delivery.detail")
-        }
     }
 }
 

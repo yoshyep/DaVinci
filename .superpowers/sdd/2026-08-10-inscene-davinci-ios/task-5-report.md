@@ -1,6 +1,6 @@
 # Task 5 Report: Tool-first Workbench Home
 
-Status: `IMPLEMENTED — focused verification green; full-scheme gate environment concern recorded`
+Status: `IMPLEMENTED — review fix round 1 complete; clean full-scheme gate green`
 
 ## Outcome
 
@@ -141,3 +141,73 @@ Per the explicit “Task 5 gate once” instruction, the full gate was not invok
 
 - The one full-scheme gate artifact is red only because of simulator preferences deliberately changed for visual inspection; the affected class is green after external-domain cleanup. Parent review should run its normal clean-environment gate.
 - Template selection currently routes to typed local template context; project creation/progression belongs to the later workflow implementation task and was not implemented early.
+
+---
+
+## Review Fix Round 1 — 2026-08-10
+
+### Outcome
+
+All four Important findings are resolved without implementing Task 6 search or Task 7 workflow creation:
+
+- `WorkbenchSnapshot.projectState` now distinguishes no project, active project, and completed project. A completed local session remains visible with its project name, `10/10`, a bilingual completion state, and a native Review Delivery action.
+- The delivery route now receives immutable checklist entries derived from the current SwiftData session. Home and destination show the same completion total, real completed/pending icons, bilingual human labels for known entries, and a humanized fallback for unknown local IDs.
+- The discarded-query `TextField` and `.search` Workbench destination were removed. The same tool-first position now contains an honest native Quick Lookup button that switches the typed tab selection to `.lookup`.
+- Every Settings and Workbench UI-test launch uses a unique explicit `INSCENE_UI_TEST_SUITE`. Reset launches establish every deterministic default before optional seed overrides. A new regression proves an English/light/Library suite cannot leak into a separately reset Chinese/system/Workbench suite.
+
+### RED → GREEN
+
+RED was observed before production changes:
+
+- Focused unit compilation failed because `AppRouter.openQuickLookup()` and the completed/checklist snapshot API did not exist.
+- Workbench UI class: 4/6 failed against the old editable search, empty completed-project state, and repository-backed delivery rows.
+- Isolation UI regression failed because the conflict seed/suite environment was ignored and the expected polluted Library launch did not appear.
+
+GREEN evidence after implementation:
+
+```text
+WorkbenchNavigationUITests: 6 passed, 0 failed
+SettingsLocalizationUITests: 4 passed, 0 failed
+INSCENEWorkbenchTests: 28 passed, 0 failed
+Simulator build: ** BUILD SUCCEEDED ** (exit 0)
+```
+
+The required clean full gate was then run:
+
+```bash
+xcodebuild clean test -project INSCENEWorkbench.xcodeproj -scheme INSCENEWorkbench \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+  -parallel-testing-enabled NO
+```
+
+Result: `** TEST SUCCEEDED **`; 10/10 UI tests and 28/28 unit tests passed. Result bundle:
+
+```text
+/Users/yoshyep/Library/Developer/Xcode/DerivedData/INSCENEWorkbench-dovnfwxrolgafegtzarhmumuuprl/Logs/Test/Run-INSCENEWorkbench-2026.08.10_05-40-30--0700.xcresult
+```
+
+### Product, localization, and accessibility evidence
+
+- Quick/Professional content behavior is unchanged: both levels point to the same repository IDs, while Professional expands detail density.
+- Completion, Review Delivery, Quick Lookup guidance, picture review, and audio review are available in English and Simplified Chinese. Mac/Windows shortcut resolution remains repository- and SettingsStore-backed.
+- The former `opacity(0.01)` VoiceOver probe is gone. `workbench.delivery.detail` now identifies a real visible semantic section heading; completion count and completed/pending icons identify real visible elements.
+- Settings pickers expose their actual localized selection as accessibility values, strengthening both VoiceOver and deterministic UI verification.
+- The completed-project regression asserts the visible project name, localized completion state, `10/10`, review CTA, and absence of fresh-start templates. The no-photography assertion remains green.
+
+### Files changed in this round
+
+- `INSCENEWorkbench/App/AppRouter.swift`
+- `INSCENEWorkbench/App/INSCENEWorkbenchApp.swift`
+- `INSCENEWorkbench/Features/Settings/SettingsView.swift`
+- `INSCENEWorkbench/Features/Workbench/WorkbenchView.swift`
+- `INSCENEWorkbench/Features/Workbench/WorkbenchViewModel.swift`
+- `INSCENEWorkbench/Resources/Localizable.xcstrings`
+- `INSCENEWorkbenchTests/AppRouterTests.swift`
+- `INSCENEWorkbenchTests/WorkbenchViewModelTests.swift`
+- `INSCENEWorkbenchUITests/SettingsLocalizationUITests.swift`
+- `INSCENEWorkbenchUITests/WorkbenchNavigationUITests.swift`
+
+### Concerns
+
+- No remaining Task 5 gate concern. The earlier shared-suite pollution is covered by unique suites, deterministic reset defaults, a cross-suite regression, and a green clean full gate.
+- Template detail still uses its raw ID as previously deferred; workflow creation and actual Quick Lookup search remain owned by later tasks.

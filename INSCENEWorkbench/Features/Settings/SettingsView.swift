@@ -36,6 +36,8 @@ struct SettingsView: View {
                         Text("tab.workflows").tag(AppTab.workflows)
                         Text("tab.library").tag(AppTab.library)
                     }
+                    .accessibilityIdentifier("settings.defaultTab.picker")
+                    .accessibilityValue(Text(defaultTabKey))
 
                     LabeledContent("settings.resolveVersion", value: "Resolve 20")
                     Toggle("settings.showSources", isOn: binding(\.showsSources))
@@ -64,6 +66,8 @@ struct SettingsView: View {
                         Text("appearance.dark").tag(AppearanceMode.dark)
                         Text("appearance.light").tag(AppearanceMode.light)
                     }
+                    .accessibilityIdentifier("settings.appearance.picker")
+                    .accessibilityValue(Text(appearanceKey))
                     Toggle("settings.haptics", isOn: binding(\.hapticsEnabled))
                     Text("settings.systemAccessibility")
                         .font(.footnote)
@@ -111,6 +115,23 @@ struct SettingsView: View {
 
     private var appVersion: String {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+    }
+
+    private var defaultTabKey: LocalizedStringKey {
+        switch settings.defaultTab {
+        case .workbench: "tab.workbench"
+        case .lookup: "tab.lookup"
+        case .workflows: "tab.workflows"
+        case .library: "tab.library"
+        }
+    }
+
+    private var appearanceKey: LocalizedStringKey {
+        switch settings.appearance {
+        case .system: "appearance.system"
+        case .dark: "appearance.dark"
+        case .light: "appearance.light"
+        }
     }
 
     private func binding<Value>(_ keyPath: ReferenceWritableKeyPath<SettingsStore, Value>) -> Binding<Value> {

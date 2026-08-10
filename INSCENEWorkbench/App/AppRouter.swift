@@ -1,7 +1,6 @@
 import Observation
 
 enum WorkbenchDestination: Hashable, Identifiable {
-    case search
     case quickAction(WorkbenchQuickAction)
     case workflowStage(String)
     case deliveryChecklist
@@ -13,7 +12,6 @@ enum WorkbenchDestination: Hashable, Identifiable {
 
     var id: String {
         switch self {
-        case .search: "search"
         case .quickAction(let action): "quick-action-\(action.rawValue)"
         case .workflowStage(let id): "workflow-stage-\(id)"
         case .deliveryChecklist: "delivery-checklist"
@@ -43,5 +41,9 @@ final class AppRouter {
 
     func present(_ destination: WorkbenchDestination) {
         presentedWorkbenchDestination = destination
+    }
+
+    func openQuickLookup() {
+        selectedTab = .lookup
     }
 }

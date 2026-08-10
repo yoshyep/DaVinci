@@ -6,9 +6,7 @@ final class SettingsLocalizationUITests: XCTestCase {
     }
 
     func testFourTabsAndLiveLanguageSwitch() throws {
-        let app = XCUIApplication()
-        app.launchArguments = ["-uiTesting", "-resetLocalData", "-skipOnboarding"]
-        app.launch()
+        let app = launchApp(arguments: ["-skipOnboarding"])
 
         XCTAssertEqual(app.tabBars.buttons.count, 4)
         app.buttons["workbench.settings"].tap()
@@ -20,9 +18,7 @@ final class SettingsLocalizationUITests: XCTestCase {
     }
 
     func testFirstLaunchCollectsOnlyLocalDefaults() throws {
-        let app = XCUIApplication()
-        app.launchArguments = ["-uiTesting", "-resetLocalData"]
-        app.launch()
+        let app = launchApp()
 
         XCTAssertTrue(app.staticTexts["onboarding.title"].waitForExistence(timeout: 2))
         app.buttons["onboarding.language.english"].tap()
@@ -35,9 +31,7 @@ final class SettingsLocalizationUITests: XCTestCase {
     }
 
     func testLocalDataActionsAreClearlyUnavailableInBothLanguages() throws {
-        let app = XCUIApplication()
-        app.launchArguments = ["-uiTesting", "-resetLocalData", "-skipOnboarding"]
-        app.launch()
+        let app = launchApp(arguments: ["-skipOnboarding"])
         app.buttons["workbench.settings"].tap()
 
         assertLocalDataActionsAreUnavailable(
@@ -64,7 +58,42 @@ final class SettingsLocalizationUITests: XCTestCase {
         )
     }
 
+    func testResetLaunchUsesDefaultsInAUniqueSuiteAfterAnotherSuiteWasPolluted() {
+        let polluted = launchApp(
+            arguments: ["-skipOnboarding", "-seedConflictingSettings"],
+            suiteName: "SettingsLocalizationUITests.polluted.\(UUID().uuidString)"
+        )
+        XCTAssertTrue(polluted.tabBars.buttons["Library"].waitForExistence(timeout: 2))
+        polluted.terminate()
+
+        let reset = launchApp(
+            arguments: ["-skipOnboarding"],
+            suiteName: "SettingsLocalizationUITests.reset.\(UUID().uuidString)"
+        )
+        XCTAssertTrue(reset.tabBars.buttons["工作台"].waitForExistence(timeout: 2))
+        reset.buttons["workbench.settings"].tap()
+
+        let defaultTab = reset.buttons["settings.defaultTab.picker"]
+        scrollToElement(defaultTab, in: reset, direction: .up)
+        XCTAssertEqual(defaultTab.value as? String, "工作台")
+
+        let appearance = reset.buttons["settings.appearance.picker"]
+        scrollToElement(appearance, in: reset, direction: .up)
+        XCTAssertEqual(appearance.value as? String, "跟随系统")
+    }
+
     private enum ScrollDirection { case up, down }
+
+    private func launchApp(
+        arguments: [String] = [],
+        suiteName: String = "SettingsLocalizationUITests.\(UUID().uuidString)"
+    ) -> XCUIApplication {
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTesting", "-resetLocalData"] + arguments
+        app.launchEnvironment["INSCENE_UI_TEST_SUITE"] = suiteName
+        app.launch()
+        return app
+    }
 
     private func assertLocalDataActionsAreUnavailable(
         in app: XCUIApplication,

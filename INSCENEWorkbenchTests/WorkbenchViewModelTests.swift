@@ -65,6 +65,55 @@ struct WorkbenchViewModelTests {
         #expect(snapshot.templates.isEmpty)
     }
 
+    @Test func completedSessionRemainsAProjectAndOffersDeliveryReview() throws {
+        let viewModel = try makeViewModel()
+        let session = ProjectSession(name: "Finished Documentary", templateID: "template-interview-edit")
+        session.stageProgress = viewModel.stages.map {
+            StageProgress(contentID: $0.id, isCompleted: true)
+        }
+
+        let snapshot = viewModel.snapshot(
+            session: session,
+            recentActivities: [],
+            favorites: [],
+            notes: []
+        )
+
+        #expect(snapshot.projectState == .completed)
+        #expect(snapshot.projectName == "Finished Documentary")
+        #expect(snapshot.completedStages == 10)
+        #expect(snapshot.totalStages == 10)
+        #expect(snapshot.currentStageID == nil)
+        #expect(snapshot.templates.isEmpty)
+    }
+
+    @Test func snapshotCarriesActualDeliveryChecklistEntriesAndLocalizedFallbacks() throws {
+        let viewModel = try makeViewModel()
+        let session = ProjectSession(name: "Client Interview", templateID: "template-interview-edit")
+        session.checklistStates = [
+            ChecklistItemState(contentID: "delivery-picture", isCompleted: true),
+            ChecklistItemState(contentID: "delivery-audio", isCompleted: false),
+            ChecklistItemState(contentID: "client-approval", isCompleted: false)
+        ]
+
+        let snapshot = viewModel.snapshot(
+            session: session,
+            recentActivities: [],
+            favorites: [],
+            notes: []
+        )
+
+        #expect(snapshot.checklistCompleted == 1)
+        #expect(snapshot.checklistTotal == 3)
+        #expect(snapshot.checklistItems.map(\.contentID) == [
+            "delivery-picture", "delivery-audio", "client-approval"
+        ])
+        #expect(snapshot.checklistItems.map(\.isCompleted) == [true, false, false])
+        #expect(snapshot.checklistItems[0].title.en == "Picture review")
+        #expect(snapshot.checklistItems[1].title.zhHans == "音频检查")
+        #expect(snapshot.checklistItems[2].title.en == "Client approval")
+    }
+
     @Test func professionalLevelExpandsTheSameCurrentStageInsteadOfChoosingDifferentContent() throws {
         let suiteName = "WorkbenchViewModelTests.professionalLevelExpandsTheSameCurrentStage"
         let defaults = UserDefaults(suiteName: suiteName)!

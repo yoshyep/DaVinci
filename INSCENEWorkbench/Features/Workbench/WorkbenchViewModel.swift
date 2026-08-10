@@ -11,6 +11,19 @@ enum WorkbenchQuickAction: String, CaseIterable, Hashable {
 @MainActor
 @Observable
 final class WorkbenchViewModel {
+    enum ProjectState: Equatable {
+        case noProject
+        case active
+        case completed
+    }
+
+    struct ChecklistEntry: Identifiable, Equatable {
+        var id: String { contentID }
+        let contentID: String
+        let title: LocalizedText
+        let isCompleted: Bool
+    }
+
     struct Template: Identifiable, Equatable {
         let id: String
         let title: LocalizedText
@@ -29,6 +42,7 @@ final class WorkbenchViewModel {
     }
 
     struct Snapshot: Equatable {
+        let projectState: ProjectState
         let projectName: String?
         let currentStageID: String?
         let completedStages: Int
@@ -36,6 +50,7 @@ final class WorkbenchViewModel {
         let currentTask: LocalizedText?
         let checklistCompleted: Int
         let checklistTotal: Int
+        let checklistItems: [ChecklistEntry]
         let recentContentIDs: [String]
         let favoriteCount: Int
         let noteCount: Int
@@ -102,6 +117,14 @@ final class WorkbenchViewModel {
             if completedIDs.contains(stage.id) { count += 1 }
         }
         let currentStage = stages.first { !completedIDs.contains($0.id) }
+        let projectState: ProjectState
+        if session == nil {
+            projectState = .noProject
+        } else if currentStage == nil {
+            projectState = .completed
+        } else {
+            projectState = .active
+        }
         let currentTask: LocalizedText?
         switch settings.contentLevel {
         case .quick:
@@ -122,14 +145,30 @@ final class WorkbenchViewModel {
             if recentIDs.count == 3 { break }
         }
 
+        let checklistItems = session?.checklistStates
+            .map { state in
+                ChecklistEntry(
+                    contentID: state.contentID,
+                    title: checklistTitle(for: state.contentID),
+                    isCompleted: state.isCompleted
+                )
+            }
+            .sorted { lhs, rhs in
+                let lhsRank = checklistRank(for: lhs.contentID)
+                let rhsRank = checklistRank(for: rhs.contentID)
+                return lhsRank == rhsRank ? lhs.contentID < rhs.contentID : lhsRank < rhsRank
+            } ?? []
+
         return Snapshot(
+            projectState: projectState,
             projectName: session?.name,
             currentStageID: currentStage?.id,
             completedStages: completedCount,
             totalStages: stages.count,
             currentTask: currentTask,
-            checklistCompleted: session?.completedChecklistCount ?? 0,
-            checklistTotal: session?.checklistStates.count ?? 0,
+            checklistCompleted: checklistItems.filter(\.isCompleted).count,
+            checklistTotal: checklistItems.count,
+            checklistItems: checklistItems,
             recentContentIDs: recentIDs,
             favoriteCount: favorites.count,
             noteCount: notes.count,
@@ -184,6 +223,37 @@ final class WorkbenchViewModel {
             shortcutKeys: keys,
             destination: .quickAction(action)
         )
+    }
+
+    private func checklistTitle(for contentID: String) -> LocalizedText {
+        switch contentID {
+        case "delivery-picture":
+            LocalizedText(zhHans: "画面检查", en: "Picture review")
+        case "delivery-audio":
+            LocalizedText(zhHans: "音频检查", en: "Audio review")
+        default:
+            LocalizedText(
+                zhHans: Self.humanizedChecklistID(contentID),
+                en: Self.humanizedChecklistID(contentID)
+            )
+        }
+    }
+
+    private func checklistRank(for contentID: String) -> Int {
+        switch contentID {
+        case "delivery-picture": 0
+        case "delivery-audio": 1
+        default: 2
+        }
+    }
+
+    private static func humanizedChecklistID(_ contentID: String) -> String {
+        let words = contentID
+            .split(separator: "-")
+            .map(String.init)
+            .joined(separator: " ")
+        guard let first = words.first else { return contentID }
+        return first.uppercased() + words.dropFirst()
     }
 
     private static let localTemplates: [Template] = [

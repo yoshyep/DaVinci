@@ -11,7 +11,8 @@ final class WorkbenchNavigationUITests: XCTestCase {
         XCTAssertFalse(app.images["workbench.hero.cover"].exists)
         XCTAssertTrue(app.images["brand.symbol"].waitForExistence(timeout: 2))
         XCTAssertTrue(app.buttons["workbench.settings"].exists)
-        XCTAssertTrue(app.textFields["workbench.search"].exists)
+        XCTAssertFalse(app.textFields["workbench.search"].exists)
+        XCTAssertTrue(app.buttons["workbench.quickLookup"].exists)
         XCTAssertTrue(app.buttons["quick.deleteSegment"].exists)
         XCTAssertTrue(app.buttons["quick.skinCorrection"].exists)
         XCTAssertTrue(app.buttons["quick.exportSettings"].exists)
@@ -31,6 +32,32 @@ final class WorkbenchNavigationUITests: XCTestCase {
         scrollToElement(checklist, in: app)
         checklist.tap()
         XCTAssertTrue(app.staticTexts["workbench.delivery.detail"].waitForExistence(timeout: 2))
+        XCTAssertEqual(app.staticTexts["workbench.delivery.progress"].label, "1/2")
+        XCTAssertTrue(app.images["workbench.delivery.delivery-picture.completed"].exists)
+        XCTAssertTrue(app.images["workbench.delivery.delivery-audio.pending"].exists)
+        XCTAssertTrue(app.staticTexts["画面检查"].exists)
+        XCTAssertTrue(app.staticTexts["音频检查"].exists)
+    }
+
+    func testCompletedProjectShowsCompletionAndReviewInsteadOfTemplates() {
+        let app = launchWorkbench(seedCompletedProject: true)
+
+        XCTAssertTrue(app.staticTexts["Finished Documentary"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["workbench.project.completed"].exists)
+        XCTAssertEqual(app.staticTexts["workbench.project.progress"].label, "10/10")
+        XCTAssertTrue(app.buttons["workbench.reviewDelivery"].exists)
+        XCTAssertFalse(app.staticTexts["workbench.startWorkflow"].exists)
+        XCTAssertFalse(app.buttons["workbench.template.template-interview-edit"].exists)
+    }
+
+    func testQuickLookupEntrySelectsQuickLookupTabWithoutAcceptingDiscardedText() {
+        let app = launchWorkbench()
+
+        XCTAssertFalse(app.textFields["workbench.search"].exists)
+        app.buttons["workbench.quickLookup"].tap()
+
+        XCTAssertTrue(app.tabBars.buttons["速查"].isSelected)
+        XCTAssertTrue(app.staticTexts["在本机查找动作、快捷键和故障处理。"].waitForExistence(timeout: 2))
     }
 
     func testImmediateToolOpensTypedNativeDetail() {
@@ -50,11 +77,18 @@ final class WorkbenchNavigationUITests: XCTestCase {
         XCTAssertTrue(app.images["brand.horizontal"].waitForExistence(timeout: 2))
     }
 
-    private func launchWorkbench(seedProject: Bool = false) -> XCUIApplication {
+    private func launchWorkbench(
+        seedProject: Bool = false,
+        seedCompletedProject: Bool = false
+    ) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments = ["-uiTesting", "-resetLocalData", "-skipOnboarding"]
+        app.launchEnvironment["INSCENE_UI_TEST_SUITE"] = "WorkbenchNavigationUITests.\(UUID().uuidString)"
         if seedProject {
             app.launchArguments.append("-seedWorkbenchSession")
+        }
+        if seedCompletedProject {
+            app.launchArguments.append("-seedCompletedWorkbenchSession")
         }
         app.launch()
         return app

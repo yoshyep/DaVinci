@@ -47,4 +47,18 @@ struct AppRouterTests {
 
         #expect(router.presentedWorkbenchDestination == .quickAction(.emergency))
     }
+
+    @Test func quickLookupEntrySelectsLookupTabWithoutAddingWorkbenchNavigation() {
+        let suiteName = "AppRouterTests.quickLookupEntrySelectsLookupTab"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        defaults.removePersistentDomain(forName: suiteName)
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+        let router = AppRouter(settings: SettingsStore(defaults: defaults))
+
+        router.openQuickLookup()
+
+        #expect(router.selectedTab == .lookup)
+        #expect(router.workbenchPath.isEmpty)
+        #expect(router.presentedWorkbenchDestination == nil)
+    }
 }
