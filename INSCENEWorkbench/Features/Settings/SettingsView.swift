@@ -3,7 +3,6 @@ import SwiftUI
 struct SettingsView: View {
     let settings: SettingsStore
     @Environment(\.dismiss) private var dismiss
-    @State private var isConfirmingDelete = false
 
     var body: some View {
         NavigationStack {
@@ -72,13 +71,19 @@ struct SettingsView: View {
                 }
 
                 Section("settings.section.localData") {
+                    Text("settings.localDataUnavailable")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                     Button("settings.export", systemImage: "square.and.arrow.up") {}
+                        .disabled(true)
                     Button("settings.import", systemImage: "square.and.arrow.down") {}
+                        .disabled(true)
                     Button("settings.clearHistory", systemImage: "clock.arrow.circlepath") {}
+                        .disabled(true)
                     Button("settings.resetProgress", systemImage: "arrow.counterclockwise") {}
-                    Button("settings.deleteAll", systemImage: "trash", role: .destructive) {
-                        isConfirmingDelete = true
-                    }
+                        .disabled(true)
+                    Button("settings.deleteAll", systemImage: "trash", role: .destructive) {}
+                        .disabled(true)
                 }
 
                 Section("settings.section.about") {
@@ -94,16 +99,6 @@ struct SettingsView: View {
                     Button("common.done") { dismiss() }
                         .frame(minWidth: 44, minHeight: 44)
                 }
-            }
-            .confirmationDialog(
-                Text("settings.delete.confirm.title"),
-                isPresented: $isConfirmingDelete,
-                titleVisibility: .visible
-            ) {
-                Button("settings.delete.confirm.action", role: .destructive) {}
-                Button("common.cancel", role: .cancel) {}
-            } message: {
-                Text("settings.delete.confirm.message")
             }
         }
         .environment(\.locale, activeLocale)
