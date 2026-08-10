@@ -78,7 +78,7 @@ struct WorkflowListView: View {
 
     private var projectSection: some View {
         Section {
-            if let session = sessions.first {
+            ForEach(sessions) { session in
                 NavigationLink {
                     ProjectSessionView(
                         session: session,
@@ -100,14 +100,20 @@ struct WorkflowListView: View {
                             total: Double(max(stages.count, 1))
                         )
                         .tint(.green)
-                        Text(copy("继续项目、检查表、笔记与版本记录", "Continue stages, checklists, notes, and version records"))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        if session.id == sessions.first?.id {
+                            Text(copy("当前项目 · 检查表、笔记与版本记录", "Current project · checklists, notes, and version records"))
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.blue)
+                        } else {
+                            Text(copy("继续检查表、笔记与版本记录", "Continue checklists, notes, and version records"))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                     .padding(.vertical, 5)
                     .frame(minHeight: 60)
                 }
-                .accessibilityIdentifier("workflows.currentProject")
+                .accessibilityIdentifier(session.id == sessions.first?.id ? "workflows.currentProject" : "workflows.project.\(session.id)")
             }
 
             Button {
@@ -119,7 +125,7 @@ struct WorkflowListView: View {
             .buttonStyle(.borderedProminent)
             .accessibilityIdentifier("workflows.createProject")
         } header: {
-            Text(copy("当前项目", "Current Project"))
+            Text(copy("项目", "Projects"))
         }
     }
 
@@ -132,7 +138,7 @@ struct WorkflowListView: View {
                     HStack(alignment: .top, spacing: 13) {
                         Text(String(format: "%02d", stage.number))
                             .font(.caption.monospacedDigit().bold())
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.contrastSafeForeground(forStageHex: stage.color))
                             .frame(width: 38, height: 38)
                             .background(Color(stageHex: stage.color), in: Circle())
                             .accessibilityHidden(true)
@@ -450,5 +456,33 @@ extension Color {
         let green = Double((value >> 8) & 0xFF) / 255
         let blue = Double(value & 0xFF) / 255
         self.init(.sRGB, red: red, green: green, blue: blue, opacity: 1)
+    }
+
+    /// WCAG 2.1 relative luminance for an sRGB hex color string.
+    static func relativeLuminance(forHex hex: String) -> Double {
+        let sanitized = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        let value = UInt64(sanitized, radix: 16) ?? 0x5B69D8
+        let r = Double((value >> 16) & 0xFF) / 255
+        let g = Double((value >> 8) & 0xFF) / 255
+        let b = Double(value & 0xFF) / 255
+        func lin(_ c: Double) -> Double {
+            c <= 0.03928 ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4)
+        }
+        return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+    }
+
+    /// WCAG 2.1 contrast ratio between two luminance values.
+    static func contrastRatio(luminance1: Double, luminance2: Double) -> Double {
+        let lighter = max(luminance1, luminance2)
+        let darker = min(luminance1, luminance2)
+        return (lighter + 0.05) / (darker + 0.05)
+    }
+
+    /// Returns white or black, whichever achieves >= 4.5:1 contrast with the given hex background.
+    static func contrastSafeForeground(forStageHex hex: String) -> Color {
+        let bgLuminance = relativeLuminance(forHex: hex)
+        let whiteContrast = contrastRatio(luminance1: bgLuminance, luminance2: 1.0)
+        let blackContrast = contrastRatio(luminance1: bgLuminance, luminance2: 0.0)
+        return blackContrast > whiteContrast ? .black : .white
     }
 }

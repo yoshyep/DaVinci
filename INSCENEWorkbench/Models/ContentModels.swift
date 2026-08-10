@@ -144,6 +144,11 @@ enum ResolveCompatibility: String, Codable, CaseIterable, Sendable {
     case studioRequired
 }
 
+struct PlaybookChecklistItem: Codable, Hashable, Sendable {
+    let id: String
+    let text: LocalizedText
+}
+
 struct ExpertPlaybook: Codable, SearchableContent, LocalizedTextCarrying {
     let id: String
     let kind: ContentKind
@@ -159,7 +164,7 @@ struct ExpertPlaybook: Codable, SearchableContent, LocalizedTextCarrying {
     let mistakes: [LocalizedText]
     let rollback: [LocalizedText]
     let officialDifferences: [LocalizedText]
-    let checklist: [LocalizedText]
+    let checklist: [PlaybookChecklistItem]
     let resolveVersion: String
     let compatibility: ResolveCompatibility
     let publishedDate: String?
@@ -178,7 +183,7 @@ struct ExpertPlaybook: Codable, SearchableContent, LocalizedTextCarrying {
             + mistakes.map { (.playbookMistake, $0) }
             + rollback.map { (.rollback, $0) }
             + officialDifferences.map { (.officialDifference, $0) }
-            + checklist.map { (.checklist, $0) }
+            + checklist.map { (.checklist, $0.text) }
     }
 }
 

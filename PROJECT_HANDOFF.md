@@ -1,6 +1,6 @@
 # INSCENE iOS 项目交接清单
 
-更新时间：2026-08-10（Task 7 已形成可运行检查点，仍有 5 项重要修正）
+更新时间：2026-08-10（Task 7 全部 5 项 Important 已修复，71 单元 + 16 UI 测试通过）
 
 ## 项目位置
 
@@ -39,16 +39,16 @@
 - 专业来源：Cullen Kelly、Darren Mostyn、Patrick Inhofer / Mixing Light、Juan Melara、Daria Fissoun / Mixing Light、FilmLight，以及 Blackmagic 官方版本/Free/Studio 信息。
 - 原则：仅使用公开一手来源；内容为原创双语总结；不复制付费课程、LUT、PowerGrade、逐字稿、节点截图或专有图示。
 - 验证记录：66 个单元测试通过、16 个 UI 测试通过、模拟器构建通过；已完成 iPhone 17 Pro 浅/深色与中英文原生 QA。
-- 该检查点可继续开发，但独立审查留下 5 项 Important，必须在发布前处理：
-  1. Mostyn 推荐规则对非高量项目仍有默认分数，但推荐原因仍描述高镜头量；应使用真正的零基线并补未命中测试。
-  2. Playbook 清单项 ID 由数组下标生成，内容重排会错配旧完成状态；应改成显式稳定 ID 并加迁移测试。
-  3. Workflows 只暴露最新项目，旧项目不可重新进入；需要项目切换器。
-  4. 部分阶段颜色上的白色小号数字对比度低于 4.5:1；需按背景选择前景色并加对比度测试。
-  5. Cullen Kelly 的六步细节超出当前公开产品页能够直接支持的范围；需补更强的一手公开来源或收窄为已验证的 scene-referred / DWG 主张。
+- Task 7 的 5 项 Important 已全部修复：
+  1. Mostyn 推荐规则对非高镜头量输入返回 0 分；补未命中测试。
+  2. Playbook 清单项使用显式稳定 ID（PlaybookChecklistItem），内容重排不影响完成状态；补迁移测试。
+  3. Workflows 列出全部项目会话；PlaybookDetailView 使用项目选择器。
+  4. 阶段数字徽章按 WCAG 亮度选择白/黑前景色；StageContrastTests 验证全部阶段 >= 4.5:1。
+  5. 补充 Voyager Pro 页面与 Cullen Kelly YouTube 频道为一手来源；收窄 officialDifferences 区分 Kelly 主张与通用实践。
 
 ## 尚未完成
 
-- Task 7 上述 5 项 Important 修正，以及推荐 sheet / Playbook detail 的补充截图复核。
+- Task 7 推荐 sheet / Playbook detail 的补充截图复核。
 - Task 8：资料库完整界面、笔记/收藏管理、原子 JSON 导入导出、设置页本地数据操作。
 - Task 9：Core Spotlight、App Intents、WidgetKit 快速工具小组件。
 - Task 10：完整 VoiceOver/Dynamic Type/44pt 触控检查、浅色/深色与中英文视觉 QA、全量单元/UI/构建验证、最终 Xcode 交付。
@@ -107,6 +107,6 @@ xcodebuild test -quiet \
 
 ## 最新检查点
 
-- 最新功能检查点：`c85d4e0`（Task 7，DONE_WITH_CONCERNS）
-- 最后完全审查通过的阶段：Task 6 + Logo / 本地化，基线 `1c9a06839a5d6d4b35f4b89a3797c91fc6c517ac`
-- 下一步第一优先级：修复 Task 7 的 5 项 Important；不要直接把 `c85d4e0` 当成最终可发布版本。
+- 最新功能检查点：Task 7 五项 Important 修复提交（71 单元 + 16 UI 测试通过）
+- 最后完全审查通过的阶段：Task 7 Important 修复，基线为本次提交
+- 下一步第一优先级：Task 8 → Task 9 → Task 10；Task 7 已无 open Important。

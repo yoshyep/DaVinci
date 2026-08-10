@@ -44,7 +44,7 @@ enum TestFixtures {
         "title": {"zhHans": "手册", "en": "Playbook"}, "summary": {"zhHans": "摘要", "en": "Summary"},
         "problem": {"zhHans": "问题", "en": "Problem"}, "fit": [], "nonFit": [{"zhHans": "不适用", "en": "Do not use"}],
         "requirements": [], "steps": [], "judgmentCriteria": [], "mistakes": [], "rollback": [], "officialDifferences": [],
-        "checklist": [{"zhHans": "检查一", "en": "Check one"}],
+        "checklist": [{"id": "one-chk-check-one", "text": {"zhHans": "检查一", "en": "Check one"}}],
         "resolveVersion": "20+", "compatibility": "freeAndStudio", "publishedDate": null, "lastReviewedDate": "2026-08-10",
         "sourceURL": "https://example.com", "sourceIDs": ["source-one"]
       }],

@@ -122,8 +122,8 @@ struct LocalUserStateMutator {
         to session: ProjectSession
     ) -> Result<Int, LocalMutationFailure> {
         let existingIDs = Set(session.checklistStates.map(\.contentID))
-        let pending = playbook.checklist.indices.compactMap { index -> ChecklistItemState? in
-            let contentID = "\(playbook.id).checklist.\(index)"
+        let pending = playbook.checklist.compactMap { item -> ChecklistItemState? in
+            let contentID = "\(playbook.id).checklist.\(item.id)"
             guard !existingIDs.contains(contentID) else { return nil }
             return ChecklistItemState(contentID: contentID)
         }

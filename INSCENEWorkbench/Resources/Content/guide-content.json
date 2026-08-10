@@ -448,7 +448,10 @@
   "creators": [
     {
       "id": "creator-cullen-kelly",
-      "name": { "zhHans": "Cullen Kelly", "en": "Cullen Kelly" },
+      "name": {
+        "zhHans": "Cullen Kelly",
+        "en": "Cullen Kelly"
+      },
       "bio": {
         "zhHans": "调色师、影像科学家与教育者，公开分享场景参考调色、色彩管理与观感开发方法。",
         "en": "Colorist, image scientist, and educator who publicly teaches scene-referred grading, color management, and look development."
@@ -456,7 +459,10 @@
     },
     {
       "id": "creator-darren-mostyn",
-      "name": { "zhHans": "Darren Mostyn", "en": "Darren Mostyn" },
+      "name": {
+        "zhHans": "Darren Mostyn",
+        "en": "Darren Mostyn"
+      },
       "bio": {
         "zhHans": "英国广播调色师与 Blackmagic Design 认证大师培训师，公开演示实际场景平衡和匹配流程。",
         "en": "UK broadcast colorist and Blackmagic Design Certified Master Trainer who publicly demonstrates practical scene balancing and matching."
@@ -464,7 +470,10 @@
     },
     {
       "id": "creator-patrick-inhofer",
-      "name": { "zhHans": "Patrick Inhofer / Mixing Light", "en": "Patrick Inhofer / Mixing Light" },
+      "name": {
+        "zhHans": "Patrick Inhofer / Mixing Light",
+        "en": "Patrick Inhofer / Mixing Light"
+      },
       "bio": {
         "zhHans": "职业调色师、Mixing Light 所有者与发行人，长期教授以遍次和时间预算组织调色。",
         "en": "Professional colorist and owner-publisher of Mixing Light who teaches pass-based grading and time management."
@@ -472,7 +481,10 @@
     },
     {
       "id": "creator-juan-melara",
-      "name": { "zhHans": "Juan Melara", "en": "Juan Melara" },
+      "name": {
+        "zhHans": "Juan Melara",
+        "en": "Juan Melara"
+      },
       "bio": {
         "zhHans": "调色师与胶片仿真工具作者，公开说明 PFE LUT、负片仿真和可编辑 PowerGrade 的使用边界。",
         "en": "Colorist and film-emulation toolmaker who publicly documents PFE LUTs, negative emulation, and editable PowerGrade boundaries."
@@ -480,7 +492,10 @@
     },
     {
       "id": "creator-daria-fissoun",
-      "name": { "zhHans": "Daria Fissoun / Mixing Light", "en": "Daria Fissoun / Mixing Light" },
+      "name": {
+        "zhHans": "Daria Fissoun / Mixing Light",
+        "en": "Daria Fissoun / Mixing Light"
+      },
       "bio": {
         "zhHans": "伦敦调色师、合成师与 DaVinci Resolve 认证培训师，公开记录档案母版恢复流程。",
         "en": "London-based colorist, compositor, and certified DaVinci Resolve trainer who publicly documents archival-master restoration."
@@ -488,7 +503,10 @@
     },
     {
       "id": "creator-filmlight-team",
-      "name": { "zhHans": "FilmLight 团队", "en": "FilmLight team" },
+      "name": {
+        "zhHans": "FilmLight 团队",
+        "en": "FilmLight team"
+      },
       "bio": {
         "zhHans": "Baselight 与色彩管理工作流开发团队；其公开材料强调从输入到观看与交付的完整色彩管线。",
         "en": "The team behind Baselight and its color-management workflow, with public guidance spanning input, viewing, and delivery pipelines."
@@ -1973,12 +1991,12 @@
         "en": "Scene-referred look foundation"
       },
       "summary": {
-        "zhHans": "先统一输入，在宽色域工作空间建立可跨镜头的整体观感，再做逐镜头平衡。",
-        "en": "Normalize inputs, build a show-level look in a wide-gamut working space, then balance individual shots beneath it."
+        "zhHans": "在场景参考的 DaVinci Wide Gamut 工作空间中统一输入并建立整体观感，再做逐镜头平衡；色彩管理是前提。",
+        "en": "Normalize inputs and build a show-level look in a scene-referred DaVinci Wide Gamut working space, then balance individual shots; color management is the prerequisite."
       },
       "problem": {
-        "zhHans": "技术归一化和创意观感混在一起时，同一组调整会在不同相机和曝光上产生不一致结果。",
-        "en": "When technical normalization and creative rendition are mixed together, the same adjustment behaves inconsistently across cameras and exposures."
+        "zhHans": "输入色彩空间未归一化时，创意观感会在不同相机和曝光上产生不一致结果。",
+        "en": "When input color spaces are not normalized, creative looks behave inconsistently across cameras and exposures."
       },
       "fit": [
         {
@@ -2068,31 +2086,50 @@
       ],
       "officialDifferences": [
         {
-          "zhHans": "Blackmagic 官方材料讲解 Resolve 色彩管理与节点工具；此手册总结 Cullen Kelly 公开强调的场景参考宽色域观感思路，不复制其付费 LUT、课程或节点图。",
-          "en": "Blackmagic documents Resolve color management and node tools; this playbook summarizes Cullen Kelly's public scene-referred, wide-gamut approach without copying paid LUTs, courses, or node trees."
+          "zhHans": "Voyager Pro 公开产品页明确说明其 LUT 在 DaVinci Wide Gamut 中以场景参考方式工作，并强调正确的色彩管理流程是使用前提；此手册据此总结场景参考宽色域工作流的基础步骤。",
+          "en": "The Voyager Pro product page explicitly states its LUTs work scene-referred in DaVinci Wide Gamut and emphasizes proper color management as a prerequisite; this playbook summarizes the scene-referred wide-gamut foundation based on that public material."
+        },
+        {
+          "zhHans": "Cullen Kelly 的公开 YouTube 频道包含 DaVinci Wide Gamut 工作流系列教程；手册中的输入变换归一化与镜头层修正步骤基于这些公开主张。",
+          "en": "Cullen Kelly's public YouTube channel includes a DaVinci Wide Gamut workflow series; the input-transform normalization and shot-level correction steps are based on those public claims."
+        },
+        {
+          "zhHans": "压力测试、交付检查等步骤为通用专业实践，并非 Cullen Kelly 独创；手册不复制其付费 LUT、课程或节点图。",
+          "en": "Stress-testing and delivery-check steps are general professional practice, not unique to Cullen Kelly; this playbook does not copy paid LUTs, courses, or node trees."
         }
       ],
       "checklist": [
         {
-          "zhHans": "每种相机的输入映射已确认。",
-          "en": "Every camera input mapping is confirmed."
+          "id": "kelly-chk-every-camera-input-mapping",
+          "text": {
+            "zhHans": "每种相机的输入映射已确认。",
+            "en": "Every camera input mapping is confirmed."
+          }
         },
         {
-          "zhHans": "整体观感已在极端镜头和肤色上测试。",
-          "en": "The show look is tested on extremes and skin tones."
+          "id": "kelly-chk-the-show-look-is",
+          "text": {
+            "zhHans": "整体观感已在极端镜头和肤色上测试。",
+            "en": "The show look is tested on extremes and skin tones."
+          }
         },
         {
-          "zhHans": "输出变换只应用一次且交付标签正确。",
-          "en": "The output transform is applied once and delivery tags are correct."
+          "id": "kelly-chk-the-output-transform-is",
+          "text": {
+            "zhHans": "输出变换只应用一次且交付标签正确。",
+            "en": "The output transform is applied once and delivery tags are correct."
+          }
         }
       ],
       "resolveVersion": "20+",
       "compatibility": "freeAndStudio",
       "publishedDate": null,
       "lastReviewedDate": "2026-08-10",
-      "sourceURL": "https://cullenkellycolor.com/toolkit/voyager-luts-essential",
+      "sourceURL": "https://cullenkellycolor.com/toolkit/voyager-luts-pro",
       "sourceIDs": [
         "source-kelly-scene-referred",
+        "source-kelly-voyager-pro",
+        "source-kelly-youtube",
         "source-blackmagic-training"
       ]
     },
@@ -2202,16 +2239,25 @@
       ],
       "checklist": [
         {
-          "zhHans": "每场英雄镜头已标记。",
-          "en": "A hero shot is marked for every scene."
+          "id": "mostyn-chk-a-hero-shot-is",
+          "text": {
+            "zhHans": "每场英雄镜头已标记。",
+            "en": "A hero shot is marked for every scene."
+          }
         },
         {
-          "zhHans": "所有镜头先在 Clip 层匹配，再加共同观感。",
-          "en": "Every shot is matched at Clip level before the shared look."
+          "id": "mostyn-chk-every-shot-is-matched",
+          "text": {
+            "zhHans": "所有镜头先在 Clip 层匹配，再加共同观感。",
+            "en": "Every shot is matched at Clip level before the shared look."
+          }
         },
         {
-          "zhHans": "整场已连续播放并检查切换点。",
-          "en": "The full scene has been played through and edit transitions checked."
+          "id": "mostyn-chk-the-full-scene-has",
+          "text": {
+            "zhHans": "整场已连续播放并检查切换点。",
+            "en": "The full scene has been played through and edit transitions checked."
+          }
         }
       ],
       "resolveVersion": "20+",
@@ -2322,16 +2368,25 @@
       ],
       "checklist": [
         {
-          "zhHans": "每遍目标和截止点已写明。",
-          "en": "Each pass has a written goal and stop time."
+          "id": "inhofer-chk-each-pass-has-a",
+          "text": {
+            "zhHans": "每遍目标和截止点已写明。",
+            "en": "Each pass has a written goal and stop time."
+          }
         },
         {
-          "zhHans": "复杂例外已标记而没有阻塞全片进度。",
-          "en": "Complex exceptions are flagged without blocking program-wide progress."
+          "id": "inhofer-chk-complex-exceptions-are-flagged",
+          "text": {
+            "zhHans": "复杂例外已标记而没有阻塞全片进度。",
+            "en": "Complex exceptions are flagged without blocking program-wide progress."
+          }
         },
         {
-          "zhHans": "最终导出文件已完整观看。",
-          "en": "The final exported file has been watched in full."
+          "id": "inhofer-chk-the-final-exported-file",
+          "text": {
+            "zhHans": "最终导出文件已完整观看。",
+            "en": "The final exported file has been watched in full."
+          }
         }
       ],
       "resolveVersion": "20+",
@@ -2454,16 +2509,25 @@
       ],
       "checklist": [
         {
-          "zhHans": "PFE 输入空间已确认且没有重复转换。",
-          "en": "The PFE input space is confirmed with no duplicate transform."
+          "id": "melara-chk-the-pfe-input-space",
+          "text": {
+            "zhHans": "PFE 输入空间已确认且没有重复转换。",
+            "en": "The PFE input space is confirmed with no duplicate transform."
+          }
         },
         {
-          "zhHans": "产品色已与批准参考对比。",
-          "en": "Product color is compared with an approved reference."
+          "id": "melara-chk-product-color-is-compared",
+          "text": {
+            "zhHans": "产品色已与批准参考对比。",
+            "en": "Product color is compared with an approved reference."
+          }
         },
         {
-          "zhHans": "中性回退版本已保存并可立即恢复。",
-          "en": "A neutral fallback version is saved and immediately recoverable."
+          "id": "melara-chk-a-neutral-fallback-version",
+          "text": {
+            "zhHans": "中性回退版本已保存并可立即恢复。",
+            "en": "A neutral fallback version is saved and immediately recoverable."
+          }
         }
       ],
       "resolveVersion": "17+",
@@ -2578,16 +2642,25 @@
       ],
       "checklist": [
         {
-          "zhHans": "只读源、校验值和技术规格已保存。",
-          "en": "The read-only source, checksum, and technical specifications are saved."
+          "id": "fissoun-chk-the-readonly-source-checksum",
+          "text": {
+            "zhHans": "只读源、校验值和技术规格已保存。",
+            "en": "The read-only source, checksum, and technical specifications are saved."
+          }
         },
         {
-          "zhHans": "所有自动切点已人工复核。",
-          "en": "Every automatic scene cut is manually reviewed."
+          "id": "fissoun-chk-every-automatic-scene-cut",
+          "text": {
+            "zhHans": "所有自动切点已人工复核。",
+            "en": "Every automatic scene cut is manually reviewed."
+          }
         },
         {
-          "zhHans": "原始与恢复版已在运动、面部和纹理上并排比较。",
-          "en": "Original and restored versions are compared for motion, faces, and texture."
+          "id": "fissoun-chk-original-and-restored-versions",
+          "text": {
+            "zhHans": "原始与恢复版已在运动、面部和纹理上并排比较。",
+            "en": "Original and restored versions are compared for motion, faces, and texture."
+          }
         }
       ],
       "resolveVersion": "19+",
@@ -2707,16 +2780,25 @@
       ],
       "checklist": [
         {
-          "zhHans": "输入、工作、观看和交付空间均已记录。",
-          "en": "Input, working, viewing, and delivery spaces are documented."
+          "id": "filmlight-chk-input-working-viewing-and",
+          "text": {
+            "zhHans": "输入、工作、观看和交付空间均已记录。",
+            "en": "Input, working, viewing, and delivery spaces are documented."
+          }
         },
         {
-          "zhHans": "每类源的自动映射已抽查。",
-          "en": "Automatic mapping is spot-checked for every source class."
+          "id": "filmlight-chk-automatic-mapping-is-spotchecked",
+          "text": {
+            "zhHans": "每类源的自动映射已抽查。",
+            "en": "Automatic mapping is spot-checked for every source class."
+          }
         },
         {
-          "zhHans": "每个交付输出均已实际切换并检查。",
-          "en": "Every delivery output has been selected and inspected."
+          "id": "filmlight-chk-every-delivery-output-has",
+          "text": {
+            "zhHans": "每个交付输出均已实际切换并检查。",
+            "en": "Every delivery output has been selected and inspected."
+          }
         }
       ],
       "resolveVersion": "20+",
@@ -5754,6 +5836,26 @@
         "en": "Blackmagic Design: DaVinci Resolve Studio"
       },
       "url": "https://www.blackmagicdesign.com/products/davinciresolve/studio",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-kelly-voyager-pro",
+      "title": {
+        "zhHans": "Cullen Kelly Color：Voyager Pro",
+        "en": "Cullen Kelly Color: Voyager Pro"
+      },
+      "url": "https://cullenkellycolor.com/toolkit/voyager-luts-pro",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-kelly-youtube",
+      "title": {
+        "zhHans": "Cullen Kelly：YouTube 频道",
+        "en": "Cullen Kelly: YouTube Channel"
+      },
+      "url": "https://www.youtube.com/channel/UCHZD22Eei2KX8wpJUzk0Bxg",
       "publishedDate": null,
       "lastReviewedDate": "2026-08-10"
     }

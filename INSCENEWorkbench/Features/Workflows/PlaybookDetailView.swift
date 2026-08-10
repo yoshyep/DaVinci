@@ -11,6 +11,7 @@ struct PlaybookDetailView: View {
     @State private var isProfessionalExpanded: Bool
     @State private var mutationFailure: LocalMutationFailure?
     @State private var applicationMessage: String?
+    @State private var selectedSessionID: UUID?
 
     init(
         playbook: ExpertPlaybook,
@@ -145,16 +146,16 @@ struct PlaybookDetailView: View {
 
     private var checklistSection: some View {
         Section {
-            ForEach(Array(playbook.checklist.enumerated()), id: \.offset) { index, item in
+            ForEach(Array(playbook.checklist.enumerated()), id: \.element.id) { index, item in
                 HStack(alignment: .top, spacing: 11) {
                     Image(systemName: "square")
                         .foregroundStyle(.secondary)
                         .accessibilityHidden(true)
-                    Text(item.resolved(for: settings.language))
+                    Text(item.text.resolved(for: settings.language))
                         .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
                 }
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel("\(index + 1). \(item.resolved(for: settings.language))")
+                .accessibilityLabel("\(index + 1). \(item.text.resolved(for: settings.language))")
             }
         } header: {
             Text(copy("可应用检查表", "Actionable Checklist"))
@@ -163,23 +164,32 @@ struct PlaybookDetailView: View {
 
     private var applySection: some View {
         Section {
-            if let session = sessions.first {
-                Button {
-                    apply(to: session)
+            if sessions.isEmpty {
+                Label(copy("请先在“工作流程”中新建项目", "Create a project in Workflows first"), systemImage: "folder.badge.plus")
+                    .foregroundStyle(.secondary)
+                    .frame(minHeight: 44)
+            } else {
+                Picker(selection: Binding(
+                    get: { selectedSessionID ?? sessions.first?.id },
+                    set: { selectedSessionID = $0 }
+                )) {
+                    ForEach(sessions) { session in
+                        Text(session.name).tag(Optional(session.id))
+                    }
                 } label: {
-                    Label(copy("应用到当前项目", "Apply to Current Project"), systemImage: "text.badge.plus")
+                    Text(copy("目标项目", "Target project"))
+                }
+
+                Button {
+                    if let target = sessions.first(where: { $0.id == (selectedSessionID ?? sessions.first?.id) }) {
+                        apply(to: target)
+                    }
+                } label: {
+                    Label(copy("应用到所选项目", "Apply to Selected Project"), systemImage: "text.badge.plus")
                         .frame(maxWidth: .infinity, minHeight: 44)
                 }
                 .buttonStyle(.borderedProminent)
                 .accessibilityIdentifier("workflows.playbook.apply")
-
-                Text(copy("当前项目：\(session.name)", "Current project: \(session.name)"))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            } else {
-                Label(copy("请先在“工作流程”中新建项目", "Create a project in Workflows first"), systemImage: "folder.badge.plus")
-                    .foregroundStyle(.secondary)
-                    .frame(minHeight: 44)
             }
 
             if let applicationMessage {

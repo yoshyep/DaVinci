@@ -302,10 +302,9 @@ struct ProjectSessionView: View {
         let delimiter = ".checklist."
         let components = contentID.components(separatedBy: delimiter)
         if components.count == 2,
-           let index = Int(components[1]),
            let playbook = repository.content.playbooks.first(where: { $0.id == components[0] }),
-           playbook.checklist.indices.contains(index) {
-            return playbook.checklist[index].resolved(for: settings.language)
+           let item = playbook.checklist.first(where: { $0.id == components[1] }) {
+            return item.text.resolved(for: settings.language)
         }
         if let record = repository.record(id: contentID) {
             return record.title.resolved(for: settings.language)

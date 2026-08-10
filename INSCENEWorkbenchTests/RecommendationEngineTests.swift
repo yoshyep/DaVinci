@@ -38,6 +38,24 @@ struct RecommendationEngineTests {
         })
     }
 
+    @Test func nonHighVolumeInputExcludesMostynSceneMatch() throws {
+        let input = RecommendationInput(
+            projectType: .interview,
+            mixedCameras: true,
+            needsProductColorAccuracy: false,
+            needsFilmLook: false,
+            shotVolume: .medium,
+            delivery: .web,
+            hasStudio: true
+        )
+
+        let result = try RecommendationEngine(
+            playbooks: BundledContentLoader().load().playbooks
+        ).recommend(for: input)
+
+        #expect(!result.contains { $0.playbookID == "playbook-mostyn-scene-match" })
+    }
+
     @Test func freeResolveInputExcludesStudioRequiredPlaybooks() throws {
         let input = RecommendationInput(
             projectType: .archival,

@@ -25,7 +25,8 @@ struct RecommendationEngine: Sendable {
     private func score(playbookID: String, input: RecommendationInput) -> Int {
         switch playbookID {
         case "playbook-mostyn-scene-match":
-            return (input.shotVolume == .high ? 60 : 10)
+            guard input.shotVolume == .high else { return 0 }
+            return 60
                 + (input.mixedCameras ? 45 : 0)
                 + (input.projectType == .interview ? 15 : 0)
         case "playbook-melara-editable-pfe":
