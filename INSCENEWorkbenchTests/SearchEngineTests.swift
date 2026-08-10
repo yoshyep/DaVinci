@@ -85,6 +85,20 @@ struct SearchEngineTests {
         #expect(engine.search("我想修正肤色", context: context).first?.contentID == "recipe-skin")
     }
 
+    @Test func aliasScriptControlsBoundariesInMixedLanguageQueries() {
+        let context = SearchContext(
+            language: .en,
+            platform: .mac,
+            currentStageID: nil,
+            recentIDs: [],
+            favoriteIDs: []
+        )
+
+        #expect(engine.search("我很 confused", context: context).contains { $0.contentID == "recipe-skin" } == false)
+        #expect(engine.search("我要 fix skin now", context: context).first?.contentID == "recipe-skin")
+        #expect(engine.search("please 修正肤色 now", context: context).first?.contentID == "recipe-skin")
+    }
+
     @Test func bothLanguagesSearchTheSameRecordRegardlessOfDisplayLanguage() {
         let chineseContext = SearchContext(
             language: .zhHans,
@@ -309,5 +323,40 @@ struct SearchEngineTests {
         #expect(playbookEngine.search("source secret 42", context: context).isEmpty)
         #expect(playbookEngine.search("shot matching routine", context: context).first?.contentID == "playbook-private-9")
         #expect(playbookEngine.search("hero shot first", context: context).first?.contentID == "playbook-private-9")
+    }
+
+    @Test func workflowStageHumanKeywordsRemainSearchable() throws {
+        let fixture = try TestFixtures.sample
+        let stage = WorkflowStage(
+            id: "stage-private-42",
+            kind: .stage,
+            number: 42,
+            color: "violet-cinder-marker",
+            title: LocalizedText(zhHans: "准备素材", en: "Prepare Material"),
+            summary: LocalizedText(zhHans: "整理拍摄内容。", en: "Organize captured material."),
+            quickSteps: [],
+            proSteps: [],
+            shortcutIDs: [],
+            mistake: LocalizedText(zhHans: "不要遗漏素材。", en: "Do not omit material."),
+            doneCheck: LocalizedText(zhHans: "素材已整理。", en: "Material is organized."),
+            proNotes: []
+        )
+        let content = GuideContent(
+            contentVersion: fixture.contentVersion,
+            stages: [stage], shortcuts: [], recipes: [], colorPasses: [], exports: [], emergencies: [],
+            playbooks: [], creators: [], sources: []
+        )
+        let stageEngine = SearchEngine(repository: GuideContentRepository(content: content))
+        let context = SearchContext(
+            language: .en,
+            platform: .mac,
+            currentStageID: nil,
+            recentIDs: [],
+            favoriteIDs: []
+        )
+
+        #expect(stageEngine.search("stage", context: context).first?.contentID == "stage-private-42")
+        #expect(stageEngine.search("42", context: context).first?.contentID == "stage-private-42")
+        #expect(stageEngine.search("violet cinder marker", context: context).first?.contentID == "stage-private-42")
     }
 }

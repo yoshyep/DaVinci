@@ -144,6 +144,8 @@ struct SearchEngine: Sendable {
         }
         if let shortcut = record as? ShortcutDefinition {
             fields += [shortcut.category.zhHans, shortcut.category.en] + shortcut.flags
+        } else if !(record is ExpertPlaybook) {
+            fields += record.keywords
         }
         return fields
     }
@@ -194,7 +196,7 @@ struct SearchEngine: Sendable {
 
     private static func bidirectionalPhraseMatch(_ alias: String, query: String) -> Bool {
         if alias == query { return true }
-        if containsCJK(alias) || containsCJK(query) {
+        if containsCJK(alias) {
             return (alias.count >= 2 && query.contains(alias)) ||
                 (query.count >= 2 && alias.contains(query))
         }

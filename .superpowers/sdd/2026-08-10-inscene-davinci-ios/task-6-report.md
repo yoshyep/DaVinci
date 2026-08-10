@@ -117,3 +117,25 @@ Full gate bundle:
 - Playbook is still absent from the type filter.
 - Live search still recomputes results more often than necessary.
 - The pre-existing `AccentColor` asset warning remains.
+
+## Review Fix Round 2/5 — 2026-08-10
+
+### Outcome
+
+- Alias boundary selection now follows the alias script, not the whole query: Latin aliases always use normalized token/phrase boundaries, including mixed Chinese/English input, while CJK aliases retain intentional containment.
+- Safe human-facing `keywords` are restored for stages, recipes, color passes, exports, and emergency guides. Shortcut indexing remains platform-aware, and `ExpertPlaybook.sourceIDs` remain explicitly excluded.
+
+### Strict RED → GREEN evidence
+
+- RED: `aliasScriptControlsBoundariesInMixedLanguageQueries()` returned `recipe-skin` for `我很 confused`; positive mixed queries for the English phrase `fix skin` and CJK alias `修正肤色` were asserted in the same real repository.
+- RED: `workflowStageHumanKeywordsRemainSearchable()` failed independently for the literal keyword `stage`, number `42`, and color tag `violet cinder marker` in an injected stage fixture.
+- GREEN: the full focused `SearchEngineTests` suite passed 14/14, including the prior injected `source-secret-42` exclusion fixture.
+- Simulator build completed with exit 0. No routing or UI production changed, so UI/full-gate reruns were not required for this search-only fix round.
+
+Focused result bundle:
+
+```text
+/Users/yoshyep/Library/Developer/Xcode/DerivedData/INSCENEWorkbench-dovnfwxrolgafegtzarhmumuuprl/Logs/Test/Test-INSCENEWorkbench-2026.08.10_07-04-31--0700.xcresult
+```
+
+Deferred minors remain unchanged: playbook type-filter omission, repeated live-search recomputation, and the pre-existing missing `AccentColor` asset.
