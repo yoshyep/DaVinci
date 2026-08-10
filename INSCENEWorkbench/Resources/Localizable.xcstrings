@@ -1,99 +1,1859 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "appearance.dark" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Dark" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "深色" } } } },
-    "appearance.light" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Light" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "浅色" } } } },
-    "appearance.system" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "System" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "跟随系统" } } } },
-    "common.done" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成" } } } },
-    "content.professional" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Professional" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "专业" } } } },
-    "content.quick" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Quick" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "快速" } } } },
-    "language.english" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "English" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "English" } } } },
-    "language.zhHans" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Simplified Chinese" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "简体中文" } } } },
-    "library.placeholder" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Browse the local guide library." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "浏览本地工具资料库。" } } } },
-    "lookup.placeholder" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Find actions, shortcuts, and fixes locally." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在本机查找动作、快捷键和故障处理。" } } } },
-    "onboarding.finish" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Workbench" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "开始使用工作台" } } } },
-    "onboarding.navigationTitle" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Welcome" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "欢迎" } } } },
-    "onboarding.subtitle" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose three local defaults. No account, network access, or tracking is required." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择三个本地默认项。无需账号、网络访问或跟踪。" } } } },
-    "onboarding.title" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Set up your workbench" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设置你的工作台" } } } },
-    "platform.mac" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Mac" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Mac" } } } },
-    "platform.windows" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Windows" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Windows" } } } },
-    "settings.appVersion" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "App Version" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "App 版本" } } } },
-    "settings.appearance" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "外观" } } } },
-    "settings.clearHistory" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear Recent History" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清除最近记录" } } } },
-    "settings.contentLevel" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Content Level" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "内容层级" } } } },
-    "settings.contentVersion" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Content Version" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "内容版本" } } } },
-    "settings.copyrightDisclaimer" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Professional methods are presented as original summaries with sources; protected courses, videos, PowerGrades, and LUTs are not copied or distributed." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "专业方法以原创摘要和来源呈现；不会复制或分发受版权保护的课程、视频、PowerGrade 或 LUT。" } } } },
-    "settings.defaultTab" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Default Start Tab" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "默认起始页" } } } },
-    "settings.deleteAll" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete All Local Data" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "删除全部本地数据" } } } },
-    "settings.export" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Export Local Data" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "导出本地数据" } } } },
-    "settings.haptics" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Haptics" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "触觉反馈" } } } },
-    "settings.import" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Import Local Data" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "导入本地数据" } } } },
-    "settings.independentDisclaimer" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "DaVinci Resolve and Blackmagic Design are trademarks of their respective owners. INSCENE is an independent guide and is not affiliated with or endorsed by Blackmagic Design." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "DaVinci Resolve 与 Blackmagic Design 为其各自权利人的商标。INSCENE 是独立工具手册，不代表与 Blackmagic Design 合作或获得其背书。" } } } },
-    "settings.language" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Language" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "语言" } } } },
-    "settings.localOnly" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings use only local storage." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设置仅保存在本机。" } } } },
-    "settings.localDataUnavailable" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Available when local data tools are implemented." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "本地数据工具实现后可用。" } } } },
-    "settings.platform" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Shortcut Platform" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "快捷键平台" } } } },
-    "settings.resetProgress" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset Project Progress" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "重置项目进度" } } } },
-    "settings.resolveVersion" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Resolve Version" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Resolve 版本" } } } },
-    "settings.section.about" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "About & Trademarks" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "关于与商标" } } } },
-    "settings.section.appearance" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Appearance & Accessibility" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "外观与辅助功能" } } } },
-    "settings.section.content" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Guide Defaults" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工具手册默认项" } } } },
-    "settings.section.language" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Language" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "语言" } } } },
-    "settings.section.localData" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Local Data" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "本地数据" } } } },
-    "settings.showProfessionalRecommendations" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Show Professional Recommendations" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "显示专业流程推荐" } } } },
-    "settings.showSources" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Show Source Labels" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "显示来源标签" } } } },
-    "settings.systemAccessibility" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Dynamic Type, increased contrast, and reduced motion follow iOS settings." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "动态字体、增强对比度和减少动态效果均跟随 iOS 设置。" } } } },
-    "settings.title" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设置" } } } },
-    "tab.library" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Library" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "资料库" } } } },
-    "tab.lookup" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Quick Lookup" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "速查" } } } },
-    "tab.workbench" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Workbench" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工作台" } } } },
-    "tab.workflows" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Workflows" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工作流" } } } },
-    "workbench.context.localItems" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : " local items" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : " 个本地项目" } } } },
-    "workbench.continue" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue Workflow" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "继续工作流" } } } },
-    "workbench.currentProject" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Current Project" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "当前项目" } } } },
-    "workbench.delivery.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Delivery checklist" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "交付检查表" } } } },
-    "workbench.delivery.completed" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Completed" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已完成" } } } },
-    "workbench.delivery.pending" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Pending" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "待完成" } } } },
-    "workbench.detail.shortestPath" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Safest shortest path" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "安全的最短操作路径" } } } },
-    "workbench.detail.unavailable" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "This local record is unavailable." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "此本地记录暂不可用。" } } } },
-    "workbench.explain" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "New to this step? 30-second explanation" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不熟悉这一步？30 秒解释" } } } },
-    "workbench.immediateTools" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Immediate Tools" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "立即处理" } } } },
-    "workbench.localOnly" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Project tools · On device" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "项目工具 · 仅本机" } } } },
-    "workbench.project.deliveryChecklist" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Delivery Checklist" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "交付检查表" } } } },
-    "workbench.project.completed" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Workflow complete · Ready to review delivery" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工作流已完成 · 可检查交付" } } } },
-    "workbench.project.favorites" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Favorite Tools" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "收藏工具" } } } },
-    "workbench.project.notes" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Notes" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "笔记" } } } },
-    "workbench.project.recent" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Recent Records" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "最近记录" } } } },
-    "workbench.projectTools" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Project Tools" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "项目工具" } } } },
-    "workbench.quick.deleteSegment" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Trim a Segment" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "剪掉片段" } } } },
-    "workbench.quick.deleteSegment.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove it and close the gap safely" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "安全删除并自动闭合空隙" } } } },
-    "workbench.quick.emergency" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Emergency Fix" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "故障急救" } } } },
-    "workbench.quick.emergency.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Recover media, playback, or output" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恢复媒体、播放或输出" } } } },
-    "workbench.quick.exportSettings" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Export Settings" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "输出设置" } } } },
-    "workbench.quick.exportSettings.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose a reliable delivery recipe" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择可靠的交付配方" } } } },
-    "workbench.quick.skinCorrection" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Correct Skin Tone" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "修正肤色" } } } },
-    "workbench.quick.skinCorrection.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Balance first, then isolate gently" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "先平衡，再柔和限定" } } } },
-    "workbench.recent.empty" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Tools you open stay on this device." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开过的工具会保存在本机。" } } } },
-    "workbench.recent.favorite" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Favorite" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "收藏" } } } },
-    "workbench.recent.pin" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Pin" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "置顶" } } } },
-    "workbench.recent.remove" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "移除" } } } },
-    "workbench.recentUsage" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Recently Used" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "最近使用" } } } },
-    "workbench.search.clear" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Clear search" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清除搜索" } } } },
-    "workbench.reviewDelivery" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Review Delivery" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "检查交付" } } } },
-    "workbench.search.routeHint" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Open the Quick Lookup tab for local search." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "前往速查页进行本地搜索。" } } } },
-    "workbench.stage.completed" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Completed" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已完成" } } } },
-    "workbench.stage.current" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Current stage" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "当前阶段" } } } },
-    "workbench.stage.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Workflow stage" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "工作流阶段" } } } },
-    "workbench.stage.upcoming" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Upcoming" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "未开始" } } } },
-    "workbench.startWorkflow" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Start a Workflow" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "开始一个工作流" } } } },
-    "workbench.startWorkflow.detail" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose a local template; your progress remains on this iPhone." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择本地模板；进度仅保存在这台 iPhone。" } } } },
-    "workbench.template.localOnly" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "This template will create an on-device project in a later workflow step." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "此模板将在后续工作流步骤中创建本机项目。" } } } },
-    "workbench.workflowStages" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Ten-stage workflow" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "十阶段工作流" } } } },
-    "workbench.placeholder" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Project tools and recent work will appear here." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "项目工具与最近使用内容将在此显示。" } } } },
-    "workbench.search.placeholder" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Search actions, shortcuts, or troubleshooting…" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "搜索动作、快捷键、故障…" } } } },
-    "workbench.search.title" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Global Command Search" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "全局命令搜索" } } } },
-    "workbench.title" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "DaVinci Workbench" } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "达芬奇工作台" } } } },
-    "workflows.placeholder" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue a local project workflow." } }, "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "继续本地项目工作流。" } } } }
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "appearance.dark" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深色"
+          }
+        }
+      }
+    },
+    "appearance.light" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "浅色"
+          }
+        }
+      }
+    },
+    "appearance.system" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随系统"
+          }
+        }
+      }
+    },
+    "common.done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+    },
+    "Content unavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content unavailable"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内容不存在"
+          }
+        }
+      }
+    },
+    "content.professional" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Professional"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专业"
+          }
+        }
+      }
+    },
+    "content.quick" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速"
+          }
+        }
+      }
+    },
+    "Could Not Save" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could Not Save"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法保存"
+          }
+        }
+      }
+    },
+    "Favorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已收藏"
+          }
+        }
+      }
+    },
+    "INSCENE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INSCENE"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INSCENE"
+          }
+        }
+      }
+    },
+    "INSCENE logo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INSCENE logo"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INSCENE 标志"
+          }
+        }
+      }
+    },
+    "language.english" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "language.zhHans" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simplified Chinese"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "简体中文"
+          }
+        }
+      }
+    },
+    "library.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browse the local guide library."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "浏览本地工具资料库。"
+          }
+        }
+      }
+    },
+    "lookup.placeholder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find actions, shortcuts, and fixes locally."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在本机查找动作、快捷键和故障处理。"
+          }
+        }
+      }
+    },
+    "Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac"
+          }
+        }
+      }
+    },
+    "Offline built-in source" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline built-in source"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地内置来源"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
+          }
+        }
+      }
+    },
+    "onboarding.finish" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Workbench"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始使用工作台"
+          }
+        }
+      }
+    },
+    "onboarding.navigationTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎"
+          }
+        }
+      }
+    },
+    "onboarding.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose three local defaults. No account, network access, or tracking is required."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择三个本地默认项。无需账号、网络访问或跟踪。"
+          }
+        }
+      }
+    },
+    "onboarding.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set up your workbench"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置你的工作台"
+          }
+        }
+      }
+    },
+    "platform.mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac"
+          }
+        }
+      }
+    },
+    "platform.windows" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Windows"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Windows"
+          }
+        }
+      }
+    },
+    "Pro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专业"
+          }
+        }
+      }
+    },
+    "Quick" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速"
+          }
+        }
+      }
+    },
+    "R20" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R20"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R20"
+          }
+        }
+      }
+    },
+    "settings.appearance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "外观"
+          }
+        }
+      }
+    },
+    "settings.appVersion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Version"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 版本"
+          }
+        }
+      }
+    },
+    "settings.clearHistory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Recent History"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除最近记录"
+          }
+        }
+      }
+    },
+    "settings.contentLevel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content Level"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内容层级"
+          }
+        }
+      }
+    },
+    "settings.contentVersion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content Version"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内容版本"
+          }
+        }
+      }
+    },
+    "settings.copyrightDisclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Professional methods are presented as original summaries with sources; protected courses, videos, PowerGrades, and LUTs are not copied or distributed."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专业方法以原创摘要和来源呈现；不会复制或分发受版权保护的课程、视频、PowerGrade 或 LUT。"
+          }
+        }
+      }
+    },
+    "settings.defaultTab" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Start Tab"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认起始页"
+          }
+        }
+      }
+    },
+    "settings.deleteAll" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All Local Data"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除全部本地数据"
+          }
+        }
+      }
+    },
+    "settings.export" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Local Data"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出本地数据"
+          }
+        }
+      }
+    },
+    "settings.haptics" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptics"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触觉反馈"
+          }
+        }
+      }
+    },
+    "settings.import" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Local Data"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入本地数据"
+          }
+        }
+      }
+    },
+    "settings.independentDisclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DaVinci Resolve and Blackmagic Design are trademarks of their respective owners. INSCENE is an independent guide and is not affiliated with or endorsed by Blackmagic Design."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DaVinci Resolve 与 Blackmagic Design 为其各自权利人的商标。INSCENE 是独立工具手册，不代表与 Blackmagic Design 合作或获得其背书。"
+          }
+        }
+      }
+    },
+    "settings.language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言"
+          }
+        }
+      }
+    },
+    "settings.localDataUnavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available when local data tools are implemented."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地数据工具实现后可用。"
+          }
+        }
+      }
+    },
+    "settings.localOnly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings use only local storage."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置仅保存在本机。"
+          }
+        }
+      }
+    },
+    "settings.platform" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shortcut Platform"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快捷键平台"
+          }
+        }
+      }
+    },
+    "settings.resetProgress" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Project Progress"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置项目进度"
+          }
+        }
+      }
+    },
+    "settings.resolveVersion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolve Version"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolve 版本"
+          }
+        }
+      }
+    },
+    "settings.section.about" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About & Trademarks"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于与商标"
+          }
+        }
+      }
+    },
+    "settings.section.appearance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance & Accessibility"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "外观与辅助功能"
+          }
+        }
+      }
+    },
+    "settings.section.content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guide Defaults"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工具手册默认项"
+          }
+        }
+      }
+    },
+    "settings.section.language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言"
+          }
+        }
+      }
+    },
+    "settings.section.localData" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Data"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地数据"
+          }
+        }
+      }
+    },
+    "settings.showProfessionalRecommendations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Professional Recommendations"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示专业流程推荐"
+          }
+        }
+      }
+    },
+    "settings.showSources" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Source Labels"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示来源标签"
+          }
+        }
+      }
+    },
+    "settings.systemAccessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Type, increased contrast, and reduced motion follow iOS settings."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "动态字体、增强对比度和减少动态效果均跟随 iOS 设置。"
+          }
+        }
+      }
+    },
+    "settings.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        }
+      }
+    },
+    "tab.library" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "资料库"
+          }
+        }
+      }
+    },
+    "tab.lookup" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Lookup"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速查"
+          }
+        }
+      }
+    },
+    "tab.workbench" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workbench"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工作台"
+          }
+        }
+      }
+    },
+    "tab.workflows" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workflows"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工作流"
+          }
+        }
+      }
+    },
+    "Windows" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Windows"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Windows"
+          }
+        }
+      }
+    },
+    "workbench.context.localItems" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " local items"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 个本地项目"
+          }
+        }
+      }
+    },
+    "workbench.continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue Workflow"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续工作流"
+          }
+        }
+      }
+    },
+    "workbench.currentProject" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Project"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前项目"
+          }
+        }
+      }
+    },
+    "workbench.delivery.completed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已完成"
+          }
+        }
+      }
+    },
+    "workbench.delivery.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delivery checklist"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付检查表"
+          }
+        }
+      }
+    },
+    "workbench.delivery.pending" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "待完成"
+          }
+        }
+      }
+    },
+    "workbench.detail.shortestPath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safest shortest path"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全的最短操作路径"
+          }
+        }
+      }
+    },
+    "workbench.detail.unavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This local record is unavailable."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此本地记录暂不可用。"
+          }
+        }
+      }
+    },
+    "workbench.explain" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New to this step? 30-second explanation"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不熟悉这一步？30 秒解释"
+          }
+        }
+      }
+    },
+    "workbench.immediateTools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Immediate Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即处理"
+          }
+        }
+      }
+    },
+    "workbench.localOnly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project tools · On device"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "项目工具 · 仅本机"
+          }
+        }
+      }
+    },
+    "workbench.placeholder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project tools and recent work will appear here."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "项目工具与最近使用内容将在此显示。"
+          }
+        }
+      }
+    },
+    "workbench.project.completed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workflow complete · Ready to review delivery"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工作流已完成 · 可检查交付"
+          }
+        }
+      }
+    },
+    "workbench.project.deliveryChecklist" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delivery Checklist"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付检查表"
+          }
+        }
+      }
+    },
+    "workbench.project.favorites" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "收藏工具"
+          }
+        }
+      }
+    },
+    "workbench.project.notes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "笔记"
+          }
+        }
+      }
+    },
+    "workbench.project.recent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Records"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近记录"
+          }
+        }
+      }
+    },
+    "workbench.projectTools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "项目工具"
+          }
+        }
+      }
+    },
+    "workbench.quick.deleteSegment" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trim a Segment"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剪掉片段"
+          }
+        }
+      }
+    },
+    "workbench.quick.deleteSegment.detail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove it and close the gap safely"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全删除并自动闭合空隙"
+          }
+        }
+      }
+    },
+    "workbench.quick.emergency" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emergency Fix"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "故障急救"
+          }
+        }
+      }
+    },
+    "workbench.quick.emergency.detail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recover media, playback, or output"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复媒体、播放或输出"
+          }
+        }
+      }
+    },
+    "workbench.quick.exportSettings" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Settings"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "输出设置"
+          }
+        }
+      }
+    },
+    "workbench.quick.exportSettings.detail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a reliable delivery recipe"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择可靠的交付配方"
+          }
+        }
+      }
+    },
+    "workbench.quick.skinCorrection" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct Skin Tone"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修正肤色"
+          }
+        }
+      }
+    },
+    "workbench.quick.skinCorrection.detail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance first, then isolate gently"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先平衡，再柔和限定"
+          }
+        }
+      }
+    },
+    "workbench.recent.empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools you open stay on this device."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开过的工具会保存在本机。"
+          }
+        }
+      }
+    },
+    "workbench.recent.favorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "收藏"
+          }
+        }
+      }
+    },
+    "workbench.recent.pin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "置顶"
+          }
+        }
+      }
+    },
+    "workbench.recent.remove" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除"
+          }
+        }
+      }
+    },
+    "workbench.recentUsage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recently Used"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近使用"
+          }
+        }
+      }
+    },
+    "workbench.reviewDelivery" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review Delivery"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检查交付"
+          }
+        }
+      }
+    },
+    "workbench.search.clear" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除搜索"
+          }
+        }
+      }
+    },
+    "workbench.search.placeholder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search actions, shortcuts, or troubleshooting…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索动作、快捷键、故障…"
+          }
+        }
+      }
+    },
+    "workbench.search.routeHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the Quick Lookup tab for local search."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前往速查页进行本地搜索。"
+          }
+        }
+      }
+    },
+    "workbench.search.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global Command Search"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全局命令搜索"
+          }
+        }
+      }
+    },
+    "workbench.stage.completed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已完成"
+          }
+        }
+      }
+    },
+    "workbench.stage.current" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current stage"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前阶段"
+          }
+        }
+      }
+    },
+    "workbench.stage.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workflow stage"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工作流阶段"
+          }
+        }
+      }
+    },
+    "workbench.stage.upcoming" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未开始"
+          }
+        }
+      }
+    },
+    "workbench.startWorkflow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start a Workflow"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始一个工作流"
+          }
+        }
+      }
+    },
+    "workbench.startWorkflow.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a local template; your progress remains on this iPhone."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择本地模板；进度仅保存在这台 iPhone。"
+          }
+        }
+      }
+    },
+    "workbench.template.localOnly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This template will create an on-device project in a later workflow step."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此模板将在后续工作流步骤中创建本机项目。"
+          }
+        }
+      }
+    },
+    "workbench.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DaVinci Workbench"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "达芬奇工作台"
+          }
+        }
+      }
+    },
+    "workbench.workflowStages" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten-stage workflow"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "十阶段工作流"
+          }
+        }
+      }
+    },
+    "workflows.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue a local project workflow."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续本地项目工作流。"
+          }
+        }
+      }
+    },
+    "专业" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专业"
+          }
+        }
+      }
+    },
+    "内容不存在" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content unavailable"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内容不存在"
+          }
+        }
+      }
+    },
+    "好" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
+          }
+        }
+      }
+    },
+    "已收藏" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已收藏"
+          }
+        }
+      }
+    },
+    "快速" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速"
+          }
+        }
+      }
+    },
+    "无法保存" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could Not Save"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法保存"
+          }
+        }
+      }
+    },
+    "本地内置来源" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline built-in source"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地内置来源"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }
