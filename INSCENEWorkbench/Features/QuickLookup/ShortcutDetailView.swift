@@ -10,9 +10,9 @@ struct ShortcutDetailView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Favorite.updatedAt, order: .reverse) private var favorites: [Favorite]
-    @Query(sort: \RecentActivity.updatedAt, order: .reverse) private var recentActivities: [RecentActivity]
     @Query(sort: \ProjectSession.updatedAt, order: .reverse) private var sessions: [ProjectSession]
     @State private var copied = false
+    @State private var mutationFailure: LocalMutationFailure?
 
     var body: some View {
         List {
@@ -125,8 +125,10 @@ struct ShortcutDetailView: View {
 
                 if let session = sessions.first {
                     Button {
-                        session.setChecklist(contentID: shortcut.id, completed: false)
-                        try? modelContext.save()
+                        handle(
+                            LocalUserStateMutator(modelContext: modelContext)
+                                .addToChecklist(session: session, contentID: shortcut.id)
+                        )
                     } label: {
                         Label(copy("加入当前项目检查表", "Add to Current Checklist"), systemImage: "text.badge.plus")
                     }
@@ -149,6 +151,7 @@ struct ShortcutDetailView: View {
         .navigationTitle(shortcut.title.resolved(for: settings.language))
         .navigationBarTitleDisplayMode(.inline)
         .task { recordRecentUse() }
+        .localMutationAlert(failure: $mutationFailure, language: settings.language)
     }
 
     private var keys: [String] {
@@ -185,22 +188,21 @@ struct ShortcutDetailView: View {
     }
 
     private func toggleFavorite() {
-        if let favorite = favorites.first(where: { $0.contentID == shortcut.id }) {
-            modelContext.delete(favorite)
-        } else {
-            modelContext.insert(Favorite(contentID: shortcut.id))
-        }
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .setFavorite(contentID: shortcut.id, isFavorite: !isFavorite)
+        )
     }
 
     private func recordRecentUse() {
-        if let activity = recentActivities.first(where: { $0.contentID == shortcut.id }) {
-            activity.action = "open"
-            activity.updatedAt = .now
-        } else {
-            modelContext.insert(RecentActivity(contentID: shortcut.id, action: "open"))
-        }
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .recordRecent(contentID: shortcut.id)
+        )
+    }
+
+    private func handle<Success>(_ result: Result<Success, LocalMutationFailure>) {
+        if case .failure(let failure) = result { mutationFailure = failure }
     }
 
     private func copy(_ zhHans: String, _ en: String) -> String {
@@ -212,10 +214,11 @@ struct QuickLookupRecordDetailView: View {
     let record: any SearchableContent
     let repository: GuideContentRepository
     let settings: SettingsStore
+    let router: AppRouter
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Favorite.updatedAt, order: .reverse) private var favorites: [Favorite]
-    @Query(sort: \RecentActivity.updatedAt, order: .reverse) private var recentActivities: [RecentActivity]
+    @State private var mutationFailure: LocalMutationFailure?
 
     var body: some View {
         List {
@@ -260,14 +263,16 @@ struct QuickLookupRecordDetailView: View {
                 Section(copy("相关快捷键", "Related shortcuts")) {
                     ForEach(relatedShortcutIDs, id: \.self) { id in
                         if let shortcut = repository.record(id: id) as? ShortcutDefinition {
-                            HStack {
-                                Text(shortcut.title.resolved(for: settings.language))
-                                Spacer()
-                                Text((settings.platform == .mac ? shortcut.mac : shortcut.win).joined(separator: " + "))
-                                    .font(.caption.monospaced())
-                                    .foregroundStyle(.secondary)
+                            KeycapView(
+                                contentID: shortcut.id,
+                                actionTitle: shortcut.title.resolved(for: settings.language),
+                                subtitle: shortcut.summary.resolved(for: settings.language),
+                                keys: settings.platform == .mac ? shortcut.mac : shortcut.win,
+                                language: settings.language,
+                                elementIdentifier: "lookup.related.\(shortcut.id)"
+                            ) {
+                                router.lookupPath.append(.record(shortcut.id))
                             }
-                            .frame(minHeight: 44)
                         }
                     }
                 }
@@ -292,6 +297,7 @@ struct QuickLookupRecordDetailView: View {
         .navigationTitle(record.title.resolved(for: settings.language))
         .navigationBarTitleDisplayMode(.inline)
         .task { recordRecentUse() }
+        .localMutationAlert(failure: $mutationFailure, language: settings.language)
     }
 
     private var quickLines: [String] {
@@ -342,22 +348,21 @@ struct QuickLookupRecordDetailView: View {
     }
 
     private func toggleFavorite() {
-        if let favorite = favorites.first(where: { $0.contentID == record.id }) {
-            modelContext.delete(favorite)
-        } else {
-            modelContext.insert(Favorite(contentID: record.id))
-        }
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .setFavorite(contentID: record.id, isFavorite: !isFavorite)
+        )
     }
 
     private func recordRecentUse() {
-        if let activity = recentActivities.first(where: { $0.contentID == record.id }) {
-            activity.action = "open"
-            activity.updatedAt = .now
-        } else {
-            modelContext.insert(RecentActivity(contentID: record.id, action: "open"))
-        }
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .recordRecent(contentID: record.id)
+        )
+    }
+
+    private func handle<Success>(_ result: Result<Success, LocalMutationFailure>) {
+        if case .failure(let failure) = result { mutationFailure = failure }
     }
 
     private func copy(_ zhHans: String, _ en: String) -> String {

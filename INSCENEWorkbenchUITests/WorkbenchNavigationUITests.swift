@@ -83,6 +83,18 @@ final class WorkbenchNavigationUITests: XCTestCase {
         XCTAssertTrue(app.textFields["lookup.search"].waitForExistence(timeout: 2))
     }
 
+    func testRecentContentUsesTypedCrossTabLookupDeepLink() {
+        let app = launchWorkbench(seedProject: true)
+        let rippleDelete = app.buttons["workbench.recent.delete-ripple"]
+        scrollToElement(rippleDelete, in: app)
+
+        rippleDelete.tap()
+
+        XCTAssertTrue(app.tabBars.buttons["速查"].isSelected)
+        XCTAssertTrue(app.staticTexts["lookup.shortcut.detail"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["lookup.keycaps.delete-ripple"].exists)
+    }
+
     func testImmediateToolOpensTypedNativeDetail() {
         let app = launchWorkbench()
 

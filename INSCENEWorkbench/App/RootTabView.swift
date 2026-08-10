@@ -44,7 +44,8 @@ struct RootTabView: View {
                                 QuickLookupRecordDetailView(
                                     record: record,
                                     repository: repository,
-                                    settings: settings
+                                    settings: settings,
+                                    router: router
                                 )
                             } else {
                                 ContentUnavailableView(

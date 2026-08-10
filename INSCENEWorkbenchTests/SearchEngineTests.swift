@@ -71,6 +71,20 @@ struct SearchEngineTests {
         #expect((hits.first?.score ?? 0) > (hits.dropFirst().first?.score ?? 0))
     }
 
+    @Test func englishAliasesRespectTokenBoundariesWhileChineseIntentsAllowContainment() {
+        let context = SearchContext(
+            language: .en,
+            platform: .mac,
+            currentStageID: nil,
+            recentIDs: [],
+            favoriteIDs: []
+        )
+
+        #expect(engine.search("confused", context: context).contains { $0.contentID == "recipe-skin" } == false)
+        #expect(engine.search("use fuse for skin", context: context).first?.contentID == "recipe-skin")
+        #expect(engine.search("我想修正肤色", context: context).first?.contentID == "recipe-skin")
+    }
+
     @Test func bothLanguagesSearchTheSameRecordRegardlessOfDisplayLanguage() {
         let chineseContext = SearchContext(
             language: .zhHans,
@@ -110,6 +124,46 @@ struct SearchEngineTests {
         #expect(engine.search("command b", context: mac).first?.contentID == "split-playhead")
         #expect(engine.search("control b", context: windows).first?.contentID == "split-playhead")
         #expect(engine.search("control b", context: mac).contains { $0.contentID == "split-playhead" } == false)
+    }
+
+    @Test func modifierNamesAndSymbolsCanonicalizeOnlyAsWholeTokens() {
+        let mac = SearchContext(
+            language: .en,
+            platform: .mac,
+            currentStageID: nil,
+            recentIDs: [],
+            favoriteIDs: []
+        )
+        let windows = SearchContext(
+            language: .en,
+            platform: .windows,
+            currentStageID: nil,
+            recentIDs: [],
+            favoriteIDs: []
+        )
+
+        let macCases: [(String, String)] = [
+            ("Opt S", "node-serial"),
+            ("Option S", "node-serial"),
+            ("⌥ S", "node-serial"),
+            ("Cmd B", "split-playhead"),
+            ("Command B", "split-playhead"),
+            ("⌘ B", "split-playhead")
+        ]
+        let windowsCases: [(String, String)] = [
+            ("Alt S", "node-serial"),
+            ("Ctrl B", "split-playhead"),
+            ("Control B", "split-playhead"),
+            ("⌃ B", "split-playhead")
+        ]
+
+        for (query, expectedID) in macCases {
+            #expect(engine.search(query, context: mac).first?.contentID == expectedID)
+        }
+        for (query, expectedID) in windowsCases {
+            #expect(engine.search(query, context: windows).first?.contentID == expectedID)
+        }
+        #expect(engine.search("optional s", context: mac).contains { $0.contentID == "node-serial" } == false)
     }
 
     @Test func kindCategoryAndStageFiltersAllConstrainResults() {
@@ -226,5 +280,34 @@ struct SearchEngineTests {
         let opaqueEngine = SearchEngine(repository: GuideContentRepository(content: opaqueContent))
 
         #expect(opaqueEngine.search("internal zebra 417", context: context).isEmpty)
+    }
+
+    @Test func playbookSourceIDsNeverEnterTheUserFacingIndex() throws {
+        let fixture = try TestFixtures.sample
+        let playbook = ExpertPlaybook(
+            id: "playbook-private-9",
+            kind: .playbook,
+            title: LocalizedText(zhHans: "镜头匹配流程", en: "Shot Matching Routine"),
+            summary: LocalizedText(zhHans: "统一整场镜头。", en: "Match a complete scene."),
+            steps: [LocalizedText(zhHans: "先匹配英雄镜头", en: "Match the hero shot first")],
+            sourceIDs: ["source-secret-42"]
+        )
+        let content = GuideContent(
+            contentVersion: fixture.contentVersion,
+            stages: [], shortcuts: [], recipes: [], colorPasses: [], exports: [], emergencies: [],
+            playbooks: [playbook], creators: [], sources: []
+        )
+        let playbookEngine = SearchEngine(repository: GuideContentRepository(content: content))
+        let context = SearchContext(
+            language: .en,
+            platform: .mac,
+            currentStageID: nil,
+            recentIDs: [],
+            favoriteIDs: []
+        )
+
+        #expect(playbookEngine.search("source secret 42", context: context).isEmpty)
+        #expect(playbookEngine.search("shot matching routine", context: context).first?.contentID == "playbook-private-9")
+        #expect(playbookEngine.search("hero shot first", context: context).first?.contentID == "playbook-private-9")
     }
 }

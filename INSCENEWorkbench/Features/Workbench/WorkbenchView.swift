@@ -11,6 +11,7 @@ struct WorkbenchView: View {
     @Query(sort: \RecentActivity.updatedAt, order: .reverse) private var recentActivities: [RecentActivity]
     @Query(sort: \Favorite.updatedAt, order: .reverse) private var favorites: [Favorite]
     @Query(sort: \UserNote.updatedAt, order: .reverse) private var notes: [UserNote]
+    @State private var mutationFailure: LocalMutationFailure?
 
     private var snapshot: WorkbenchViewModel.Snapshot {
         viewModel.snapshot(
@@ -59,6 +60,7 @@ struct WorkbenchView: View {
                 destinationView(destination)
             }
         }
+        .localMutationAlert(failure: $mutationFailure, language: viewModel.settings.language)
     }
 
     private var brandHeader: some View {
@@ -334,7 +336,7 @@ struct WorkbenchView: View {
                 ForEach(snapshot.recentContentIDs, id: \.self) { contentID in
                     if let record = viewModel.record(id: contentID) {
                         Button {
-                            router.open(.record(contentID))
+                            router.openQuickLookup(contentID: contentID)
                         } label: {
                             HStack(spacing: 12) {
                                 Image(systemName: icon(for: record.kind))
@@ -354,6 +356,7 @@ struct WorkbenchView: View {
                             .frame(minHeight: 48)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("workbench.recent.\(contentID)")
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button {
                                 pinRecent(contentID)
@@ -456,21 +459,28 @@ struct WorkbenchView: View {
     }
 
     private func favorite(_ contentID: String) {
-        guard !favorites.contains(where: { $0.contentID == contentID }) else { return }
-        modelContext.insert(Favorite(contentID: contentID))
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .setFavorite(contentID: contentID, isFavorite: true)
+        )
     }
 
     private func pinRecent(_ contentID: String) {
-        recentActivities.first(where: { $0.contentID == contentID })?.action = "pinned"
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .recordRecent(contentID: contentID, action: "pinned")
+        )
     }
 
     private func removeRecent(_ contentID: String) {
-        recentActivities
-            .filter { $0.contentID == contentID }
-            .forEach(modelContext.delete)
-        try? modelContext.save()
+        handle(
+            LocalUserStateMutator(modelContext: modelContext)
+                .removeRecent(contentID: contentID)
+        )
+    }
+
+    private func handle<Success>(_ result: Result<Success, LocalMutationFailure>) {
+        if case .failure(let failure) = result { mutationFailure = failure }
     }
 
     @ViewBuilder

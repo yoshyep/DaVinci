@@ -144,8 +144,6 @@ struct SearchEngine: Sendable {
         }
         if let shortcut = record as? ShortcutDefinition {
             fields += [shortcut.category.zhHans, shortcut.category.en] + shortcut.flags
-        } else {
-            fields += record.keywords
         }
         return fields
     }
@@ -195,29 +193,69 @@ struct SearchEngine: Sendable {
     }
 
     private static func bidirectionalPhraseMatch(_ alias: String, query: String) -> Bool {
-        if alias == query || (alias.count >= 2 && query.contains(alias)) { return true }
+        if alias == query { return true }
+        if containsCJK(alias) || containsCJK(query) {
+            return (alias.count >= 2 && query.contains(alias)) ||
+                (query.count >= 2 && alias.contains(query))
+        }
+
+        let aliasTokens = alias.split(separator: " ").map(String.init)
         let queryTokens = query.split(separator: " ").map(String.init)
-        return queryTokens.count > 1 && queryTokens.allSatisfy { alias.contains($0) }
+        guard !aliasTokens.isEmpty, !queryTokens.isEmpty else { return false }
+        if containsTokenPhrase(aliasTokens, in: queryTokens) { return true }
+        return queryTokens.count > 1 && queryTokens.allSatisfy(aliasTokens.contains)
+    }
+
+    private static func containsTokenPhrase(_ phrase: [String], in tokens: [String]) -> Bool {
+        guard phrase.count <= tokens.count else { return false }
+        for start in 0...(tokens.count - phrase.count) {
+            if Array(tokens[start..<(start + phrase.count)]) == phrase { return true }
+        }
+        return false
+    }
+
+    private static func containsCJK(_ value: String) -> Bool {
+        value.unicodeScalars.contains { scalar in
+            switch scalar.value {
+            case 0x3400...0x4DBF, 0x4E00...0x9FFF, 0xF900...0xFAFF: true
+            default: false
+            }
+        }
     }
 
     static func normalize(_ value: String) -> String {
         let folded = value
             .folding(options: [.caseInsensitive, .diacriticInsensitive, .widthInsensitive], locale: Locale(identifier: "en_US_POSIX"))
             .lowercased()
-            .replacingOccurrences(of: "cmd", with: "command")
-            .replacingOccurrences(of: "⌘", with: " command ")
-            .replacingOccurrences(of: "ctrl", with: "control")
-            .replacingOccurrences(of: "⌃", with: " control ")
-            .replacingOccurrences(of: "opt", with: "option")
-            .replacingOccurrences(of: "⌥", with: " option ")
 
-        let scalars = folded.unicodeScalars.map { scalar -> Character in
-            if CharacterSet.alphanumerics.contains(scalar) { return Character(String(scalar)) }
-            return " "
+        var tokens: [String] = []
+        var current = ""
+        for scalar in folded.unicodeScalars {
+            if CharacterSet.alphanumerics.contains(scalar) {
+                current.unicodeScalars.append(scalar)
+                continue
+            }
+            if !current.isEmpty {
+                tokens.append(current)
+                current = ""
+            }
+            switch scalar {
+            case "⌘": tokens.append("command")
+            case "⌃": tokens.append("control")
+            case "⌥": tokens.append("option")
+            default: break
+            }
         }
-        return String(scalars)
-            .split(whereSeparator: \.isWhitespace)
-            .joined(separator: " ")
+        if !current.isEmpty { tokens.append(current) }
+
+        return tokens.map { token in
+            switch token {
+            case "cmd", "command": "command"
+            case "ctrl", "control": "control"
+            case "opt", "option", "alt": "option"
+            default: token
+            }
+        }.joined(separator: " ")
     }
 
     private static func kindPriority(_ kind: ContentKind) -> Int {

@@ -42,6 +42,22 @@ final class QuickLookupUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["lookup.record.detail"].waitForExistence(timeout: 2))
     }
 
+    func testGenericDetailRelatedShortcutUsesClickableKeycapsAndTypedNavigation() {
+        let app = launchLookup()
+        search("肤色", in: app)
+        app.buttons["lookup.filter.recipe"].tap()
+        app.buttons["lookup.result.recipe-skin"].tap()
+        XCTAssertTrue(app.staticTexts["lookup.record.detail"].waitForExistence(timeout: 2))
+
+        let related = app.buttons["lookup.related.highlight-toggle"]
+        XCTAssertTrue(related.waitForExistence(timeout: 2))
+        XCTAssertTrue(related.label.contains("高亮显示模式"))
+        related.tap()
+
+        XCTAssertTrue(app.staticTexts["lookup.shortcut.detail"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["lookup.keycaps.highlight-toggle"].exists)
+    }
+
     private func launchLookup(language: String = "zhHans") -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments = [

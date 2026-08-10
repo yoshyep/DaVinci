@@ -70,3 +70,50 @@ Gate bundle:
 
 - The clean build still reports the pre-existing asset-catalog warning that `AccentColor` is not present; Task 6 did not alter the catalog or build settings.
 - Curated pinyin covers common high-value intents rather than attempting arbitrary runtime transliteration; full Chinese and English fields remain the primary offline index.
+
+## Review Fix Round 1/5 — 2026-08-10
+
+### Outcome
+
+- Modifier normalization is token-aware: exact `Opt`/`Option`/`Alt`/`⌥`, `Cmd`/`Command`/`⌘`, and `Ctrl`/`Control`/`⌃` forms canonicalize without corrupting words such as `optional`.
+- English aliases now require token/phrase boundaries, preventing `fuse` from matching `confused`; CJK intent aliases retain intentional containment behavior.
+- Search bodies use only localized human-facing fields. An injected playbook fixture proves an opaque source ID cannot produce a result while its title and step detail do.
+- Checklist, favorite, and recent mutations share one save-or-rollback boundary with dependency-injected failure behavior and localized, user-visible save errors. Checklist insertion is idempotent and preserves existing completion.
+- Favorite mutation enforces one-per-content operationally: insertion is idempotent and removal deletes every pre-existing duplicate in the same transaction.
+- Generic related shortcuts are 44-point native `KeycapView` buttons with action labels and spoken keycap semantics; their typed routes open the exact shortcut detail.
+- A production Workbench recent-content row calls `openQuickLookup(contentID:)`; UI coverage proves the tab switch and exact detail/keycap destination.
+
+### Strict RED → GREEN evidence
+
+- Modifier literals first failed because `Option` normalized to `optionion`; the focused test now covers every listed spelling/symbol plus a non-modifier word.
+- `confused` initially returned the `fuse` alias fixture; intended English phrase and Chinese containment assertions stayed paired with the false-positive assertion.
+- The injected expert playbook initially matched its source ID; the same fixture verifies that human title and detail remain searchable after source metadata is excluded.
+- State tests were added before `LocalUserStateMutator` existed (compile RED), then exercised completed-checklist preservation, repeated insertion, duplicate-favorite cleanup, and real failing-save rollback for checklist/favorite/recent using an injected boundary.
+- Related-shortcut and Workbench cross-tab UI tests first failed on missing identifiers/routes, then passed after the production controls used typed lookup navigation.
+
+GREEN verification:
+
+```text
+Focused SearchEngine + state + router + session tests: 25/25 passed
+Quick Lookup + Workbench navigation UI suites: 12/12 passed
+Fresh simulator build: exit 0
+Clean full scheme gate: 64/64 passed, 0 failed, 0 skipped
+```
+
+Full gate bundle:
+
+```text
+/Users/yoshyep/Library/Developer/Xcode/DerivedData/INSCENEWorkbench-dovnfwxrolgafegtzarhmumuuprl/Logs/Test/Run-INSCENEWorkbench-2026.08.10_06-45-02--0700.xcresult
+```
+
+### Files added in this fix round
+
+- `INSCENEWorkbench/Components/LocalMutationAlert.swift`
+- `INSCENEWorkbench/Data/LocalUserStateMutator.swift`
+- `INSCENEWorkbenchTests/LocalUserStateMutatorTests.swift`
+
+### Deferred reviewer minors
+
+- Playbook is still absent from the type filter.
+- Live search still recomputes results more often than necessary.
+- The pre-existing `AccentColor` asset warning remains.
