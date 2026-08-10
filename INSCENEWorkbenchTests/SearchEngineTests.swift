@@ -301,9 +301,24 @@ struct SearchEngineTests {
         let playbook = ExpertPlaybook(
             id: "playbook-private-9",
             kind: .playbook,
+            creatorID: "creator-private",
             title: LocalizedText(zhHans: "镜头匹配流程", en: "Shot Matching Routine"),
             summary: LocalizedText(zhHans: "统一整场镜头。", en: "Match a complete scene."),
+            problem: LocalizedText(zhHans: "镜头不一致。", en: "Shots do not match."),
+            fit: [],
+            nonFit: [LocalizedText(zhHans: "不适合单镜头。", en: "Do not use for one shot.")],
+            requirements: [],
             steps: [LocalizedText(zhHans: "先匹配英雄镜头", en: "Match the hero shot first")],
+            judgmentCriteria: [],
+            mistakes: [],
+            rollback: [],
+            officialDifferences: [],
+            checklist: [],
+            resolveVersion: "20+",
+            compatibility: .freeAndStudio,
+            publishedDate: nil,
+            lastReviewedDate: "2026-08-10",
+            sourceURL: "https://example.com",
             sourceIDs: ["source-secret-42"]
         )
         let content = GuideContent(

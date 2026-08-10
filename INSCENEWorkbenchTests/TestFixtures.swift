@@ -40,10 +40,16 @@ enum TestFixtures {
       }],
       "playbooks": [{
         "id": "playbook-one", "kind": "playbook",
-        "title": {"zhHans": "手册", "en": "Playbook"}, "summary": {"zhHans": "摘要", "en": "Summary"}, "steps": [], "sourceIDs": []
+        "creatorID": "creator-one",
+        "title": {"zhHans": "手册", "en": "Playbook"}, "summary": {"zhHans": "摘要", "en": "Summary"},
+        "problem": {"zhHans": "问题", "en": "Problem"}, "fit": [], "nonFit": [{"zhHans": "不适用", "en": "Do not use"}],
+        "requirements": [], "steps": [], "judgmentCriteria": [], "mistakes": [], "rollback": [], "officialDifferences": [],
+        "checklist": [{"zhHans": "检查一", "en": "Check one"}],
+        "resolveVersion": "20+", "compatibility": "freeAndStudio", "publishedDate": null, "lastReviewedDate": "2026-08-10",
+        "sourceURL": "https://example.com", "sourceIDs": ["source-one"]
       }],
       "creators": [{"id": "creator-one", "name": {"zhHans": "创作者", "en": "Creator"}, "bio": {"zhHans": "简介", "en": "Bio"}}],
-      "sources": [{"id": "source-one", "title": {"zhHans": "来源", "en": "Source"}, "url": "https://example.com"}]
+      "sources": [{"id": "source-one", "title": {"zhHans": "来源", "en": "Source"}, "url": "https://example.com", "publishedDate": null, "lastReviewedDate": "2026-08-10"}]
     }
     """#
 

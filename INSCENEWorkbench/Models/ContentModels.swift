@@ -29,6 +29,7 @@ enum LocalizedTextField: String, Sendable {
     case title, summary, category, menu, quickStep, proStep, mistake, doneCheck, proNote
     case scene, step, risk, tool, scope, commonMistake, specificationLabel, specificationValue
     case bitrate, subtitle, fileCheck, cause, fix, deep, prevent, playbookStep, name, bio
+    case problem, fit, nonFit, requirement, judgmentCriterion, playbookMistake, rollback, officialDifference, checklist
 }
 
 protocol LocalizedTextCarrying: Sendable {
@@ -137,16 +138,48 @@ struct EmergencyGuide: Codable, SearchableContent, LocalizedTextCarrying {
     var localizedTexts: [(LocalizedTextField, LocalizedText)] { [(.title, title), (.summary, summary), (.cause, cause), (.deep, deep), (.prevent, prevent)] + fix.map { (.fix, $0) } }
 }
 
+enum ResolveCompatibility: String, Codable, CaseIterable, Sendable {
+    case freeAndStudio
+    case studioPreferred
+    case studioRequired
+}
+
 struct ExpertPlaybook: Codable, SearchableContent, LocalizedTextCarrying {
     let id: String
     let kind: ContentKind
+    let creatorID: String
     let title: LocalizedText
     let summary: LocalizedText
+    let problem: LocalizedText
+    let fit: [LocalizedText]
+    let nonFit: [LocalizedText]
+    let requirements: [LocalizedText]
     let steps: [LocalizedText]
+    let judgmentCriteria: [LocalizedText]
+    let mistakes: [LocalizedText]
+    let rollback: [LocalizedText]
+    let officialDifferences: [LocalizedText]
+    let checklist: [LocalizedText]
+    let resolveVersion: String
+    let compatibility: ResolveCompatibility
+    let publishedDate: String?
+    let lastReviewedDate: String
+    let sourceURL: String
     let sourceIDs: [String]
 
-    var keywords: [String] { sourceIDs }
-    var localizedTexts: [(LocalizedTextField, LocalizedText)] { [(.title, title), (.summary, summary)] + steps.map { (.playbookStep, $0) } }
+    var keywords: [String] { [creatorID, resolveVersion, compatibility.rawValue] + sourceIDs }
+    var localizedTexts: [(LocalizedTextField, LocalizedText)] {
+        [(.title, title), (.summary, summary), (.problem, problem)]
+            + fit.map { (.fit, $0) }
+            + nonFit.map { (.nonFit, $0) }
+            + requirements.map { (.requirement, $0) }
+            + steps.map { (.playbookStep, $0) }
+            + judgmentCriteria.map { (.judgmentCriterion, $0) }
+            + mistakes.map { (.playbookMistake, $0) }
+            + rollback.map { (.rollback, $0) }
+            + officialDifferences.map { (.officialDifference, $0) }
+            + checklist.map { (.checklist, $0) }
+    }
 }
 
 struct CreatorProfile: Codable, Identifiable, Sendable, LocalizedTextCarrying {
@@ -160,6 +193,8 @@ struct SourceReference: Codable, Identifiable, Sendable, LocalizedTextCarrying {
     let id: String
     let title: LocalizedText
     let url: String
+    let publishedDate: String?
+    let lastReviewedDate: String
     var localizedTexts: [(LocalizedTextField, LocalizedText)] { [(.title, title)] }
 }
 

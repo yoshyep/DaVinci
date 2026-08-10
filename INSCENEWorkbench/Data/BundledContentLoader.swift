@@ -10,6 +10,9 @@ enum BundledContentLoaderError: Error, Equatable {
     case duplicateID(String)
     case emptyTitle(id: String, language: AppLanguage)
     case emptyLocalizedText(id: String, field: LocalizedTextField, language: AppLanguage)
+    case missingCreator(playbookID: String, creatorID: String)
+    case missingSource(playbookID: String, sourceID: String)
+    case invalidSourceURL(id: String)
 }
 
 struct BundledContentLoader: GuideContentLoading {
@@ -67,5 +70,35 @@ struct BundledContentLoader: GuideContentLoading {
                 if text.en.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { throw BundledContentLoaderError.emptyLocalizedText(id: id, field: field, language: .en) }
             }
         }
+
+        let creatorIDs = Set(content.creators.map(\.id))
+        let sourceIDs = Set(content.sources.map(\.id))
+        for source in content.sources {
+            guard isSecureWebURL(source.url) else {
+                throw BundledContentLoaderError.invalidSourceURL(id: source.id)
+            }
+        }
+        for playbook in content.playbooks {
+            guard creatorIDs.contains(playbook.creatorID) else {
+                throw BundledContentLoaderError.missingCreator(
+                    playbookID: playbook.id,
+                    creatorID: playbook.creatorID
+                )
+            }
+            for sourceID in playbook.sourceIDs where !sourceIDs.contains(sourceID) {
+                throw BundledContentLoaderError.missingSource(
+                    playbookID: playbook.id,
+                    sourceID: sourceID
+                )
+            }
+            guard isSecureWebURL(playbook.sourceURL) else {
+                throw BundledContentLoaderError.invalidSourceURL(id: playbook.id)
+            }
+        }
+    }
+
+    private func isSecureWebURL(_ string: String) -> Bool {
+        guard let components = URLComponents(string: string) else { return false }
+        return components.scheme == "https" && components.host?.isEmpty == false
     }
 }

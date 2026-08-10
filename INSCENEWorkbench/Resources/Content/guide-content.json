@@ -445,7 +445,56 @@
     }
   ],
   "contentVersion": 1,
-  "creators": [],
+  "creators": [
+    {
+      "id": "creator-cullen-kelly",
+      "name": { "zhHans": "Cullen Kelly", "en": "Cullen Kelly" },
+      "bio": {
+        "zhHans": "调色师、影像科学家与教育者，公开分享场景参考调色、色彩管理与观感开发方法。",
+        "en": "Colorist, image scientist, and educator who publicly teaches scene-referred grading, color management, and look development."
+      }
+    },
+    {
+      "id": "creator-darren-mostyn",
+      "name": { "zhHans": "Darren Mostyn", "en": "Darren Mostyn" },
+      "bio": {
+        "zhHans": "英国广播调色师与 Blackmagic Design 认证大师培训师，公开演示实际场景平衡和匹配流程。",
+        "en": "UK broadcast colorist and Blackmagic Design Certified Master Trainer who publicly demonstrates practical scene balancing and matching."
+      }
+    },
+    {
+      "id": "creator-patrick-inhofer",
+      "name": { "zhHans": "Patrick Inhofer / Mixing Light", "en": "Patrick Inhofer / Mixing Light" },
+      "bio": {
+        "zhHans": "职业调色师、Mixing Light 所有者与发行人，长期教授以遍次和时间预算组织调色。",
+        "en": "Professional colorist and owner-publisher of Mixing Light who teaches pass-based grading and time management."
+      }
+    },
+    {
+      "id": "creator-juan-melara",
+      "name": { "zhHans": "Juan Melara", "en": "Juan Melara" },
+      "bio": {
+        "zhHans": "调色师与胶片仿真工具作者，公开说明 PFE LUT、负片仿真和可编辑 PowerGrade 的使用边界。",
+        "en": "Colorist and film-emulation toolmaker who publicly documents PFE LUTs, negative emulation, and editable PowerGrade boundaries."
+      }
+    },
+    {
+      "id": "creator-daria-fissoun",
+      "name": { "zhHans": "Daria Fissoun / Mixing Light", "en": "Daria Fissoun / Mixing Light" },
+      "bio": {
+        "zhHans": "伦敦调色师、合成师与 DaVinci Resolve 认证培训师，公开记录档案母版恢复流程。",
+        "en": "London-based colorist, compositor, and certified DaVinci Resolve trainer who publicly documents archival-master restoration."
+      }
+    },
+    {
+      "id": "creator-filmlight-team",
+      "name": { "zhHans": "FilmLight 团队", "en": "FilmLight team" },
+      "bio": {
+        "zhHans": "Baselight 与色彩管理工作流开发团队；其公开材料强调从输入到观看与交付的完整色彩管线。",
+        "en": "The team behind Baselight and its color-management workflow, with public guidance spanning input, viewing, and delivery pipelines."
+      }
+    }
+  ],
   "emergencies": [
     {
       "cause": {
@@ -1914,7 +1963,773 @@
       }
     }
   ],
-  "playbooks": [],
+  "playbooks": [
+    {
+      "id": "playbook-kelly-scene-referred-look",
+      "kind": "playbook",
+      "creatorID": "creator-cullen-kelly",
+      "title": {
+        "zhHans": "场景参考观感基础",
+        "en": "Scene-referred look foundation"
+      },
+      "summary": {
+        "zhHans": "先统一输入，在宽色域工作空间建立可跨镜头的整体观感，再做逐镜头平衡。",
+        "en": "Normalize inputs, build a show-level look in a wide-gamut working space, then balance individual shots beneath it."
+      },
+      "problem": {
+        "zhHans": "技术归一化和创意观感混在一起时，同一组调整会在不同相机和曝光上产生不一致结果。",
+        "en": "When technical normalization and creative rendition are mixed together, the same adjustment behaves inconsistently across cameras and exposures."
+      },
+      "fit": [
+        {
+          "zhHans": "混合相机、叙事片、纪录片或需要统一整体风格的广告。",
+          "en": "Mixed-camera narrative, documentary, or advertising work that needs one coherent show look."
+        },
+        {
+          "zhHans": "需要从拍摄监看延续到后期并可在多种输出中保持的观感。",
+          "en": "A look that must travel from production monitoring through post and multiple outputs."
+        }
+      ],
+      "nonFit": [
+        {
+          "zhHans": "输入色彩空间未知或监看链路不可信时，不要先凭感觉制作整体观感。",
+          "en": "Do not build a show look by eye before input color spaces and the monitoring chain are trustworthy."
+        },
+        {
+          "zhHans": "不要用整体观感代替逐镜头曝光、白平衡与连续性修正。",
+          "en": "Do not use a show look as a substitute for shot-level exposure, balance, and continuity work."
+        }
+      ],
+      "requirements": [
+        {
+          "zhHans": "确认每种相机的输入色彩空间和 Gamma。",
+          "en": "Confirmed input color space and gamma for every camera format."
+        },
+        {
+          "zhHans": "使用 DaVinci Wide Gamut / Intermediate 或经过验证的 ACES 工作空间。",
+          "en": "A verified DaVinci Wide Gamut / Intermediate or ACES working space."
+        },
+        {
+          "zhHans": "可信监视器、正确观看环境和明确输出标准。",
+          "en": "Trustworthy monitoring, a controlled viewing environment, and a defined output standard."
+        }
+      ],
+      "steps": [
+        {
+          "zhHans": "复制一条代表性时间线，确认项目级色彩管理、时间线空间与输出空间。",
+          "en": "Duplicate a representative timeline and confirm project color management, timeline space, and output space."
+        },
+        {
+          "zhHans": "逐类指定正确输入变换，先让所有相机进入同一工作空间，不做创意补偿。",
+          "en": "Assign the correct input transform per camera so every source enters one working space without creative compensation."
+        },
+        {
+          "zhHans": "用宽泛、低节点数的调整建立对比、色彩分离、密度与整体色相关系。",
+          "en": "Build contrast, color separation, density, and overall hue relationships with broad, low-node-count adjustments."
+        },
+        {
+          "zhHans": "用英雄镜头、最亮、最暗、肤色和高饱和镜头压力测试观感。",
+          "en": "Stress-test the look on hero, brightest, darkest, skin-tone, and highly saturated shots."
+        },
+        {
+          "zhHans": "把逐镜头曝光、白平衡和二级修正放在整体观感之前的镜头层完成。",
+          "en": "Perform shot-level exposure, white-balance, and secondary corrections before the show look."
+        },
+        {
+          "zhHans": "在实际交付输出上检查标签、裁切、肤色和高光，再冻结观感版本。",
+          "en": "Check tags, clipping, skin, and highlights on the actual delivery output before freezing the look version."
+        }
+      ],
+      "judgmentCriteria": [
+        {
+          "zhHans": "整体观感在不同相机和曝光上保持相同意图，不需要逐镜头重建。",
+          "en": "The look preserves the same intent across cameras and exposures without being rebuilt shot by shot."
+        },
+        {
+          "zhHans": "禁用观感后仍能看到技术上平衡、未重复变换的底层图像。",
+          "en": "Disabling the look reveals technically balanced images with no duplicate transform."
+        }
+      ],
+      "mistakes": [
+        {
+          "zhHans": "输入或输出变换重复应用，随后用创意节点补偿。",
+          "en": "Applying an input or output transform twice, then compensating with creative nodes."
+        },
+        {
+          "zhHans": "用窄限定器构成整体观感，导致每个镜头都要重新修键。",
+          "en": "Building the show look from narrow keys that need repair on every shot."
+        }
+      ],
+      "rollback": [
+        {
+          "zhHans": "先旁路整体观感，恢复已验证的输入与输出变换，再从中性英雄镜头重建。",
+          "en": "Bypass the show look, restore verified input and output transforms, and rebuild from a neutral hero shot."
+        }
+      ],
+      "officialDifferences": [
+        {
+          "zhHans": "Blackmagic 官方材料讲解 Resolve 色彩管理与节点工具；此手册总结 Cullen Kelly 公开强调的场景参考宽色域观感思路，不复制其付费 LUT、课程或节点图。",
+          "en": "Blackmagic documents Resolve color management and node tools; this playbook summarizes Cullen Kelly's public scene-referred, wide-gamut approach without copying paid LUTs, courses, or node trees."
+        }
+      ],
+      "checklist": [
+        {
+          "zhHans": "每种相机的输入映射已确认。",
+          "en": "Every camera input mapping is confirmed."
+        },
+        {
+          "zhHans": "整体观感已在极端镜头和肤色上测试。",
+          "en": "The show look is tested on extremes and skin tones."
+        },
+        {
+          "zhHans": "输出变换只应用一次且交付标签正确。",
+          "en": "The output transform is applied once and delivery tags are correct."
+        }
+      ],
+      "resolveVersion": "20+",
+      "compatibility": "freeAndStudio",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10",
+      "sourceURL": "https://cullenkellycolor.com/toolkit/voyager-luts-essential",
+      "sourceIDs": [
+        "source-kelly-scene-referred",
+        "source-blackmagic-training"
+      ]
+    },
+    {
+      "id": "playbook-mostyn-scene-match",
+      "kind": "playbook",
+      "creatorID": "creator-darren-mostyn",
+      "title": {
+        "zhHans": "高镜头量场景匹配",
+        "en": "High-volume scene matching"
+      },
+      "summary": {
+        "zhHans": "先建立英雄镜头，再按场景平衡镜头，并把共同变化放到 Resolve 组级。",
+        "en": "Establish a hero shot, balance the scene shot by shot, and place common changes at Resolve's group level."
+      },
+      "problem": {
+        "zhHans": "访谈、纪录片和混合机型项目镜头量大，逐镜头孤立调色容易漂移且返工。",
+        "en": "Interview, documentary, and mixed-camera jobs contain enough shots that isolated grading drifts and creates rework."
+      },
+      "fit": [
+        {
+          "zhHans": "同一场景有大量机位、采访角度或多台相机。",
+          "en": "Scenes with many angles, interview setups, or multiple cameras."
+        },
+        {
+          "zhHans": "客户会对整场观感提出反复修改，需要一处联动。",
+          "en": "Jobs where clients may repeatedly revise a scene-wide look and need a single control point."
+        }
+      ],
+      "nonFit": [
+        {
+          "zhHans": "镜头尚未逐个平衡时，不要让组级调色掩盖曝光、色温或机型差异。",
+          "en": "Do not let a group grade hide clip-level exposure, white-balance, or camera differences before each shot is balanced."
+        },
+        {
+          "zhHans": "一个组只能容纳一种共同意图；光线或场景变化明显时应拆组。",
+          "en": "One group should carry one shared intent; split it when lighting or scene conditions materially change."
+        }
+      ],
+      "requirements": [
+        {
+          "zhHans": "锁定或稳定的剪辑、按场景排序的时间线和正确输入色彩管理。",
+          "en": "A locked or stable edit, a timeline organized by scene, and correct input color management."
+        },
+        {
+          "zhHans": "每场一个可靠英雄镜头，并能同时查看波形图、RGB Parade 与矢量示波器。",
+          "en": "A reliable hero shot per scene and access to Waveform, RGB Parade, and Vectorscope."
+        }
+      ],
+      "steps": [
+        {
+          "zhHans": "确认色彩管理和固定节点职责，避免匹配途中改变技术管线。",
+          "en": "Confirm color management and fixed node responsibilities so the technical pipeline does not change during matching."
+        },
+        {
+          "zhHans": "按场景、机位与光线变化整理镜头，选覆盖主肤色和关键背景的英雄镜头。",
+          "en": "Organize by scene, angle, and lighting change; choose a hero that represents key skin and background colors."
+        },
+        {
+          "zhHans": "先在英雄镜头确定曝光、白平衡和基础观感。",
+          "en": "Set exposure, white balance, and the base look on the hero shot first."
+        },
+        {
+          "zhHans": "在 Clip 层按示波器和相邻剪辑匹配其他镜头，不只匹配单帧静帧。",
+          "en": "Match other shots at Clip level using scopes and adjacent edits, not only a single still."
+        },
+        {
+          "zhHans": "把共同的技术准备放到 Group Pre-Clip，把已匹配场景的共同观感放到 Group Post-Clip。",
+          "en": "Place shared technical preparation in Group Pre-Clip and the matched scene's shared look in Group Post-Clip."
+        },
+        {
+          "zhHans": "播放整场并做小幅 Ripple 或组级修订；发现例外时回到对应 Clip 修正。",
+          "en": "Play the full scene and make small ripple or group revisions; return to the affected Clip for exceptions."
+        }
+      ],
+      "judgmentCriteria": [
+        {
+          "zhHans": "切换机位时肤色、亮度分布和背景中性色连续。",
+          "en": "Skin, luminance distribution, and background neutrals remain continuous across angle changes."
+        },
+        {
+          "zhHans": "修改组级观感不会破坏已经完成的逐镜头匹配。",
+          "en": "A group-level look revision does not undo completed shot matching."
+        }
+      ],
+      "mistakes": [
+        {
+          "zhHans": "复制第一个镜头的全部节点到所有镜头，忽略曝光和光线差异。",
+          "en": "Copying the hero's entire node tree to every shot while ignoring exposure and lighting differences."
+        },
+        {
+          "zhHans": "把不同场景或白平衡条件混进同一组。",
+          "en": "Combining different scenes or white-balance conditions in one group."
+        }
+      ],
+      "rollback": [
+        {
+          "zhHans": "旁路组级节点，确认 Clip 匹配仍成立；必要时拆分组并从英雄镜头重新建立共同观感。",
+          "en": "Bypass group nodes and confirm Clip matching still holds; split the group and rebuild from the hero when necessary."
+        }
+      ],
+      "officialDifferences": [
+        {
+          "zhHans": "Resolve 官方培训说明组级、镜头级和示波器工具；此手册按 Darren Mostyn 公开视频中的英雄镜头、场景平衡、组与 Ripple 顺序组织实际工作。",
+          "en": "Resolve training documents group, clip, and scope tools; this playbook organizes them around the hero-shot, scene-balancing, Groups, and ripple sequence in Darren Mostyn's public video."
+        }
+      ],
+      "checklist": [
+        {
+          "zhHans": "每场英雄镜头已标记。",
+          "en": "A hero shot is marked for every scene."
+        },
+        {
+          "zhHans": "所有镜头先在 Clip 层匹配，再加共同观感。",
+          "en": "Every shot is matched at Clip level before the shared look."
+        },
+        {
+          "zhHans": "整场已连续播放并检查切换点。",
+          "en": "The full scene has been played through and edit transitions checked."
+        }
+      ],
+      "resolveVersion": "20+",
+      "compatibility": "freeAndStudio",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10",
+      "sourceURL": "https://www.youtube.com/watch?v=l3rOObH74TE",
+      "sourceIDs": [
+        "source-mostyn-scene-match",
+        "source-blackmagic-training"
+      ]
+    },
+    {
+      "id": "playbook-inhofer-pass-grading",
+      "kind": "playbook",
+      "creatorID": "creator-patrick-inhofer",
+      "title": {
+        "zhHans": "按遍次控制调色时间",
+        "en": "Pass-based grading under deadline"
+      },
+      "summary": {
+        "zhHans": "先用完整遍次解决最大问题，再根据剩余时间逐层精修，避免在单个镜头陷入细节。",
+        "en": "Use complete passes to solve the biggest problems first, then refine according to remaining time instead of getting trapped in one shot."
+      },
+      "problem": {
+        "zhHans": "镜头量和截止时间不匹配时，从第一个镜头开始追求完美会让后半段没有可靠基础。",
+        "en": "When shot count exceeds the time available, perfecting the first shots leaves the rest of the program without a reliable base."
+      },
+      "fit": [
+        {
+          "zhHans": "高镜头量、固定截止时间、广播节目、纪录片和快速周转项目。",
+          "en": "High shot counts, fixed deadlines, broadcast programs, documentaries, and fast-turnaround work."
+        }
+      ],
+      "nonFit": [
+        {
+          "zhHans": "需要立即完成少数英雄镜头供前期批准时，不要机械地等待全片第一遍结束。",
+          "en": "Do not rigidly wait for a whole-program first pass when a few hero shots need immediate pre-approval."
+        },
+        {
+          "zhHans": "按遍次不是降低最终标准；最终母版仍必须完整复看。",
+          "en": "Pass-based work is not a lower final standard; the final master still requires a complete review."
+        }
+      ],
+      "requirements": [
+        {
+          "zhHans": "明确总工时、镜头数、客户审看片段和最终交付时间。",
+          "en": "Known total hours, shot count, client review points, and final delivery time."
+        },
+        {
+          "zhHans": "可以记录问题、未完成项和每遍目标的清单。",
+          "en": "A list that records issues, incomplete work, and the goal of each pass."
+        }
+      ],
+      "steps": [
+        {
+          "zhHans": "按总时长和镜头量给基础、匹配、精修与最终 QC 分配时间预算。",
+          "en": "Allocate the total schedule across base, matching, refinement, and final-QC passes."
+        },
+        {
+          "zhHans": "第一遍只解决色彩管理、严重曝光、白平衡和明显技术问题。",
+          "en": "Use pass one for color management, major exposure, white balance, and obvious technical problems."
+        },
+        {
+          "zhHans": "第二遍按场景完成镜头匹配和共同观感，遇到复杂问题先标记。",
+          "en": "Use pass two for scene matching and shared looks, flagging complex exceptions instead of stopping."
+        },
+        {
+          "zhHans": "第三遍按叙事重要性处理肤色、窗口、限定器、降噪和重点镜头。",
+          "en": "Use pass three for prioritized skin, windows, keys, noise reduction, and hero-shot refinement."
+        },
+        {
+          "zhHans": "保留最后时间做连续播放、客户修订和实际导出文件 QC。",
+          "en": "Reserve final time for continuous playback, client revisions, and QC of the exported file."
+        }
+      ],
+      "judgmentCriteria": [
+        {
+          "zhHans": "即使精修时间缩短，全片也已有一致、可交付的基础版本。",
+          "en": "Even if refinement time shrinks, the entire program already has a consistent, deliverable base."
+        },
+        {
+          "zhHans": "每遍结束时都能准确说出剩余问题和下一步优先级。",
+          "en": "At the end of every pass, remaining issues and next priorities are explicit."
+        }
+      ],
+      "mistakes": [
+        {
+          "zhHans": "边看边修每个问题，破坏完整观看和时间判断。",
+          "en": "Stopping to solve every issue while screening, which breaks continuity and schedule awareness."
+        },
+        {
+          "zhHans": "把所有镜头投入相同时间，不考虑叙事重要性和可见度。",
+          "en": "Spending equal time on every shot regardless of story importance or visibility."
+        }
+      ],
+      "rollback": [
+        {
+          "zhHans": "冻结复杂精修，回到最近完整遍次，先保证剩余镜头的基础一致与最终 QC。",
+          "en": "Freeze complex refinements and return to the latest complete pass so remaining shots and final QC are protected."
+        }
+      ],
+      "officialDifferences": [
+        {
+          "zhHans": "这是 Patrick Inhofer 公开的时间管理策略，不是 Resolve 的专用模式；官方工具可用于执行每遍，但不会替你分配时间。",
+          "en": "This is Patrick Inhofer's public time-management strategy, not a Resolve mode; official tools execute each pass but do not allocate the schedule."
+        }
+      ],
+      "checklist": [
+        {
+          "zhHans": "每遍目标和截止点已写明。",
+          "en": "Each pass has a written goal and stop time."
+        },
+        {
+          "zhHans": "复杂例外已标记而没有阻塞全片进度。",
+          "en": "Complex exceptions are flagged without blocking program-wide progress."
+        },
+        {
+          "zhHans": "最终导出文件已完整观看。",
+          "en": "The final exported file has been watched in full."
+        }
+      ],
+      "resolveVersion": "20+",
+      "compatibility": "freeAndStudio",
+      "publishedDate": "2013-12-10",
+      "lastReviewedDate": "2026-08-10",
+      "sourceURL": "https://mixinglight.com/color-tutorial/colorist-time-management-grading-in-passes/",
+      "sourceIDs": [
+        "source-inhofer-passes",
+        "source-blackmagic-training"
+      ]
+    },
+    {
+      "id": "playbook-melara-editable-pfe",
+      "kind": "playbook",
+      "creatorID": "creator-juan-melara",
+      "title": {
+        "zhHans": "可编辑 PFE 与产品色保护",
+        "en": "Editable PFE with product-color protection"
+      },
+      "summary": {
+        "zhHans": "在正确归一化后把胶片拷贝仿真作为可编辑层，并为品牌色保留中性回退路径。",
+        "en": "Treat print-film emulation as an editable layer after correct normalization, with a neutral fallback for protected brand colors."
+      },
+      "problem": {
+        "zhHans": "PFE LUT 能快速建立胶片对比和色彩，但固定映射可能让产品色、肤色或高光难以精确恢复。",
+        "en": "A PFE LUT quickly establishes film contrast and color, but a fixed mapping can make exact product color, skin, or highlight recovery difficult."
+      },
+      "fit": [
+        {
+          "zhHans": "既要求胶片观感又必须保护包装、服装或品牌色的广告。",
+          "en": "Advertising that needs a film feel while protecting packaging, wardrobe, or brand colors."
+        },
+        {
+          "zhHans": "客户可能要求在保留胶片质感的同时修改某一色相或对比段。",
+          "en": "Jobs where a client may ask to revise one hue or contrast region while retaining the film character."
+        }
+      ],
+      "nonFit": [
+        {
+          "zhHans": "产品颜色必须严格匹配色卡时，不要把固定 LUT 当作不可更改的终点。",
+          "en": "When product color must match a swatch exactly, do not treat a fixed LUT as an untouchable endpoint."
+        },
+        {
+          "zhHans": "输入没有正确转换到 PFE 预期空间时，不要用曝光和饱和度强行补偿。",
+          "en": "Do not force exposure and saturation to compensate when the source is not in the PFE's expected input space."
+        }
+      ],
+      "requirements": [
+        {
+          "zhHans": "确认 PFE 的输入与输出色彩空间，并准备无仿真的中性参考。",
+          "en": "Confirmed PFE input and output color spaces plus a neutral, non-emulated reference."
+        },
+        {
+          "zhHans": "客户批准的产品色卡、包装实物或可信参考图。",
+          "en": "A client-approved product swatch, physical package, or trustworthy reference image."
+        },
+        {
+          "zhHans": "仅使用你合法拥有的 LUT 或 PowerGrade；本应用不提供第三方资产。",
+          "en": "Only LUTs or PowerGrades you legally own; this app does not include third-party assets."
+        }
+      ],
+      "steps": [
+        {
+          "zhHans": "先在无 PFE 的节点路径完成输入变换、曝光与白平衡。",
+          "en": "Complete the input transform, exposure, and white balance in a path without the PFE first."
+        },
+        {
+          "zhHans": "在代表性镜头上加入 PFE，检查是否出现过暗、过强对比、低饱和或色相偏移。",
+          "en": "Add the PFE to representative shots and check for darkness, excessive contrast, low saturation, or hue shifts."
+        },
+        {
+          "zhHans": "在 PFE 前使用 Offset、Contrast/Pivot 和必要的阴影修正，使信号进入合理范围。",
+          "en": "Use Offset, Contrast/Pivot, and necessary shadow correction before the PFE to place the signal in a workable range."
+        },
+        {
+          "zhHans": "需要精确产品色时改用可编辑的 PFE 结构，只调整造成偏差的组成部分。",
+          "en": "When exact product color matters, switch to an editable PFE structure and alter only the component causing the mismatch."
+        },
+        {
+          "zhHans": "同时对比示波器、批准色卡和中性版本，不要只凭记忆判断品牌色。",
+          "en": "Compare scopes, the approved swatch, and the neutral version instead of judging brand color from memory."
+        },
+        {
+          "zhHans": "保存有 PFE 与中性回退两个版本，交付前由客户确认。",
+          "en": "Save both PFE and neutral fallback versions for client approval before delivery."
+        }
+      ],
+      "judgmentCriteria": [
+        {
+          "zhHans": "产品色在批准的观看环境中匹配参考，同时画面仍保持所需胶片性格。",
+          "en": "Product color matches the reference in the approved viewing environment while the intended film character remains."
+        },
+        {
+          "zhHans": "旁路 PFE 后基础校正仍然中性，没有重复变换或不可解释的补偿。",
+          "en": "Bypassing the PFE reveals a neutral base grade with no duplicate transform or unexplained compensation."
+        }
+      ],
+      "mistakes": [
+        {
+          "zhHans": "把 Rec.709 转换和 PFE 的显示映射重复叠加。",
+          "en": "Stacking a Rec.709 conversion and the PFE's display mapping twice."
+        },
+        {
+          "zhHans": "为了一个产品颜色在 PFE 后做极窄的破坏性限定。",
+          "en": "Using a brittle, narrow key after the PFE to rescue one product color."
+        }
+      ],
+      "rollback": [
+        {
+          "zhHans": "切换到中性版本，确认产品色准确后再逐项加入可编辑 PFE 成分，直到找到冲突来源。",
+          "en": "Return to the neutral version, confirm product accuracy, then re-enable editable PFE components one at a time to locate the conflict."
+        }
+      ],
+      "officialDifferences": [
+        {
+          "zhHans": "Blackmagic 官方培训说明 LUT、PowerGrade 和色彩管理；此手册只总结 Juan Melara 公开文章中固定 PFE 的限制和可编辑替代思路，不包含其 LUT、PowerGrade 或节点截图。",
+          "en": "Blackmagic documents LUTs, PowerGrades, and color management; this playbook only summarizes Juan Melara's public fixed-PFE caveat and editable alternative, without bundling his LUTs, PowerGrades, or node screenshots."
+        }
+      ],
+      "checklist": [
+        {
+          "zhHans": "PFE 输入空间已确认且没有重复转换。",
+          "en": "The PFE input space is confirmed with no duplicate transform."
+        },
+        {
+          "zhHans": "产品色已与批准参考对比。",
+          "en": "Product color is compared with an approved reference."
+        },
+        {
+          "zhHans": "中性回退版本已保存并可立即恢复。",
+          "en": "A neutral fallback version is saved and immediately recoverable."
+        }
+      ],
+      "resolveVersion": "17+",
+      "compatibility": "freeAndStudio",
+      "publishedDate": "2021-10-01",
+      "lastReviewedDate": "2026-08-10",
+      "sourceURL": "https://juanmelara.com.au/blog/print-film-emulation-luts-for-download",
+      "sourceIDs": [
+        "source-melara-pfe",
+        "source-blackmagic-training"
+      ]
+    },
+    {
+      "id": "playbook-fissoun-archive-restore",
+      "kind": "playbook",
+      "creatorID": "creator-daria-fissoun",
+      "title": {
+        "zhHans": "档案母版恢复准备",
+        "en": "Archival-master restoration prep"
+      },
+      "summary": {
+        "zhHans": "先确定旧母版的场序、帧率、画幅与切点，再逐镜头去隔行、修复和升级。",
+        "en": "Establish field order, frame rate, aspect ratio, and cut boundaries before shot-level deinterlacing, restoration, and upscaling."
+      },
+      "problem": {
+        "zhHans": "把旧隔行整片直接升级到 4K 会把切点、场序错误、原始纹理和不可恢复高光混成一个问题。",
+        "en": "Upscaling an old interlaced master as one movie combines cut boundaries, field-order errors, original texture, and unrecoverable highlights into one problem."
+      },
+      "fit": [
+        {
+          "zhHans": "只有自包含广播母版、磁带转录或单一整片文件的档案恢复。",
+          "en": "Archive restoration from a self-contained broadcast master, tape transfer, or single program file."
+        }
+      ],
+      "nonFit": [
+        {
+          "zhHans": "原始相机素材和可靠剪辑工程仍存在时，不要优先从压缩广播母版重建。",
+          "en": "Do not rebuild from a compressed broadcast master when original camera media and a reliable edit project still exist."
+        },
+        {
+          "zhHans": "不要把 AI 或 Super Scale 生成的细节当成原始记录；历史纹理可能比锐度更重要。",
+          "en": "Do not treat AI or Super Scale detail as original evidence; historical texture may matter more than sharpness."
+        }
+      ],
+      "requirements": [
+        {
+          "zhHans": "保留只读源副本、已知技术规格和明确的档案交付标准。",
+          "en": "A read-only source copy, known technical specifications, and a defined archival delivery standard."
+        },
+        {
+          "zhHans": "DaVinci Resolve Studio，用于源示例中的高级去隔行、场景切点检测和 Super Scale 流程。",
+          "en": "DaVinci Resolve Studio for the source workflow's advanced deinterlacing, scene-cut detection, and Super Scale steps."
+        }
+      ],
+      "steps": [
+        {
+          "zhHans": "校验并复制源文件，记录封装、编码、帧率、场序、画幅和音频格式。",
+          "en": "Verify and duplicate the source, recording container, codec, frame rate, field order, aspect ratio, and audio format."
+        },
+        {
+          "zhHans": "设置与源匹配的项目，确认隔行显示和原始画幅，不要立即拉伸到交付尺寸。",
+          "en": "Set up a source-matched project and confirm interlaced display and original framing before resizing."
+        },
+        {
+          "zhHans": "运行场景切点检测，把整片拆成可独立色彩管理的镜头，并逐个审查误切和漏切。",
+          "en": "Run scene-cut detection to create independently manageable shots, then review every false and missed cut."
+        },
+        {
+          "zhHans": "用代表性运动、细节和人脸测试去隔行与升级设置，保留无处理对照。",
+          "en": "Test deinterlacing and upscaling on representative motion, detail, and faces while retaining an untreated comparison."
+        },
+        {
+          "zhHans": "按镜头修复曝光与颜色；已经削平的 SDR 高光只能重塑观感，不能恢复不存在的细节。",
+          "en": "Restore exposure and color shot by shot; clipped SDR highlights can be reshaped perceptually but missing detail cannot be recovered."
+        },
+        {
+          "zhHans": "以实际交付分辨率检查运动、边缘、纹理、音画同步和完整播放。",
+          "en": "At delivery resolution, check motion, edges, texture, A/V sync, and complete playback."
+        }
+      ],
+      "judgmentCriteria": [
+        {
+          "zhHans": "去隔行后运动无梳齿和节奏错误，升级没有制造明显面部或边缘伪影。",
+          "en": "Deinterlaced motion has no combing or cadence error, and upscaling creates no conspicuous face or edge artifacts."
+        },
+        {
+          "zhHans": "恢复版比源更易观看，但仍保留原时代和载体的可信纹理。",
+          "en": "The restoration is easier to view while preserving credible texture from the original era and medium."
+        }
+      ],
+      "mistakes": [
+        {
+          "zhHans": "先改帧率或画幅再确认场序，导致重复帧、梳齿或错误拉伸。",
+          "en": "Changing frame rate or framing before confirming field order, causing duplicate frames, combing, or distortion."
+        },
+        {
+          "zhHans": "接受所有自动切点或最大升级强度而不逐镜头复核。",
+          "en": "Accepting every automatic cut or maximum upscale strength without shot-by-shot review."
+        }
+      ],
+      "rollback": [
+        {
+          "zhHans": "返回只读源副本和源匹配时间线，关闭升级与修复层，从单个代表性镜头重新验证场序和设置。",
+          "en": "Return to the read-only source and source-matched timeline, disable upscale and restoration layers, and revalidate field order on one representative shot."
+        }
+      ],
+      "officialDifferences": [
+        {
+          "zhHans": "Blackmagic 官方页面列出 Studio 的场景切点检测、去隔行和 Super Scale 能力；此手册按 Daria Fissoun 公开档案系列强调的源格式审查与逐镜头准备来组织。",
+          "en": "Blackmagic lists Studio scene-cut detection, deinterlacing, and Super Scale capabilities; this playbook follows Daria Fissoun's public archive series in prioritizing source-format review and shot-level preparation."
+        }
+      ],
+      "checklist": [
+        {
+          "zhHans": "只读源、校验值和技术规格已保存。",
+          "en": "The read-only source, checksum, and technical specifications are saved."
+        },
+        {
+          "zhHans": "所有自动切点已人工复核。",
+          "en": "Every automatic scene cut is manually reviewed."
+        },
+        {
+          "zhHans": "原始与恢复版已在运动、面部和纹理上并排比较。",
+          "en": "Original and restored versions are compared for motion, faces, and texture."
+        }
+      ],
+      "resolveVersion": "19+",
+      "compatibility": "studioRequired",
+      "publishedDate": "2024-08-06",
+      "lastReviewedDate": "2026-08-10",
+      "sourceURL": "https://mixinglight.com/color-grading-tutorials/scene-cut-detection-interlaced-ntsc-4k-restoration-series-part-1/",
+      "sourceIDs": [
+        "source-fissoun-archive-prep",
+        "source-fissoun-upscale",
+        "source-blackmagic-studio"
+      ]
+    },
+    {
+      "id": "playbook-filmlight-pipeline-first",
+      "kind": "playbook",
+      "creatorID": "creator-filmlight-team",
+      "title": {
+        "zhHans": "混合机型管线优先",
+        "en": "Pipeline-first mixed-camera grade"
+      },
+      "summary": {
+        "zhHans": "先明确输入、工作、观看与交付色彩空间，再建立中性基础和创意观感。",
+        "en": "Define input, working, viewing, and delivery color spaces before building a neutral base and creative look."
+      },
+      "problem": {
+        "zhHans": "混合相机和多交付项目若没有明确色彩旅程，创意节点会被迫补偿错误输入或观看变换。",
+        "en": "Without an explicit color journey, creative nodes in mixed-camera and multi-delivery work end up compensating for incorrect input or viewing transforms."
+      },
+      "fit": [
+        {
+          "zhHans": "电影、广告、广播或同时需要 SDR/HDR、网络/影院版本的项目。",
+          "en": "Film, commercial, broadcast, or projects requiring SDR/HDR and web/cinema versions."
+        },
+        {
+          "zhHans": "来自多台数字相机、图像序列和图形的混合源。",
+          "en": "Mixed sources from multiple digital cameras, image sequences, and graphics."
+        }
+      ],
+      "nonFit": [
+        {
+          "zhHans": "不要把 FilmLight 的 T-Log、E-Gamut 或 Truelight CAM 设置名称逐字复制到 Resolve；应转换原则而不是界面参数。",
+          "en": "Do not copy FilmLight T-Log, E-Gamut, or Truelight CAM setting names literally into Resolve; translate the pipeline principle, not the interface values."
+        },
+        {
+          "zhHans": "最终观看环境和交付标准未知时，不要冻结显示观感。",
+          "en": "Do not freeze a display rendition while the final viewing environment and delivery standard are unknown."
+        }
+      ],
+      "requirements": [
+        {
+          "zhHans": "相机与图形源清单、元数据、目标监视器和所有交付规范。",
+          "en": "A source inventory, metadata, target monitor, and every delivery specification."
+        },
+        {
+          "zhHans": "一条可测试的中性时间线，包含肤色、高光、暗部和高饱和素材。",
+          "en": "A neutral test timeline containing skin, highlights, shadows, and saturated material."
+        }
+      ],
+      "steps": [
+        {
+          "zhHans": "列出每类源的编码色彩空间以及每个交付版本的观看色彩空间。",
+          "en": "List the encoded color space of every source type and the viewing color space of every delivery."
+        },
+        {
+          "zhHans": "在 Resolve Color Management 或 ACES 中选择足够宽的时间线工作空间。",
+          "en": "Choose a sufficiently wide timeline working space in Resolve Color Management or ACES."
+        },
+        {
+          "zhHans": "从元数据自动分配输入后逐类抽查；错误或缺失时手动覆盖。",
+          "en": "Start with metadata-driven input assignments, spot-check every source class, and override errors or omissions manually."
+        },
+        {
+          "zhHans": "设置与实际监视器匹配的输出变换，先完成中性曝光和白平衡测试。",
+          "en": "Set an output transform matching the real monitor, then complete a neutral exposure and white-balance test."
+        },
+        {
+          "zhHans": "把创意观感放在已验证的场景参考管线中，保持输入与显示职责分离。",
+          "en": "Place the creative look inside the verified scene-referred pipeline, keeping input and display responsibilities separate."
+        },
+        {
+          "zhHans": "逐个切换实际交付输出，检查高光、色域、肤色、图形和元数据标签。",
+          "en": "Switch through actual delivery outputs and inspect highlights, gamut, skin, graphics, and metadata tags."
+        }
+      ],
+      "judgmentCriteria": [
+        {
+          "zhHans": "切换输出时创意意图保持，变化只来自目标显示能力而不是错误补偿。",
+          "en": "Creative intent survives output changes, with differences driven by display capability rather than accidental compensation."
+        },
+        {
+          "zhHans": "每个节点或层都能说明属于输入、创意、镜头修正还是输出职责。",
+          "en": "Every node or layer has an explicit input, creative, shot-correction, or output responsibility."
+        }
+      ],
+      "mistakes": [
+        {
+          "zhHans": "只信任自动元数据，不抽查错误相机标签或图形色彩空间。",
+          "en": "Trusting automatic metadata without checking incorrect camera tags or graphic color spaces."
+        },
+        {
+          "zhHans": "在时间线节点里把一个交付显示变换烘焙进所有版本。",
+          "en": "Baking one delivery display transform into timeline nodes shared by every version."
+        }
+      ],
+      "rollback": [
+        {
+          "zhHans": "旁路所有创意层，只保留已验证的输入、工作与输出链；修正技术管线后再恢复观感。",
+          "en": "Bypass all creative layers and retain only the verified input, working, and output chain; repair the technical pipeline before restoring the look."
+        }
+      ],
+      "officialDifferences": [
+        {
+          "zhHans": "FilmLight 快速参考使用 Baselight 的 T-Log/E-Gamut、Truelight CAM 与 BLG；在 Resolve 中对应原则可用 RCM/ACES、组/时间线节点与 PowerGrade/静帧实现，但功能和文件格式并不等同。",
+          "en": "FilmLight's quick reference uses Baselight T-Log/E-Gamut, Truelight CAM, and BLG; Resolve can express the corresponding principles with RCM/ACES, group/timeline nodes, and PowerGrades/stills, but the tools and file formats are not equivalent."
+        }
+      ],
+      "checklist": [
+        {
+          "zhHans": "输入、工作、观看和交付空间均已记录。",
+          "en": "Input, working, viewing, and delivery spaces are documented."
+        },
+        {
+          "zhHans": "每类源的自动映射已抽查。",
+          "en": "Automatic mapping is spot-checked for every source class."
+        },
+        {
+          "zhHans": "每个交付输出均已实际切换并检查。",
+          "en": "Every delivery output has been selected and inspected."
+        }
+      ],
+      "resolveVersion": "20+",
+      "compatibility": "freeAndStudio",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10",
+      "sourceURL": "https://www.filmlight.ltd.uk/store/freelancers/wp-content/uploads/sites/6/2019/05/FL-BL-QR-0867-BaselightColourWorkflow-v2.pdf",
+      "sourceIDs": [
+        "source-filmlight-workflow",
+        "source-blackmagic-training"
+      ]
+    }
+  ],
   "recipes": [
     {
       "category": {
@@ -4851,7 +5666,98 @@
       ]
     }
   ],
-  "sources": [],
+  "sources": [
+    {
+      "id": "source-kelly-scene-referred",
+      "title": {
+        "zhHans": "Cullen Kelly Color：Voyager Essentials",
+        "en": "Cullen Kelly Color: Voyager Essentials"
+      },
+      "url": "https://cullenkellycolor.com/toolkit/voyager-luts-essential",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-mostyn-scene-match",
+      "title": {
+        "zhHans": "Darren Mostyn：15 分钟专业镜头匹配",
+        "en": "Darren Mostyn: Learn to PRO Color MATCH Shots in 15 mins!"
+      },
+      "url": "https://www.youtube.com/watch?v=l3rOObH74TE",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-inhofer-passes",
+      "title": {
+        "zhHans": "Patrick Inhofer：按遍次调色的时间管理",
+        "en": "Patrick Inhofer: Color Correction Time Management: Grading in Passes"
+      },
+      "url": "https://mixinglight.com/color-tutorial/colorist-time-management-grading-in-passes/",
+      "publishedDate": "2013-12-10",
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-melara-pfe",
+      "title": {
+        "zhHans": "Juan Melara：2021 年胶片拷贝仿真",
+        "en": "Juan Melara: Print Film Emulation in 2021"
+      },
+      "url": "https://juanmelara.com.au/blog/print-film-emulation-luts-for-download",
+      "publishedDate": "2021-10-01",
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-fissoun-archive-prep",
+      "title": {
+        "zhHans": "Daria Fissoun：为 4K 交付恢复隔行档案母版",
+        "en": "Daria Fissoun: Restoring Archival Interlaced Masters For 4K Delivery & Posterity"
+      },
+      "url": "https://mixinglight.com/color-grading-tutorials/scene-cut-detection-interlaced-ntsc-4k-restoration-series-part-1/",
+      "publishedDate": "2024-08-06",
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-fissoun-upscale",
+      "title": {
+        "zhHans": "Daria Fissoun：将 NTSC 档案去隔行并升级到 4K",
+        "en": "Daria Fissoun: Deinterlacing & Upscaling NTSC Archives To 4K Deliverables"
+      },
+      "url": "https://mixinglight.com/color-grading-tutorials/deinterlacing-upscaling-ntsc-pal-archives-4k-progressive/",
+      "publishedDate": "2024-08-15",
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-filmlight-workflow",
+      "title": {
+        "zhHans": "FilmLight：色彩工作流快速参考",
+        "en": "FilmLight: Colour Workflow Quick Reference"
+      },
+      "url": "https://www.filmlight.ltd.uk/store/freelancers/wp-content/uploads/sites/6/2019/05/FL-BL-QR-0867-BaselightColourWorkflow-v2.pdf",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-blackmagic-training",
+      "title": {
+        "zhHans": "Blackmagic Design：DaVinci Resolve 官方培训",
+        "en": "Blackmagic Design: DaVinci Resolve Training"
+      },
+      "url": "https://www.blackmagicdesign.com/products/davinciresolve/training?hl=en-US",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    },
+    {
+      "id": "source-blackmagic-studio",
+      "title": {
+        "zhHans": "Blackmagic Design：DaVinci Resolve Studio 功能",
+        "en": "Blackmagic Design: DaVinci Resolve Studio"
+      },
+      "url": "https://www.blackmagicdesign.com/products/davinciresolve/studio",
+      "publishedDate": null,
+      "lastReviewedDate": "2026-08-10"
+    }
+  ],
   "stages": [
     {
       "color": "#5b69d8",

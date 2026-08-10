@@ -4,6 +4,108 @@ import Testing
 
 @MainActor
 struct LocalUserStateMutatorTests {
+    @Test func creatingProjectPersistsOneProgressRecordPerOfficialStage() throws {
+        let container = try TestModelContainer.make()
+        let context = container.mainContext
+        let mutator = LocalUserStateMutator(modelContext: context)
+        let stageIDs = (1...10).map { "stage-\($0)" }
+
+        let result = mutator.createProject(
+            name: "Interview",
+            templateID: "template-interview-edit",
+            stageIDs: stageIDs
+        )
+
+        guard case .success(let session) = result else {
+            Issue.record("Expected project creation to succeed")
+            return
+        }
+        #expect(session.name == "Interview")
+        #expect(session.stageProgress.count == 10)
+        #expect(Set(session.stageProgress.map(\.contentID)) == Set(stageIDs))
+        #expect(session.stageProgress.allSatisfy { !$0.isCompleted })
+        #expect(try context.fetch(FetchDescriptor<ProjectSession>()).count == 1)
+    }
+
+    @Test func applyingPlaybookAddsStableChecklistItemsOnlyOnce() throws {
+        let container = try TestModelContainer.make()
+        let context = container.mainContext
+        let session = ProjectSession(name: "Commercial", templateID: "template-commercial")
+        context.insert(session)
+        try context.save()
+        let mutator = LocalUserStateMutator(modelContext: context)
+        let playbook = try #require(
+            try TestFixtures.sample.playbooks.first { $0.id == "playbook-one" }
+        )
+
+        let first = mutator.applyPlaybook(playbook, to: session)
+        let second = mutator.applyPlaybook(playbook, to: session)
+
+        #expect(first == .success(1))
+        #expect(second == .success(0))
+        #expect(session.checklistStates.map(\.contentID) == ["playbook-one.checklist.0"])
+    }
+
+    @Test func projectNoteAndVersionRecordRemainAssociatedWithSession() throws {
+        let container = try TestModelContainer.make()
+        let context = container.mainContext
+        let session = ProjectSession(name: "Archive", templateID: "template-archive")
+        context.insert(session)
+        try context.save()
+        let mutator = LocalUserStateMutator(modelContext: context)
+
+        let noteResult = mutator.addProjectNote(
+            session: session,
+            contentID: "stage-media",
+            body: "Confirm source cadence."
+        )
+        let versionResult = mutator.recordProjectVersion(
+            session: session,
+            name: "Client review v2",
+            resolveVersion: "20.2"
+        )
+
+        guard case .success(let note) = noteResult,
+              case .success(let version) = versionResult else {
+            Issue.record("Expected note and version record writes to succeed")
+            return
+        }
+        #expect(note.sessionID == session.id)
+        #expect(version.sessionID == session.id)
+        #expect(try context.fetch(FetchDescriptor<UserNote>()).count == 1)
+        #expect(try context.fetch(FetchDescriptor<ProjectVersionRecord>()).count == 1)
+    }
+
+    @Test func stageAndChecklistCompletionMutationsPersistTheirState() throws {
+        let container = try TestModelContainer.make()
+        let context = container.mainContext
+        let session = ProjectSession(name: "Interview", templateID: "template-interview-edit")
+        session.stageProgress = [StageProgress(contentID: "stage-project")]
+        session.checklistStates = [ChecklistItemState(contentID: "playbook-one.checklist.0")]
+        context.insert(session)
+        try context.save()
+        let mutator = LocalUserStateMutator(modelContext: context)
+
+        guard case .success = mutator.setStageCompletion(
+            session: session,
+            contentID: "stage-project",
+            completed: true
+        ) else {
+            Issue.record("Expected stage completion to save")
+            return
+        }
+        guard case .success = mutator.setChecklistCompletion(
+            session: session,
+            contentID: "playbook-one.checklist.0",
+            completed: true
+        ) else {
+            Issue.record("Expected checklist completion to save")
+            return
+        }
+        #expect(session.stageProgress.first?.isCompleted == true)
+        #expect(session.checklistStates.first?.isCompleted == true)
+    }
+
     @Test func addingExistingChecklistItemPreservesCompletedState() throws {
         let container = try TestModelContainer.make()
         let context = container.mainContext

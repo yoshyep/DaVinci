@@ -29,6 +29,7 @@ final class AppEnvironment {
             StageProgress.self,
             ChecklistItemState.self,
             UserNote.self,
+            ProjectVersionRecord.self,
             Favorite.self,
             RecentActivity.self
         ])

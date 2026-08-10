@@ -83,6 +83,78 @@ struct BundledContentLoaderTests {
         }
     }
 
+    @Test func loaderRejectsPlaybookWithMissingCreatorReference() throws {
+        let json = TestFixtures.validJSON.replacingOccurrences(
+            of: "\"creatorID\": \"creator-one\"",
+            with: "\"creatorID\": \"creator-missing\""
+        )
+
+        #expect(
+            throws: BundledContentLoaderError.missingCreator(
+                playbookID: "playbook-one",
+                creatorID: "creator-missing"
+            )
+        ) {
+            try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func loaderRejectsPlaybookWithMissingSourceReference() throws {
+        let json = TestFixtures.validJSON.replacingOccurrences(
+            of: "\"sourceIDs\": [\"source-one\"]",
+            with: "\"sourceIDs\": [\"source-missing\"]"
+        )
+
+        #expect(
+            throws: BundledContentLoaderError.missingSource(
+                playbookID: "playbook-one",
+                sourceID: "source-missing"
+            )
+        ) {
+            try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func loaderRejectsNonHTTPSProfessionalSource() throws {
+        let json = TestFixtures.validJSON.replacingOccurrences(
+            of: "https://example.com",
+            with: "http://example.com"
+        )
+
+        #expect(throws: BundledContentLoaderError.invalidSourceURL(id: "source-one")) {
+            try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func bundledPlaybooksHaveCompleteProfessionalSourceMetadata() throws {
+        let content = try BundledContentLoader().load()
+        let expectedCreatorIDs = Set([
+            "creator-cullen-kelly",
+            "creator-darren-mostyn",
+            "creator-patrick-inhofer",
+            "creator-juan-melara",
+            "creator-daria-fissoun",
+            "creator-filmlight-team"
+        ])
+
+        #expect(content.playbooks.count == 6)
+        #expect(Set(content.playbooks.map(\.creatorID)) == expectedCreatorIDs)
+        #expect(content.playbooks.allSatisfy {
+            !$0.fit.isEmpty
+                && !$0.nonFit.isEmpty
+                && !$0.requirements.isEmpty
+                && !$0.steps.isEmpty
+                && !$0.judgmentCriteria.isEmpty
+                && !$0.mistakes.isEmpty
+                && !$0.rollback.isEmpty
+                && !$0.officialDifferences.isEmpty
+                && !$0.checklist.isEmpty
+                && !$0.resolveVersion.isEmpty
+                && $0.lastReviewedDate == "2026-08-10"
+                && !$0.sourceIDs.isEmpty
+        })
+    }
+
     @Test func bundledWorkflowDetailsUseProfessionalPostProductionEnglish() throws {
         let content = try BundledContentLoader().load()
 

@@ -27,6 +27,7 @@ enum TestModelContainer {
             StageProgress.self,
             ChecklistItemState.self,
             UserNote.self,
+            ProjectVersionRecord.self,
             Favorite.self,
             RecentActivity.self,
             configurations: configuration

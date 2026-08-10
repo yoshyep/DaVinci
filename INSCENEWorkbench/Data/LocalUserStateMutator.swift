@@ -50,6 +50,89 @@ struct LocalUserStateMutator {
         self.saveBoundary = saveBoundary ?? ModelSaveBoundary(modelContext: modelContext)
     }
 
+    func createProject(
+        name: String,
+        templateID: String,
+        stageIDs: [String]
+    ) -> Result<ProjectSession, LocalMutationFailure> {
+        let session = ProjectSession(name: name, templateID: templateID)
+        var seenStageIDs = Set<String>()
+        session.stageProgress = stageIDs.compactMap { stageID in
+            guard seenStageIDs.insert(stageID).inserted else { return nil }
+            return StageProgress(contentID: stageID)
+        }
+        modelContext.insert(session)
+        return commit(session)
+    }
+
+    func setStageCompletion(
+        session: ProjectSession,
+        contentID: String,
+        completed: Bool
+    ) -> Result<Void, LocalMutationFailure> {
+        if let state = session.stageProgress.first(where: { $0.contentID == contentID }) {
+            state.isCompleted = completed
+            state.updatedAt = .now
+        } else {
+            session.stageProgress.append(
+                StageProgress(contentID: contentID, isCompleted: completed)
+            )
+        }
+        session.updatedAt = .now
+        return commit(())
+    }
+
+    func setChecklistCompletion(
+        session: ProjectSession,
+        contentID: String,
+        completed: Bool
+    ) -> Result<Void, LocalMutationFailure> {
+        session.setChecklist(contentID: contentID, completed: completed)
+        return commit(())
+    }
+
+    func addProjectNote(
+        session: ProjectSession,
+        contentID: String,
+        body: String
+    ) -> Result<UserNote, LocalMutationFailure> {
+        let note = UserNote(contentID: contentID, sessionID: session.id, body: body)
+        modelContext.insert(note)
+        session.updatedAt = .now
+        return commit(note)
+    }
+
+    func recordProjectVersion(
+        session: ProjectSession,
+        name: String,
+        resolveVersion: String
+    ) -> Result<ProjectVersionRecord, LocalMutationFailure> {
+        let version = ProjectVersionRecord(
+            sessionID: session.id,
+            name: name,
+            resolveVersion: resolveVersion
+        )
+        modelContext.insert(version)
+        session.updatedAt = .now
+        return commit(version)
+    }
+
+    func applyPlaybook(
+        _ playbook: ExpertPlaybook,
+        to session: ProjectSession
+    ) -> Result<Int, LocalMutationFailure> {
+        let existingIDs = Set(session.checklistStates.map(\.contentID))
+        let pending = playbook.checklist.indices.compactMap { index -> ChecklistItemState? in
+            let contentID = "\(playbook.id).checklist.\(index)"
+            guard !existingIDs.contains(contentID) else { return nil }
+            return ChecklistItemState(contentID: contentID)
+        }
+        guard !pending.isEmpty else { return .success(0) }
+        session.checklistStates.append(contentsOf: pending)
+        session.updatedAt = .now
+        return commit(pending.count)
+    }
+
     func addToChecklist(
         session: ProjectSession,
         contentID: String

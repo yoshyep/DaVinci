@@ -96,6 +96,7 @@ final class ChecklistItemState {
 final class UserNote {
     @Attribute(.unique) var id: UUID
     var contentID: String
+    var sessionID: UUID?
     var body: String
     var createdAt: Date
     var updatedAt: Date
@@ -103,15 +104,40 @@ final class UserNote {
     init(
         id: UUID = UUID(),
         contentID: String,
+        sessionID: UUID? = nil,
         body: String,
         createdAt: Date = .now,
         updatedAt: Date = .now
     ) {
         self.id = id
         self.contentID = contentID
+        self.sessionID = sessionID
         self.body = body
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+    }
+}
+
+@Model
+final class ProjectVersionRecord {
+    @Attribute(.unique) var id: UUID
+    var sessionID: UUID
+    var name: String
+    var resolveVersion: String
+    var createdAt: Date
+
+    init(
+        id: UUID = UUID(),
+        sessionID: UUID,
+        name: String,
+        resolveVersion: String,
+        createdAt: Date = .now
+    ) {
+        self.id = id
+        self.sessionID = sessionID
+        self.name = name
+        self.resolveVersion = resolveVersion
+        self.createdAt = createdAt
     }
 }
 

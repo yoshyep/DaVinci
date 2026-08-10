@@ -60,11 +60,7 @@ struct RootTabView: View {
             .tag(AppTab.lookup)
 
             NavigationStack {
-                FeaturePlaceholderView(
-                    titleKey: "tab.workflows",
-                    messageKey: "workflows.placeholder",
-                    systemImage: "checklist"
-                )
+                WorkflowListView(repository: repository, settings: settings)
             }
             .tabItem { Label("tab.workflows", systemImage: "checklist") }
             .tag(AppTab.workflows)
