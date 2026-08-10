@@ -15,7 +15,7 @@ enum TestFixtures {
         "id": "shortcut-one", "kind": "shortcut", "category": {"zhHans": "导航", "en": "Navigation"}, "stages": [],
         "title": {"zhHans": "快捷键", "en": "Shortcut"},
         "summary": {"zhHans": "摘要", "en": "Summary"},
-        "mac": ["A"], "win": ["A"], "menuZh": "菜单", "menuEn": "Menu", "level": "essential", "flags": []
+        "mac": ["A"], "win": ["A"], "menu": {"zhHans": "菜单", "en": "Menu"}, "level": "essential", "flags": []
       }],
       "recipes": [{
         "id": "recipe-one", "kind": "recipe", "category": {"zhHans": "剪辑", "en": "Editing"},

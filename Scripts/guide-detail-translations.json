@@ -890,7 +890,7 @@
       "A small amount of spatial noise reduction processing remains",
       "Complete main color grading",
       "Slight sharpening or mid-frequency detail",
-      "Finally, add particles to unify the texture"
+      "Finally, add film grain to unify the texture."
     ],
     "risk": [
       "Studio's noise reduction is very heavy, and if the parameters are too high, the skin texture will be lost and the rendering will be slowed down."
@@ -990,7 +990,7 @@
       "Vectorscope"
     ],
     "commonMistakes": [
-      "Don’t use an oscilloscope, just rely on the display to judge",
+      "Do not judge by the display alone; use scopes.",
       "Crushing black level manufacturing comparison"
     ]
   },
@@ -1054,7 +1054,7 @@
       "Name nodes and bypass comparison"
     ],
     "doneCheck": [
-      "Bypassing any layer can understand its role."
+      "Each layer’s purpose remains clear when it is bypassed."
     ],
     "risk": [
       "Don't mix project-level output management into Look nodes."
@@ -1076,7 +1076,7 @@
   "color-finish": {
     "steps": [
       "Mainly toning and then a small amount of sharpening",
-      "Finally, add particles to unify the texture",
+      "Finally, add film grain to unify the texture.",
       "Check color labels, highlights and target display environment"
     ],
     "doneCheck": [
@@ -1095,7 +1095,7 @@
       "RGB Parade"
     ],
     "commonMistakes": [
-      "Excessive noise reduction causes waxy feeling or smearing",
+      "Overdoing noise reduction creates a waxy look or motion smearing.",
       "Color labels not checked in target display environment"
     ]
   },
@@ -1465,14 +1465,14 @@
     ],
     "fix": [
       "Media pool checks proxy path and metadata",
-      "Relink the correct files after deagent",
+      "Disable proxy media, then relink the correct files.",
       "Delivery advanced settings confirm not using proxy media"
     ],
     "deep": [
       "Spot-check the first frame, duration, frame rate, audio track and time code of the proxy and original film."
     ],
     "prevent": [
-      "Unify proxy defaults and naming, eliminating the need for low-code files from unknown sources."
+      "Standardize proxy presets and naming; do not use unknown low-bitrate files."
     ]
   },
   "em-cache": {

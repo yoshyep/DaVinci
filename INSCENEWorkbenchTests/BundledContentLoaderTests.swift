@@ -75,4 +75,22 @@ struct BundledContentLoaderTests {
             try BundledContentLoader(data: Data(sourceJSON.utf8)).load()
         }
     }
+
+    @Test func loaderRejectsEmptyShortcutEnglishMenuPath() throws {
+        let json = TestFixtures.validJSON.replacingOccurrences(of: "\"en\": \"Menu\"", with: "\"en\": \"\"")
+        #expect(throws: BundledContentLoaderError.emptyLocalizedText(id: "shortcut-one", field: .menu, language: .en)) {
+            try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func bundledDetailsUseResolveTerminologyInEnglish() throws {
+        let content = try BundledContentLoader().load()
+        let finish = try #require(content.colorPasses.first { $0.id == "color-finish" })
+        #expect(finish.steps.contains { $0.en == "Finally, add film grain to unify the texture." })
+        #expect(finish.commonMistakes.first?.en == "Overdoing noise reduction creates a waxy look or motion smearing.")
+
+        let proxy = try #require(content.emergencies.first { $0.id == "em-proxy" })
+        #expect(proxy.fix[1].en == "Disable proxy media, then relink the correct files.")
+        #expect(proxy.prevent.en == "Standardize proxy presets and naming; do not use unknown low-bitrate files.")
+    }
 }

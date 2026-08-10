@@ -26,7 +26,7 @@ protocol SearchableContent: Identifiable, Sendable where ID == String {
 }
 
 enum LocalizedTextField: String, Sendable {
-    case title, summary, category, quickStep, proStep, mistake, doneCheck, proNote
+    case title, summary, category, menu, quickStep, proStep, mistake, doneCheck, proNote
     case scene, step, risk, tool, scope, commonMistake, specificationLabel, specificationValue
     case bitrate, subtitle, fileCheck, cause, fix, deep, prevent, playbookStep, name, bio
 }
@@ -62,13 +62,12 @@ struct ShortcutDefinition: Codable, SearchableContent, LocalizedTextCarrying {
     let summary: LocalizedText
     let mac: [String]
     let win: [String]
-    let menuZh: String
-    let menuEn: String
+    let menu: LocalizedText
     let level: String
     let flags: [String]
 
-    var keywords: [String] { [category.zhHans, category.en] + mac + win + [menuZh, menuEn, level] + flags }
-    var localizedTexts: [(LocalizedTextField, LocalizedText)] { [(.category, category), (.title, title), (.summary, summary)] }
+    var keywords: [String] { [category.zhHans, category.en, menu.zhHans, menu.en] + mac + win + [level] + flags }
+    var localizedTexts: [(LocalizedTextField, LocalizedText)] { [(.category, category), (.title, title), (.summary, summary), (.menu, menu)] }
 }
 
 struct RecipeDefinition: Codable, SearchableContent, LocalizedTextCarrying {
