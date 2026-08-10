@@ -1,5 +1,9 @@
 import Observation
 
+enum QuickLookupDestination: Hashable {
+    case record(String)
+}
+
 enum WorkbenchDestination: Hashable, Identifiable {
     case quickAction(WorkbenchQuickAction)
     case workflowStage(String)
@@ -29,6 +33,7 @@ enum WorkbenchDestination: Hashable, Identifiable {
 final class AppRouter {
     var selectedTab: AppTab
     var workbenchPath: [WorkbenchDestination] = []
+    var lookupPath: [QuickLookupDestination] = []
     var presentedWorkbenchDestination: WorkbenchDestination?
 
     init(settings: SettingsStore) {
@@ -45,5 +50,10 @@ final class AppRouter {
 
     func openQuickLookup() {
         selectedTab = .lookup
+    }
+
+    func openQuickLookup(contentID: String) {
+        selectedTab = .lookup
+        lookupPath = [.record(contentID)]
     }
 }

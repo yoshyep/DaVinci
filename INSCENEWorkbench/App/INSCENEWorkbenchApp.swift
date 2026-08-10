@@ -28,6 +28,14 @@ struct INSCENEWorkbenchApp: App {
             if arguments.contains("-skipOnboarding") {
                 settings.hasCompletedOnboarding = true
             }
+            if arguments.contains("-startQuickLookup") {
+                settings.defaultTab = .lookup
+            }
+            if let languageFlag = arguments.firstIndex(of: "-lookupLanguage"),
+               arguments.indices.contains(languageFlag + 1),
+               let language = AppLanguage(rawValue: arguments[languageFlag + 1]) {
+                settings.language = language
+            }
         } else {
             settings = SettingsStore()
         }

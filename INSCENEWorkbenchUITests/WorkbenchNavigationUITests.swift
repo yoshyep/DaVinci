@@ -80,7 +80,7 @@ final class WorkbenchNavigationUITests: XCTestCase {
         app.buttons["workbench.quickLookup"].tap()
 
         XCTAssertTrue(app.tabBars.buttons["速查"].isSelected)
-        XCTAssertTrue(app.staticTexts["在本机查找动作、快捷键和故障处理。"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.textFields["lookup.search"].waitForExistence(timeout: 2))
     }
 
     func testImmediateToolOpensTypedNativeDetail() {

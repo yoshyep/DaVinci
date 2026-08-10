@@ -61,4 +61,18 @@ struct AppRouterTests {
         #expect(router.workbenchPath.isEmpty)
         #expect(router.presentedWorkbenchDestination == nil)
     }
+
+    @Test func quickLookupDeepLinkSelectsTheTabAndRetainsTheStableRecordRoute() {
+        let suiteName = "AppRouterTests.quickLookupDeepLinkSelectsTheTab"
+        let defaults = UserDefaults(suiteName: suiteName)!
+        defaults.removePersistentDomain(forName: suiteName)
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+        let router = AppRouter(settings: SettingsStore(defaults: defaults))
+
+        router.openQuickLookup(contentID: "delete-ripple")
+
+        #expect(router.selectedTab == .lookup)
+        #expect(router.lookupPath == [.record("delete-ripple")])
+        #expect(router.workbenchPath.isEmpty)
+    }
 }
