@@ -50,6 +50,29 @@ final class WorkbenchNavigationUITests: XCTestCase {
         XCTAssertFalse(app.buttons["workbench.template.template-interview-edit"].exists)
     }
 
+    func testDeliveryChecklistSpeaksDistinctLocalizedCompletionStates() {
+        let app = launchWorkbench(seedProject: true)
+
+        openDeliveryChecklist(in: app)
+        assertChecklistAccessibilityValues(
+            in: app,
+            completed: "已完成",
+            pending: "待完成"
+        )
+
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["workbench.settings"].tap()
+        app.buttons["settings.language.english"].tap()
+        app.buttons["Done"].tap()
+
+        openDeliveryChecklist(in: app)
+        assertChecklistAccessibilityValues(
+            in: app,
+            completed: "Completed",
+            pending: "Pending"
+        )
+    }
+
     func testQuickLookupEntrySelectsQuickLookupTabWithoutAcceptingDiscardedText() {
         let app = launchWorkbench()
 
@@ -92,6 +115,26 @@ final class WorkbenchNavigationUITests: XCTestCase {
         }
         app.launch()
         return app
+    }
+
+    private func openDeliveryChecklist(in app: XCUIApplication) {
+        let checklist = app.buttons["project.deliveryChecklist"]
+        scrollToElement(checklist, in: app)
+        checklist.tap()
+        XCTAssertTrue(app.staticTexts["workbench.delivery.detail"].waitForExistence(timeout: 2))
+    }
+
+    private func assertChecklistAccessibilityValues(
+        in app: XCUIApplication,
+        completed: String,
+        pending: String
+    ) {
+        let picture = app.descendants(matching: .any)["workbench.delivery.row.delivery-picture"]
+        let audio = app.descendants(matching: .any)["workbench.delivery.row.delivery-audio"]
+        XCTAssertTrue(picture.exists)
+        XCTAssertTrue(audio.exists)
+        XCTAssertEqual(picture.value as? String, completed)
+        XCTAssertEqual(audio.value as? String, pending)
     }
 
     private func scrollToElement(_ element: XCUIElement, in app: XCUIApplication) {

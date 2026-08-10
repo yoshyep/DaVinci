@@ -1,6 +1,6 @@
 # Task 5 Report: Tool-first Workbench Home
 
-Status: `IMPLEMENTED — review fix round 1 complete; clean full-scheme gate green`
+Status: `IMPLEMENTED — review fix round 2 complete; focused verification green`
 
 ## Outcome
 
@@ -211,3 +211,44 @@ Result: `** TEST SUCCEEDED **`; 10/10 UI tests and 28/28 unit tests passed. Resu
 
 - No remaining Task 5 gate concern. The earlier shared-suite pollution is covered by unique suites, deterministic reset defaults, a cross-suite regression, and a green clean full gate.
 - Template detail still uses its raw ID as previously deferred; workflow creation and actual Quick Lookup search remain owned by later tasks.
+
+---
+
+## Review Fix Round 2 — 2026-08-10
+
+### Outcome
+
+Delivery checklist rows are now single semantic accessibility elements with the visible human label and an explicit localized state value. VoiceOver announces `已完成` / `待完成` in Simplified Chinese and `Completed` / `Pending` in English. The visible `checkmark.circle.fill` and `circle` icons and their completion colors are unchanged.
+
+### RED → GREEN
+
+The focused UI regression was written first against the real seeded `1/2` checklist. RED failed because `workbench.delivery.row.delivery-picture` did not exist and the row exposed no accessibility value.
+
+After the minimal row label/value implementation, the same regression opened the checklist in Chinese, asserted distinct completed/pending values, changed the language through the real Settings UI, reopened the checklist, and asserted the English values.
+
+Verification:
+
+```text
+Focused bilingual VoiceOver UI regression: 1 passed, 0 failed
+WorkbenchNavigationUITests: 7 passed, 0 failed
+WorkbenchViewModelTests: 7 passed, 0 failed
+Simulator build: ** BUILD SUCCEEDED ** (exit 0)
+```
+
+Workbench UI result bundle:
+
+```text
+/Users/yoshyep/Library/Developer/Xcode/DerivedData/INSCENEWorkbench-dovnfwxrolgafegtzarhmumuuprl/Logs/Test/Test-INSCENEWorkbench-2026.08.10_05-50-24--0700.xcresult
+```
+
+No full-scheme rerun was required: the only catalog additions are two complete English/Chinese checklist-state values, the catalog compiled in the focused tests and simulator build, and no global behavior changed.
+
+### Files changed in this round
+
+- `INSCENEWorkbench/Features/Workbench/WorkbenchView.swift`
+- `INSCENEWorkbench/Resources/Localizable.xcstrings`
+- `INSCENEWorkbenchUITests/WorkbenchNavigationUITests.swift`
+
+### Concerns
+
+- None for this finding. Deferred template-ID and later-task scope remain untouched.

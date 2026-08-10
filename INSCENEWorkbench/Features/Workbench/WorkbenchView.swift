@@ -667,7 +667,12 @@ private struct WorkbenchDeliveryChecklistView: View {
                         Spacer()
                     }
                     .frame(minHeight: 44)
-                    .accessibilityElement(children: .contain)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel(Text(item.title.resolved(for: settings.language)))
+                    .accessibilityValue(
+                        Text(item.isCompleted ? "workbench.delivery.completed" : "workbench.delivery.pending")
+                    )
+                    .accessibilityIdentifier("workbench.delivery.row.\(item.contentID)")
                 }
             } header: {
                 HStack {
