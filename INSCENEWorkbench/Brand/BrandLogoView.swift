@@ -5,9 +5,21 @@ struct BrandLogoView: View {
     let variant: Variant
 
     var body: some View {
-        Image(variant == .symbol ? "BrandSymbol" : "INSCENEHorizontal")
-            .resizable()
-            .scaledToFit()
+        Group {
+            switch variant {
+            case .symbol:
+                Image("BrandSymbol")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(0.6)
+            case .horizontal:
+                Image("INSCENEHorizontal")
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.primary)
+            }
+        }
             .accessibilityIdentifier(variant == .symbol ? "brand.symbol" : "brand.horizontal")
             .accessibilityLabel(variant == .symbol ? "INSCENE" : "INSCENE logo")
     }

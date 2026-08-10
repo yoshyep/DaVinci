@@ -67,8 +67,6 @@ struct WorkbenchView: View {
         HStack(spacing: 14) {
             BrandLogoView(variant: .symbol)
                 .frame(width: 48, height: 48)
-                .padding(5)
-                .background(Color.white, in: RoundedRectangle(cornerRadius: 13))
 
             VStack(alignment: .leading, spacing: 2) {
                 Text("workbench.title")

@@ -12,7 +12,6 @@ struct SettingsView: View {
                         .frame(maxWidth: 230, minHeight: 64)
                         .padding(.vertical, 18)
                         .frame(maxWidth: .infinity)
-                        .listRowBackground(Color.white)
 
                     Text("settings.localOnly")
                         .font(.footnote)

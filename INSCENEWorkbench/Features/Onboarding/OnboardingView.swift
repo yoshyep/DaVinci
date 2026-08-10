@@ -10,9 +10,8 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: 28) {
                     BrandLogoView(variant: .horizontal)
                         .frame(maxWidth: 230, minHeight: 62)
-                        .padding(20)
+                        .padding(.vertical, 20)
                         .frame(maxWidth: .infinity)
-                        .background(Color.white, in: RoundedRectangle(cornerRadius: 20))
 
                     Text("onboarding.title")
                         .font(.largeTitle.bold())
