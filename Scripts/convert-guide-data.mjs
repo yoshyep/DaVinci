@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const sourcePath = path.resolve(scriptDirectory, '../../work/davinci-guide/src/data.js');
 const outputPath = path.resolve(scriptDirectory, '../INSCENEWorkbench/Resources/Content/guide-content.json');
+const detailTranslationPath = path.resolve(scriptDirectory, 'guide-detail-translations.json');
 const expectedCounts = { stages: 10, shortcuts: 61, recipes: 18, colorPasses: 6, exports: 8, emergencies: 12 };
 
 const englishTranslations = {
@@ -73,6 +74,7 @@ const englishTranslations = {
   'em-audio': ['No Audio in the Export', 'The timeline plays sound but the export is silent or missing channels.'], 'em-black': ['Black or Flash Frame', 'A brief black frame appears at an edit.'],
   'em-save': ['Project Closed Unexpectedly or Was Damaged', 'A crash or mistaken change leaves no stable version.'], 'em-plugin': ['Missing Plug-ins or Fonts on Another Computer', 'Titles substitute fonts, effects fail, or the image differs.']
 };
+const englishDetailTranslations = JSON.parse(fs.readFileSync(detailTranslationPath, 'utf8'));
 
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(sourcePath, 'utf8'), sandbox, { filename: sourcePath });
@@ -90,15 +92,21 @@ for (const id of Object.keys(englishTranslations)) if (!stableIDs.has(id)) throw
 
 const localized = (id, value, translationIndex) => ({ zhHans: value, en: englishTranslations[id][translationIndex] });
 const titled = (record, summary) => ({ title: localized(record.id, record.title, 0), summary: localized(record.id, summary, 1) });
+const detailText = (id, field, value, index = 0) => {
+  const translated = englishDetailTranslations[id]?.[field]?.[index];
+  if (!translated) throw new Error(`Missing English detail translation for ${id}.${field}[${index}]`);
+  return { zhHans: value, en: translated };
+};
+const detailTexts = (id, field, values = []) => values.map((value, index) => detailText(id, field, value, index));
 
 const content = {
   contentVersion: 1,
-  stages: legacy.stages.map((record) => ({ id: record.id, kind: 'stage', number: record.number, color: record.color, ...titled(record, record.goal), quickSteps: record.quickSteps, proSteps: record.proSteps, shortcutIDs: record.shortcutIds, mistake: record.mistake, doneCheck: record.doneCheck, proNotes: record.proNotes })),
-  shortcuts: legacy.shortcuts.map((record) => ({ id: record.id, kind: 'shortcut', category: record.category, stages: record.stages, ...titled(record, record.summary), mac: record.mac, win: record.win, menuZh: record.menuZh, menuEn: record.menuEn, level: record.level, flags: record.flags })),
-  recipes: legacy.recipes.map((record) => ({ id: record.id, kind: 'recipe', category: record.category, ...titled(record, record.goal), scene: record.scene, steps: record.steps, risk: record.risk, doneCheck: record.doneCheck, shortcutIDs: record.shortcutIds ?? [] })),
-  colorPasses: legacy.colorPasses.map((record) => ({ id: record.id, kind: 'colorPass', ...titled(record, record.goal), steps: record.steps, doneCheck: record.doneCheck, risk: record.risk, shortcutIDs: record.shortcutIds, tools: record.tools, scopes: record.scopes, commonMistakes: record.commonMistakes })),
-  exports: legacy.exports.map((record) => ({ id: record.id, kind: 'export', ...titled(record, record.desc), specification: record.spec, risk: record.risk, bitrate: record.bitrate, subtitles: record.subtitles, fileChecks: record.fileChecks })),
-  emergencies: legacy.emergencies.map((record) => ({ id: record.id, kind: 'emergency', ...titled(record, record.symptom), cause: record.cause, fix: record.fix, deep: record.deep, prevent: record.prevent })),
+  stages: legacy.stages.map((record) => ({ id: record.id, kind: 'stage', number: record.number, color: record.color, ...titled(record, record.goal), quickSteps: detailTexts(record.id, 'quickSteps', record.quickSteps), proSteps: detailTexts(record.id, 'proSteps', record.proSteps), shortcutIDs: record.shortcutIds, mistake: detailText(record.id, 'mistake', record.mistake), doneCheck: detailText(record.id, 'doneCheck', record.doneCheck), proNotes: detailTexts(record.id, 'proNotes', record.proNotes) })),
+  shortcuts: legacy.shortcuts.map((record) => ({ id: record.id, kind: 'shortcut', category: detailText(record.id, 'category', record.category), stages: record.stages, ...titled(record, record.summary), mac: record.mac, win: record.win, menuZh: record.menuZh, menuEn: record.menuEn, level: record.level, flags: record.flags })),
+  recipes: legacy.recipes.map((record) => ({ id: record.id, kind: 'recipe', category: detailText(record.id, 'category', record.category), ...titled(record, record.goal), scene: detailText(record.id, 'scene', record.scene), steps: detailTexts(record.id, 'steps', record.steps), risk: detailText(record.id, 'risk', record.risk), doneCheck: detailText(record.id, 'doneCheck', record.doneCheck), shortcutIDs: record.shortcutIds ?? [] })),
+  colorPasses: legacy.colorPasses.map((record) => ({ id: record.id, kind: 'colorPass', ...titled(record, record.goal), steps: detailTexts(record.id, 'steps', record.steps), doneCheck: detailText(record.id, 'doneCheck', record.doneCheck), risk: detailText(record.id, 'risk', record.risk), shortcutIDs: record.shortcutIds, tools: detailTexts(record.id, 'tools', record.tools), scopes: detailTexts(record.id, 'scopes', record.scopes), commonMistakes: detailTexts(record.id, 'commonMistakes', record.commonMistakes) })),
+  exports: legacy.exports.map((record) => ({ id: record.id, kind: 'export', ...titled(record, record.desc), specification: Object.entries(record.spec).map(([label, value], index) => ({ label: detailText(record.id, 'specificationLabels', label, index), value: detailText(record.id, 'specificationValues', value, index) })), risk: detailText(record.id, 'risk', record.risk), bitrate: detailText(record.id, 'bitrate', record.bitrate), subtitles: detailTexts(record.id, 'subtitles', record.subtitles), fileChecks: detailTexts(record.id, 'fileChecks', record.fileChecks) })),
+  emergencies: legacy.emergencies.map((record) => ({ id: record.id, kind: 'emergency', ...titled(record, record.symptom), cause: detailText(record.id, 'cause', record.cause), fix: detailTexts(record.id, 'fix', record.fix), deep: detailText(record.id, 'deep', record.deep), prevent: detailText(record.id, 'prevent', record.prevent) })),
   playbooks: [], creators: [], sources: []
 };
 

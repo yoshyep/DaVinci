@@ -1,0 +1,1590 @@
+{
+  "stage-project": {
+    "quickSteps": [
+      "Create a new project and name it now",
+      "Confirm timeline resolution and frame rate",
+      "Choose a color management solution",
+      "Set up automatic saving and project backup"
+    ],
+    "proSteps": [
+      "Ask first about the final deliverable: landscape or portrait, resolution, frame rate, HDR or SDR.",
+      "Set the timeline frame rate in Project Settings > Main Settings; changing it after importing the material may be restricted.",
+      "Use DaVinci YRGB Color Managed for small SDR projects; when in doubt start with Rec.709 Gamma 2.4 to deliver the target.",
+      "Set the working folder, cache, proxy and still frame locations to a high-speed disk with sufficient capacity.",
+      "Turn on real-time saving and set the interval and retention quantity of project backups.",
+      "Create media pool folders such as 01_MEDIA, 02_AUDIO, 03_GFX, 04_TIMELINES, 99_EXPORTS, etc."
+    ],
+    "mistake": [
+      "Randomly changing the timeline frame rate of the pilot material may cause irreversible rhythm problems."
+    ],
+    "doneCheck": [
+      "Timeline frame rate, resolution, color management, backup and cache locations are confirmed."
+    ],
+    "proNotes": [
+      "Frame rate is a project level decision",
+      "Output transformation can only be done once"
+    ]
+  },
+  "stage-media": {
+    "quickSteps": [
+      "Copy footage and keep card directory",
+      "Check quantity and duration",
+      "Organized by scene/date",
+      "Synchronize sounds and generate proxies"
+    ],
+    "proSteps": [
+      "The camera card is copied completely according to the original directory, not only the video files are dragged away; at least two independent copies are kept.",
+      "Import on the media page and check for offline, damaged, abnormal frame rates and audio channels.",
+      "Create a searchable structure using metadata, color tags, keywords or smart bins.",
+      "Dual-system recording prioritizes synchronization based on time code; when there is no time code, use waveform and spot check the beginning, middle and end.",
+      "Proxy media is generated when long GOP or high-resolution footage freezes. The proxy is used for editing and the original film is used for final output.",
+      "Create string, featured, and scrap markers for interviews, feature films, or documentaries, preserving original footage."
+    ],
+    "mistake": [
+      "Moving the source file in Finder will cause it to go offline; relink it in Resolve when you need to move it."
+    ],
+    "doneCheck": [
+      "All media are online, audio and video are synchronized and spot-checked, scenes and shots are searchable, and there are two backups."
+    ],
+    "proNotes": [
+      "Proxy, media optimization, and render caching are three different things",
+      "Synchronization must check the beginning, middle and end"
+    ]
+  },
+  "stage-rough": {
+    "quickSteps": [
+      "Build the main structure",
+      "Only keep valid information",
+      "Don’t fix minor flaws yet",
+      "Watch in full and record questions"
+    ],
+    "proSteps": [
+      "Create an independent rough cut timeline and avoid overwriting the unique timeline repeatedly.",
+      "Choose shots based on scene goals and information advancement, and don’t get obsessed with transitions from the beginning.",
+      "Use in-point, out-point and three-point editing to quickly send valid clips to the timeline.",
+      "The structure, paragraphs and rhythm are dealt with first, and the sound is only temporarily balanced so that it can be heard clearly.",
+      "After each paragraph is completed, read back to the end of the previous paragraph to check whether the emotion can be caught.",
+      "Play it all once without interruption, just mark the problem to record it, and make centralized modifications after the playback is over."
+    ],
+    "mistake": [
+      "Cutting and toning as you go can mask structural problems and waste time."
+    ],
+    "doneCheck": [
+      "The story is understandable from beginning to end, temporary sounds are audible, and questions are tagged by category."
+    ],
+    "proNotes": [
+      "The rough cut standard is understandable even if you watch it for the first time",
+      "Only record when watching in full without interrupting modifications"
+    ]
+  },
+  "stage-fine": {
+    "quickSteps": [
+      "Trim play by play",
+      "Complete J/L Cut",
+      "Check movement and sight",
+      "Clean up gaps and flickering frames"
+    ],
+    "proSteps": [
+      "Fine-tune the cut point based on performance and reaction, listen to the sound first, and then decide when to cut the scene.",
+      "Use roll, ripple, slip and slide trimming and understand which side each tool changes.",
+      "Use J Cut to let the sound of the next shot come first, and use L Cut to let the sound of the previous shot continue to reduce the feeling of hard cutting.",
+      "Check motion matching, eye direction, axis, scene changes, and screen orientation.",
+      "Zoom into the timeline to check for black frames, overlapping frames, broken transitions, and missing audio.",
+      "Make a copy of the version before locking the picture and label it picture lock; subsequent changes must be recorded."
+    ],
+    "mistake": [
+      "Improper use of ripple trimming may change the subsequent full-film synchronization, and the total duration of observation after the operation will be changed."
+    ],
+    "doneCheck": [
+      "The acting and dialogue have a natural rhythm, there are no flickering frames or gaps, and the frame-locked version has been saved."
+    ],
+    "proNotes": [
+      "Hold down K and click J/L to slow down playback",
+      "The final round of fine editing should be watched once in blind listening and mute listening."
+    ]
+  },
+  "stage-audio": {
+    "quickSteps": [
+      "tidy track",
+      "Dialogue denoising and balancing",
+      "Make up for room noise",
+      "Musical sound effects give way to dialogue"
+    ],
+    "proSteps": [
+      "Separate tracks according to DX dialogue, AMB environment, SFX sound effects, and MX music and name them uniformly.",
+      "Use clip gain to balance clips first, then use track faders to do the overall mix; don’t pile on plug-ins at the beginning.",
+      "Trim hot spots, saliva and obvious noise, cross-fade clip points and fill in the room noise floor.",
+      "EQ should first reduce the problem band, and then consider increasing it; compression only needs to control the dynamics, not flatten the dialogue.",
+      "Music and sound effects take the initiative to give way when dialogue appears, automating when necessary.",
+      "Listen to it with headphones and regular speakers, and see if the level clips."
+    ],
+    "mistake": [
+      "Directly applying strong limiting to the main bus may raise the noise floor as well."
+    ],
+    "doneCheck": [
+      "Dialogue is always understandable, there are no pops at edit points, the room noise floor is continuous, and the main output doesn't clip."
+    ],
+    "proNotes": [
+      "Keep original sync track",
+      "Dialogue clarity depends on spectrum and background competition, not just level"
+    ]
+  },
+  "stage-color": {
+    "quickSteps": [
+      "Confirm input and output color spaces",
+      "Open the oscilloscope and perform first-level calibration",
+      "Lens matching",
+      "Skin tone and local adjustments",
+      "Finally check the output"
+    ],
+    "proSteps": [
+      "Confirm the input color space of each type of camera material to avoid treating Log as Rec.709 or repeated conversion.",
+      "First look at the waveform chart, RGB Parade, and vector oscilloscope, and then judge the exposure, color cast, and saturation.",
+      "Establish exposure with Offset or HDR global controls, then refine with Lift/Gamma/Gain or Curves.",
+      "Choose a hero shot as a reference and match other shots according to the scene. Don’t pursue beauty shot by shot.",
+      "Keep selections soft when using qualifiers and windows, and check for motion tracking slippage.",
+      "Technical corrections are separated from the style nodes; noise reduction is usually at the front, sharpening and grain at the back.",
+      "Check output transforms, color labels, and highlight ranges in a live delivery display environment."
+    ],
+    "mistake": [
+      "Applying LUT directly without color management makes it easy to cut highlights, color casts or repeat changes."
+    ],
+    "doneCheck": [
+      "Inputs are interpreted correctly, the scope has no unexpected clipping, shots of the same scene match, and output transformations are performed only once."
+    ],
+    "proNotes": [
+      "The skin color line is a directional reference rather than an absolute target",
+      "Node naming and grouping should be understandable to the person taking over"
+    ]
+  },
+  "stage-title": {
+    "quickSteps": [
+      "Establish font and position specifications",
+      "Generate subtitles automatically or manually",
+      "Proofread item by item",
+      "Check safe box and line breaks"
+    ],
+    "proSteps": [
+      "First determine the font, font size, line spacing, stroke/baseline, number of words per line, and screen stay rules.",
+      "Prioritize placing dialogue subtitles on the subtitle track, do not make each one a Fusion title.",
+      "After automatic transcription, names, professional words, numbers and sentence fragments must be proofread sentence by sentence.",
+      "Check whether the subtitles are pressed against the character name bar, platform UI or key information on the screen.",
+      "Check the safe areas separately in the horizontal and vertical versions, and do not rely on automatic adaptation at the same location.",
+      "Before exporting, decide whether to burn subtitles, plug-in SRT, or deliver both at the same time."
+    ],
+    "mistake": [
+      "If you only proofread the text without looking at the time, the subtitles will be rushed or trailing."
+    ],
+    "doneCheck": [
+      "The names and numbers are correct, the sentences are segmented naturally, there is no overlap, and the burning/plugging method is clear."
+    ],
+    "proNotes": [
+      "Natural sentence segmentation is more important than even word segmentation",
+      "Platform safety areas should be checked separately for both horizontal and vertical versions."
+    ]
+  },
+  "stage-qc": {
+    "quickSteps": [
+      "Stories all over",
+      "Technology all over",
+      "Silent/blind listening",
+      "Centralized repair after recording"
+    ],
+    "proSteps": [
+      "Watch it in its entirety the first time as an audience, recording only issues of understanding, rhythm, and emotion.",
+      "A second pass checks for flickering frames, black frames, offline media, screen shake, subtitles, graphics, and copyright marks.",
+      "The third time I blindly listened to the sound, and then watched the picture with the sound muted, I found audio and visual continuity issues respectively.",
+      "Check first frame, last frame, ending duration, text spelling, date, phone number and brand name.",
+      "Check the output test file on at least two players or devices to confirm that gamma and audio and video are in sync.",
+      "Simply watching the affected passages again after restoration is not enough; the final master must be watched again in its entirety."
+    ],
+    "mistake": [
+      "If you pause the modification as soon as a problem is discovered, you will lose the audience experience of complete viewing."
+    ],
+    "doneCheck": [
+      "There are no offline or flickering frames, the subtitle graphics are correct, and the actual exported file has been fully viewed."
+    ],
+    "proNotes": [
+      "Create QC lists including timecodes, issues, responsible persons and status",
+      "When a frame flashes to black, suspicious editing points need to be reviewed frame by frame."
+    ]
+  },
+  "stage-export": {
+    "quickSteps": [
+      "Select usage default",
+      "Confirm resolution frame rate",
+      "Confirm encoding and sound",
+      "join queue",
+      "Recheck after exporting"
+    ],
+    "proSteps": [
+      "Deduces packaging, encoding, resolution, bitrate, audio and color tags from delivery usage.",
+      "Determine whether it is a single clip or individual clips, and whether subtitles, alpha, timecode or stems are required.",
+      "Write the project, version, frame, language and date in the file name to avoid calling it just final.mp4.",
+      "A short test is output first to check player, platform compression and color display before rendering the full file.",
+      "Check the output path, file name, timeline range and preset again after joining the render queue.",
+      "Check the final file for length, resolution, audio tracks, subtitles, color and complete playback."
+    ],
+    "mistake": [
+      "Forcing the timeline frame rate to the delivery frame rate may produce duplicate frames or cadence changes."
+    ],
+    "doneCheck": [
+      "The output range, path, encoding, audio, and subtitles are correct, and the actual file has passed the recheck."
+    ],
+    "proNotes": [
+      "Keep high-quality masters first, then generate distribution versions",
+      "For player differences, first check the color label and viewing environment"
+    ]
+  },
+  "stage-archive": {
+    "quickSteps": [
+      "Save project archive",
+      "Gather necessary media",
+      "Save master and subtitles",
+      "Write delivery instructions",
+      "Spot check recovery"
+    ],
+    "proSteps": [
+      "Export a project file or project archive and record the Resolve version used.",
+      "When using media management to collect actual materials, keep reasonable clip handles and spot-check re-links.",
+      "Save high-quality masters, releases, untitled versions, audio tracks, subtitles and key graphics.",
+      "Save LUTs, font lists, color management instructions, plug-in lists, and delivery parameters.",
+      "Generate README: project content, file structure, final timeline, missing items and recovery steps.",
+      "Prove the archive is recoverable by actually opening the project once from the archive location and checking random shots."
+    ],
+    "mistake": [
+      "Saving only the DRP without saving the source media does not guarantee long-term recovery."
+    ],
+    "doneCheck": [
+      "The project can be opened, the necessary media has been collected, the master and subtitles are complete, and the README and recovery testing have been completed."
+    ],
+    "proNotes": [
+      "Archive goals are understandable, verifiable, and recoverable",
+      "At least one archive should be physically separated from the work location"
+    ]
+  },
+  "nav-project": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-media": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-cut": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-edit": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-fusion": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-color": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-fairlight": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-deliver": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "nav-settings": {
+    "category": [
+      "navigation"
+    ]
+  },
+  "play-space": {
+    "category": [
+      "play"
+    ]
+  },
+  "play-j": {
+    "category": [
+      "play"
+    ]
+  },
+  "play-k": {
+    "category": [
+      "play"
+    ]
+  },
+  "play-l": {
+    "category": [
+      "play"
+    ]
+  },
+  "frame-left": {
+    "category": [
+      "play"
+    ]
+  },
+  "frame-right": {
+    "category": [
+      "play"
+    ]
+  },
+  "edit-prev": {
+    "category": [
+      "play"
+    ]
+  },
+  "edit-next": {
+    "category": [
+      "play"
+    ]
+  },
+  "mark-in": {
+    "category": [
+      "mark"
+    ]
+  },
+  "mark-out": {
+    "category": [
+      "mark"
+    ]
+  },
+  "mark-clip": {
+    "category": [
+      "mark"
+    ]
+  },
+  "marker-add": {
+    "category": [
+      "mark"
+    ]
+  },
+  "tool-select": {
+    "category": [
+      "tool"
+    ]
+  },
+  "tool-trim": {
+    "category": [
+      "tool"
+    ]
+  },
+  "tool-blade": {
+    "category": [
+      "tool"
+    ]
+  },
+  "split-playhead": {
+    "category": [
+      "clip"
+    ]
+  },
+  "snap-toggle": {
+    "category": [
+      "tool"
+    ]
+  },
+  "edit-insert": {
+    "category": [
+      "Three point editing"
+    ]
+  },
+  "edit-overwrite": {
+    "category": [
+      "Three point editing"
+    ]
+  },
+  "edit-replace": {
+    "category": [
+      "Three point editing"
+    ]
+  },
+  "edit-fit-fill": {
+    "category": [
+      "Three point editing"
+    ]
+  },
+  "undo": {
+    "category": [
+      "Universal"
+    ]
+  },
+  "redo": {
+    "category": [
+      "Universal"
+    ]
+  },
+  "delete-ripple": {
+    "category": [
+      "clip"
+    ]
+  },
+  "trim-extend": {
+    "category": [
+      "prune"
+    ]
+  },
+  "edit-point": {
+    "category": [
+      "prune"
+    ]
+  },
+  "transition-default": {
+    "category": [
+      "Transition"
+    ]
+  },
+  "link-clips": {
+    "category": [
+      "clip"
+    ]
+  },
+  "node-serial": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "node-parallel": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "node-layer": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "node-disable": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "grade-bypass": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "highlight-toggle": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "grab-still": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "render-queue": {
+    "category": [
+      "output"
+    ]
+  },
+  "full-screen": {
+    "category": [
+      "Check"
+    ]
+  },
+  "clear-in": {
+    "category": [
+      "mark"
+    ]
+  },
+  "clear-out": {
+    "category": [
+      "mark"
+    ]
+  },
+  "clear-inout": {
+    "category": [
+      "mark"
+    ]
+  },
+  "marker-next": {
+    "category": [
+      "mark"
+    ]
+  },
+  "edit-append": {
+    "category": [
+      "Three point editing"
+    ]
+  },
+  "edit-place-top": {
+    "category": [
+      "Three point editing"
+    ]
+  },
+  "select-all": {
+    "category": [
+      "Universal"
+    ]
+  },
+  "deselect-all": {
+    "category": [
+      "Universal"
+    ]
+  },
+  "timeline-start": {
+    "category": [
+      "play"
+    ]
+  },
+  "timeline-end": {
+    "category": [
+      "play"
+    ]
+  },
+  "delete-normal": {
+    "category": [
+      "clip"
+    ]
+  },
+  "edit-side-toggle": {
+    "category": [
+      "prune"
+    ]
+  },
+  "find-media": {
+    "category": [
+      "media"
+    ]
+  },
+  "clip-grade-prev": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "clip-grade-next": {
+    "category": [
+      "Color grading"
+    ]
+  },
+  "recipe-rough": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "First edition of interviews, storylines and promos."
+    ],
+    "steps": [
+      "Start with the main paragraph and key events",
+      "Use I/O + F9/F10 to complete three-point editing",
+      "Only deal with sound problems that hinder understanding",
+      "Watch in full and note questions with color markers"
+    ],
+    "risk": [
+      "Don’t spend time doing final color corrections and complicated transitions in the rough cut stage."
+    ],
+    "doneCheck": [
+      "Understandable for first time viewers and all questions are tagged."
+    ]
+  },
+  "recipe-three-point": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "The vast majority of narrative cuts."
+    ],
+    "steps": [
+      "Source monitor sets I and O",
+      "Place the playhead or set a timeline point on the timeline",
+      "F9 insert or F10 overwrite",
+      "Check target tracks and audiovisual patches"
+    ],
+    "risk": [
+      "Inserting will change the subsequent position, but overwriting will not; pressing the wrong button will destroy synchronization."
+    ],
+    "doneCheck": [
+      "The footage length, placement, and tracks all fit the intent."
+    ]
+  },
+  "recipe-four-point": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Stuck points, action duration adaptation and B-roll."
+    ],
+    "steps": [
+      "Source input and output points",
+      "Timeline set entry and exit points",
+      "Execute Shift+F11",
+      "Confirm strategy in speed change prompt"
+    ],
+    "risk": [
+      "Will change the playback speed, not suitable for dialogue that must maintain true speed."
+    ],
+    "doneCheck": [
+      "The start and end points are aligned and the movement speed is acceptable."
+    ]
+  },
+  "recipe-jcut": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Dialogue, interviews, spatial transitions."
+    ],
+    "steps": [
+      "Remove or temporarily ignore audio and video links",
+      "Extend the left edge of the next audio frame forward",
+      "Keep the previous scene and cover this sound",
+      "Fill in the crossfade and listen to the room noise floor"
+    ],
+    "risk": [
+      "Too much advance sound can cause the audience to misunderstand the source of the sound."
+    ],
+    "doneCheck": [
+      "The sound guides naturally, and the picture is not abrupt when cutting."
+    ]
+  },
+  "recipe-lcut": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Dialogue reaction shots and interviews B-roll."
+    ],
+    "steps": [
+      "Determine the cutting point of the screen first",
+      "Extend the right edge of the previous audio audio backwards",
+      "Cover the frame with reaction shots",
+      "Balance two ambient sounds"
+    ],
+    "risk": [
+      "Leaving your voice for too long will confuse the relationship between mouth shape and semantics."
+    ],
+    "doneCheck": [
+      "The audience still knows who is speaking, and the emotion continues naturally."
+    ]
+  },
+  "recipe-match-frame": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Replace lenses and look for front and rear margin."
+    ],
+    "steps": [
+      "Select or stop the playhead at the target shot",
+      "Execute Match Frame (default F)",
+      "View the original film in context in the source monitor",
+      "Reset entry and exit points and replace"
+    ],
+    "risk": [
+      "Verify matching levels when working with multiple cameras, composite clips, or speed changes."
+    ],
+    "doneCheck": [
+      "The source monitor is positioned to the same content frame."
+    ]
+  },
+  "recipe-replace": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Looking for better shows or B-roll."
+    ],
+    "steps": [
+      "Move the playhead to the alignment reference frame in the timeline",
+      "Source monitor locates the frame you wish to align",
+      "Press F11 to replace",
+      "Check motion alignment and audio tracks"
+    ],
+    "risk": [
+      "Replacement is aligned based on the current frame. Wrong position of the source playhead will cause overall misalignment."
+    ],
+    "doneCheck": [
+      "Duration remains unchanged and key action frames are aligned."
+    ]
+  },
+  "recipe-dialogue": {
+    "category": [
+      "sound"
+    ],
+    "scene": [
+      "Plot dialogue and interviews."
+    ],
+    "steps": [
+      "First use segment gain to bring the subjective loudness closer",
+      "Repair explosive spots and obvious noise",
+      "Edit point plus very short crossfade",
+      "Cover the hole with independent room noise floor",
+      "Finally add EQ, compression and moderate noise reduction"
+    ],
+    "risk": [
+      "Excessive noise reduction can create an underwater and metallic quality."
+    ],
+    "doneCheck": [
+      "You can't hear the editing points with your eyes closed, but the words are clear."
+    ]
+  },
+  "recipe-speed": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Action, product, transition."
+    ],
+    "steps": [
+      "Complete editing at normal speed first",
+      "Set shift point",
+      "Adjust speed and frame position with curves",
+      "Choose the right retiming process for slow motion",
+      "Check for distortion and ghosting frame by frame"
+    ],
+    "risk": [
+      "Optical flow may generate false frames at crossing objects, motion blur, and occlusions."
+    ],
+    "doneCheck": [
+      "The rhythm is natural, key movements are accurately placed, and there are no obvious artifacts."
+    ]
+  },
+  "recipe-stabilize": {
+    "category": [
+      "clip"
+    ],
+    "scene": [
+      "Handheld, telephoto, slight mechanical vibration."
+    ],
+    "steps": [
+      "Complete lens length and speed first",
+      "Analysis Stabilizer",
+      "Start with Similarity or Translation",
+      "Reduce intensity and check cropping",
+      "Check edges and jelly on a frame-by-frame basis"
+    ],
+    "risk": [
+      "Stronger stabilization is not necessarily better, as it may enlarge the rolling shutter or cause the image to float."
+    ],
+    "doneCheck": [
+      "Shake is reduced and movement remains natural, and cropping is acceptable."
+    ]
+  },
+  "recipe-balance": {
+    "category": [
+      "Color grading"
+    ],
+    "scene": [
+      "Every shot goes into creative color grading."
+    ],
+    "steps": [
+      "Confirm input conversion",
+      "View Waveform and RGB Parade",
+      "Position the whole using Offset/Global Exposure",
+      "Refine with Lift/Gamma/Gain or HDR regions",
+      "Check saturation and channel clipping"
+    ],
+    "risk": [
+      "Don’t use black level suppression to create the so-called cinematic feel."
+    ],
+    "doneCheck": [
+      "Neutral objects make sense, subjects are clear, and highlights and shadows have intention."
+    ]
+  },
+  "recipe-match-shots": {
+    "category": [
+      "Color grading"
+    ],
+    "scene": [
+      "Multiple cameras for plot scenes and interviews."
+    ],
+    "steps": [
+      "Select a hero shot and capture a still frame",
+      "Turn on split screen or reference wipe",
+      "Match the exposure level first",
+      "Then match the comprehensive color cast and saturation",
+      "Finally deal with local differences"
+    ],
+    "risk": [
+      "Don't match objects that happen to be different on the screen, match common references and lighting intent."
+    ],
+    "doneCheck": [
+      "Viewers will not be interrupted by jumps in brightness or color casts during continuous playback."
+    ]
+  },
+  "recipe-skin": {
+    "category": [
+      "Color grading"
+    ],
+    "scene": [
+      "Close shot of character, mixed light."
+    ],
+    "steps": [
+      "Complete the overall white balance first",
+      "Qualifier selects skin and softens keys",
+      "Limit area with window and track",
+      "Reference skin color direction on vectorscope",
+      "Review mask edges and motion"
+    ],
+    "risk": [
+      "The skin tone line is not an absolute goal; differences should be preserved for different skin tones and lighting."
+    ],
+    "doneCheck": [
+      "The skin is natural, the selection is stable, and there is no obvious pollution in the background."
+    ]
+  },
+  "recipe-nodes": {
+    "category": [
+      "Color grading"
+    ],
+    "scene": [
+      "Small and medium-sized SDR projects."
+    ],
+    "steps": [
+      "01 Noise reduction (when needed)",
+      "02 Input/Exposure",
+      "03 White balance and matching",
+      "04 skin color/local",
+      "05 Look",
+      "06 Trimming before output",
+      "Output transformation is the responsibility of project management or independent nodes."
+    ],
+    "risk": [
+      "Project-level color management and CST nodes do not perform output transformations repeatedly."
+    ],
+    "doneCheck": [
+      "The nodes are clearly named so that any layer of the bypass can understand their role."
+    ]
+  },
+  "recipe-window": {
+    "category": [
+      "Color grading"
+    ],
+    "scene": [
+      "Brighten the face, darken the background, and correct partial color casts."
+    ],
+    "steps": [
+      "Create a Soft Power Window",
+      "Start by setting the shape and feathering on a representative frame",
+      "Forward and reverse tracking",
+      "Check occlusion and draw out",
+      "Correct drift keyframes piece by piece"
+    ],
+    "risk": [
+      "If the window is too hard or the brightness is too strong, it will look like a stage chasing light."
+    ],
+    "doneCheck": [
+      "At normal speed, the edge of the window cannot be seen, and the tracking does not drift."
+    ]
+  },
+  "recipe-denoise": {
+    "category": [
+      "Color grading"
+    ],
+    "scene": [
+      "High ISO, enhanced shadows, unified style."
+    ],
+    "steps": [
+      "Do time domain noise reduction first if necessary",
+      "A small amount of spatial noise reduction processing remains",
+      "Complete main color grading",
+      "Slight sharpening or mid-frequency detail",
+      "Finally, add particles to unify the texture"
+    ],
+    "risk": [
+      "Studio's noise reduction is very heavy, and if the parameters are too high, the skin texture will be lost and the rendering will be slowed down."
+    ],
+    "doneCheck": [
+      "Pause and play are natural, without smear, waxiness or sharp edges."
+    ]
+  },
+  "recipe-qc": {
+    "category": [
+      "examine"
+    ],
+    "scene": [
+      "Screen lock and before final output."
+    ],
+    "steps": [
+      "Watch the story for the first time without interruption",
+      "Check the technology and text item by item for the second time",
+      "Blindly listen to the sound for the third time and then watch the picture with mute",
+      "Problem unified recording time code",
+      "Watch it again after repair"
+    ],
+    "risk": [
+      "If you make changes while watching, you will lose the entire movie experience and easily miss follow-up questions."
+    ],
+    "doneCheck": [
+      "The list is all closed and the final file is viewed in its entirety and passed."
+    ]
+  },
+  "recipe-archive": {
+    "category": [
+      "Archive"
+    ],
+    "scene": [
+      "All officially delivered projects."
+    ],
+    "steps": [
+      "Export DRP/DRA",
+      "Media management collects and uses materials and titles",
+      "Save masters, subtitles and audio tracks",
+      "Attached is a list of LUTs, fonts and plug-ins",
+      "Write a README and do random recovery testing"
+    ],
+    "risk": [
+      "Posting only MP4s does not count as an archive."
+    ],
+    "doneCheck": [
+      "Another machine or a clean path can be opened and reconnected."
+    ]
+  },
+  "color-input": {
+    "steps": [
+      "Determine the input color space for each type of camera",
+      "Choosing a technology path between RCM and CST",
+      "Make sure the output transformation is only executed once"
+    ],
+    "doneCheck": [
+      "Log, RAW and Rec.709 footage are all interpreted correctly."
+    ],
+    "risk": [
+      "Superposition of RCM and node CST results in repeated transformations."
+    ],
+    "tools": [
+      "Project color management",
+      "CST node",
+      "Camera metadata"
+    ],
+    "scopes": [
+      "Input color space",
+      "Output color space"
+    ],
+    "commonMistakes": [
+      "Treat Log as Rec.709",
+      "RCM and CST repeated output transformations"
+    ]
+  },
+  "color-balance": {
+    "steps": [
+      "Open Waveform, RGB Parade and Vectorscope",
+      "First use Offset/HDR to establish overall exposure",
+      "Then use Lift/Gamma/Gain or curve to refine"
+    ],
+    "doneCheck": [
+      "The subject is clear and the channel has no unexpected clipping."
+    ],
+    "risk": [
+      "Crushing black levels is not cinematic."
+    ],
+    "tools": [
+      "Offset",
+      "HDR color wheel",
+      "Lift/Gamma/Gain"
+    ],
+    "scopes": [
+      "Waveform",
+      "RGB Parade",
+      "Vectorscope"
+    ],
+    "commonMistakes": [
+      "Don’t use an oscilloscope, just rely on the display to judge",
+      "Crushing black level manufacturing comparison"
+    ]
+  },
+  "color-match": {
+    "steps": [
+      "Select a hero shot and grab a still",
+      "Match the exposure level first",
+      "Then match the comprehensive color cast and saturation"
+    ],
+    "doneCheck": [
+      "There is no obvious brightness or color shift jump during continuous playback."
+    ],
+    "risk": [
+      "Match common references and lighting intentions rather than different objects in the frame."
+    ],
+    "tools": [
+      "gallery stills",
+      "Split screen/reference wipe",
+      "Primaries"
+    ],
+    "scopes": [
+      "Waveform",
+      "RGB Parade",
+      "Vectorscope"
+    ],
+    "commonMistakes": [
+      "Match objects that happen to be different in the picture",
+      "Each pursues good looks shot by shot"
+    ]
+  },
+  "color-skin": {
+    "steps": [
+      "After the overall white balance is completed, the skin color is limited",
+      "Soften keys and limit areas with windows",
+      "Check edges and motion after tracking"
+    ],
+    "doneCheck": [
+      "The skin is natural, the selection is stable, and the background is free from contamination."
+    ],
+    "risk": [
+      "The skin color line is a reference direction and is not the same target for everyone."
+    ],
+    "tools": [
+      "qualifier",
+      "Power Window",
+      "tracker"
+    ],
+    "scopes": [
+      "Vectorscope",
+      "Highlight"
+    ],
+    "commonMistakes": [
+      "Treat the skin tone line as an absolute goal",
+      "Key or window edges are too hard"
+    ]
+  },
+  "color-look": {
+    "steps": [
+      "Put noise reduction at the front when needed",
+      "Separate Exposure, Match, Local and Look nodes",
+      "Name nodes and bypass comparison"
+    ],
+    "doneCheck": [
+      "Bypassing any layer can understand its role."
+    ],
+    "risk": [
+      "Don't mix project-level output management into Look nodes."
+    ],
+    "tools": [
+      "serial node",
+      "parallel node",
+      "layer node"
+    ],
+    "scopes": [
+      "Waveform",
+      "RGB Parade"
+    ],
+    "commonMistakes": [
+      "Technical corrections are mixed in the same node as Look",
+      "Project-level output management mixed into Look nodes"
+    ]
+  },
+  "color-finish": {
+    "steps": [
+      "Mainly toning and then a small amount of sharpening",
+      "Finally, add particles to unify the texture",
+      "Check color labels, highlights and target display environment"
+    ],
+    "doneCheck": [
+      "Play and pause are natural, and the output labels are correct."
+    ],
+    "risk": [
+      "Excessive noise reduction can lose skin texture and slow down rendering."
+    ],
+    "tools": [
+      "Temporal/spatial domain noise reduction",
+      "sharpen",
+      "particles"
+    ],
+    "scopes": [
+      "Waveform",
+      "RGB Parade"
+    ],
+    "commonMistakes": [
+      "Excessive noise reduction causes waxy feeling or smearing",
+      "Color labels not checked in target display environment"
+    ]
+  },
+  "ex-review": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "1920×1080 or the original frame of the project",
+      "Maintain timeline frame rate",
+      "MP4",
+      "H.264",
+      "About 8–16 Mb/s, do a short test first",
+      "AAC 48 kHz, stereo",
+      "Rec.709; check label",
+      "Project_V03_Review_Date.mp4"
+    ],
+    "risk": [
+      "Chat software can perform secondary compression; important film review also provides file transfer methods."
+    ],
+    "bitrate": [
+      "H.264 ~8–16 Mb/s; do a short video test first"
+    ],
+    "subtitles": [
+      "The review version can be burned with temporary subtitles or additional SRT, which must be marked in the review instructions."
+    ],
+    "fileChecks": [
+      "Play actual file in full",
+      "Check file name, version and date",
+      "Check resolution, frame rate, and AAC sound",
+      "Randomly check each of the chat software and file transfer method."
+    ]
+  },
+  "ex-web": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "Keep native 1080p/2160p",
+      "Maintain timeline frame rate",
+      "MP4",
+      "H.264 or H.265",
+      "Use the recommended range of the platform, and increase the 4K appropriately.",
+      "AAC 48 kHz, 320 kb/s",
+      "SDR commonly used Rec.709",
+      "Project_Platform_Frame_V Version.mp4"
+    ],
+    "risk": [
+      "Do not forcefully change the frame rate for the platform; high-quality uploading can reduce secondary compression losses."
+    ],
+    "bitrate": [
+      "Set according to target platform recommended range; 4K usually requires higher bitrates"
+    ],
+    "subtitles": [
+      "Burn, embed or upload subtitle files separately according to platform requirements; confirm language and default track."
+    ],
+    "fileChecks": [
+      "Play actual file in full",
+      "Check the resolution and frame rate before uploading to the platform",
+      "Check audio, color labels and subtitle tracks",
+      "Upload short test and check platform transcoding"
+    ]
+  },
+  "ex-vertical": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "1080×1920, 9:16",
+      "Maintain master timeline or delivery appointments",
+      "MP4",
+      "H.264",
+      "About 10–20 Mb/s, measured on the platform",
+      "AAC 48 kHz, stereo",
+      "Rec.709",
+      "Project_9x16_V version.mp4"
+    ],
+    "risk": [
+      "Check refactoring, subtitles, and platform UI safe areas separately, can't just auto-crop landscape."
+    ],
+    "bitrate": [
+      "H.264 approximately 10–20 Mb/s; subject to short measurement on target platform"
+    ],
+    "subtitles": [
+      "Subtitles must avoid the safe area of ​​the vertical platform UI; the burning and plug-in methods must be clear."
+    ],
+    "fileChecks": [
+      "Play actual file in full",
+      "Check 9:16 Frame and Safe Area",
+      "Check subtitles, audio and reconstructed footage",
+      "Short test on target platform"
+    ]
+  },
+  "ex-master": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "Timeline original resolution",
+      "Timeline original frame rate",
+      "QuickTime",
+      "ProRes 422 HQ/4444 or DNxHR HQX",
+      "10-bit or higher, by source and delivery",
+      "PCM 24-bit/48 kHz",
+      "Identify Rec.709, P3 or other master space",
+      "Project_MASTER_Specification_Date.mov"
+    ],
+    "risk": [
+      "The master space must be written in the filename or README; don't just keep H.264."
+    ],
+    "bitrate": [
+      "Determined by ProRes/DNxHR encoding gear, no manual setting of target code rate is required"
+    ],
+    "subtitles": [
+      "Save masters with and without subtitles, and save subtitle files separately."
+    ],
+    "fileChecks": [
+      "Play actual file in full",
+      "Check master color space and 10-bit specifications",
+      "Check PCM sounds and channels",
+      "Check file name, version, date and README"
+    ]
+  },
+  "ex-color": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "Source resolution or convention resolution",
+      "Lock screen frame rate",
+      "XML/AAF + original film, or high-quality flat film",
+      "Original media first; ProRes 4444/DNxHR 444 for plain film",
+      "No baking creative coloring, unless agreed upon",
+      "Reference Mix WAV",
+      "Camera Log/Color Management Instructions Attached",
+      "PROJECT_PICTURELOCK_FORCOLOR_DATE"
+    ],
+    "risk": [
+      "Start by checking with your colorist about delivery methods, frames, shifting, reframing, subtitling, and Fusion processing."
+    ],
+    "bitrate": [
+      "There is no target bitrate for original media; high-quality flat films are determined by intermediate encoding levels"
+    ],
+    "subtitles": [
+      "Know whether to deliver a subtitles track, a burned reference version, or a separate SRT to avoid having subtitles baked into the image being graded."
+    ],
+    "fileChecks": [
+      "Check XML/AAF and media can be opened",
+      "Check credits, timecode, speed shifting and reconstruction",
+      "Check Reference Mix WAV",
+      "Spot check re-linking and color management instructions"
+    ]
+  },
+  "ex-broadcast": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "Based on channel specifications as the only basis",
+      "Subject to delivery specifications",
+      "MXF/QuickTime, per specification",
+      "According to XDCAM, DNxHD and other conventions",
+      "Meet the legal level and code rate",
+      "Channel layout, loudness and peaking as per specification",
+      "Rec.709/Legal scope according to specifications",
+      "Named by playlist"
+    ],
+    "risk": [
+      "The latest technical specifications, loudness and opening and closing requirements must be obtained."
+    ],
+    "bitrate": [
+      "Determined by the latest technical specifications of the channel and the specified encoding configuration"
+    ],
+    "subtitles": [
+      "Subtitle delivery method and language version are subject to channel technical specifications."
+    ],
+    "fileChecks": [
+      "Play actual file in full",
+      "Check packaging, bit rate and legal level according to channel specifications",
+      "Check loudness and channel layout",
+      "Check the playlist file name and subtitle requirements"
+    ]
+  },
+  "ex-dcp": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "2K/4K, Flat or Scope",
+      "Usually 24/25 and other support files, according to theater and master",
+      "DCP",
+      "JPEG 2000",
+      "XYZ color, cinematic bitrate",
+      "PCM, multi-channel press mapping",
+      "Correct conversion from controlled master to XYZ",
+      "Follow DCP naming conventions"
+    ],
+    "risk": [
+      "DCP must be fully QC in a professional player or theater; encryption, KDM, sound channels and frames must be agreed in advance."
+    ],
+    "bitrate": [
+      "Determined by DCP delivery specifications, format and theater QC requirements"
+    ],
+    "subtitles": [
+      "Subtitles should use theater-agreed burned or optional subtitle tracks and correspond to the DCP package version."
+    ],
+    "fileChecks": [
+      "Complete QC in Professional Player",
+      "Check frame, frame rate, XYZ and JPEG 2000",
+      "Check multichannel mapping",
+      "Check encryption, KDM and naming conventions"
+    ]
+  },
+  "ex-alpha": {
+    "specificationLabels": [
+      "Picture",
+      "Frame rate",
+      "Format",
+      "coding",
+      "quality",
+      "Audio",
+      "color",
+      "name"
+    ],
+    "specificationValues": [
+      "element original size",
+      "Consistent with the received item",
+      "QuickTime or image sequence",
+      "ProRes 4444/DNxHR 444/PNG",
+      "Enable Export Alpha",
+      "On demand, generally none",
+      "Explain passthrough/premultiplication and workspace",
+      "ELEMENT_ALPHA_SPEC_VVERSION"
+    ],
+    "risk": [
+      "H.264 does not support regular alpha; check edges when new items are layered onto a color background before delivery."
+    ],
+    "bitrate": [
+      "Determined by ProRes 4444/DNxHR 444 gear or PNG image sequence"
+    ],
+    "subtitles": [
+      "Graphic elements usually do not include subtitle tracks; if text is included, text versions and font descriptions should be delivered."
+    ],
+    "fileChecks": [
+      "Check Alpha Edge on Color Base",
+      "Check Thru/Pre-Ride Instructions",
+      "Check frame rate, size and encoding",
+      "Play actual file in full"
+    ]
+  },
+  "em-offline": {
+    "cause": [
+      "Drive letter/volume name changes, material movement, proxy path failure or codec unavailability."
+    ],
+    "fix": [
+      "Confirm that the material disk is mounted and the volume name has not changed",
+      "Select offline clips in media pool > Relink selected clips",
+      "If only the agent is offline, switch back to the original media or relocate the agent"
+    ],
+    "deep": [
+      "Check file extensions, camera raw directories, system decoding support, and path case."
+    ],
+    "prevent": [
+      "Move media within the project or use media to manage archives without changing the path in the Finder."
+    ]
+  },
+  "em-lag": {
+    "cause": [
+      "High compression, long GOP, special effects, noise reduction, slow cache disk or too high resolution."
+    ],
+    "fix": [
+      "Confirm that it is not background rendering or the disk is full",
+      "Playback > Timeline proxy resolution changed to half/quarter",
+      "Generate proxy media; complex special effects use render cache"
+    ],
+    "deep": [
+      "Distinguish between decoding, GPU, and disk bottlenecks; turn off noise reduction for itemized exclusions."
+    ],
+    "prevent": [
+      "A proxy is used in the editing stage, and the final output is back to the original film; the cache is used to play the high-speed disk independently."
+    ]
+  },
+  "em-sync": {
+    "cause": [
+      "Recording sample rate, variable frame rate mobile footage, incorrect frame rate explanation or sync point error."
+    ],
+    "fix": [
+      "Confirm timeline frame rate and material interpretation",
+      "Mobile phone VFR material is first converted to constant frame rate intermediate code",
+      "Use the three points of the head, middle and tail to determine whether there is a fixed offset or continuous drift"
+    ],
+    "deep": [
+      "A fixed offset allows for overall movement; continued drift requires resampling or fine-tuning the speed."
+    ],
+    "prevent": [
+      "Shoot and plate with unified timecode/sample rate, and check VFR before mobile phone footage is put into storage."
+    ]
+  },
+  "em-washed": {
+    "cause": [
+      "Color tags, viewer gamma, display color management, or duplicate/missing output transformations."
+    ],
+    "fix": [
+      "Confirm that the output only undergoes a Rec.709 transformation",
+      "Check Export Color Space/Gamma Tag",
+      "Compare with controlled player and oscilloscope"
+    ],
+    "deep": [
+      "First distinguish between file data errors and display differences."
+    ],
+    "prevent": [
+      "Establish short test files and target platform test procedures to record project color management."
+    ]
+  },
+  "em-proxy": {
+    "cause": [
+      "Proxy filename/timecode mismatch, wrong path, or output settings force proxy use."
+    ],
+    "fix": [
+      "Media pool checks proxy path and metadata",
+      "Relink the correct files after deagent",
+      "Delivery advanced settings confirm not using proxy media"
+    ],
+    "deep": [
+      "Spot-check the first frame, duration, frame rate, audio track and time code of the proxy and original film."
+    ],
+    "prevent": [
+      "Unify proxy defaults and naming, eliminating the need for low-code files from unknown sources."
+    ]
+  },
+  "em-cache": {
+    "cause": [
+      "Cache corruption, insufficient location space, or node cache not invalidated."
+    ],
+    "fix": [
+      "Confirm that the cache disk is writable and has space",
+      "Play > Delete Render Cache > All or Selected Clips",
+      "Switch cache mode and regenerate if necessary"
+    ],
+    "deep": [
+      "Don't delete source material by mistake; just clear the CacheClip or manage it via the Resolve menu."
+    ],
+    "prevent": [
+      "Cache an independent directory and clean it regularly. The cache will not be used as an archive when the project is finished."
+    ]
+  },
+  "em-subtitle": {
+    "cause": [
+      "The subtitle export mode is not selected for burning, the external subtitles are not delivered separately, or the subtitle track is disabled."
+    ],
+    "fix": [
+      "Delivery page chooses to burn to video or export subtitles file",
+      "Confirm that the correct subtitle track is enabled",
+      "Output 20 second test and verify on target player"
+    ],
+    "deep": [
+      "Clarify the three delivery methods of burning, embedding, and plug-in."
+    ],
+    "prevent": [
+      "The delivery list lists subtitle mode, language and file name separately."
+    ]
+  },
+  "em-render": {
+    "cause": [
+      "Bad frames, plug-in, Fusion, VRAM, disk space or encoder issues."
+    ],
+    "fix": [
+      "Record the failure timecode and check around that frame",
+      "Temporarily bypass complex special effects/noise reduction positioning issues",
+      "First output the ProRes/DNxHR intermediate master, and then convert it to the distribution format"
+    ],
+    "deep": [
+      "For fixed positions, more consideration should be given to materials or special effects; for position changes, more consideration should be given to resources or hardware."
+    ],
+    "prevent": [
+      "For long films, do short tests first; leave margins on the cache disk and output disk."
+    ]
+  },
+  "em-audio": {
+    "cause": [
+      "Bus assignments, tracks muted, output audio unchecked, or channel mapping wrong."
+    ],
+    "fix": [
+      "Delivery page confirmation Export Audio",
+      "Fairlight checks track to bus routing",
+      "Check bus format and export channel settings"
+    ],
+    "deep": [
+      "Multi-channel delivery requires bus-by-bus, track format and file channel mapping confirmation."
+    ],
+    "prevent": [
+      "Save presets for reliable delivery and check your channels with actual files."
+    ]
+  },
+  "em-black": {
+    "cause": [
+      "A frame gap between clips, insufficient transitions, offline frames, or speed effects boundaries."
+    ],
+    "fix": [
+      "Use the up and down arrow keys to jump to the clip point",
+      "Check frame by frame with left and right arrow keys",
+      "Zoom into the timeline and remove gaps or adjust transition margins"
+    ],
+    "deep": [
+      "If there are no gaps in the timeline, check for source file corruption, optical flow, or Fusion boundaries."
+    ],
+    "prevent": [
+      "Perform clip-by-clip QC and black frame detection before locking the picture."
+    ]
+  },
+  "em-save": {
+    "cause": [
+      "Real-time saving/backup is not enabled, or the only timeline is always overwritten."
+    ],
+    "fix": [
+      "Right-click the project in the project manager to view the backup",
+      "Restore the latest stable backup and save the new version",
+      "Check timeline backup and auto-save locations"
+    ],
+    "deep": [
+      "Copy the project first after recovery to avoid overwriting versions that are still available."
+    ],
+    "prevent": [
+      "Real-time saving + project backup + key node copy timeline."
+    ]
+  },
+  "em-plugin": {
+    "cause": [
+      "Third-party plug-ins, fonts, LUTs or DCTLs are not archived with the project."
+    ],
+    "fix": [
+      "View missing item hints and record names",
+      "Install legal resources of the same version",
+      "Rebuild with master reference and mark differences if recovery is not possible"
+    ],
+    "deep": [
+      "Changes in the plug-in version will also change the results, and you cannot just record the plug-in name."
+    ],
+    "prevent": [
+      "Archive font lists, plug-in versions, LUT/DCTL and key effects screenshots."
+    ]
+  }
+}

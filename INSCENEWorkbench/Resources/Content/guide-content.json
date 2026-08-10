@@ -2,25 +2,52 @@
   "colorPasses": [
     {
       "commonMistakes": [
-        "将 Log 当作 Rec.709",
-        "RCM 与 CST 重复输出变换"
+        {
+          "en": "Treat Log as Rec.709",
+          "zhHans": "将 Log 当作 Rec.709"
+        },
+        {
+          "en": "RCM and CST repeated output transformations",
+          "zhHans": "RCM 与 CST 重复输出变换"
+        }
       ],
-      "doneCheck": "Log、RAW 和 Rec.709 素材均被正确解释。",
+      "doneCheck": {
+        "en": "Log, RAW and Rec.709 footage are all interpreted correctly.",
+        "zhHans": "Log、RAW 和 Rec.709 素材均被正确解释。"
+      },
       "id": "color-input",
       "kind": "colorPass",
-      "risk": "RCM 与节点 CST 叠加会造成重复变换。",
+      "risk": {
+        "en": "Superposition of RCM and node CST results in repeated transformations.",
+        "zhHans": "RCM 与节点 CST 叠加会造成重复变换。"
+      },
       "scopes": [
-        "输入色彩空间",
-        "输出色彩空间"
+        {
+          "en": "Input color space",
+          "zhHans": "输入色彩空间"
+        },
+        {
+          "en": "Output color space",
+          "zhHans": "输出色彩空间"
+        }
       ],
       "shortcutIDs": [
         "nav-color",
         "node-serial"
       ],
       "steps": [
-        "确定每类相机的输入色彩空间",
-        "在 RCM 与 CST 之间选择一种技术路径",
-        "确认输出变换只执行一次"
+        {
+          "en": "Determine the input color space for each type of camera",
+          "zhHans": "确定每类相机的输入色彩空间"
+        },
+        {
+          "en": "Choosing a technology path between RCM and CST",
+          "zhHans": "在 RCM 与 CST 之间选择一种技术路径"
+        },
+        {
+          "en": "Make sure the output transformation is only executed once",
+          "zhHans": "确认输出变换只执行一次"
+        }
       ],
       "summary": {
         "en": "Keep input interpretation and output management consistent.",
@@ -31,33 +58,72 @@
         "zhHans": "输入与项目管理"
       },
       "tools": [
-        "项目色彩管理",
-        "CST 节点",
-        "相机元数据"
+        {
+          "en": "Project color management",
+          "zhHans": "项目色彩管理"
+        },
+        {
+          "en": "CST node",
+          "zhHans": "CST 节点"
+        },
+        {
+          "en": "Camera metadata",
+          "zhHans": "相机元数据"
+        }
       ]
     },
     {
       "commonMistakes": [
-        "不用示波器只凭显示器判断",
-        "压死黑位制造对比"
+        {
+          "en": "Don’t use an oscilloscope, just rely on the display to judge",
+          "zhHans": "不用示波器只凭显示器判断"
+        },
+        {
+          "en": "Crushing black level manufacturing comparison",
+          "zhHans": "压死黑位制造对比"
+        }
       ],
-      "doneCheck": "主体清楚，通道无意外削波。",
+      "doneCheck": {
+        "en": "The subject is clear and the channel has no unexpected clipping.",
+        "zhHans": "主体清楚，通道无意外削波。"
+      },
       "id": "color-balance",
       "kind": "colorPass",
-      "risk": "压死黑位不是电影感。",
+      "risk": {
+        "en": "Crushing black levels is not cinematic.",
+        "zhHans": "压死黑位不是电影感。"
+      },
       "scopes": [
-        "Waveform",
-        "RGB Parade",
-        "Vectorscope"
+        {
+          "en": "Waveform",
+          "zhHans": "Waveform"
+        },
+        {
+          "en": "RGB Parade",
+          "zhHans": "RGB Parade"
+        },
+        {
+          "en": "Vectorscope",
+          "zhHans": "Vectorscope"
+        }
       ],
       "shortcutIDs": [
         "nav-color",
         "node-serial"
       ],
       "steps": [
-        "打开 Waveform、RGB Parade 和 Vectorscope",
-        "先用 Offset/HDR 建立整体曝光",
-        "再用 Lift/Gamma/Gain 或曲线细修"
+        {
+          "en": "Open Waveform, RGB Parade and Vectorscope",
+          "zhHans": "打开 Waveform、RGB Parade 和 Vectorscope"
+        },
+        {
+          "en": "First use Offset/HDR to establish overall exposure",
+          "zhHans": "先用 Offset/HDR 建立整体曝光"
+        },
+        {
+          "en": "Then use Lift/Gamma/Gain or curve to refine",
+          "zhHans": "再用 Lift/Gamma/Gain 或曲线细修"
+        }
       ],
       "summary": {
         "en": "Establish a credible baseline for exposure, white balance, and saturation.",
@@ -68,33 +134,72 @@
         "zhHans": "一级校正"
       },
       "tools": [
-        "Offset",
-        "HDR 调色轮",
-        "Lift/Gamma/Gain"
+        {
+          "en": "Offset",
+          "zhHans": "Offset"
+        },
+        {
+          "en": "HDR color wheel",
+          "zhHans": "HDR 调色轮"
+        },
+        {
+          "en": "Lift/Gamma/Gain",
+          "zhHans": "Lift/Gamma/Gain"
+        }
       ]
     },
     {
       "commonMistakes": [
-        "匹配画面中恰好不同的物体",
-        "逐镜头各自追求好看"
+        {
+          "en": "Match objects that happen to be different in the picture",
+          "zhHans": "匹配画面中恰好不同的物体"
+        },
+        {
+          "en": "Each pursues good looks shot by shot",
+          "zhHans": "逐镜头各自追求好看"
+        }
       ],
-      "doneCheck": "连续播放没有明显亮度或色偏跳变。",
+      "doneCheck": {
+        "en": "There is no obvious brightness or color shift jump during continuous playback.",
+        "zhHans": "连续播放没有明显亮度或色偏跳变。"
+      },
       "id": "color-match",
       "kind": "colorPass",
-      "risk": "匹配共同参照和光线意图，而非画面中不同物体。",
+      "risk": {
+        "en": "Match common references and lighting intentions rather than different objects in the frame.",
+        "zhHans": "匹配共同参照和光线意图，而非画面中不同物体。"
+      },
       "scopes": [
-        "Waveform",
-        "RGB Parade",
-        "Vectorscope"
+        {
+          "en": "Waveform",
+          "zhHans": "Waveform"
+        },
+        {
+          "en": "RGB Parade",
+          "zhHans": "RGB Parade"
+        },
+        {
+          "en": "Vectorscope",
+          "zhHans": "Vectorscope"
+        }
       ],
       "shortcutIDs": [
         "grab-still",
         "node-serial"
       ],
       "steps": [
-        "选择英雄镜头并抓取静帧",
-        "先匹配曝光层级",
-        "再匹配综合色偏和饱和度"
+        {
+          "en": "Select a hero shot and grab a still",
+          "zhHans": "选择英雄镜头并抓取静帧"
+        },
+        {
+          "en": "Match the exposure level first",
+          "zhHans": "先匹配曝光层级"
+        },
+        {
+          "en": "Then match the comprehensive color cast and saturation",
+          "zhHans": "再匹配综合色偏和饱和度"
+        }
       ],
       "summary": {
         "en": "Maintain continuity between shots in the same scene.",
@@ -105,32 +210,68 @@
         "zhHans": "镜头匹配"
       },
       "tools": [
-        "画廊静帧",
-        "分屏/参考擦除",
-        "Primaries"
+        {
+          "en": "gallery stills",
+          "zhHans": "画廊静帧"
+        },
+        {
+          "en": "Split screen/reference wipe",
+          "zhHans": "分屏/参考擦除"
+        },
+        {
+          "en": "Primaries",
+          "zhHans": "Primaries"
+        }
       ]
     },
     {
       "commonMistakes": [
-        "把肤色线当作绝对目标",
-        "键或窗口边缘过硬"
+        {
+          "en": "Treat the skin tone line as an absolute goal",
+          "zhHans": "把肤色线当作绝对目标"
+        },
+        {
+          "en": "Key or window edges are too hard",
+          "zhHans": "键或窗口边缘过硬"
+        }
       ],
-      "doneCheck": "皮肤自然，选择稳定，背景不受污染。",
+      "doneCheck": {
+        "en": "The skin is natural, the selection is stable, and the background is free from contamination.",
+        "zhHans": "皮肤自然，选择稳定，背景不受污染。"
+      },
       "id": "color-skin",
       "kind": "colorPass",
-      "risk": "肤色线是参考方向，不是所有人的同一目标。",
+      "risk": {
+        "en": "The skin color line is a reference direction and is not the same target for everyone.",
+        "zhHans": "肤色线是参考方向，不是所有人的同一目标。"
+      },
       "scopes": [
-        "Vectorscope",
-        "Highlight"
+        {
+          "en": "Vectorscope",
+          "zhHans": "Vectorscope"
+        },
+        {
+          "en": "Highlight",
+          "zhHans": "Highlight"
+        }
       ],
       "shortcutIDs": [
         "highlight-toggle",
         "node-serial"
       ],
       "steps": [
-        "整体白平衡完成后再限定肤色",
-        "柔化键并用窗口限制区域",
-        "跟踪后检查边缘与运动"
+        {
+          "en": "After the overall white balance is completed, the skin color is limited",
+          "zhHans": "整体白平衡完成后再限定肤色"
+        },
+        {
+          "en": "Soften keys and limit areas with windows",
+          "zhHans": "柔化键并用窗口限制区域"
+        },
+        {
+          "en": "Check edges and motion after tracking",
+          "zhHans": "跟踪后检查边缘与运动"
+        }
       ],
       "summary": {
         "en": "Correct people without contaminating the background.",
@@ -141,23 +282,50 @@
         "zhHans": "肤色与局部"
       },
       "tools": [
-        "限定器",
-        "Power Window",
-        "跟踪器"
+        {
+          "en": "qualifier",
+          "zhHans": "限定器"
+        },
+        {
+          "en": "Power Window",
+          "zhHans": "Power Window"
+        },
+        {
+          "en": "tracker",
+          "zhHans": "跟踪器"
+        }
       ]
     },
     {
       "commonMistakes": [
-        "技术校正与 Look 混在同一节点",
-        "项目级输出管理混入 Look 节点"
+        {
+          "en": "Technical corrections are mixed in the same node as Look",
+          "zhHans": "技术校正与 Look 混在同一节点"
+        },
+        {
+          "en": "Project-level output management mixed into Look nodes",
+          "zhHans": "项目级输出管理混入 Look 节点"
+        }
       ],
-      "doneCheck": "旁路任一层都能理解其作用。",
+      "doneCheck": {
+        "en": "Bypassing any layer can understand its role.",
+        "zhHans": "旁路任一层都能理解其作用。"
+      },
       "id": "color-look",
       "kind": "colorPass",
-      "risk": "不要把项目级输出管理混入 Look 节点。",
+      "risk": {
+        "en": "Don't mix project-level output management into Look nodes.",
+        "zhHans": "不要把项目级输出管理混入 Look 节点。"
+      },
       "scopes": [
-        "Waveform",
-        "RGB Parade"
+        {
+          "en": "Waveform",
+          "zhHans": "Waveform"
+        },
+        {
+          "en": "RGB Parade",
+          "zhHans": "RGB Parade"
+        }
       ],
       "shortcutIDs": [
         "node-serial",
@@ -167,9 +335,18 @@
         "grade-bypass"
       ],
       "steps": [
-        "将降噪放在需要时的靠前节点",
-        "分离曝光、匹配、局部与 Look 节点",
-        "命名节点并可旁路比较"
+        {
+          "en": "Put noise reduction at the front when needed",
+          "zhHans": "将降噪放在需要时的靠前节点"
+        },
+        {
+          "en": "Separate Exposure, Match, Local and Look nodes",
+          "zhHans": "分离曝光、匹配、局部与 Look 节点"
+        },
+        {
+          "en": "Name nodes and bypass comparison",
+          "zhHans": "命名节点并可旁路比较"
+        }
       ],
       "summary": {
         "en": "Keep technical adjustments and creative looks independently reviewable.",
@@ -180,32 +357,68 @@
         "zhHans": "Look 与节点结构"
       },
       "tools": [
-        "串行节点",
-        "并行节点",
-        "图层节点"
+        {
+          "en": "serial node",
+          "zhHans": "串行节点"
+        },
+        {
+          "en": "parallel node",
+          "zhHans": "并行节点"
+        },
+        {
+          "en": "layer node",
+          "zhHans": "图层节点"
+        }
       ]
     },
     {
       "commonMistakes": [
-        "降噪过度造成蜡感或拖影",
-        "未在目标显示环境检查色彩标签"
+        {
+          "en": "Excessive noise reduction causes waxy feeling or smearing",
+          "zhHans": "降噪过度造成蜡感或拖影"
+        },
+        {
+          "en": "Color labels not checked in target display environment",
+          "zhHans": "未在目标显示环境检查色彩标签"
+        }
       ],
-      "doneCheck": "播放与暂停均自然，输出标签正确。",
+      "doneCheck": {
+        "en": "Play and pause are natural, and the output labels are correct.",
+        "zhHans": "播放与暂停均自然，输出标签正确。"
+      },
       "id": "color-finish",
       "kind": "colorPass",
-      "risk": "过度降噪会损失皮肤纹理并拖慢渲染。",
+      "risk": {
+        "en": "Excessive noise reduction can lose skin texture and slow down rendering.",
+        "zhHans": "过度降噪会损失皮肤纹理并拖慢渲染。"
+      },
       "scopes": [
-        "Waveform",
-        "RGB Parade"
+        {
+          "en": "Waveform",
+          "zhHans": "Waveform"
+        },
+        {
+          "en": "RGB Parade",
+          "zhHans": "RGB Parade"
+        }
       ],
       "shortcutIDs": [
         "node-disable",
         "grade-bypass"
       ],
       "steps": [
-        "主要调色后再少量锐化",
-        "最后加颗粒统一质感",
-        "检查色彩标签、高光与目标显示环境"
+        {
+          "en": "Mainly toning and then a small amount of sharpening",
+          "zhHans": "主要调色后再少量锐化"
+        },
+        {
+          "en": "Finally, add particles to unify the texture",
+          "zhHans": "最后加颗粒统一质感"
+        },
+        {
+          "en": "Check color labels, highlights and target display environment",
+          "zhHans": "检查色彩标签、高光与目标显示环境"
+        }
       ],
       "summary": {
         "en": "Preserve detail and texture, then verify in the real delivery environment.",
@@ -216,9 +429,18 @@
         "zhHans": "锐化、颗粒与输出前检查"
       },
       "tools": [
-        "时域/空域降噪",
-        "锐化",
-        "颗粒"
+        {
+          "en": "Temporal/spatial domain noise reduction",
+          "zhHans": "时域/空域降噪"
+        },
+        {
+          "en": "sharpen",
+          "zhHans": "锐化"
+        },
+        {
+          "en": "particles",
+          "zhHans": "颗粒"
+        }
       ]
     }
   ],
@@ -226,16 +448,34 @@
   "creators": [],
   "emergencies": [
     {
-      "cause": "盘符/卷名变化、素材移动、代理路径失效或编解码器不可用。",
-      "deep": "检查文件扩展名、相机原始目录、系统解码支持和路径大小写。",
+      "cause": {
+        "en": "Drive letter/volume name changes, material movement, proxy path failure or codec unavailability.",
+        "zhHans": "盘符/卷名变化、素材移动、代理路径失效或编解码器不可用。"
+      },
+      "deep": {
+        "en": "Check file extensions, camera raw directories, system decoding support, and path case.",
+        "zhHans": "检查文件扩展名、相机原始目录、系统解码支持和路径大小写。"
+      },
       "fix": [
-        "确认素材盘已挂载且卷名未变",
-        "媒体池选中离线素材 > 重新链接所选片段",
-        "若只代理离线，切回原始媒体或重新定位代理"
+        {
+          "en": "Confirm that the material disk is mounted and the volume name has not changed",
+          "zhHans": "确认素材盘已挂载且卷名未变"
+        },
+        {
+          "en": "Select offline clips in media pool > Relink selected clips",
+          "zhHans": "媒体池选中离线素材 > 重新链接所选片段"
+        },
+        {
+          "en": "If only the agent is offline, switch back to the original media or relocate the agent",
+          "zhHans": "若只代理离线，切回原始媒体或重新定位代理"
+        }
       ],
       "id": "em-offline",
       "kind": "emergency",
-      "prevent": "项目内移动媒体或用媒体管理归档，不在 Finder 中随意改路径。",
+      "prevent": {
+        "en": "Move media within the project or use media to manage archives without changing the path in the Finder.",
+        "zhHans": "项目内移动媒体或用媒体管理归档，不在 Finder 中随意改路径。"
+      },
       "summary": {
         "en": "The image displays the red Media Offline warning.",
         "zhHans": "画面红色 Media Offline。"
@@ -246,16 +486,34 @@
       }
     },
     {
-      "cause": "高压缩长 GOP、特效、降噪、缓存盘慢或分辨率过高。",
-      "deep": "区分解码、GPU 和磁盘瓶颈；关闭降噪逐项排除。",
+      "cause": {
+        "en": "High compression, long GOP, special effects, noise reduction, slow cache disk or too high resolution.",
+        "zhHans": "高压缩长 GOP、特效、降噪、缓存盘慢或分辨率过高。"
+      },
+      "deep": {
+        "en": "Distinguish between decoding, GPU, and disk bottlenecks; turn off noise reduction for itemized exclusions.",
+        "zhHans": "区分解码、GPU 和磁盘瓶颈；关闭降噪逐项排除。"
+      },
       "fix": [
-        "确认不是后台渲染或磁盘已满",
-        "播放 > 时间线代理分辨率改为一半/四分之一",
-        "生成代理媒体；复杂特效使用渲染缓存"
+        {
+          "en": "Confirm that it is not background rendering or the disk is full",
+          "zhHans": "确认不是后台渲染或磁盘已满"
+        },
+        {
+          "en": "Playback > Timeline proxy resolution changed to half/quarter",
+          "zhHans": "播放 > 时间线代理分辨率改为一半/四分之一"
+        },
+        {
+          "en": "Generate proxy media; complex special effects use render cache",
+          "zhHans": "生成代理媒体；复杂特效使用渲染缓存"
+        }
       ],
       "id": "em-lag",
       "kind": "emergency",
-      "prevent": "剪辑阶段用代理，最终输出回原片；缓存独立放高速盘。",
+      "prevent": {
+        "en": "A proxy is used in the editing stage, and the final output is back to the original film; the cache is used to play the high-speed disk independently.",
+        "zhHans": "剪辑阶段用代理，最终输出回原片；缓存独立放高速盘。"
+      },
       "summary": {
         "en": "The timeline drops frames or audio stutters.",
         "zhHans": "时间线掉帧、声音断续。"
@@ -266,16 +524,34 @@
       }
     },
     {
-      "cause": "录音采样率、可变帧率手机素材、错误帧率解释或同步点错误。",
-      "deep": "固定偏移可整体移动；持续漂移需重采样或微调速度。",
+      "cause": {
+        "en": "Recording sample rate, variable frame rate mobile footage, incorrect frame rate explanation or sync point error.",
+        "zhHans": "录音采样率、可变帧率手机素材、错误帧率解释或同步点错误。"
+      },
+      "deep": {
+        "en": "A fixed offset allows for overall movement; continued drift requires resampling or fine-tuning the speed.",
+        "zhHans": "固定偏移可整体移动；持续漂移需重采样或微调速度。"
+      },
       "fix": [
-        "确认时间线帧率和素材解释",
-        "手机 VFR 素材先转恒定帧率中间码",
-        "用头中尾三个点判断固定偏移还是持续漂移"
+        {
+          "en": "Confirm timeline frame rate and material interpretation",
+          "zhHans": "确认时间线帧率和素材解释"
+        },
+        {
+          "en": "Mobile phone VFR material is first converted to constant frame rate intermediate code",
+          "zhHans": "手机 VFR 素材先转恒定帧率中间码"
+        },
+        {
+          "en": "Use the three points of the head, middle and tail to determine whether there is a fixed offset or continuous drift",
+          "zhHans": "用头中尾三个点判断固定偏移还是持续漂移"
+        }
       ],
       "id": "em-sync",
       "kind": "emergency",
-      "prevent": "拍摄统一时间码/采样率并打板，手机素材入库前检查 VFR。",
+      "prevent": {
+        "en": "Shoot and plate with unified timecode/sample rate, and check VFR before mobile phone footage is put into storage.",
+        "zhHans": "拍摄统一时间码/采样率并打板，手机素材入库前检查 VFR。"
+      },
       "summary": {
         "en": "Lip sync drifts gradually even when the start is in sync.",
         "zhHans": "开头同步，后段口型逐渐漂移。"
@@ -286,16 +562,34 @@
       }
     },
     {
-      "cause": "色彩标签、查看器 Gamma、显示色彩管理或重复/缺失输出变换。",
-      "deep": "先区分文件数据错误与显示差异。",
+      "cause": {
+        "en": "Color tags, viewer gamma, display color management, or duplicate/missing output transformations.",
+        "zhHans": "色彩标签、查看器 Gamma、显示色彩管理或重复/缺失输出变换。"
+      },
+      "deep": {
+        "en": "First distinguish between file data errors and display differences.",
+        "zhHans": "先区分文件数据错误与显示差异。"
+      },
       "fix": [
-        "确认输出只做一次 Rec.709 变换",
-        "检查导出 Color Space/Gamma Tag",
-        "用受控播放器和示波器比较"
+        {
+          "en": "Confirm that the output only undergoes a Rec.709 transformation",
+          "zhHans": "确认输出只做一次 Rec.709 变换"
+        },
+        {
+          "en": "Check Export Color Space/Gamma Tag",
+          "zhHans": "检查导出 Color Space/Gamma Tag"
+        },
+        {
+          "en": "Compare with controlled player and oscilloscope",
+          "zhHans": "用受控播放器和示波器比较"
+        }
       ],
       "id": "em-washed",
       "kind": "emergency",
-      "prevent": "建立短测试文件和目标平台测试流程，记录项目色彩管理。",
+      "prevent": {
+        "en": "Establish short test files and target platform test procedures to record project color management.",
+        "zhHans": "建立短测试文件和目标平台测试流程，记录项目色彩管理。"
+      },
       "summary": {
         "en": "The Resolve image looks right but QuickTime or a platform looks brighter or washed out.",
         "zhHans": "Resolve 内正常，QuickTime 或平台更亮/更灰。"
@@ -306,16 +600,34 @@
       }
     },
     {
-      "cause": "代理文件名/时间码不匹配、路径错或输出设置强制使用代理。",
-      "deep": "抽查代理与原片首帧、时长、帧率、音轨和时间码。",
+      "cause": {
+        "en": "Proxy filename/timecode mismatch, wrong path, or output settings force proxy use.",
+        "zhHans": "代理文件名/时间码不匹配、路径错或输出设置强制使用代理。"
+      },
+      "deep": {
+        "en": "Spot-check the first frame, duration, frame rate, audio track and time code of the proxy and original film.",
+        "zhHans": "抽查代理与原片首帧、时长、帧率、音轨和时间码。"
+      },
       "fix": [
-        "媒体池检查代理路径和元数据",
-        "解除代理后重新链接正确文件",
-        "交付高级设置确认不使用代理媒体"
+        {
+          "en": "Media pool checks proxy path and metadata",
+          "zhHans": "媒体池检查代理路径和元数据"
+        },
+        {
+          "en": "Relink the correct files after deagent",
+          "zhHans": "解除代理后重新链接正确文件"
+        },
+        {
+          "en": "Delivery advanced settings confirm not using proxy media",
+          "zhHans": "交付高级设置确认不使用代理媒体"
+        }
       ],
       "id": "em-proxy",
       "kind": "emergency",
-      "prevent": "统一代理预设与命名，不用来源不明的低码文件。",
+      "prevent": {
+        "en": "Unify proxy defaults and naming, eliminating the need for low-code files from unknown sources.",
+        "zhHans": "统一代理预设与命名，不用来源不明的低码文件。"
+      },
       "summary": {
         "en": "Shots are offset, offline, or exports still resemble low-resolution proxies.",
         "zhHans": "镜头错位、离线或导出仍像低清代理。"
@@ -326,16 +638,34 @@
       }
     },
     {
-      "cause": "缓存损坏、位置空间不足或节点缓存没有失效。",
-      "deep": "不要误删源素材；只清理 CacheClip 或通过 Resolve 菜单管理。",
+      "cause": {
+        "en": "Cache corruption, insufficient location space, or node cache not invalidated.",
+        "zhHans": "缓存损坏、位置空间不足或节点缓存没有失效。"
+      },
+      "deep": {
+        "en": "Don't delete source material by mistake; just clear the CacheClip or manage it via the Resolve menu.",
+        "zhHans": "不要误删源素材；只清理 CacheClip 或通过 Resolve 菜单管理。"
+      },
       "fix": [
-        "确认缓存盘可写且有空间",
-        "播放 > 删除渲染缓存 > 所有或所选片段",
-        "必要时切换缓存模式后重新生成"
+        {
+          "en": "Confirm that the cache disk is writable and has space",
+          "zhHans": "确认缓存盘可写且有空间"
+        },
+        {
+          "en": "Play > Delete Render Cache > All or Selected Clips",
+          "zhHans": "播放 > 删除渲染缓存 > 所有或所选片段"
+        },
+        {
+          "en": "Switch cache mode and regenerate if necessary",
+          "zhHans": "必要时切换缓存模式后重新生成"
+        }
       ],
       "id": "em-cache",
       "kind": "emergency",
-      "prevent": "缓存独立目录，定期清理，项目结束不把缓存当归档。",
+      "prevent": {
+        "en": "Cache an independent directory and clean it regularly. The cache will not be used as an archive when the project is finished.",
+        "zhHans": "缓存独立目录，定期清理，项目结束不把缓存当归档。"
+      },
       "summary": {
         "en": "You see an old effect or the cache repeatedly rebuilds.",
         "zhHans": "修改后仍看到旧效果，缓存条反复重建。"
@@ -346,16 +676,34 @@
       }
     },
     {
-      "cause": "字幕导出模式未选烧录、外挂字幕没有单独交付或字幕轨被禁用。",
-      "deep": "明确烧录、嵌入、外挂三种交付方式。",
+      "cause": {
+        "en": "The subtitle export mode is not selected for burning, the external subtitles are not delivered separately, or the subtitle track is disabled.",
+        "zhHans": "字幕导出模式未选烧录、外挂字幕没有单独交付或字幕轨被禁用。"
+      },
+      "deep": {
+        "en": "Clarify the three delivery methods of burning, embedding, and plug-in.",
+        "zhHans": "明确烧录、嵌入、外挂三种交付方式。"
+      },
       "fix": [
-        "交付页面选择烧录到视频或导出字幕文件",
-        "确认正确字幕轨启用",
-        "输出 20 秒测试并在目标播放器验证"
+        {
+          "en": "Delivery page chooses to burn to video or export subtitles file",
+          "zhHans": "交付页面选择烧录到视频或导出字幕文件"
+        },
+        {
+          "en": "Confirm that the correct subtitle track is enabled",
+          "zhHans": "确认正确字幕轨启用"
+        },
+        {
+          "en": "Output 20 second test and verify on target player",
+          "zhHans": "输出 20 秒测试并在目标播放器验证"
+        }
       ],
       "id": "em-subtitle",
       "kind": "emergency",
-      "prevent": "交付清单单列字幕模式、语言和文件名。",
+      "prevent": {
+        "en": "The delivery list lists subtitle mode, language and file name separately.",
+        "zhHans": "交付清单单列字幕模式、语言和文件名。"
+      },
       "summary": {
         "en": "Subtitles are visible in the timeline but absent from the output.",
         "zhHans": "时间线有字幕，输出文件没有。"
@@ -366,16 +714,34 @@
       }
     },
     {
-      "cause": "坏帧、插件、Fusion、显存、磁盘空间或编码器问题。",
-      "deep": "固定位置多考虑素材或特效；位置变化多考虑资源或硬件。",
+      "cause": {
+        "en": "Bad frames, plug-in, Fusion, VRAM, disk space or encoder issues.",
+        "zhHans": "坏帧、插件、Fusion、显存、磁盘空间或编码器问题。"
+      },
+      "deep": {
+        "en": "For fixed positions, more consideration should be given to materials or special effects; for position changes, more consideration should be given to resources or hardware.",
+        "zhHans": "固定位置多考虑素材或特效；位置变化多考虑资源或硬件。"
+      },
       "fix": [
-        "记录失败时间码并检查该帧附近",
-        "暂时旁路复杂特效/降噪定位问题",
-        "先输出 ProRes/DNxHR 中间母版，再转分发格式"
+        {
+          "en": "Record the failure timecode and check around that frame",
+          "zhHans": "记录失败时间码并检查该帧附近"
+        },
+        {
+          "en": "Temporarily bypass complex special effects/noise reduction positioning issues",
+          "zhHans": "暂时旁路复杂特效/降噪定位问题"
+        },
+        {
+          "en": "First output the ProRes/DNxHR intermediate master, and then convert it to the distribution format",
+          "zhHans": "先输出 ProRes/DNxHR 中间母版，再转分发格式"
+        }
       ],
       "id": "em-render",
       "kind": "emergency",
-      "prevent": "长片先做短测试；缓存盘和输出盘保留余量。",
+      "prevent": {
+        "en": "For long films, do short tests first; leave margins on the cache disk and output disk.",
+        "zhHans": "长片先做短测试；缓存盘和输出盘保留余量。"
+      },
       "summary": {
         "en": "A render errors, stops, or hangs at a fixed location.",
         "zhHans": "任务报错、停止或在固定位置不动。"
@@ -386,16 +752,34 @@
       }
     },
     {
-      "cause": "总线分配、轨道静音、输出音频未勾选或声道映射错误。",
-      "deep": "多声道交付需逐个确认 Bus、轨道格式和文件声道映射。",
+      "cause": {
+        "en": "Bus assignments, tracks muted, output audio unchecked, or channel mapping wrong.",
+        "zhHans": "总线分配、轨道静音、输出音频未勾选或声道映射错误。"
+      },
+      "deep": {
+        "en": "Multi-channel delivery requires bus-by-bus, track format and file channel mapping confirmation.",
+        "zhHans": "多声道交付需逐个确认 Bus、轨道格式和文件声道映射。"
+      },
       "fix": [
-        "交付页面确认 Export Audio",
-        "Fairlight 检查轨道到 Bus 的路由",
-        "检查总线格式与导出声道设置"
+        {
+          "en": "Delivery page confirmation Export Audio",
+          "zhHans": "交付页面确认 Export Audio"
+        },
+        {
+          "en": "Fairlight checks track to bus routing",
+          "zhHans": "Fairlight 检查轨道到 Bus 的路由"
+        },
+        {
+          "en": "Check bus format and export channel settings",
+          "zhHans": "检查总线格式与导出声道设置"
+        }
       ],
       "id": "em-audio",
       "kind": "emergency",
-      "prevent": "保存可靠交付预设，并用实际文件检查声道。",
+      "prevent": {
+        "en": "Save presets for reliable delivery and check your channels with actual files.",
+        "zhHans": "保存可靠交付预设，并用实际文件检查声道。"
+      },
       "summary": {
         "en": "The timeline plays sound but the export is silent or missing channels.",
         "zhHans": "时间线可听，导出静音或缺声道。"
@@ -406,16 +790,34 @@
       }
     },
     {
-      "cause": "片段间一帧空隙、转场不足、离线帧或速度特效边界。",
-      "deep": "若时间线无空隙，检查源文件损坏、光流或 Fusion 边界。",
+      "cause": {
+        "en": "A frame gap between clips, insufficient transitions, offline frames, or speed effects boundaries.",
+        "zhHans": "片段间一帧空隙、转场不足、离线帧或速度特效边界。"
+      },
+      "deep": {
+        "en": "If there are no gaps in the timeline, check for source file corruption, optical flow, or Fusion boundaries.",
+        "zhHans": "若时间线无空隙，检查源文件损坏、光流或 Fusion 边界。"
+      },
       "fix": [
-        "用上下方向键跳剪辑点",
-        "左右方向键逐帧检查",
-        "放大时间线并删除空隙或调整转场余量"
+        {
+          "en": "Use the up and down arrow keys to jump to the clip point",
+          "zhHans": "用上下方向键跳剪辑点"
+        },
+        {
+          "en": "Check frame by frame with left and right arrow keys",
+          "zhHans": "左右方向键逐帧检查"
+        },
+        {
+          "en": "Zoom into the timeline and remove gaps or adjust transition margins",
+          "zhHans": "放大时间线并删除空隙或调整转场余量"
+        }
       ],
       "id": "em-black",
       "kind": "emergency",
-      "prevent": "锁画前做逐剪辑点 QC 和黑帧检测。",
+      "prevent": {
+        "en": "Perform clip-by-clip QC and black frame detection before locking the picture.",
+        "zhHans": "锁画前做逐剪辑点 QC 和黑帧检测。"
+      },
       "summary": {
         "en": "A brief black frame appears at an edit.",
         "zhHans": "剪辑点短暂黑一下，正常播放不易发现。"
@@ -426,16 +828,34 @@
       }
     },
     {
-      "cause": "未开启实时保存/备份，或一直覆盖唯一时间线。",
-      "deep": "恢复后先复制项目，避免覆盖仍可用的版本。",
+      "cause": {
+        "en": "Real-time saving/backup is not enabled, or the only timeline is always overwritten.",
+        "zhHans": "未开启实时保存/备份，或一直覆盖唯一时间线。"
+      },
+      "deep": {
+        "en": "Copy the project first after recovery to avoid overwriting versions that are still available.",
+        "zhHans": "恢复后先复制项目，避免覆盖仍可用的版本。"
+      },
       "fix": [
-        "项目管理器右键项目查看备份",
-        "恢复最近稳定备份并另存新版本",
-        "检查时间线备份与自动保存位置"
+        {
+          "en": "Right-click the project in the project manager to view the backup",
+          "zhHans": "项目管理器右键项目查看备份"
+        },
+        {
+          "en": "Restore the latest stable backup and save the new version",
+          "zhHans": "恢复最近稳定备份并另存新版本"
+        },
+        {
+          "en": "Check timeline backup and auto-save locations",
+          "zhHans": "检查时间线备份与自动保存位置"
+        }
       ],
       "id": "em-save",
       "kind": "emergency",
-      "prevent": "实时保存 + 项目备份 + 关键节点复制时间线。",
+      "prevent": {
+        "en": "Real-time saving + project backup + key node copy timeline.",
+        "zhHans": "实时保存 + 项目备份 + 关键节点复制时间线。"
+      },
       "summary": {
         "en": "A crash or mistaken change leaves no stable version.",
         "zhHans": "崩溃、误改后无法回到稳定版本。"
@@ -446,16 +866,34 @@
       }
     },
     {
-      "cause": "第三方插件、字体、LUT 或 DCTL 未随项目归档。",
-      "deep": "插件版本变化也会改变结果，不能只记录插件名称。",
+      "cause": {
+        "en": "Third-party plug-ins, fonts, LUTs or DCTLs are not archived with the project.",
+        "zhHans": "第三方插件、字体、LUT 或 DCTL 未随项目归档。"
+      },
+      "deep": {
+        "en": "Changes in the plug-in version will also change the results, and you cannot just record the plug-in name.",
+        "zhHans": "插件版本变化也会改变结果，不能只记录插件名称。"
+      },
       "fix": [
-        "查看缺失项提示并记录名称",
-        "安装合法的同版本资源",
-        "无法恢复时用母版参考重建并标注差异"
+        {
+          "en": "View missing item hints and record names",
+          "zhHans": "查看缺失项提示并记录名称"
+        },
+        {
+          "en": "Install legal resources of the same version",
+          "zhHans": "安装合法的同版本资源"
+        },
+        {
+          "en": "Rebuild with master reference and mark differences if recovery is not possible",
+          "zhHans": "无法恢复时用母版参考重建并标注差异"
+        }
       ],
       "id": "em-plugin",
       "kind": "emergency",
-      "prevent": "归档字体清单、插件版本、LUT/DCTL 与关键效果截图。",
+      "prevent": {
+        "en": "Archive font lists, plug-in versions, LUT/DCTL and key effects screenshots.",
+        "zhHans": "归档字体清单、插件版本、LUT/DCTL 与关键效果截图。"
+      },
       "summary": {
         "en": "Titles substitute fonts, effects fail, or the image differs.",
         "zhHans": "标题换字体、特效红框、画面不同。"
@@ -468,28 +906,121 @@
   ],
   "exports": [
     {
-      "bitrate": "H.264 约 8–16 Mb/s；先做短片测试",
+      "bitrate": {
+        "en": "H.264 ~8–16 Mb/s; do a short video test first",
+        "zhHans": "H.264 约 8–16 Mb/s；先做短片测试"
+      },
       "fileChecks": [
-        "完整播放实际文件",
-        "检查文件名、版本与日期",
-        "核对分辨率、帧率和 AAC 声音",
-        "在聊天软件与文件传输方式各抽查一次"
+        {
+          "en": "Play actual file in full",
+          "zhHans": "完整播放实际文件"
+        },
+        {
+          "en": "Check file name, version and date",
+          "zhHans": "检查文件名、版本与日期"
+        },
+        {
+          "en": "Check resolution, frame rate, and AAC sound",
+          "zhHans": "核对分辨率、帧率和 AAC 声音"
+        },
+        {
+          "en": "Randomly check each of the chat software and file transfer method.",
+          "zhHans": "在聊天软件与文件传输方式各抽查一次"
+        }
       ],
       "id": "ex-review",
       "kind": "export",
-      "risk": "聊天软件可能二次压缩；重要审片同时提供文件传输方式。",
-      "specification": {
-        "命名": "项目_V03_审片_日期.mp4",
-        "帧率": "保持时间线帧率",
-        "格式": "MP4",
-        "画面": "1920×1080 或项目原画幅",
-        "编码": "H.264",
-        "色彩": "Rec.709；检查标签",
-        "质量": "约 8–16 Mb/s，先做短测",
-        "音频": "AAC 48 kHz，立体声"
+      "risk": {
+        "en": "Chat software can perform secondary compression; important film review also provides file transfer methods.",
+        "zhHans": "聊天软件可能二次压缩；重要审片同时提供文件传输方式。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "1920×1080 or the original frame of the project",
+            "zhHans": "1920×1080 或项目原画幅"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Maintain timeline frame rate",
+            "zhHans": "保持时间线帧率"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "MP4",
+            "zhHans": "MP4"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "H.264",
+            "zhHans": "H.264"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "About 8–16 Mb/s, do a short test first",
+            "zhHans": "约 8–16 Mb/s，先做短测"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "AAC 48 kHz, stereo",
+            "zhHans": "AAC 48 kHz，立体声"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Rec.709; check label",
+            "zhHans": "Rec.709；检查标签"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "Project_V03_Review_Date.mp4",
+            "zhHans": "项目_V03_审片_日期.mp4"
+          }
+        }
+      ],
       "subtitles": [
-        "审片版可烧录临时字幕或另附 SRT，须在审片说明中标明。"
+        {
+          "en": "The review version can be burned with temporary subtitles or additional SRT, which must be marked in the review instructions.",
+          "zhHans": "审片版可烧录临时字幕或另附 SRT，须在审片说明中标明。"
+        }
       ],
       "summary": {
         "en": "Send a fast review copy with a sensible size-to-quality balance.",
@@ -501,28 +1032,121 @@
       }
     },
     {
-      "bitrate": "按目标平台建议范围设置；4K 通常需要更高码率",
+      "bitrate": {
+        "en": "Set according to target platform recommended range; 4K usually requires higher bitrates",
+        "zhHans": "按目标平台建议范围设置；4K 通常需要更高码率"
+      },
       "fileChecks": [
-        "完整播放实际文件",
-        "检查平台上传前的分辨率与帧率",
-        "核对音频、色彩标签和字幕轨",
-        "上传短测并检查平台转码"
+        {
+          "en": "Play actual file in full",
+          "zhHans": "完整播放实际文件"
+        },
+        {
+          "en": "Check the resolution and frame rate before uploading to the platform",
+          "zhHans": "检查平台上传前的分辨率与帧率"
+        },
+        {
+          "en": "Check audio, color labels and subtitle tracks",
+          "zhHans": "核对音频、色彩标签和字幕轨"
+        },
+        {
+          "en": "Upload short test and check platform transcoding",
+          "zhHans": "上传短测并检查平台转码"
+        }
       ],
       "id": "ex-web",
       "kind": "export",
-      "risk": "不要为了平台强改帧率；高质量上传能减少二次压缩损失。",
-      "specification": {
-        "命名": "项目_平台_画幅_V版本.mp4",
-        "帧率": "保持时间线帧率",
-        "格式": "MP4",
-        "画面": "保持原生 1080p/2160p",
-        "编码": "H.264 或 H.265",
-        "色彩": "SDR 常用 Rec.709",
-        "质量": "使用平台建议范围，4K 适当提高",
-        "音频": "AAC 48 kHz，320 kb/s"
+      "risk": {
+        "en": "Do not forcefully change the frame rate for the platform; high-quality uploading can reduce secondary compression losses.",
+        "zhHans": "不要为了平台强改帧率；高质量上传能减少二次压缩损失。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "Keep native 1080p/2160p",
+            "zhHans": "保持原生 1080p/2160p"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Maintain timeline frame rate",
+            "zhHans": "保持时间线帧率"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "MP4",
+            "zhHans": "MP4"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "H.264 or H.265",
+            "zhHans": "H.264 或 H.265"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "Use the recommended range of the platform, and increase the 4K appropriately.",
+            "zhHans": "使用平台建议范围，4K 适当提高"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "AAC 48 kHz, 320 kb/s",
+            "zhHans": "AAC 48 kHz，320 kb/s"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "SDR commonly used Rec.709",
+            "zhHans": "SDR 常用 Rec.709"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "Project_Platform_Frame_V Version.mp4",
+            "zhHans": "项目_平台_画幅_V版本.mp4"
+          }
+        }
+      ],
       "subtitles": [
-        "按平台要求烧录、嵌入或单独上传字幕文件；确认语言与默认轨。"
+        {
+          "en": "Burn, embed or upload subtitle files separately according to platform requirements; confirm language and default track.",
+          "zhHans": "按平台要求烧录、嵌入或单独上传字幕文件；确认语言与默认轨。"
+        }
       ],
       "summary": {
         "en": "Upload for YouTube, Bilibili, and similar services.",
@@ -534,28 +1158,121 @@
       }
     },
     {
-      "bitrate": "H.264 约 10–20 Mb/s；以目标平台短测为准",
+      "bitrate": {
+        "en": "H.264 approximately 10–20 Mb/s; subject to short measurement on target platform",
+        "zhHans": "H.264 约 10–20 Mb/s；以目标平台短测为准"
+      },
       "fileChecks": [
-        "完整播放实际文件",
-        "检查 9:16 画幅与安全区域",
-        "核对字幕、音频和重构画面",
-        "在目标平台短测"
+        {
+          "en": "Play actual file in full",
+          "zhHans": "完整播放实际文件"
+        },
+        {
+          "en": "Check 9:16 Frame and Safe Area",
+          "zhHans": "检查 9:16 画幅与安全区域"
+        },
+        {
+          "en": "Check subtitles, audio and reconstructed footage",
+          "zhHans": "核对字幕、音频和重构画面"
+        },
+        {
+          "en": "Short test on target platform",
+          "zhHans": "在目标平台短测"
+        }
       ],
       "id": "ex-vertical",
       "kind": "export",
-      "risk": "单独检查重构、字幕和平台 UI 安全区域，不能只自动裁切横版。",
-      "specification": {
-        "命名": "项目_9x16_V版本.mp4",
-        "帧率": "保持主时间线或交付约定",
-        "格式": "MP4",
-        "画面": "1080×1920，9:16",
-        "编码": "H.264",
-        "色彩": "Rec.709",
-        "质量": "约 10–20 Mb/s，平台实测",
-        "音频": "AAC 48 kHz，立体声"
+      "risk": {
+        "en": "Check refactoring, subtitles, and platform UI safe areas separately, can't just auto-crop landscape.",
+        "zhHans": "单独检查重构、字幕和平台 UI 安全区域，不能只自动裁切横版。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "1080×1920, 9:16",
+            "zhHans": "1080×1920，9:16"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Maintain master timeline or delivery appointments",
+            "zhHans": "保持主时间线或交付约定"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "MP4",
+            "zhHans": "MP4"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "H.264",
+            "zhHans": "H.264"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "About 10–20 Mb/s, measured on the platform",
+            "zhHans": "约 10–20 Mb/s，平台实测"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "AAC 48 kHz, stereo",
+            "zhHans": "AAC 48 kHz，立体声"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Rec.709",
+            "zhHans": "Rec.709"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "Project_9x16_V version.mp4",
+            "zhHans": "项目_9x16_V版本.mp4"
+          }
+        }
+      ],
       "subtitles": [
-        "字幕须避开竖版平台 UI 安全区域；烧录与外挂方式必须明确。"
+        {
+          "en": "Subtitles must avoid the safe area of ​​the vertical platform UI; the burning and plug-in methods must be clear.",
+          "zhHans": "字幕须避开竖版平台 UI 安全区域；烧录与外挂方式必须明确。"
+        }
       ],
       "summary": {
         "en": "Deliver a 9:16 version for Douyin, Reels, and similar platforms.",
@@ -567,28 +1284,121 @@
       }
     },
     {
-      "bitrate": "由 ProRes/DNxHR 编码档位决定，不手动设置目标码率",
+      "bitrate": {
+        "en": "Determined by ProRes/DNxHR encoding gear, no manual setting of target code rate is required",
+        "zhHans": "由 ProRes/DNxHR 编码档位决定，不手动设置目标码率"
+      },
       "fileChecks": [
-        "完整播放实际文件",
-        "核对母版色彩空间和 10-bit 规格",
-        "检查 PCM 声音与声道",
-        "核对文件名、版本、日期和 README"
+        {
+          "en": "Play actual file in full",
+          "zhHans": "完整播放实际文件"
+        },
+        {
+          "en": "Check master color space and 10-bit specifications",
+          "zhHans": "核对母版色彩空间和 10-bit 规格"
+        },
+        {
+          "en": "Check PCM sounds and channels",
+          "zhHans": "检查 PCM 声音与声道"
+        },
+        {
+          "en": "Check file name, version, date and README",
+          "zhHans": "核对文件名、版本、日期和 README"
+        }
       ],
       "id": "ex-master",
       "kind": "export",
-      "risk": "母版空间必须写进文件名或 README；不要只保留 H.264。",
-      "specification": {
-        "命名": "项目_MASTER_规格_日期.mov",
-        "帧率": "时间线原始帧率",
-        "格式": "QuickTime",
-        "画面": "时间线原始分辨率",
-        "编码": "ProRes 422 HQ/4444 或 DNxHR HQX",
-        "色彩": "明确 Rec.709、P3 或其他母版空间",
-        "质量": "10-bit 或更高，按源与交付",
-        "音频": "PCM 24-bit / 48 kHz"
+      "risk": {
+        "en": "The master space must be written in the filename or README; don't just keep H.264.",
+        "zhHans": "母版空间必须写进文件名或 README；不要只保留 H.264。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "Timeline original resolution",
+            "zhHans": "时间线原始分辨率"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Timeline original frame rate",
+            "zhHans": "时间线原始帧率"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "QuickTime",
+            "zhHans": "QuickTime"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "ProRes 422 HQ/4444 or DNxHR HQX",
+            "zhHans": "ProRes 422 HQ/4444 或 DNxHR HQX"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "10-bit or higher, by source and delivery",
+            "zhHans": "10-bit 或更高，按源与交付"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "PCM 24-bit/48 kHz",
+            "zhHans": "PCM 24-bit / 48 kHz"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Identify Rec.709, P3 or other master space",
+            "zhHans": "明确 Rec.709、P3 或其他母版空间"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "Project_MASTER_Specification_Date.mov",
+            "zhHans": "项目_MASTER_规格_日期.mov"
+          }
+        }
+      ],
       "subtitles": [
-        "保存带字幕与无字幕母版，并单独保存字幕文件。"
+        {
+          "en": "Save masters with and without subtitles, and save subtitle files separately.",
+          "zhHans": "保存带字幕与无字幕母版，并单独保存字幕文件。"
+        }
       ],
       "summary": {
         "en": "Preserve a master for long-term storage and future distribution versions.",
@@ -600,28 +1410,121 @@
       }
     },
     {
-      "bitrate": "原始媒体不设目标码率；高质量平片由中间编码档位决定",
+      "bitrate": {
+        "en": "There is no target bitrate for original media; high-quality flat films are determined by intermediate encoding levels",
+        "zhHans": "原始媒体不设目标码率；高质量平片由中间编码档位决定"
+      },
       "fileChecks": [
-        "检查 XML/AAF 与媒体可打开",
-        "核对片柄、时间码、变速与重构",
-        "检查参考混音 WAV",
-        "抽查重链接与色彩管理说明"
+        {
+          "en": "Check XML/AAF and media can be opened",
+          "zhHans": "检查 XML/AAF 与媒体可打开"
+        },
+        {
+          "en": "Check credits, timecode, speed shifting and reconstruction",
+          "zhHans": "核对片柄、时间码、变速与重构"
+        },
+        {
+          "en": "Check Reference Mix WAV",
+          "zhHans": "检查参考混音 WAV"
+        },
+        {
+          "en": "Spot check re-linking and color management instructions",
+          "zhHans": "抽查重链接与色彩管理说明"
+        }
       ],
       "id": "ex-color",
       "kind": "export",
-      "risk": "先与调色师确认交付方式、片柄、变速、重构、字幕和 Fusion 处理。",
-      "specification": {
-        "命名": "项目_PICTURELOCK_FORCOLOR_日期",
-        "帧率": "锁定画面帧率",
-        "格式": "XML/AAF + 原片，或高质量平片",
-        "画面": "源分辨率或约定分辨率",
-        "编码": "原始媒体优先；平片用 ProRes 4444/DNxHR 444",
-        "色彩": "附相机 Log/色彩管理说明",
-        "质量": "无烘焙创意调色，除非约定",
-        "音频": "参考混音 WAV"
+      "risk": {
+        "en": "Start by checking with your colorist about delivery methods, frames, shifting, reframing, subtitling, and Fusion processing.",
+        "zhHans": "先与调色师确认交付方式、片柄、变速、重构、字幕和 Fusion 处理。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "Source resolution or convention resolution",
+            "zhHans": "源分辨率或约定分辨率"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Lock screen frame rate",
+            "zhHans": "锁定画面帧率"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "XML/AAF + original film, or high-quality flat film",
+            "zhHans": "XML/AAF + 原片，或高质量平片"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "Original media first; ProRes 4444/DNxHR 444 for plain film",
+            "zhHans": "原始媒体优先；平片用 ProRes 4444/DNxHR 444"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "No baking creative coloring, unless agreed upon",
+            "zhHans": "无烘焙创意调色，除非约定"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "Reference Mix WAV",
+            "zhHans": "参考混音 WAV"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Camera Log/Color Management Instructions Attached",
+            "zhHans": "附相机 Log/色彩管理说明"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "PROJECT_PICTURELOCK_FORCOLOR_DATE",
+            "zhHans": "项目_PICTURELOCK_FORCOLOR_日期"
+          }
+        }
+      ],
       "subtitles": [
-        "明确是否交付字幕轨、烧录参考版或单独 SRT，避免把字幕烘焙进待调色画面。"
+        {
+          "en": "Know whether to deliver a subtitles track, a burned reference version, or a separate SRT to avoid having subtitles baked into the image being graded.",
+          "zhHans": "明确是否交付字幕轨、烧录参考版或单独 SRT，避免把字幕烘焙进待调色画面。"
+        }
       ],
       "summary": {
         "en": "Preserve source quality, timecode, and handles.",
@@ -633,28 +1536,121 @@
       }
     },
     {
-      "bitrate": "由频道最新技术规范与指定编码配置决定",
+      "bitrate": {
+        "en": "Determined by the latest technical specifications of the channel and the specified encoding configuration",
+        "zhHans": "由频道最新技术规范与指定编码配置决定"
+      },
       "fileChecks": [
-        "完整播放实际文件",
-        "按频道规范核对封装、码率与合法电平",
-        "检查响度与声道布局",
-        "核对送播单文件名与字幕要求"
+        {
+          "en": "Play actual file in full",
+          "zhHans": "完整播放实际文件"
+        },
+        {
+          "en": "Check packaging, bit rate and legal level according to channel specifications",
+          "zhHans": "按频道规范核对封装、码率与合法电平"
+        },
+        {
+          "en": "Check loudness and channel layout",
+          "zhHans": "检查响度与声道布局"
+        },
+        {
+          "en": "Check the playlist file name and subtitle requirements",
+          "zhHans": "核对送播单文件名与字幕要求"
+        }
       ],
       "id": "ex-broadcast",
       "kind": "export",
-      "risk": "必须取得最新技术规范、响度和片头片尾要求。",
-      "specification": {
-        "命名": "按送播单命名",
-        "帧率": "以交付规范为准",
-        "格式": "MXF/QuickTime，按规范",
-        "画面": "以频道规范为唯一依据",
-        "编码": "按 XDCAM、DNxHD 等约定",
-        "色彩": "Rec.709/合法范围按规范",
-        "质量": "满足合法电平和码率",
-        "音频": "声道布局、响度和峰值按规范"
+      "risk": {
+        "en": "The latest technical specifications, loudness and opening and closing requirements must be obtained.",
+        "zhHans": "必须取得最新技术规范、响度和片头片尾要求。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "Based on channel specifications as the only basis",
+            "zhHans": "以频道规范为唯一依据"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Subject to delivery specifications",
+            "zhHans": "以交付规范为准"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "MXF/QuickTime, per specification",
+            "zhHans": "MXF/QuickTime，按规范"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "According to XDCAM, DNxHD and other conventions",
+            "zhHans": "按 XDCAM、DNxHD 等约定"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "Meet the legal level and code rate",
+            "zhHans": "满足合法电平和码率"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "Channel layout, loudness and peaking as per specification",
+            "zhHans": "声道布局、响度和峰值按规范"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Rec.709/Legal scope according to specifications",
+            "zhHans": "Rec.709/合法范围按规范"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "Named by playlist",
+            "zhHans": "按送播单命名"
+          }
+        }
+      ],
       "subtitles": [
-        "字幕交付方式和语言版本以频道技术规范为准。"
+        {
+          "en": "Subtitle delivery method and language version are subject to channel technical specifications.",
+          "zhHans": "字幕交付方式和语言版本以频道技术规范为准。"
+        }
       ],
       "summary": {
         "en": "Follow the channel delivery specification exactly.",
@@ -666,28 +1662,121 @@
       }
     },
     {
-      "bitrate": "由 DCP 交付规范、画幅与院线 QC 要求决定",
+      "bitrate": {
+        "en": "Determined by DCP delivery specifications, format and theater QC requirements",
+        "zhHans": "由 DCP 交付规范、画幅与院线 QC 要求决定"
+      },
       "fileChecks": [
-        "在专业播放器完整 QC",
-        "核对画幅、帧率、XYZ 与 JPEG 2000",
-        "检查多声道映射",
-        "核对加密、KDM 与命名规范"
+        {
+          "en": "Complete QC in Professional Player",
+          "zhHans": "在专业播放器完整 QC"
+        },
+        {
+          "en": "Check frame, frame rate, XYZ and JPEG 2000",
+          "zhHans": "核对画幅、帧率、XYZ 与 JPEG 2000"
+        },
+        {
+          "en": "Check multichannel mapping",
+          "zhHans": "检查多声道映射"
+        },
+        {
+          "en": "Check encryption, KDM and naming conventions",
+          "zhHans": "核对加密、KDM 与命名规范"
+        }
       ],
       "id": "ex-dcp",
       "kind": "export",
-      "risk": "DCP 必须在专业播放器或影院做完整 QC；加密、KDM、声道和画幅需事先约定。",
-      "specification": {
-        "命名": "遵循 DCP 命名规范",
-        "帧率": "通常 24/25 等支持档，按影院与母版",
-        "格式": "DCP",
-        "画面": "2K/4K，Flat 或 Scope",
-        "编码": "JPEG 2000",
-        "色彩": "从受控母版正确转换到 XYZ",
-        "质量": "XYZ 色彩、影院级码率",
-        "音频": "PCM，多声道按映射"
+      "risk": {
+        "en": "DCP must be fully QC in a professional player or theater; encryption, KDM, sound channels and frames must be agreed in advance.",
+        "zhHans": "DCP 必须在专业播放器或影院做完整 QC；加密、KDM、声道和画幅需事先约定。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "2K/4K, Flat or Scope",
+            "zhHans": "2K/4K，Flat 或 Scope"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Usually 24/25 and other support files, according to theater and master",
+            "zhHans": "通常 24/25 等支持档，按影院与母版"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "DCP",
+            "zhHans": "DCP"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "JPEG 2000",
+            "zhHans": "JPEG 2000"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "XYZ color, cinematic bitrate",
+            "zhHans": "XYZ 色彩、影院级码率"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "PCM, multi-channel press mapping",
+            "zhHans": "PCM，多声道按映射"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Correct conversion from controlled master to XYZ",
+            "zhHans": "从受控母版正确转换到 XYZ"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "Follow DCP naming conventions",
+            "zhHans": "遵循 DCP 命名规范"
+          }
+        }
+      ],
       "subtitles": [
-        "字幕应使用影院约定的烧录或可选字幕轨，并与 DCP 包版本对应。"
+        {
+          "en": "Subtitles should use theater-agreed burned or optional subtitle tracks and correspond to the DCP package version.",
+          "zhHans": "字幕应使用影院约定的烧录或可选字幕轨，并与 DCP 包版本对应。"
+        }
       ],
       "summary": {
         "en": "Create a cinema package and perform formal quality control.",
@@ -699,28 +1788,121 @@
       }
     },
     {
-      "bitrate": "由 ProRes 4444/DNxHR 444 档位或 PNG 图像序列决定",
+      "bitrate": {
+        "en": "Determined by ProRes 4444/DNxHR 444 gear or PNG image sequence",
+        "zhHans": "由 ProRes 4444/DNxHR 444 档位或 PNG 图像序列决定"
+      },
       "fileChecks": [
-        "在彩色底上检查 Alpha 边缘",
-        "核对直通/预乘说明",
-        "检查帧率、尺寸与编码",
-        "完整播放实际文件"
+        {
+          "en": "Check Alpha Edge on Color Base",
+          "zhHans": "在彩色底上检查 Alpha 边缘"
+        },
+        {
+          "en": "Check Thru/Pre-Ride Instructions",
+          "zhHans": "核对直通/预乘说明"
+        },
+        {
+          "en": "Check frame rate, size and encoding",
+          "zhHans": "检查帧率、尺寸与编码"
+        },
+        {
+          "en": "Play actual file in full",
+          "zhHans": "完整播放实际文件"
+        }
       ],
       "id": "ex-alpha",
       "kind": "export",
-      "risk": "H.264 不支持常规 Alpha；交付前在新项目叠到彩色底上检查边缘。",
-      "specification": {
-        "命名": "元素_ALPHA_规格_V版本",
-        "帧率": "与接收项目一致",
-        "格式": "QuickTime 或图像序列",
-        "画面": "元素原始尺寸",
-        "编码": "ProRes 4444 / DNxHR 444 / PNG",
-        "色彩": "说明直通/预乘与工作空间",
-        "质量": "启用 Export Alpha",
-        "音频": "按需，一般无"
+      "risk": {
+        "en": "H.264 does not support regular alpha; check edges when new items are layered onto a color background before delivery.",
+        "zhHans": "H.264 不支持常规 Alpha；交付前在新项目叠到彩色底上检查边缘。"
       },
+      "specification": [
+        {
+          "label": {
+            "en": "Picture",
+            "zhHans": "画面"
+          },
+          "value": {
+            "en": "element original size",
+            "zhHans": "元素原始尺寸"
+          }
+        },
+        {
+          "label": {
+            "en": "Frame rate",
+            "zhHans": "帧率"
+          },
+          "value": {
+            "en": "Consistent with the received item",
+            "zhHans": "与接收项目一致"
+          }
+        },
+        {
+          "label": {
+            "en": "Format",
+            "zhHans": "格式"
+          },
+          "value": {
+            "en": "QuickTime or image sequence",
+            "zhHans": "QuickTime 或图像序列"
+          }
+        },
+        {
+          "label": {
+            "en": "coding",
+            "zhHans": "编码"
+          },
+          "value": {
+            "en": "ProRes 4444/DNxHR 444/PNG",
+            "zhHans": "ProRes 4444 / DNxHR 444 / PNG"
+          }
+        },
+        {
+          "label": {
+            "en": "quality",
+            "zhHans": "质量"
+          },
+          "value": {
+            "en": "Enable Export Alpha",
+            "zhHans": "启用 Export Alpha"
+          }
+        },
+        {
+          "label": {
+            "en": "Audio",
+            "zhHans": "音频"
+          },
+          "value": {
+            "en": "On demand, generally none",
+            "zhHans": "按需，一般无"
+          }
+        },
+        {
+          "label": {
+            "en": "color",
+            "zhHans": "色彩"
+          },
+          "value": {
+            "en": "Explain passthrough/premultiplication and workspace",
+            "zhHans": "说明直通/预乘与工作空间"
+          }
+        },
+        {
+          "label": {
+            "en": "name",
+            "zhHans": "命名"
+          },
+          "value": {
+            "en": "ELEMENT_ALPHA_SPEC_VVERSION",
+            "zhHans": "元素_ALPHA_规格_V版本"
+          }
+        }
+      ],
       "subtitles": [
-        "图形元素通常不含字幕轨；如含文字，交付文本版本与字体说明。"
+        {
+          "en": "Graphic elements usually do not include subtitle tracks; if text is included, text versions and font descriptions should be delivered.",
+          "zhHans": "图形元素通常不含字幕轨；如含文字，交付文本版本与字体说明。"
+        }
       ],
       "summary": {
         "en": "Deliver lower thirds, logo animation, or compositing elements with transparency.",
@@ -735,12 +1917,24 @@
   "playbooks": [],
   "recipes": [
     {
-      "category": "剪辑",
-      "doneCheck": "第一次观看者能理解，且所有问题已标记。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "Understandable for first time viewers and all questions are tagged.",
+        "zhHans": "第一次观看者能理解，且所有问题已标记。"
+      },
       "id": "recipe-rough",
       "kind": "recipe",
-      "risk": "不要在粗剪阶段花时间做最终调色和复杂转场。",
-      "scene": "采访、剧情和宣传片的第一版。",
+      "risk": {
+        "en": "Don’t spend time doing final color corrections and complicated transitions in the rough cut stage.",
+        "zhHans": "不要在粗剪阶段花时间做最终调色和复杂转场。"
+      },
+      "scene": {
+        "en": "First edition of interviews, storylines and promos.",
+        "zhHans": "采访、剧情和宣传片的第一版。"
+      },
       "shortcutIDs": [
         "mark-in",
         "mark-out",
@@ -748,10 +1942,22 @@
         "edit-overwrite"
       ],
       "steps": [
-        "先搭主段落和关键事件",
-        "用 I/O + F9/F10 完成三点剪辑",
-        "只处理妨碍理解的声音问题",
-        "完整观看并用彩色标记记录问题"
+        {
+          "en": "Start with the main paragraph and key events",
+          "zhHans": "先搭主段落和关键事件"
+        },
+        {
+          "en": "Use I/O + F9/F10 to complete three-point editing",
+          "zhHans": "用 I/O + F9/F10 完成三点剪辑"
+        },
+        {
+          "en": "Only deal with sound problems that hinder understanding",
+          "zhHans": "只处理妨碍理解的声音问题"
+        },
+        {
+          "en": "Watch in full and note questions with color markers",
+          "zhHans": "完整观看并用彩色标记记录问题"
+        }
       ],
       "summary": {
         "en": "Create a complete story without getting lost in detail.",
@@ -763,12 +1969,24 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "素材长度、位置和轨道都符合意图。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "The footage length, placement, and tracks all fit the intent.",
+        "zhHans": "素材长度、位置和轨道都符合意图。"
+      },
       "id": "recipe-three-point",
       "kind": "recipe",
-      "risk": "插入会改变后续位置，覆盖不会；按错会破坏同步。",
-      "scene": "绝大多数叙事剪辑。",
+      "risk": {
+        "en": "Inserting will change the subsequent position, but overwriting will not; pressing the wrong button will destroy synchronization.",
+        "zhHans": "插入会改变后续位置，覆盖不会；按错会破坏同步。"
+      },
+      "scene": {
+        "en": "The vast majority of narrative cuts.",
+        "zhHans": "绝大多数叙事剪辑。"
+      },
       "shortcutIDs": [
         "mark-in",
         "mark-out",
@@ -776,10 +1994,22 @@
         "edit-overwrite"
       ],
       "steps": [
-        "源监视器设 I 和 O",
-        "时间线放置播放头或设一个时间线点",
-        "F9 插入或 F10 覆盖",
-        "检查目标轨道和音画补丁"
+        {
+          "en": "Source monitor sets I and O",
+          "zhHans": "源监视器设 I 和 O"
+        },
+        {
+          "en": "Place the playhead or set a timeline point on the timeline",
+          "zhHans": "时间线放置播放头或设一个时间线点"
+        },
+        {
+          "en": "F9 insert or F10 overwrite",
+          "zhHans": "F9 插入或 F10 覆盖"
+        },
+        {
+          "en": "Check target tracks and audiovisual patches",
+          "zhHans": "检查目标轨道和音画补丁"
+        }
       ],
       "summary": {
         "en": "Use three boundaries to place source precisely in the timeline.",
@@ -791,20 +2021,44 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "起止点对齐且运动速度可接受。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "The start and end points are aligned and the movement speed is acceptable.",
+        "zhHans": "起止点对齐且运动速度可接受。"
+      },
       "id": "recipe-four-point",
       "kind": "recipe",
-      "risk": "会改变播放速度，不适合必须保持真实速度的对白。",
-      "scene": "卡点、动作时长适配和 B-roll。",
+      "risk": {
+        "en": "Will change the playback speed, not suitable for dialogue that must maintain true speed.",
+        "zhHans": "会改变播放速度，不适合必须保持真实速度的对白。"
+      },
+      "scene": {
+        "en": "Stuck points, action duration adaptation and B-roll.",
+        "zhHans": "卡点、动作时长适配和 B-roll。"
+      },
       "shortcutIDs": [
         "edit-fit-fill"
       ],
       "steps": [
-        "源设入出点",
-        "时间线设入出点",
-        "执行 Shift+F11",
-        "在速度变化提示中确认策略"
+        {
+          "en": "Source input and output points",
+          "zhHans": "源设入出点"
+        },
+        {
+          "en": "Timeline set entry and exit points",
+          "zhHans": "时间线设入出点"
+        },
+        {
+          "en": "Execute Shift+F11",
+          "zhHans": "执行 Shift+F11"
+        },
+        {
+          "en": "Confirm strategy in speed change prompt",
+          "zhHans": "在速度变化提示中确认策略"
+        }
       ],
       "summary": {
         "en": "Make a source range fill a timeline range precisely.",
@@ -816,21 +2070,45 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "声音自然引导，切画面时不突兀。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "The sound guides naturally, and the picture is not abrupt when cutting.",
+        "zhHans": "声音自然引导，切画面时不突兀。"
+      },
       "id": "recipe-jcut",
       "kind": "recipe",
-      "risk": "声音提前量过长会让观众误解声源。",
-      "scene": "对白、采访、空间转换。",
+      "risk": {
+        "en": "Too much advance sound can cause the audience to misunderstand the source of the sound.",
+        "zhHans": "声音提前量过长会让观众误解声源。"
+      },
+      "scene": {
+        "en": "Dialogue, interviews, spatial transitions.",
+        "zhHans": "对白、采访、空间转换。"
+      },
       "shortcutIDs": [
         "tool-trim",
         "link-clips"
       ],
       "steps": [
-        "解除或临时忽略音画链接",
-        "把下一镜音频左边缘向前延伸",
-        "保留上一镜画面覆盖这段声音",
-        "补交叉淡化并听房间底噪"
+        {
+          "en": "Remove or temporarily ignore audio and video links",
+          "zhHans": "解除或临时忽略音画链接"
+        },
+        {
+          "en": "Extend the left edge of the next audio frame forward",
+          "zhHans": "把下一镜音频左边缘向前延伸"
+        },
+        {
+          "en": "Keep the previous scene and cover this sound",
+          "zhHans": "保留上一镜画面覆盖这段声音"
+        },
+        {
+          "en": "Fill in the crossfade and listen to the room noise floor",
+          "zhHans": "补交叉淡化并听房间底噪"
+        }
       ],
       "summary": {
         "en": "Let the next shot’s audio lead viewers into the new space.",
@@ -842,21 +2120,45 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "观众仍清楚谁在说话，情绪延续自然。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "The audience still knows who is speaking, and the emotion continues naturally.",
+        "zhHans": "观众仍清楚谁在说话，情绪延续自然。"
+      },
       "id": "recipe-lcut",
       "kind": "recipe",
-      "risk": "留声过久会让口型和语义关系混乱。",
-      "scene": "对白反应镜头和采访 B-roll。",
+      "risk": {
+        "en": "Leaving your voice for too long will confuse the relationship between mouth shape and semantics.",
+        "zhHans": "留声过久会让口型和语义关系混乱。"
+      },
+      "scene": {
+        "en": "Dialogue reaction shots and interviews B-roll.",
+        "zhHans": "对白反应镜头和采访 B-roll。"
+      },
       "shortcutIDs": [
         "tool-trim",
         "link-clips"
       ],
       "steps": [
-        "先确定画面切点",
-        "把上一镜音频右边缘向后延伸",
-        "用反应镜头覆盖画面",
-        "平衡两段环境声"
+        {
+          "en": "Determine the cutting point of the screen first",
+          "zhHans": "先确定画面切点"
+        },
+        {
+          "en": "Extend the right edge of the previous audio audio backwards",
+          "zhHans": "把上一镜音频右边缘向后延伸"
+        },
+        {
+          "en": "Cover the frame with reaction shots",
+          "zhHans": "用反应镜头覆盖画面"
+        },
+        {
+          "en": "Balance two ambient sounds",
+          "zhHans": "平衡两段环境声"
+        }
       ],
       "summary": {
         "en": "Keep the previous shot’s audio over a reaction or new picture.",
@@ -868,18 +2170,42 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "源监视器定位到同一内容帧。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "The source monitor is positioned to the same content frame.",
+        "zhHans": "源监视器定位到同一内容帧。"
+      },
       "id": "recipe-match-frame",
       "kind": "recipe",
-      "risk": "多机位、复合片段或速度变化时要确认匹配层级。",
-      "scene": "替换镜头、寻找前后余量。",
+      "risk": {
+        "en": "Verify matching levels when working with multiple cameras, composite clips, or speed changes.",
+        "zhHans": "多机位、复合片段或速度变化时要确认匹配层级。"
+      },
+      "scene": {
+        "en": "Replace lenses and look for front and rear margin.",
+        "zhHans": "替换镜头、寻找前后余量。"
+      },
       "shortcutIDs": [],
       "steps": [
-        "选中或把播放头停在目标镜头",
-        "执行 Match Frame（默认 F）",
-        "在源监视器查看原片上下文",
-        "重新设入出点并替换"
+        {
+          "en": "Select or stop the playhead at the target shot",
+          "zhHans": "选中或把播放头停在目标镜头"
+        },
+        {
+          "en": "Execute Match Frame (default F)",
+          "zhHans": "执行 Match Frame（默认 F）"
+        },
+        {
+          "en": "View the original film in context in the source monitor",
+          "zhHans": "在源监视器查看原片上下文"
+        },
+        {
+          "en": "Reset entry and exit points and replace",
+          "zhHans": "重新设入出点并替换"
+        }
       ],
       "summary": {
         "en": "Locate a timeline shot’s source while retaining the current frame.",
@@ -891,20 +2217,44 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "时长不变且关键动作帧对齐。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "Duration remains unchanged and key action frames are aligned.",
+        "zhHans": "时长不变且关键动作帧对齐。"
+      },
       "id": "recipe-replace",
       "kind": "recipe",
-      "risk": "替换依据当前帧对齐，源播放头位置错误会造成整体错位。",
-      "scene": "寻找更好表演或 B-roll。",
+      "risk": {
+        "en": "Replacement is aligned based on the current frame. Wrong position of the source playhead will cause overall misalignment.",
+        "zhHans": "替换依据当前帧对齐，源播放头位置错误会造成整体错位。"
+      },
+      "scene": {
+        "en": "Looking for better shows or B-roll.",
+        "zhHans": "寻找更好表演或 B-roll。"
+      },
       "shortcutIDs": [
         "edit-replace"
       ],
       "steps": [
-        "在时间线把播放头放到对齐参考帧",
-        "源监视器定位希望对齐的帧",
-        "按 F11 替换",
-        "检查动作对齐和音轨"
+        {
+          "en": "Move the playhead to the alignment reference frame in the timeline",
+          "zhHans": "在时间线把播放头放到对齐参考帧"
+        },
+        {
+          "en": "Source monitor locates the frame you wish to align",
+          "zhHans": "源监视器定位希望对齐的帧"
+        },
+        {
+          "en": "Press F11 to replace",
+          "zhHans": "按 F11 替换"
+        },
+        {
+          "en": "Check motion alignment and audio tracks",
+          "zhHans": "检查动作对齐和音轨"
+        }
       ],
       "summary": {
         "en": "Replace a current shot without changing its timeline position or duration.",
@@ -916,22 +2266,49 @@
       }
     },
     {
-      "category": "声音",
-      "doneCheck": "闭眼听不到剪辑点，词句清楚。",
+      "category": {
+        "en": "sound",
+        "zhHans": "声音"
+      },
+      "doneCheck": {
+        "en": "You can't hear the editing points with your eyes closed, but the words are clear.",
+        "zhHans": "闭眼听不到剪辑点，词句清楚。"
+      },
       "id": "recipe-dialogue",
       "kind": "recipe",
-      "risk": "过度降噪会产生水下和金属质感。",
-      "scene": "剧情对白、采访。",
+      "risk": {
+        "en": "Excessive noise reduction can create an underwater and metallic quality.",
+        "zhHans": "过度降噪会产生水下和金属质感。"
+      },
+      "scene": {
+        "en": "Plot dialogue and interviews.",
+        "zhHans": "剧情对白、采访。"
+      },
       "shortcutIDs": [
         "split-playhead",
         "play-space"
       ],
       "steps": [
-        "先用片段增益拉近主观响度",
-        "修掉爆点和明显杂音",
-        "剪辑点加极短交叉淡化",
-        "用独立房间底噪覆盖空洞",
-        "最后才加 EQ、压缩和适量降噪"
+        {
+          "en": "First use segment gain to bring the subjective loudness closer",
+          "zhHans": "先用片段增益拉近主观响度"
+        },
+        {
+          "en": "Repair explosive spots and obvious noise",
+          "zhHans": "修掉爆点和明显杂音"
+        },
+        {
+          "en": "Edit point plus very short crossfade",
+          "zhHans": "剪辑点加极短交叉淡化"
+        },
+        {
+          "en": "Cover the hole with independent room noise floor",
+          "zhHans": "用独立房间底噪覆盖空洞"
+        },
+        {
+          "en": "Finally add EQ, compression and moderate noise reduction",
+          "zhHans": "最后才加 EQ、压缩和适量降噪"
+        }
       ],
       "summary": {
         "en": "Make edited dialogue sound like it belongs in one space.",
@@ -943,19 +2320,46 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "节奏自然，关键动作落点准确，无明显伪影。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "The rhythm is natural, key movements are accurately placed, and there are no obvious artifacts.",
+        "zhHans": "节奏自然，关键动作落点准确，无明显伪影。"
+      },
       "id": "recipe-speed",
       "kind": "recipe",
-      "risk": "光流在交叉物体、运动模糊和遮挡处可能生成假帧。",
-      "scene": "动作、产品、转场。",
+      "risk": {
+        "en": "Optical flow may generate false frames at crossing objects, motion blur, and occlusions.",
+        "zhHans": "光流在交叉物体、运动模糊和遮挡处可能生成假帧。"
+      },
+      "scene": {
+        "en": "Action, product, transition.",
+        "zhHans": "动作、产品、转场。"
+      },
       "shortcutIDs": [],
       "steps": [
-        "先在正常速度完成剪辑",
-        "设置变速点",
-        "用曲线调整速度和帧位置",
-        "慢动作选择合适的重定时过程",
-        "逐帧检查扭曲和重影"
+        {
+          "en": "Complete editing at normal speed first",
+          "zhHans": "先在正常速度完成剪辑"
+        },
+        {
+          "en": "Set shift point",
+          "zhHans": "设置变速点"
+        },
+        {
+          "en": "Adjust speed and frame position with curves",
+          "zhHans": "用曲线调整速度和帧位置"
+        },
+        {
+          "en": "Choose the right retiming process for slow motion",
+          "zhHans": "慢动作选择合适的重定时过程"
+        },
+        {
+          "en": "Check for distortion and ghosting frame by frame",
+          "zhHans": "逐帧检查扭曲和重影"
+        }
       ],
       "summary": {
         "en": "Give speed ramps motivation without visible stutter.",
@@ -967,19 +2371,46 @@
       }
     },
     {
-      "category": "剪辑",
-      "doneCheck": "抖动减弱且运动仍自然，裁切可接受。",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
+      "doneCheck": {
+        "en": "Shake is reduced and movement remains natural, and cropping is acceptable.",
+        "zhHans": "抖动减弱且运动仍自然，裁切可接受。"
+      },
       "id": "recipe-stabilize",
       "kind": "recipe",
-      "risk": "稳定越强不一定越好，可能放大滚动快门或造成画面漂浮。",
-      "scene": "手持、长焦、轻微机械震动。",
+      "risk": {
+        "en": "Stronger stabilization is not necessarily better, as it may enlarge the rolling shutter or cause the image to float.",
+        "zhHans": "稳定越强不一定越好，可能放大滚动快门或造成画面漂浮。"
+      },
+      "scene": {
+        "en": "Handheld, telephoto, slight mechanical vibration.",
+        "zhHans": "手持、长焦、轻微机械震动。"
+      },
       "shortcutIDs": [],
       "steps": [
-        "先完成镜头长度和速度",
-        "分析 Stabilizer",
-        "从 Similarity 或 Translation 开始",
-        "降低强度并检查裁切",
-        "逐帧检查边缘和果冻感"
+        {
+          "en": "Complete lens length and speed first",
+          "zhHans": "先完成镜头长度和速度"
+        },
+        {
+          "en": "Analysis Stabilizer",
+          "zhHans": "分析 Stabilizer"
+        },
+        {
+          "en": "Start with Similarity or Translation",
+          "zhHans": "从 Similarity 或 Translation 开始"
+        },
+        {
+          "en": "Reduce intensity and check cropping",
+          "zhHans": "降低强度并检查裁切"
+        },
+        {
+          "en": "Check edges and jelly on a frame-by-frame basis",
+          "zhHans": "逐帧检查边缘和果冻感"
+        }
       ],
       "summary": {
         "en": "Reduce unintended shake while preserving intentional movement.",
@@ -991,22 +2422,49 @@
       }
     },
     {
-      "category": "调色",
-      "doneCheck": "中性物体合理、主体清楚、高光和阴影有意图。",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
+      "doneCheck": {
+        "en": "Neutral objects make sense, subjects are clear, and highlights and shadows have intention.",
+        "zhHans": "中性物体合理、主体清楚、高光和阴影有意图。"
+      },
       "id": "recipe-balance",
       "kind": "recipe",
-      "risk": "不要用黑位压死来制造所谓电影感。",
-      "scene": "每个镜头进入创意调色前。",
+      "risk": {
+        "en": "Don’t use black level suppression to create the so-called cinematic feel.",
+        "zhHans": "不要用黑位压死来制造所谓电影感。"
+      },
+      "scene": {
+        "en": "Every shot goes into creative color grading.",
+        "zhHans": "每个镜头进入创意调色前。"
+      },
       "shortcutIDs": [
         "nav-color",
         "node-serial"
       ],
       "steps": [
-        "确认输入转换",
-        "查看 Waveform 与 RGB Parade",
-        "用 Offset/全局曝光定位整体",
-        "用 Lift/Gamma/Gain 或 HDR 区域细修",
-        "检查饱和度与通道削波"
+        {
+          "en": "Confirm input conversion",
+          "zhHans": "确认输入转换"
+        },
+        {
+          "en": "View Waveform and RGB Parade",
+          "zhHans": "查看 Waveform 与 RGB Parade"
+        },
+        {
+          "en": "Position the whole using Offset/Global Exposure",
+          "zhHans": "用 Offset/全局曝光定位整体"
+        },
+        {
+          "en": "Refine with Lift/Gamma/Gain or HDR regions",
+          "zhHans": "用 Lift/Gamma/Gain 或 HDR 区域细修"
+        },
+        {
+          "en": "Check saturation and channel clipping",
+          "zhHans": "检查饱和度与通道削波"
+        }
       ],
       "summary": {
         "en": "Use scopes to establish believable exposure, white balance, and saturation.",
@@ -1018,22 +2476,49 @@
       }
     },
     {
-      "category": "调色",
-      "doneCheck": "连续播放时观众不会被亮度或色偏跳变打断。",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
+      "doneCheck": {
+        "en": "Viewers will not be interrupted by jumps in brightness or color casts during continuous playback.",
+        "zhHans": "连续播放时观众不会被亮度或色偏跳变打断。"
+      },
       "id": "recipe-match-shots",
       "kind": "recipe",
-      "risk": "不要匹配屏幕上恰好不同的物体，要匹配共同参照和光线意图。",
-      "scene": "剧情场景、采访多机位。",
+      "risk": {
+        "en": "Don't match objects that happen to be different on the screen, match common references and lighting intent.",
+        "zhHans": "不要匹配屏幕上恰好不同的物体，要匹配共同参照和光线意图。"
+      },
+      "scene": {
+        "en": "Multiple cameras for plot scenes and interviews.",
+        "zhHans": "剧情场景、采访多机位。"
+      },
       "shortcutIDs": [
         "grab-still",
         "node-serial"
       ],
       "steps": [
-        "选英雄镜头并抓取静帧",
-        "开启分屏或参考擦除",
-        "先匹配曝光层级",
-        "再匹配综合色偏和饱和度",
-        "最后处理局部差异"
+        {
+          "en": "Select a hero shot and capture a still frame",
+          "zhHans": "选英雄镜头并抓取静帧"
+        },
+        {
+          "en": "Turn on split screen or reference wipe",
+          "zhHans": "开启分屏或参考擦除"
+        },
+        {
+          "en": "Match the exposure level first",
+          "zhHans": "先匹配曝光层级"
+        },
+        {
+          "en": "Then match the comprehensive color cast and saturation",
+          "zhHans": "再匹配综合色偏和饱和度"
+        },
+        {
+          "en": "Finally deal with local differences",
+          "zhHans": "最后处理局部差异"
+        }
       ],
       "summary": {
         "en": "Keep angles in one scene continuous in brightness, white balance, and saturation.",
@@ -1045,22 +2530,49 @@
       }
     },
     {
-      "category": "调色",
-      "doneCheck": "皮肤自然、选择稳定、背景无明显污染。",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
+      "doneCheck": {
+        "en": "The skin is natural, the selection is stable, and there is no obvious pollution in the background.",
+        "zhHans": "皮肤自然、选择稳定、背景无明显污染。"
+      },
       "id": "recipe-skin",
       "kind": "recipe",
-      "risk": "肤色线不是绝对目标；不同肤色和光线应保留差异。",
-      "scene": "人物近景、混合光。",
+      "risk": {
+        "en": "The skin tone line is not an absolute goal; differences should be preserved for different skin tones and lighting.",
+        "zhHans": "肤色线不是绝对目标；不同肤色和光线应保留差异。"
+      },
+      "scene": {
+        "en": "Close shot of character, mixed light.",
+        "zhHans": "人物近景、混合光。"
+      },
       "shortcutIDs": [
         "highlight-toggle",
         "node-serial"
       ],
       "steps": [
-        "先完成整体白平衡",
-        "限定器选择皮肤并柔化键",
-        "用窗口限制区域并跟踪",
-        "在矢量示波器参考肤色方向",
-        "回看蒙版边缘和运动"
+        {
+          "en": "Complete the overall white balance first",
+          "zhHans": "先完成整体白平衡"
+        },
+        {
+          "en": "Qualifier selects skin and softens keys",
+          "zhHans": "限定器选择皮肤并柔化键"
+        },
+        {
+          "en": "Limit area with window and track",
+          "zhHans": "用窗口限制区域并跟踪"
+        },
+        {
+          "en": "Reference skin color direction on vectorscope",
+          "zhHans": "在矢量示波器参考肤色方向"
+        },
+        {
+          "en": "Review mask edges and motion",
+          "zhHans": "回看蒙版边缘和运动"
+        }
       ],
       "summary": {
         "en": "Correct skin without contaminating the background.",
@@ -1072,25 +2584,58 @@
       }
     },
     {
-      "category": "调色",
-      "doneCheck": "节点命名清楚，旁路任一层都能理解其作用。",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
+      "doneCheck": {
+        "en": "The nodes are clearly named so that any layer of the bypass can understand their role.",
+        "zhHans": "节点命名清楚，旁路任一层都能理解其作用。"
+      },
       "id": "recipe-nodes",
       "kind": "recipe",
-      "risk": "项目级色彩管理和 CST 节点不要重复执行输出变换。",
-      "scene": "中小型 SDR 项目。",
+      "risk": {
+        "en": "Project-level color management and CST nodes do not perform output transformations repeatedly.",
+        "zhHans": "项目级色彩管理和 CST 节点不要重复执行输出变换。"
+      },
+      "scene": {
+        "en": "Small and medium-sized SDR projects.",
+        "zhHans": "中小型 SDR 项目。"
+      },
       "shortcutIDs": [
         "node-serial",
         "node-parallel",
         "node-layer"
       ],
       "steps": [
-        "01 降噪（需要时）",
-        "02 输入/曝光",
-        "03 白平衡与匹配",
-        "04 肤色/局部",
-        "05 Look",
-        "06 输出前修整",
-        "输出变换由项目管理或独立节点统一负责"
+        {
+          "en": "01 Noise reduction (when needed)",
+          "zhHans": "01 降噪（需要时）"
+        },
+        {
+          "en": "02 Input/Exposure",
+          "zhHans": "02 输入/曝光"
+        },
+        {
+          "en": "03 White balance and matching",
+          "zhHans": "03 白平衡与匹配"
+        },
+        {
+          "en": "04 skin color/local",
+          "zhHans": "04 肤色/局部"
+        },
+        {
+          "en": "05 Look",
+          "zhHans": "05 Look"
+        },
+        {
+          "en": "06 Trimming before output",
+          "zhHans": "06 输出前修整"
+        },
+        {
+          "en": "Output transformation is the responsibility of project management or independent nodes.",
+          "zhHans": "输出变换由项目管理或独立节点统一负责"
+        }
       ],
       "summary": {
         "en": "Separate technical, subject, and look adjustments for reuse and revision.",
@@ -1102,21 +2647,48 @@
       }
     },
     {
-      "category": "调色",
-      "doneCheck": "正常速度看不出窗口边缘，跟踪不漂移。",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
+      "doneCheck": {
+        "en": "At normal speed, the edge of the window cannot be seen, and the tracking does not drift.",
+        "zhHans": "正常速度看不出窗口边缘，跟踪不漂移。"
+      },
       "id": "recipe-window",
       "kind": "recipe",
-      "risk": "窗口过硬或提亮过强会像舞台追光。",
-      "scene": "提亮脸、压暗背景、修局部色偏。",
+      "risk": {
+        "en": "If the window is too hard or the brightness is too strong, it will look like a stage chasing light.",
+        "zhHans": "窗口过硬或提亮过强会像舞台追光。"
+      },
+      "scene": {
+        "en": "Brighten the face, darken the background, and correct partial color casts.",
+        "zhHans": "提亮脸、压暗背景、修局部色偏。"
+      },
       "shortcutIDs": [
         "highlight-toggle"
       ],
       "steps": [
-        "建立柔和 Power Window",
-        "先在代表性帧设置形状和羽化",
-        "正向与反向跟踪",
-        "检查遮挡和出画",
-        "逐段修正漂移关键帧"
+        {
+          "en": "Create a Soft Power Window",
+          "zhHans": "建立柔和 Power Window"
+        },
+        {
+          "en": "Start by setting the shape and feathering on a representative frame",
+          "zhHans": "先在代表性帧设置形状和羽化"
+        },
+        {
+          "en": "Forward and reverse tracking",
+          "zhHans": "正向与反向跟踪"
+        },
+        {
+          "en": "Check occlusion and draw out",
+          "zhHans": "检查遮挡和出画"
+        },
+        {
+          "en": "Correct drift keyframes piece by piece",
+          "zhHans": "逐段修正漂移关键帧"
+        }
       ],
       "summary": {
         "en": "Guide attention locally without leaving visible artifacts.",
@@ -1128,19 +2700,46 @@
       }
     },
     {
-      "category": "调色",
-      "doneCheck": "暂停和播放都自然，无拖影、蜡感和锐利边缘。",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
+      "doneCheck": {
+        "en": "Pause and play are natural, without smear, waxiness or sharp edges.",
+        "zhHans": "暂停和播放都自然，无拖影、蜡感和锐利边缘。"
+      },
       "id": "recipe-denoise",
       "kind": "recipe",
-      "risk": "Studio 的降噪很重，参数过大会损失皮肤纹理并拖慢渲染。",
-      "scene": "高 ISO、暗部提升、风格统一。",
+      "risk": {
+        "en": "Studio's noise reduction is very heavy, and if the parameters are too high, the skin texture will be lost and the rendering will be slowed down.",
+        "zhHans": "Studio 的降噪很重，参数过大会损失皮肤纹理并拖慢渲染。"
+      },
+      "scene": {
+        "en": "High ISO, enhanced shadows, unified style.",
+        "zhHans": "高 ISO、暗部提升、风格统一。"
+      },
       "shortcutIDs": [],
       "steps": [
-        "需要时先做时域降噪",
-        "少量空域降噪处理残留",
-        "完成主要调色",
-        "轻微锐化或中频细节",
-        "最后加颗粒统一质感"
+        {
+          "en": "Do time domain noise reduction first if necessary",
+          "zhHans": "需要时先做时域降噪"
+        },
+        {
+          "en": "A small amount of spatial noise reduction processing remains",
+          "zhHans": "少量空域降噪处理残留"
+        },
+        {
+          "en": "Complete main color grading",
+          "zhHans": "完成主要调色"
+        },
+        {
+          "en": "Slight sharpening or mid-frequency detail",
+          "zhHans": "轻微锐化或中频细节"
+        },
+        {
+          "en": "Finally, add particles to unify the texture",
+          "zhHans": "最后加颗粒统一质感"
+        }
       ],
       "summary": {
         "en": "Balance detail, noise, and texture.",
@@ -1152,22 +2751,49 @@
       }
     },
     {
-      "category": "检查",
-      "doneCheck": "清单全部关闭，最终文件完整观看通过。",
+      "category": {
+        "en": "examine",
+        "zhHans": "检查"
+      },
+      "doneCheck": {
+        "en": "The list is all closed and the final file is viewed in its entirety and passed.",
+        "zhHans": "清单全部关闭，最终文件完整观看通过。"
+      },
       "id": "recipe-qc",
       "kind": "recipe",
-      "risk": "边看边改会失去全片体验，并容易漏记后续问题。",
-      "scene": "画面锁定和最终输出前。",
+      "risk": {
+        "en": "If you make changes while watching, you will lose the entire movie experience and easily miss follow-up questions.",
+        "zhHans": "边看边改会失去全片体验，并容易漏记后续问题。"
+      },
+      "scene": {
+        "en": "Screen lock and before final output.",
+        "zhHans": "画面锁定和最终输出前。"
+      },
       "shortcutIDs": [
         "play-space",
         "marker-add"
       ],
       "steps": [
-        "第一遍不中断观看故事",
-        "第二遍逐项查技术与文字",
-        "第三遍盲听声音再静音看画面",
-        "问题统一记录时间码",
-        "修复后重新完整观看"
+        {
+          "en": "Watch the story for the first time without interruption",
+          "zhHans": "第一遍不中断观看故事"
+        },
+        {
+          "en": "Check the technology and text item by item for the second time",
+          "zhHans": "第二遍逐项查技术与文字"
+        },
+        {
+          "en": "Blindly listen to the sound for the third time and then watch the picture with mute",
+          "zhHans": "第三遍盲听声音再静音看画面"
+        },
+        {
+          "en": "Problem unified recording time code",
+          "zhHans": "问题统一记录时间码"
+        },
+        {
+          "en": "Watch it again after repair",
+          "zhHans": "修复后重新完整观看"
+        }
       ],
       "summary": {
         "en": "Check story, technical details, and sound separately.",
@@ -1179,19 +2805,46 @@
       }
     },
     {
-      "category": "归档",
-      "doneCheck": "另一台机器或干净路径能打开并重链接。",
+      "category": {
+        "en": "Archive",
+        "zhHans": "归档"
+      },
+      "doneCheck": {
+        "en": "Another machine or a clean path can be opened and reconnected.",
+        "zhHans": "另一台机器或干净路径能打开并重链接。"
+      },
       "id": "recipe-archive",
       "kind": "recipe",
-      "risk": "只保留发布 MP4 不算归档。",
-      "scene": "所有正式交付项目。",
+      "risk": {
+        "en": "Posting only MP4s does not count as an archive.",
+        "zhHans": "只保留发布 MP4 不算归档。"
+      },
+      "scene": {
+        "en": "All officially delivered projects.",
+        "zhHans": "所有正式交付项目。"
+      },
       "shortcutIDs": [],
       "steps": [
-        "导出 DRP/DRA",
-        "媒体管理收集使用素材与片柄",
-        "保存母版、字幕和音频分轨",
-        "附 LUT、字体与插件清单",
-        "写 README 并做随机恢复测试"
+        {
+          "en": "Export DRP/DRA",
+          "zhHans": "导出 DRP/DRA"
+        },
+        {
+          "en": "Media management collects and uses materials and titles",
+          "zhHans": "媒体管理收集使用素材与片柄"
+        },
+        {
+          "en": "Save masters, subtitles and audio tracks",
+          "zhHans": "保存母版、字幕和音频分轨"
+        },
+        {
+          "en": "Attached is a list of LUTs, fonts and plug-ins",
+          "zhHans": "附 LUT、字体与插件清单"
+        },
+        {
+          "en": "Write a README and do random recovery testing",
+          "zhHans": "写 README 并做随机恢复测试"
+        }
       ],
       "summary": {
         "en": "Keep a project recoverable after months or on a different computer.",
@@ -1205,7 +2858,10 @@
   ],
   "shortcuts": [
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-project",
       "kind": "shortcut",
@@ -1234,7 +2890,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-media",
       "kind": "shortcut",
@@ -1263,7 +2922,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-cut",
       "kind": "shortcut",
@@ -1291,7 +2953,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-edit",
       "kind": "shortcut",
@@ -1322,7 +2987,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-fusion",
       "kind": "shortcut",
@@ -1350,7 +3018,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-color",
       "kind": "shortcut",
@@ -1378,7 +3049,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-fairlight",
       "kind": "shortcut",
@@ -1406,7 +3080,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-deliver",
       "kind": "shortcut",
@@ -1434,7 +3111,10 @@
       ]
     },
     {
-      "category": "导航",
+      "category": {
+        "en": "navigation",
+        "zhHans": "导航"
+      },
       "flags": [],
       "id": "nav-settings",
       "kind": "shortcut",
@@ -1463,7 +3143,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "play-space",
       "kind": "shortcut",
@@ -1493,7 +3176,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "play-j",
       "kind": "shortcut",
@@ -1519,7 +3205,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "play-k",
       "kind": "shortcut",
@@ -1545,7 +3234,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "play-l",
       "kind": "shortcut",
@@ -1571,7 +3263,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "frame-left",
       "kind": "shortcut",
@@ -1597,7 +3292,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "frame-right",
       "kind": "shortcut",
@@ -1623,7 +3321,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "edit-prev",
       "kind": "shortcut",
@@ -1649,7 +3350,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "edit-next",
       "kind": "shortcut",
@@ -1675,7 +3379,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "mark-in",
       "kind": "shortcut",
@@ -1702,7 +3409,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "mark-out",
       "kind": "shortcut",
@@ -1729,7 +3439,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "mark-clip",
       "kind": "shortcut",
@@ -1755,7 +3468,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "marker-add",
       "kind": "shortcut",
@@ -1785,7 +3501,10 @@
       ]
     },
     {
-      "category": "工具",
+      "category": {
+        "en": "tool",
+        "zhHans": "工具"
+      },
       "flags": [],
       "id": "tool-select",
       "kind": "shortcut",
@@ -1811,7 +3530,10 @@
       ]
     },
     {
-      "category": "工具",
+      "category": {
+        "en": "tool",
+        "zhHans": "工具"
+      },
       "flags": [],
       "id": "tool-trim",
       "kind": "shortcut",
@@ -1837,7 +3559,10 @@
       ]
     },
     {
-      "category": "工具",
+      "category": {
+        "en": "tool",
+        "zhHans": "工具"
+      },
       "flags": [],
       "id": "tool-blade",
       "kind": "shortcut",
@@ -1863,7 +3588,10 @@
       ]
     },
     {
-      "category": "剪辑",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
       "flags": [],
       "id": "split-playhead",
       "kind": "shortcut",
@@ -1892,7 +3620,10 @@
       ]
     },
     {
-      "category": "工具",
+      "category": {
+        "en": "tool",
+        "zhHans": "工具"
+      },
       "flags": [],
       "id": "snap-toggle",
       "kind": "shortcut",
@@ -1918,7 +3649,10 @@
       ]
     },
     {
-      "category": "三点剪辑",
+      "category": {
+        "en": "Three point editing",
+        "zhHans": "三点剪辑"
+      },
       "flags": [],
       "id": "edit-insert",
       "kind": "shortcut",
@@ -1944,7 +3678,10 @@
       ]
     },
     {
-      "category": "三点剪辑",
+      "category": {
+        "en": "Three point editing",
+        "zhHans": "三点剪辑"
+      },
       "flags": [],
       "id": "edit-overwrite",
       "kind": "shortcut",
@@ -1970,7 +3707,10 @@
       ]
     },
     {
-      "category": "三点剪辑",
+      "category": {
+        "en": "Three point editing",
+        "zhHans": "三点剪辑"
+      },
       "flags": [],
       "id": "edit-replace",
       "kind": "shortcut",
@@ -1996,7 +3736,10 @@
       ]
     },
     {
-      "category": "三点剪辑",
+      "category": {
+        "en": "Three point editing",
+        "zhHans": "三点剪辑"
+      },
       "flags": [
         "risk"
       ],
@@ -2026,7 +3769,10 @@
       ]
     },
     {
-      "category": "通用",
+      "category": {
+        "en": "Universal",
+        "zhHans": "通用"
+      },
       "flags": [],
       "id": "undo",
       "kind": "shortcut",
@@ -2056,7 +3802,10 @@
       ]
     },
     {
-      "category": "通用",
+      "category": {
+        "en": "Universal",
+        "zhHans": "通用"
+      },
       "flags": [],
       "id": "redo",
       "kind": "shortcut",
@@ -2088,7 +3837,10 @@
       ]
     },
     {
-      "category": "剪辑",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
       "flags": [
         "risk"
       ],
@@ -2118,7 +3870,10 @@
       ]
     },
     {
-      "category": "修剪",
+      "category": {
+        "en": "prune",
+        "zhHans": "修剪"
+      },
       "flags": [],
       "id": "trim-extend",
       "kind": "shortcut",
@@ -2144,7 +3899,10 @@
       ]
     },
     {
-      "category": "修剪",
+      "category": {
+        "en": "prune",
+        "zhHans": "修剪"
+      },
       "flags": [],
       "id": "edit-point",
       "kind": "shortcut",
@@ -2170,7 +3928,10 @@
       ]
     },
     {
-      "category": "转场",
+      "category": {
+        "en": "Transition",
+        "zhHans": "转场"
+      },
       "flags": [],
       "id": "transition-default",
       "kind": "shortcut",
@@ -2198,7 +3959,10 @@
       ]
     },
     {
-      "category": "剪辑",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
       "flags": [],
       "id": "link-clips",
       "kind": "shortcut",
@@ -2228,7 +3992,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "node-serial",
       "kind": "shortcut",
@@ -2256,7 +4023,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "node-parallel",
       "kind": "shortcut",
@@ -2284,7 +4054,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "node-layer",
       "kind": "shortcut",
@@ -2312,7 +4085,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "node-disable",
       "kind": "shortcut",
@@ -2340,7 +4116,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "grade-bypass",
       "kind": "shortcut",
@@ -2368,7 +4147,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "highlight-toggle",
       "kind": "shortcut",
@@ -2396,7 +4178,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [
         "risk"
       ],
@@ -2428,7 +4213,10 @@
       ]
     },
     {
-      "category": "输出",
+      "category": {
+        "en": "output",
+        "zhHans": "输出"
+      },
       "flags": [
         "mapping",
         "risk"
@@ -2453,7 +4241,10 @@
       "win": []
     },
     {
-      "category": "查看",
+      "category": {
+        "en": "Check",
+        "zhHans": "查看"
+      },
       "flags": [
         "risk"
       ],
@@ -2483,7 +4274,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "clear-in",
       "kind": "shortcut",
@@ -2511,7 +4305,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "clear-out",
       "kind": "shortcut",
@@ -2539,7 +4336,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "clear-inout",
       "kind": "shortcut",
@@ -2567,7 +4367,10 @@
       ]
     },
     {
-      "category": "标记",
+      "category": {
+        "en": "mark",
+        "zhHans": "标记"
+      },
       "flags": [],
       "id": "marker-next",
       "kind": "shortcut",
@@ -2595,7 +4398,10 @@
       ]
     },
     {
-      "category": "三点剪辑",
+      "category": {
+        "en": "Three point editing",
+        "zhHans": "三点剪辑"
+      },
       "flags": [],
       "id": "edit-append",
       "kind": "shortcut",
@@ -2623,7 +4429,10 @@
       ]
     },
     {
-      "category": "三点剪辑",
+      "category": {
+        "en": "Three point editing",
+        "zhHans": "三点剪辑"
+      },
       "flags": [],
       "id": "edit-place-top",
       "kind": "shortcut",
@@ -2649,7 +4458,10 @@
       ]
     },
     {
-      "category": "通用",
+      "category": {
+        "en": "Universal",
+        "zhHans": "通用"
+      },
       "flags": [],
       "id": "select-all",
       "kind": "shortcut",
@@ -2677,7 +4489,10 @@
       ]
     },
     {
-      "category": "通用",
+      "category": {
+        "en": "Universal",
+        "zhHans": "通用"
+      },
       "flags": [],
       "id": "deselect-all",
       "kind": "shortcut",
@@ -2707,7 +4522,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "timeline-start",
       "kind": "shortcut",
@@ -2734,7 +4552,10 @@
       ]
     },
     {
-      "category": "播放",
+      "category": {
+        "en": "play",
+        "zhHans": "播放"
+      },
       "flags": [],
       "id": "timeline-end",
       "kind": "shortcut",
@@ -2761,7 +4582,10 @@
       ]
     },
     {
-      "category": "剪辑",
+      "category": {
+        "en": "clip",
+        "zhHans": "剪辑"
+      },
       "flags": [],
       "id": "delete-normal",
       "kind": "shortcut",
@@ -2787,7 +4611,10 @@
       ]
     },
     {
-      "category": "修剪",
+      "category": {
+        "en": "prune",
+        "zhHans": "修剪"
+      },
       "flags": [],
       "id": "edit-side-toggle",
       "kind": "shortcut",
@@ -2813,7 +4640,10 @@
       ]
     },
     {
-      "category": "媒体",
+      "category": {
+        "en": "media",
+        "zhHans": "媒体"
+      },
       "flags": [],
       "id": "find-media",
       "kind": "shortcut",
@@ -2841,7 +4671,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "clip-grade-prev",
       "kind": "shortcut",
@@ -2867,7 +4700,10 @@
       ]
     },
     {
-      "category": "调色",
+      "category": {
+        "en": "Color grading",
+        "zhHans": "调色"
+      },
       "flags": [],
       "id": "clip-grade-next",
       "kind": "shortcut",
@@ -2897,28 +4733,70 @@
   "stages": [
     {
       "color": "#5b69d8",
-      "doneCheck": "时间线帧率、分辨率、色彩管理、备份与缓存位置均已确认。",
+      "doneCheck": {
+        "en": "Timeline frame rate, resolution, color management, backup and cache locations are confirmed.",
+        "zhHans": "时间线帧率、分辨率、色彩管理、备份与缓存位置均已确认。"
+      },
       "id": "stage-project",
       "kind": "stage",
-      "mistake": "先导素材再随意改变时间线帧率，可能产生无法逆转的节奏问题。",
+      "mistake": {
+        "en": "Randomly changing the timeline frame rate of the pilot material may cause irreversible rhythm problems.",
+        "zhHans": "先导素材再随意改变时间线帧率，可能产生无法逆转的节奏问题。"
+      },
       "number": 1,
       "proNotes": [
-        "帧率是项目级决定",
-        "输出变换只能做一次"
+        {
+          "en": "Frame rate is a project level decision",
+          "zhHans": "帧率是项目级决定"
+        },
+        {
+          "en": "Output transformation can only be done once",
+          "zhHans": "输出变换只能做一次"
+        }
       ],
       "proSteps": [
-        "先问清最终交付：横竖版、分辨率、帧率、HDR 或 SDR。",
-        "项目设置 > 主设置中先定时间线帧率；导入素材后再改可能受限。",
-        "小型 SDR 项目可用 DaVinci YRGB Color Managed；不确定时先用 Rec.709 Gamma 2.4 交付目标。",
-        "设置工作文件夹、缓存、代理和静帧位置到容量足够的高速盘。",
-        "打开实时保存，同时设定项目备份的间隔与保留数量。",
-        "创建 01_MEDIA、02_AUDIO、03_GFX、04_TIMELINES、99_EXPORTS 等媒体池文件夹。"
+        {
+          "en": "Ask first about the final deliverable: landscape or portrait, resolution, frame rate, HDR or SDR.",
+          "zhHans": "先问清最终交付：横竖版、分辨率、帧率、HDR 或 SDR。"
+        },
+        {
+          "en": "Set the timeline frame rate in Project Settings > Main Settings; changing it after importing the material may be restricted.",
+          "zhHans": "项目设置 > 主设置中先定时间线帧率；导入素材后再改可能受限。"
+        },
+        {
+          "en": "Use DaVinci YRGB Color Managed for small SDR projects; when in doubt start with Rec.709 Gamma 2.4 to deliver the target.",
+          "zhHans": "小型 SDR 项目可用 DaVinci YRGB Color Managed；不确定时先用 Rec.709 Gamma 2.4 交付目标。"
+        },
+        {
+          "en": "Set the working folder, cache, proxy and still frame locations to a high-speed disk with sufficient capacity.",
+          "zhHans": "设置工作文件夹、缓存、代理和静帧位置到容量足够的高速盘。"
+        },
+        {
+          "en": "Turn on real-time saving and set the interval and retention quantity of project backups.",
+          "zhHans": "打开实时保存，同时设定项目备份的间隔与保留数量。"
+        },
+        {
+          "en": "Create media pool folders such as 01_MEDIA, 02_AUDIO, 03_GFX, 04_TIMELINES, 99_EXPORTS, etc.",
+          "zhHans": "创建 01_MEDIA、02_AUDIO、03_GFX、04_TIMELINES、99_EXPORTS 等媒体池文件夹。"
+        }
       ],
       "quickSteps": [
-        "新建项目并立即命名",
-        "确认时间线分辨率与帧率",
-        "选择色彩管理方案",
-        "设置自动保存与项目备份"
+        {
+          "en": "Create a new project and name it now",
+          "zhHans": "新建项目并立即命名"
+        },
+        {
+          "en": "Confirm timeline resolution and frame rate",
+          "zhHans": "确认时间线分辨率与帧率"
+        },
+        {
+          "en": "Choose a color management solution",
+          "zhHans": "选择色彩管理方案"
+        },
+        {
+          "en": "Set up automatic saving and project backup",
+          "zhHans": "设置自动保存与项目备份"
+        }
       ],
       "shortcutIDs": [
         "nav-project",
@@ -2937,28 +4815,70 @@
     },
     {
       "color": "#2d8c8a",
-      "doneCheck": "全部媒体在线、音画同步抽查通过、场景和镜次可搜索且已有两份备份。",
+      "doneCheck": {
+        "en": "All media are online, audio and video are synchronized and spot-checked, scenes and shots are searchable, and there are two backups.",
+        "zhHans": "全部媒体在线、音画同步抽查通过、场景和镜次可搜索且已有两份备份。"
+      },
       "id": "stage-media",
       "kind": "stage",
-      "mistake": "Finder 中移动源文件会导致离线；需要移动时在 Resolve 内重链接。",
+      "mistake": {
+        "en": "Moving the source file in Finder will cause it to go offline; relink it in Resolve when you need to move it.",
+        "zhHans": "Finder 中移动源文件会导致离线；需要移动时在 Resolve 内重链接。"
+      },
       "number": 2,
       "proNotes": [
-        "代理、优化媒体、渲染缓存是三件不同的事",
-        "同步必须抽查头中尾"
+        {
+          "en": "Proxy, media optimization, and render caching are three different things",
+          "zhHans": "代理、优化媒体、渲染缓存是三件不同的事"
+        },
+        {
+          "en": "Synchronization must check the beginning, middle and end",
+          "zhHans": "同步必须抽查头中尾"
+        }
       ],
       "proSteps": [
-        "相机卡按原目录完整复制，不只拖走视频文件；至少保留两份独立存储。",
-        "在媒体页面导入，检查离线、损坏、异常帧率与声道。",
-        "用元数据、颜色标记、关键词或智能媒体夹建立可检索结构。",
-        "双系统录音优先依据时间码同步；无时间码时用波形并抽查头中尾。",
-        "长 GOP 或高分辨率素材卡顿时生成代理媒体，代理用于剪辑、原片用于最终输出。",
-        "为采访、剧情或纪录片建立字符串、精选和废片标记，保留原始素材。"
+        {
+          "en": "The camera card is copied completely according to the original directory, not only the video files are dragged away; at least two independent copies are kept.",
+          "zhHans": "相机卡按原目录完整复制，不只拖走视频文件；至少保留两份独立存储。"
+        },
+        {
+          "en": "Import on the media page and check for offline, damaged, abnormal frame rates and audio channels.",
+          "zhHans": "在媒体页面导入，检查离线、损坏、异常帧率与声道。"
+        },
+        {
+          "en": "Create a searchable structure using metadata, color tags, keywords or smart bins.",
+          "zhHans": "用元数据、颜色标记、关键词或智能媒体夹建立可检索结构。"
+        },
+        {
+          "en": "Dual-system recording prioritizes synchronization based on time code; when there is no time code, use waveform and spot check the beginning, middle and end.",
+          "zhHans": "双系统录音优先依据时间码同步；无时间码时用波形并抽查头中尾。"
+        },
+        {
+          "en": "Proxy media is generated when long GOP or high-resolution footage freezes. The proxy is used for editing and the original film is used for final output.",
+          "zhHans": "长 GOP 或高分辨率素材卡顿时生成代理媒体，代理用于剪辑、原片用于最终输出。"
+        },
+        {
+          "en": "Create string, featured, and scrap markers for interviews, feature films, or documentaries, preserving original footage.",
+          "zhHans": "为采访、剧情或纪录片建立字符串、精选和废片标记，保留原始素材。"
+        }
       ],
       "quickSteps": [
-        "复制素材并保留卡目录",
-        "核对数量和时长",
-        "按场景/日期整理",
-        "同步声音并生成代理"
+        {
+          "en": "Copy footage and keep card directory",
+          "zhHans": "复制素材并保留卡目录"
+        },
+        {
+          "en": "Check quantity and duration",
+          "zhHans": "核对数量和时长"
+        },
+        {
+          "en": "Organized by scene/date",
+          "zhHans": "按场景/日期整理"
+        },
+        {
+          "en": "Synchronize sounds and generate proxies",
+          "zhHans": "同步声音并生成代理"
+        }
       ],
       "shortcutIDs": [
         "nav-media",
@@ -2981,28 +4901,70 @@
     },
     {
       "color": "#299965",
-      "doneCheck": "故事从头到尾可理解，临时声音可听清，问题已按类别标记。",
+      "doneCheck": {
+        "en": "The story is understandable from beginning to end, temporary sounds are audible, and questions are tagged by category.",
+        "zhHans": "故事从头到尾可理解，临时声音可听清，问题已按类别标记。"
+      },
       "id": "stage-rough",
       "kind": "stage",
-      "mistake": "边剪边调色会掩盖结构问题并浪费时间。",
+      "mistake": {
+        "en": "Cutting and toning as you go can mask structural problems and waste time.",
+        "zhHans": "边剪边调色会掩盖结构问题并浪费时间。"
+      },
       "number": 3,
       "proNotes": [
-        "粗剪标准是第一次观看也能理解",
-        "完整观看时只记录，不中断修改"
+        {
+          "en": "The rough cut standard is understandable even if you watch it for the first time",
+          "zhHans": "粗剪标准是第一次观看也能理解"
+        },
+        {
+          "en": "Only record when watching in full without interrupting modifications",
+          "zhHans": "完整观看时只记录，不中断修改"
+        }
       ],
       "proSteps": [
-        "建立独立粗剪时间线，不在唯一时间线上反复覆盖。",
-        "从场景目标和信息推进出发选镜，不要一开始就沉迷转场。",
-        "使用入点、出点与三点剪辑，把有效片段快速送入时间线。",
-        "先处理结构、段落和节奏，声音只做能听清的临时平衡。",
-        "每完成一段就从前一段尾部连看，检查情绪是否接得住。",
-        "完整播放一次不中断，只用标记记录问题，播放结束后再集中修改。"
+        {
+          "en": "Create an independent rough cut timeline and avoid overwriting the unique timeline repeatedly.",
+          "zhHans": "建立独立粗剪时间线，不在唯一时间线上反复覆盖。"
+        },
+        {
+          "en": "Choose shots based on scene goals and information advancement, and don’t get obsessed with transitions from the beginning.",
+          "zhHans": "从场景目标和信息推进出发选镜，不要一开始就沉迷转场。"
+        },
+        {
+          "en": "Use in-point, out-point and three-point editing to quickly send valid clips to the timeline.",
+          "zhHans": "使用入点、出点与三点剪辑，把有效片段快速送入时间线。"
+        },
+        {
+          "en": "The structure, paragraphs and rhythm are dealt with first, and the sound is only temporarily balanced so that it can be heard clearly.",
+          "zhHans": "先处理结构、段落和节奏，声音只做能听清的临时平衡。"
+        },
+        {
+          "en": "After each paragraph is completed, read back to the end of the previous paragraph to check whether the emotion can be caught.",
+          "zhHans": "每完成一段就从前一段尾部连看，检查情绪是否接得住。"
+        },
+        {
+          "en": "Play it all once without interruption, just mark the problem to record it, and make centralized modifications after the playback is over.",
+          "zhHans": "完整播放一次不中断，只用标记记录问题，播放结束后再集中修改。"
+        }
       ],
       "quickSteps": [
-        "搭主结构",
-        "只保留有效信息",
-        "先不修小瑕疵",
-        "完整观看并记录问题"
+        {
+          "en": "Build the main structure",
+          "zhHans": "搭主结构"
+        },
+        {
+          "en": "Only keep valid information",
+          "zhHans": "只保留有效信息"
+        },
+        {
+          "en": "Don’t fix minor flaws yet",
+          "zhHans": "先不修小瑕疵"
+        },
+        {
+          "en": "Watch in full and record questions",
+          "zhHans": "完整观看并记录问题"
+        }
       ],
       "shortcutIDs": [
         "play-space",
@@ -3036,28 +4998,70 @@
     },
     {
       "color": "#80a62d",
-      "doneCheck": "表演与对白节奏自然、无闪帧或空隙，画面锁定版本已保存。",
+      "doneCheck": {
+        "en": "The acting and dialogue have a natural rhythm, there are no flickering frames or gaps, and the frame-locked version has been saved.",
+        "zhHans": "表演与对白节奏自然、无闪帧或空隙，画面锁定版本已保存。"
+      },
       "id": "stage-fine",
       "kind": "stage",
-      "mistake": "错误使用波纹修剪可能改变后续全片同步，操作后观察总时长。",
+      "mistake": {
+        "en": "Improper use of ripple trimming may change the subsequent full-film synchronization, and the total duration of observation after the operation will be changed.",
+        "zhHans": "错误使用波纹修剪可能改变后续全片同步，操作后观察总时长。"
+      },
       "number": 4,
       "proNotes": [
-        "按住 K 再点 J/L 可慢速播放",
-        "精剪最后一轮应盲听和静音各看一次"
+        {
+          "en": "Hold down K and click J/L to slow down playback",
+          "zhHans": "按住 K 再点 J/L 可慢速播放"
+        },
+        {
+          "en": "The final round of fine editing should be watched once in blind listening and mute listening.",
+          "zhHans": "精剪最后一轮应盲听和静音各看一次"
+        }
       ],
       "proSteps": [
-        "从表演与反应出发微调切点，先听声音，再决定画面何时切。",
-        "使用滚动、波纹、滑移和滑动修剪，理解每种工具改变的是哪一边。",
-        "用 J Cut 让下一镜声音先来，用 L Cut 让上一镜声音延续，减少硬切感。",
-        "检查动作匹配、视线方向、轴线、景别变化和屏幕方向。",
-        "放大时间线检查一帧黑、重叠帧、断裂转场和误留音频。",
-        "锁定画面前复制版本并标注 picture lock；之后的变更要有记录。"
+        {
+          "en": "Fine-tune the cut point based on performance and reaction, listen to the sound first, and then decide when to cut the scene.",
+          "zhHans": "从表演与反应出发微调切点，先听声音，再决定画面何时切。"
+        },
+        {
+          "en": "Use roll, ripple, slip and slide trimming and understand which side each tool changes.",
+          "zhHans": "使用滚动、波纹、滑移和滑动修剪，理解每种工具改变的是哪一边。"
+        },
+        {
+          "en": "Use J Cut to let the sound of the next shot come first, and use L Cut to let the sound of the previous shot continue to reduce the feeling of hard cutting.",
+          "zhHans": "用 J Cut 让下一镜声音先来，用 L Cut 让上一镜声音延续，减少硬切感。"
+        },
+        {
+          "en": "Check motion matching, eye direction, axis, scene changes, and screen orientation.",
+          "zhHans": "检查动作匹配、视线方向、轴线、景别变化和屏幕方向。"
+        },
+        {
+          "en": "Zoom into the timeline to check for black frames, overlapping frames, broken transitions, and missing audio.",
+          "zhHans": "放大时间线检查一帧黑、重叠帧、断裂转场和误留音频。"
+        },
+        {
+          "en": "Make a copy of the version before locking the picture and label it picture lock; subsequent changes must be recorded.",
+          "zhHans": "锁定画面前复制版本并标注 picture lock；之后的变更要有记录。"
+        }
       ],
       "quickSteps": [
-        "逐场修剪",
-        "完成 J/L Cut",
-        "检查动作与视线",
-        "清理空隙和闪帧"
+        {
+          "en": "Trim play by play",
+          "zhHans": "逐场修剪"
+        },
+        {
+          "en": "Complete J/L Cut",
+          "zhHans": "完成 J/L Cut"
+        },
+        {
+          "en": "Check movement and sight",
+          "zhHans": "检查动作与视线"
+        },
+        {
+          "en": "Clean up gaps and flickering frames",
+          "zhHans": "清理空隙和闪帧"
+        }
       ],
       "shortcutIDs": [
         "tool-select",
@@ -3086,28 +5090,70 @@
     },
     {
       "color": "#d09221",
-      "doneCheck": "对白始终可懂、剪辑点无爆音、房间底噪连续且主输出无削波。",
+      "doneCheck": {
+        "en": "Dialogue is always understandable, there are no pops at edit points, the room noise floor is continuous, and the main output doesn't clip.",
+        "zhHans": "对白始终可懂、剪辑点无爆音、房间底噪连续且主输出无削波。"
+      },
       "id": "stage-audio",
       "kind": "stage",
-      "mistake": "直接对主总线强限幅，可能把底噪一起抬高。",
+      "mistake": {
+        "en": "Directly applying strong limiting to the main bus may raise the noise floor as well.",
+        "zhHans": "直接对主总线强限幅，可能把底噪一起抬高。"
+      },
       "number": 5,
       "proNotes": [
-        "保留原始同步声轨",
-        "对白清楚取决于频谱和背景竞争，不只是电平"
+        {
+          "en": "Keep original sync track",
+          "zhHans": "保留原始同步声轨"
+        },
+        {
+          "en": "Dialogue clarity depends on spectrum and background competition, not just level",
+          "zhHans": "对白清楚取决于频谱和背景竞争，不只是电平"
+        }
       ],
       "proSteps": [
-        "按 DX 对白、AMB 环境、SFX 音效、MX 音乐分轨并统一命名。",
-        "先用剪辑增益平衡片段，再用轨道推子做整体混音；不要一开始就堆插件。",
-        "修剪爆点、口水音和明显噪声，交叉淡化剪辑点并补房间底噪。",
-        "EQ 先减问题频段，再考虑增加；压缩只需控制动态，不要把对白压扁。",
-        "音乐和音效在对白出现时主动让位，必要时做自动化。",
-        "用耳机和普通扬声器各听一遍，并观察电平是否削波。"
+        {
+          "en": "Separate tracks according to DX dialogue, AMB environment, SFX sound effects, and MX music and name them uniformly.",
+          "zhHans": "按 DX 对白、AMB 环境、SFX 音效、MX 音乐分轨并统一命名。"
+        },
+        {
+          "en": "Use clip gain to balance clips first, then use track faders to do the overall mix; don’t pile on plug-ins at the beginning.",
+          "zhHans": "先用剪辑增益平衡片段，再用轨道推子做整体混音；不要一开始就堆插件。"
+        },
+        {
+          "en": "Trim hot spots, saliva and obvious noise, cross-fade clip points and fill in the room noise floor.",
+          "zhHans": "修剪爆点、口水音和明显噪声，交叉淡化剪辑点并补房间底噪。"
+        },
+        {
+          "en": "EQ should first reduce the problem band, and then consider increasing it; compression only needs to control the dynamics, not flatten the dialogue.",
+          "zhHans": "EQ 先减问题频段，再考虑增加；压缩只需控制动态，不要把对白压扁。"
+        },
+        {
+          "en": "Music and sound effects take the initiative to give way when dialogue appears, automating when necessary.",
+          "zhHans": "音乐和音效在对白出现时主动让位，必要时做自动化。"
+        },
+        {
+          "en": "Listen to it with headphones and regular speakers, and see if the level clips.",
+          "zhHans": "用耳机和普通扬声器各听一遍，并观察电平是否削波。"
+        }
       ],
       "quickSteps": [
-        "整理轨道",
-        "对白去噪与平衡",
-        "补房间底噪",
-        "音乐音效让位于对白"
+        {
+          "en": "tidy track",
+          "zhHans": "整理轨道"
+        },
+        {
+          "en": "Dialogue denoising and balancing",
+          "zhHans": "对白去噪与平衡"
+        },
+        {
+          "en": "Make up for room noise",
+          "zhHans": "补房间底噪"
+        },
+        {
+          "en": "Musical sound effects give way to dialogue",
+          "zhHans": "音乐音效让位于对白"
+        }
       ],
       "shortcutIDs": [
         "nav-fairlight",
@@ -3128,30 +5174,78 @@
     },
     {
       "color": "#e16949",
-      "doneCheck": "输入解释正确、示波器无意外削波、同场景镜头匹配且输出变换只执行一次。",
+      "doneCheck": {
+        "en": "Inputs are interpreted correctly, the scope has no unexpected clipping, shots of the same scene match, and output transformations are performed only once.",
+        "zhHans": "输入解释正确、示波器无意外削波、同场景镜头匹配且输出变换只执行一次。"
+      },
       "id": "stage-color",
       "kind": "stage",
-      "mistake": "没有色彩管理就直接套 LUT，容易剪高光、偏色或重复变换。",
+      "mistake": {
+        "en": "Applying LUT directly without color management makes it easy to cut highlights, color casts or repeat changes.",
+        "zhHans": "没有色彩管理就直接套 LUT，容易剪高光、偏色或重复变换。"
+      },
       "number": 6,
       "proNotes": [
-        "肤色线是方向参考而非绝对目标",
-        "节点命名和分组应让接手者能看懂"
+        {
+          "en": "The skin color line is a directional reference rather than an absolute target",
+          "zhHans": "肤色线是方向参考而非绝对目标"
+        },
+        {
+          "en": "Node naming and grouping should be understandable to the person taking over",
+          "zhHans": "节点命名和分组应让接手者能看懂"
+        }
       ],
       "proSteps": [
-        "确认每类相机素材的输入色彩空间，避免把 Log 当 Rec.709 或重复转换。",
-        "先看波形图、RGB Parade、矢量示波器，再判断曝光、色偏和饱和度。",
-        "用 Offset 或 HDR 全局控制建立曝光，再用 Lift/Gamma/Gain 或曲线细修。",
-        "选一个英雄镜头作为参考，按场景匹配其他镜头，不要逐镜头各自追求好看。",
-        "使用限定器和窗口时保持选择柔和，并检查运动跟踪是否滑脱。",
-        "技术校正与风格节点分离；降噪通常靠前，锐化和颗粒通常靠后。",
-        "在实际交付显示环境检查输出变换、色彩标签和高光范围。"
+        {
+          "en": "Confirm the input color space of each type of camera material to avoid treating Log as Rec.709 or repeated conversion.",
+          "zhHans": "确认每类相机素材的输入色彩空间，避免把 Log 当 Rec.709 或重复转换。"
+        },
+        {
+          "en": "First look at the waveform chart, RGB Parade, and vector oscilloscope, and then judge the exposure, color cast, and saturation.",
+          "zhHans": "先看波形图、RGB Parade、矢量示波器，再判断曝光、色偏和饱和度。"
+        },
+        {
+          "en": "Establish exposure with Offset or HDR global controls, then refine with Lift/Gamma/Gain or Curves.",
+          "zhHans": "用 Offset 或 HDR 全局控制建立曝光，再用 Lift/Gamma/Gain 或曲线细修。"
+        },
+        {
+          "en": "Choose a hero shot as a reference and match other shots according to the scene. Don’t pursue beauty shot by shot.",
+          "zhHans": "选一个英雄镜头作为参考，按场景匹配其他镜头，不要逐镜头各自追求好看。"
+        },
+        {
+          "en": "Keep selections soft when using qualifiers and windows, and check for motion tracking slippage.",
+          "zhHans": "使用限定器和窗口时保持选择柔和，并检查运动跟踪是否滑脱。"
+        },
+        {
+          "en": "Technical corrections are separated from the style nodes; noise reduction is usually at the front, sharpening and grain at the back.",
+          "zhHans": "技术校正与风格节点分离；降噪通常靠前，锐化和颗粒通常靠后。"
+        },
+        {
+          "en": "Check output transforms, color labels, and highlight ranges in a live delivery display environment.",
+          "zhHans": "在实际交付显示环境检查输出变换、色彩标签和高光范围。"
+        }
       ],
       "quickSteps": [
-        "确认输入与输出色彩空间",
-        "打开示波器做一级校正",
-        "镜头匹配",
-        "肤色与局部调整",
-        "最后检查输出"
+        {
+          "en": "Confirm input and output color spaces",
+          "zhHans": "确认输入与输出色彩空间"
+        },
+        {
+          "en": "Open the oscilloscope and perform first-level calibration",
+          "zhHans": "打开示波器做一级校正"
+        },
+        {
+          "en": "Lens matching",
+          "zhHans": "镜头匹配"
+        },
+        {
+          "en": "Skin tone and local adjustments",
+          "zhHans": "肤色与局部调整"
+        },
+        {
+          "en": "Finally check the output",
+          "zhHans": "最后检查输出"
+        }
       ],
       "shortcutIDs": [
         "nav-color",
@@ -3176,28 +5270,70 @@
     },
     {
       "color": "#cc507d",
-      "doneCheck": "人名数字正确、断句自然、无重叠且烧录/外挂方式明确。",
+      "doneCheck": {
+        "en": "The names and numbers are correct, the sentences are segmented naturally, there is no overlap, and the burning/plugging method is clear.",
+        "zhHans": "人名数字正确、断句自然、无重叠且烧录/外挂方式明确。"
+      },
       "id": "stage-title",
       "kind": "stage",
-      "mistake": "只校对文字不看时间，会出现字幕抢话或拖尾。",
+      "mistake": {
+        "en": "If you only proofread the text without looking at the time, the subtitles will be rushed or trailing.",
+        "zhHans": "只校对文字不看时间，会出现字幕抢话或拖尾。"
+      },
       "number": 7,
       "proNotes": [
-        "自然断句比平均分字更重要",
-        "横竖版要分别检查平台安全区域"
+        {
+          "en": "Natural sentence segmentation is more important than even word segmentation",
+          "zhHans": "自然断句比平均分字更重要"
+        },
+        {
+          "en": "Platform safety areas should be checked separately for both horizontal and vertical versions.",
+          "zhHans": "横竖版要分别检查平台安全区域"
+        }
       ],
       "proSteps": [
-        "先确定字体、字号、行距、描边/底板、每行字数和屏幕停留规则。",
-        "对白字幕优先放在字幕轨，不要把每条都做成 Fusion 标题。",
-        "自动转录后必须逐句校对人名、专业词、数字和断句。",
-        "检查字幕是否压到人物姓名条、平台 UI 或画面关键信息。",
-        "横竖版分别检查安全区域，不要依赖同一个位置自动适配。",
-        "导出前决定烧录字幕、外挂 SRT 或两者同时交付。"
+        {
+          "en": "First determine the font, font size, line spacing, stroke/baseline, number of words per line, and screen stay rules.",
+          "zhHans": "先确定字体、字号、行距、描边/底板、每行字数和屏幕停留规则。"
+        },
+        {
+          "en": "Prioritize placing dialogue subtitles on the subtitle track, do not make each one a Fusion title.",
+          "zhHans": "对白字幕优先放在字幕轨，不要把每条都做成 Fusion 标题。"
+        },
+        {
+          "en": "After automatic transcription, names, professional words, numbers and sentence fragments must be proofread sentence by sentence.",
+          "zhHans": "自动转录后必须逐句校对人名、专业词、数字和断句。"
+        },
+        {
+          "en": "Check whether the subtitles are pressed against the character name bar, platform UI or key information on the screen.",
+          "zhHans": "检查字幕是否压到人物姓名条、平台 UI 或画面关键信息。"
+        },
+        {
+          "en": "Check the safe areas separately in the horizontal and vertical versions, and do not rely on automatic adaptation at the same location.",
+          "zhHans": "横竖版分别检查安全区域，不要依赖同一个位置自动适配。"
+        },
+        {
+          "en": "Before exporting, decide whether to burn subtitles, plug-in SRT, or deliver both at the same time.",
+          "zhHans": "导出前决定烧录字幕、外挂 SRT 或两者同时交付。"
+        }
       ],
       "quickSteps": [
-        "建立字体与位置规范",
-        "自动或手动生成字幕",
-        "逐条校对",
-        "检查安全框和断行"
+        {
+          "en": "Establish font and position specifications",
+          "zhHans": "建立字体与位置规范"
+        },
+        {
+          "en": "Generate subtitles automatically or manually",
+          "zhHans": "自动或手动生成字幕"
+        },
+        {
+          "en": "Proofread item by item",
+          "zhHans": "逐条校对"
+        },
+        {
+          "en": "Check safe box and line breaks",
+          "zhHans": "检查安全框和断行"
+        }
       ],
       "shortcutIDs": [
         "nav-edit",
@@ -3218,28 +5354,70 @@
     },
     {
       "color": "#965ac0",
-      "doneCheck": "无离线或闪帧，字幕图形正确，实际导出文件已完整观看。",
+      "doneCheck": {
+        "en": "There are no offline or flickering frames, the subtitle graphics are correct, and the actual exported file has been fully viewed.",
+        "zhHans": "无离线或闪帧，字幕图形正确，实际导出文件已完整观看。"
+      },
       "id": "stage-qc",
       "kind": "stage",
-      "mistake": "一发现问题就暂停修改，会失去完整观看的观众感受。",
+      "mistake": {
+        "en": "If you pause the modification as soon as a problem is discovered, you will lose the audience experience of complete viewing.",
+        "zhHans": "一发现问题就暂停修改，会失去完整观看的观众感受。"
+      },
       "number": 8,
       "proNotes": [
-        "建立包含时间码、问题、责任人与状态的 QC 清单",
-        "一帧闪黑需要逐帧复查可疑剪辑点"
+        {
+          "en": "Create QC lists including timecodes, issues, responsible persons and status",
+          "zhHans": "建立包含时间码、问题、责任人与状态的 QC 清单"
+        },
+        {
+          "en": "When a frame flashes to black, suspicious editing points need to be reviewed frame by frame.",
+          "zhHans": "一帧闪黑需要逐帧复查可疑剪辑点"
+        }
       ],
       "proSteps": [
-        "第一遍按观众方式完整观看，只记录理解、节奏和情绪问题。",
-        "第二遍检查闪帧、黑帧、离线媒体、画面抖动、字幕、图形和版权标记。",
-        "第三遍盲听声音，再静音看画面，分别发现音频与视觉连续性问题。",
-        "检查首帧、尾帧、片尾时长、文字拼写、日期、电话和品牌名称。",
-        "在至少两个播放器或设备检查输出测试文件，确认 Gamma 和音画同步。",
-        "修复后只复看受影响段落仍不够；最终母版必须重新完整观看。"
+        {
+          "en": "Watch it in its entirety the first time as an audience, recording only issues of understanding, rhythm, and emotion.",
+          "zhHans": "第一遍按观众方式完整观看，只记录理解、节奏和情绪问题。"
+        },
+        {
+          "en": "A second pass checks for flickering frames, black frames, offline media, screen shake, subtitles, graphics, and copyright marks.",
+          "zhHans": "第二遍检查闪帧、黑帧、离线媒体、画面抖动、字幕、图形和版权标记。"
+        },
+        {
+          "en": "The third time I blindly listened to the sound, and then watched the picture with the sound muted, I found audio and visual continuity issues respectively.",
+          "zhHans": "第三遍盲听声音，再静音看画面，分别发现音频与视觉连续性问题。"
+        },
+        {
+          "en": "Check first frame, last frame, ending duration, text spelling, date, phone number and brand name.",
+          "zhHans": "检查首帧、尾帧、片尾时长、文字拼写、日期、电话和品牌名称。"
+        },
+        {
+          "en": "Check the output test file on at least two players or devices to confirm that gamma and audio and video are in sync.",
+          "zhHans": "在至少两个播放器或设备检查输出测试文件，确认 Gamma 和音画同步。"
+        },
+        {
+          "en": "Simply watching the affected passages again after restoration is not enough; the final master must be watched again in its entirety.",
+          "zhHans": "修复后只复看受影响段落仍不够；最终母版必须重新完整观看。"
+        }
       ],
       "quickSteps": [
-        "故事遍",
-        "技术遍",
-        "静音/盲听遍",
-        "记录后集中修复"
+        {
+          "en": "Stories all over",
+          "zhHans": "故事遍"
+        },
+        {
+          "en": "Technology all over",
+          "zhHans": "技术遍"
+        },
+        {
+          "en": "Silent/blind listening",
+          "zhHans": "静音/盲听遍"
+        },
+        {
+          "en": "Centralized repair after recording",
+          "zhHans": "记录后集中修复"
+        }
       ],
       "shortcutIDs": [
         "play-space",
@@ -3264,29 +5442,74 @@
     },
     {
       "color": "#456fb6",
-      "doneCheck": "输出范围、路径、编码、音频、字幕正确，实际文件复检通过。",
+      "doneCheck": {
+        "en": "The output range, path, encoding, audio, and subtitles are correct, and the actual file has passed the recheck.",
+        "zhHans": "输出范围、路径、编码、音频、字幕正确，实际文件复检通过。"
+      },
       "id": "stage-export",
       "kind": "stage",
-      "mistake": "把时间线帧率强改成交付帧率可能产生重复帧或节奏变化。",
+      "mistake": {
+        "en": "Forcing the timeline frame rate to the delivery frame rate may produce duplicate frames or cadence changes.",
+        "zhHans": "把时间线帧率强改成交付帧率可能产生重复帧或节奏变化。"
+      },
       "number": 9,
       "proNotes": [
-        "先保留高质量母版，再生成分发版",
-        "播放器差异先查色彩标签与查看环境"
+        {
+          "en": "Keep high-quality masters first, then generate distribution versions",
+          "zhHans": "先保留高质量母版，再生成分发版"
+        },
+        {
+          "en": "For player differences, first check the color label and viewing environment",
+          "zhHans": "播放器差异先查色彩标签与查看环境"
+        }
       ],
       "proSteps": [
-        "从交付用途反推封装、编码、分辨率、码率、音频和色彩标签。",
-        "确认是单片段还是各片段、是否需要字幕、Alpha、时间码或片柄。",
-        "文件名写入项目、版本、画幅、语言和日期，避免只叫 final.mp4。",
-        "先输出短测试，检查播放器、平台压缩和色彩显示，再渲染完整文件。",
-        "加入渲染队列后再次检查输出路径、文件名、时间线范围和预设。",
-        "对最终文件做长度、分辨率、音轨、字幕、颜色和完整播放检查。"
+        {
+          "en": "Deduces packaging, encoding, resolution, bitrate, audio and color tags from delivery usage.",
+          "zhHans": "从交付用途反推封装、编码、分辨率、码率、音频和色彩标签。"
+        },
+        {
+          "en": "Determine whether it is a single clip or individual clips, and whether subtitles, alpha, timecode or stems are required.",
+          "zhHans": "确认是单片段还是各片段、是否需要字幕、Alpha、时间码或片柄。"
+        },
+        {
+          "en": "Write the project, version, frame, language and date in the file name to avoid calling it just final.mp4.",
+          "zhHans": "文件名写入项目、版本、画幅、语言和日期，避免只叫 final.mp4。"
+        },
+        {
+          "en": "A short test is output first to check player, platform compression and color display before rendering the full file.",
+          "zhHans": "先输出短测试，检查播放器、平台压缩和色彩显示，再渲染完整文件。"
+        },
+        {
+          "en": "Check the output path, file name, timeline range and preset again after joining the render queue.",
+          "zhHans": "加入渲染队列后再次检查输出路径、文件名、时间线范围和预设。"
+        },
+        {
+          "en": "Check the final file for length, resolution, audio tracks, subtitles, color and complete playback.",
+          "zhHans": "对最终文件做长度、分辨率、音轨、字幕、颜色和完整播放检查。"
+        }
       ],
       "quickSteps": [
-        "选择用途预设",
-        "确认分辨率帧率",
-        "确认编码与声音",
-        "加入队列",
-        "导出后复检"
+        {
+          "en": "Select usage default",
+          "zhHans": "选择用途预设"
+        },
+        {
+          "en": "Confirm resolution frame rate",
+          "zhHans": "确认分辨率帧率"
+        },
+        {
+          "en": "Confirm encoding and sound",
+          "zhHans": "确认编码与声音"
+        },
+        {
+          "en": "join queue",
+          "zhHans": "加入队列"
+        },
+        {
+          "en": "Recheck after exporting",
+          "zhHans": "导出后复检"
+        }
       ],
       "shortcutIDs": [
         "nav-deliver",
@@ -3305,29 +5528,74 @@
     },
     {
       "color": "#596069",
-      "doneCheck": "项目可打开、必要媒体已收集、母版与字幕齐全，README 和恢复测试完成。",
+      "doneCheck": {
+        "en": "The project can be opened, the necessary media has been collected, the master and subtitles are complete, and the README and recovery testing have been completed.",
+        "zhHans": "项目可打开、必要媒体已收集、母版与字幕齐全，README 和恢复测试完成。"
+      },
       "id": "stage-archive",
       "kind": "stage",
-      "mistake": "只保存 DRP 不保存源媒体，无法保证长期恢复。",
+      "mistake": {
+        "en": "Saving only the DRP without saving the source media does not guarantee long-term recovery.",
+        "zhHans": "只保存 DRP 不保存源媒体，无法保证长期恢复。"
+      },
       "number": 10,
       "proNotes": [
-        "归档目标是可理解、可验证、可恢复",
-        "至少一份归档应与工作地点物理分离"
+        {
+          "en": "Archive goals are understandable, verifiable, and recoverable",
+          "zhHans": "归档目标是可理解、可验证、可恢复"
+        },
+        {
+          "en": "At least one archive should be physically separated from the work location",
+          "zhHans": "至少一份归档应与工作地点物理分离"
+        }
       ],
       "proSteps": [
-        "导出项目文件或项目归档，并记录使用的 Resolve 版本。",
-        "使用媒体管理收集实际使用素材时，保留合理片柄并抽查重链接。",
-        "保存高质量母版、发布版、无字幕版、音频分轨、字幕和关键图形。",
-        "保存 LUT、字体清单、色彩管理说明、插件清单和交付参数。",
-        "生成 README：项目内容、文件结构、最后时间线、缺失项和恢复步骤。",
-        "从归档位置实际打开一次项目并检查随机镜头，证明归档可恢复。"
+        {
+          "en": "Export a project file or project archive and record the Resolve version used.",
+          "zhHans": "导出项目文件或项目归档，并记录使用的 Resolve 版本。"
+        },
+        {
+          "en": "When using media management to collect actual materials, keep reasonable clip handles and spot-check re-links.",
+          "zhHans": "使用媒体管理收集实际使用素材时，保留合理片柄并抽查重链接。"
+        },
+        {
+          "en": "Save high-quality masters, releases, untitled versions, audio tracks, subtitles and key graphics.",
+          "zhHans": "保存高质量母版、发布版、无字幕版、音频分轨、字幕和关键图形。"
+        },
+        {
+          "en": "Save LUTs, font lists, color management instructions, plug-in lists, and delivery parameters.",
+          "zhHans": "保存 LUT、字体清单、色彩管理说明、插件清单和交付参数。"
+        },
+        {
+          "en": "Generate README: project content, file structure, final timeline, missing items and recovery steps.",
+          "zhHans": "生成 README：项目内容、文件结构、最后时间线、缺失项和恢复步骤。"
+        },
+        {
+          "en": "Prove the archive is recoverable by actually opening the project once from the archive location and checking random shots.",
+          "zhHans": "从归档位置实际打开一次项目并检查随机镜头，证明归档可恢复。"
+        }
       ],
       "quickSteps": [
-        "保存项目归档",
-        "收集必要媒体",
-        "保存母版与字幕",
-        "写交付说明",
-        "抽查恢复"
+        {
+          "en": "Save project archive",
+          "zhHans": "保存项目归档"
+        },
+        {
+          "en": "Gather necessary media",
+          "zhHans": "收集必要媒体"
+        },
+        {
+          "en": "Save master and subtitles",
+          "zhHans": "保存母版与字幕"
+        },
+        {
+          "en": "Write delivery instructions",
+          "zhHans": "写交付说明"
+        },
+        {
+          "en": "Spot check recovery",
+          "zhHans": "抽查恢复"
+        }
       ],
       "shortcutIDs": [
         "nav-project",

@@ -35,8 +35,44 @@ struct BundledContentLoaderTests {
             with: "\"en\": \"\""
         )
 
-        #expect(throws: BundledContentLoaderError.emptyTitle(id: "stage-one", language: .en)) {
+        #expect(throws: BundledContentLoaderError.emptyLocalizedText(id: "stage-one", field: .title, language: .en)) {
             try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func loaderRejectsDuplicateIDsAcrossSearchableAndReferenceRecords() throws {
+        let json = TestFixtures.validJSON.replacingOccurrences(
+            of: "\"id\": \"source-one\"",
+            with: "\"id\": \"stage-one\""
+        )
+
+        #expect(throws: BundledContentLoaderError.duplicateID("stage-one")) {
+            try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func loaderRejectsRecordsWithAnEmptyLocalizedSummary() throws {
+        let json = TestFixtures.validJSON.replacingOccurrences(
+            of: "\"en\": \"Summary\"",
+            with: "\"en\": \"\"",
+            options: [],
+            range: TestFixtures.validJSON.range(of: "\"summary\": {\"zhHans\": \"摘要\", \"en\": \"Summary\"}")
+        )
+
+        #expect(throws: BundledContentLoaderError.emptyLocalizedText(id: "stage-one", field: .summary, language: .en)) {
+            try BundledContentLoader(data: Data(json.utf8)).load()
+        }
+    }
+
+    @Test func loaderRejectsEmptyCreatorBioAndSourceTitle() throws {
+        let creatorJSON = TestFixtures.validJSON.replacingOccurrences(of: "\"en\": \"Bio\"", with: "\"en\": \"\"")
+        #expect(throws: BundledContentLoaderError.emptyLocalizedText(id: "creator-one", field: .bio, language: .en)) {
+            try BundledContentLoader(data: Data(creatorJSON.utf8)).load()
+        }
+
+        let sourceJSON = TestFixtures.validJSON.replacingOccurrences(of: "\"en\": \"Source\"", with: "\"en\": \"\"")
+        #expect(throws: BundledContentLoaderError.emptyLocalizedText(id: "source-one", field: .title, language: .en)) {
+            try BundledContentLoader(data: Data(sourceJSON.utf8)).load()
         }
     }
 }

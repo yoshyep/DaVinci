@@ -9,6 +9,7 @@ enum BundledContentLoaderError: Error, Equatable {
     case invalidContent
     case duplicateID(String)
     case emptyTitle(id: String, language: AppLanguage)
+    case emptyLocalizedText(id: String, field: LocalizedTextField, language: AppLanguage)
 }
 
 struct BundledContentLoader: GuideContentLoading {
@@ -49,16 +50,21 @@ struct BundledContentLoader: GuideContentLoading {
     }
 
     private func validate(_ content: GuideContent) throws {
+        let records: [(String, any LocalizedTextCarrying)] = content.stages.map { ($0.id, $0) }
+            + content.shortcuts.map { ($0.id, $0) }
+            + content.recipes.map { ($0.id, $0) }
+            + content.colorPasses.map { ($0.id, $0) }
+            + content.exports.map { ($0.id, $0) }
+            + content.emergencies.map { ($0.id, $0) }
+            + content.playbooks.map { ($0.id, $0) }
+            + content.creators.map { ($0.id, $0) }
+            + content.sources.map { ($0.id, $0) }
         var seenIDs = Set<String>()
-        for record in content.searchableRecords {
-            guard seenIDs.insert(record.id).inserted else {
-                throw BundledContentLoaderError.duplicateID(record.id)
-            }
-            guard !record.title.zhHans.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw BundledContentLoaderError.emptyTitle(id: record.id, language: .zhHans)
-            }
-            guard !record.title.en.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw BundledContentLoaderError.emptyTitle(id: record.id, language: .en)
+        for (id, record) in records {
+            guard seenIDs.insert(id).inserted else { throw BundledContentLoaderError.duplicateID(id) }
+            for (field, text) in record.localizedTexts {
+                if text.zhHans.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { throw BundledContentLoaderError.emptyLocalizedText(id: id, field: field, language: .zhHans) }
+                if text.en.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { throw BundledContentLoaderError.emptyLocalizedText(id: id, field: field, language: .en) }
             }
         }
     }
