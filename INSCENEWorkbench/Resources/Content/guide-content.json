@@ -4549,9 +4549,34 @@
         "en": "Timeline > Split Clip",
         "zhHans": "时间线 > 在播放头处分割片段"
       },
+      "principles": [
+        {
+          "en": "Split only affects selected tracks for precise control",
+          "zhHans": "分割不会影响未选中的轨道，可精确控制切面范围"
+        }
+      ],
+      "relatedIDs": [
+        "delete-ripple",
+        "tool-blade",
+        "edit-point"
+      ],
       "stages": [
         "stage-fine",
         "stage-audio"
+      ],
+      "steps": [
+        {
+          "en": "Select the tracks to split",
+          "zhHans": "选中要切开的轨道"
+        },
+        {
+          "en": "Move the playhead to the split position",
+          "zhHans": "将播放头移到切割位置"
+        },
+        {
+          "en": "Press the shortcut to split the selected tracks",
+          "zhHans": "按快捷键切开选中轨道"
+        }
       ],
       "summary": {
         "en": "Split selected tracks at the playhead without changing tools.",
@@ -4816,8 +4841,33 @@
         "en": "Edit > Ripple Delete",
         "zhHans": "编辑 > 波纹删除"
       },
+      "principles": [
+        {
+          "en": "Ripple delete changes total timeline length and shifts subsequent content",
+          "zhHans": "波纹删除会改变时间线总长度，后续内容时间轴会变化"
+        }
+      ],
+      "relatedIDs": [
+        "delete-normal",
+        "lift-delete",
+        "split-playhead"
+      ],
       "stages": [
         "stage-fine"
+      ],
+      "steps": [
+        {
+          "en": "Select the clip to delete",
+          "zhHans": "选中要删除的片段"
+        },
+        {
+          "en": "Press the shortcut to ripple delete",
+          "zhHans": "按快捷键执行波纹删除"
+        },
+        {
+          "en": "Subsequent clips automatically shift to close the gap",
+          "zhHans": "后续片段自动前移闭合空隙"
+        }
       ],
       "summary": {
         "en": "Delete and close the gap; watch downstream sync.",
@@ -4827,6 +4877,12 @@
         "en": "Ripple Delete",
         "zhHans": "波纹删除"
       },
+      "warnings": [
+        {
+          "en": "If there are synced audio tracks, ripple delete may cause sync issues",
+          "zhHans": "如果后续有同步音频，波纹删除可能导致音画不同步"
+        }
+      ],
       "win": [
         "Shift",
         "Backspace"
@@ -4979,8 +5035,34 @@
         "en": "Nodes > Add Serial Node",
         "zhHans": "节点 > 添加串行节点"
       },
+      "principles": [
+        {
+          "en": "Serial nodes chain sequentially, output feeds into the next node's input",
+          "zhHans": "串行节点按顺序叠加，前一个节点的输出是后一个的输入"
+        }
+      ],
+      "relatedIDs": [
+        "node-parallel",
+        "node-layer",
+        "add-corrector",
+        "grade-copy"
+      ],
       "stages": [
         "stage-color"
+      ],
+      "steps": [
+        {
+          "en": "Select the current node on the Color page",
+          "zhHans": "在调色页面选中当前节点"
+        },
+        {
+          "en": "Press the shortcut to add a serial node after the current one",
+          "zhHans": "按快捷键在当前节点后添加串行节点"
+        },
+        {
+          "en": "Perform independent grading on the new node",
+          "zhHans": "在新节点上进行独立调色操作"
+        }
       ],
       "summary": {
         "en": "Add the common serial node after the current node.",
@@ -5746,6 +5828,1585 @@
       "win": [
         "Down"
       ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "match-frame",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "F"
+      ],
+      "menu": {
+        "en": "Timeline > Match Frame",
+        "zhHans": "时间线 > 匹配帧"
+      },
+      "principles": [
+        {
+          "en": "Match frame is the fastest way to locate source material without manual searching",
+          "zhHans": "匹配帧是快速定位源素材的最有效方法，无需手动在媒体池中搜索"
+        }
+      ],
+      "relatedIDs": [
+        "reverse-match-frame",
+        "find-media",
+        "reveal-finder"
+      ],
+      "stages": [
+        "stage-fine"
+      ],
+      "steps": [
+        {
+          "en": "Park the playhead on the target clip in the timeline",
+          "zhHans": "将播放头停在时间线上目标片段的位置"
+        },
+        {
+          "en": "Press the shortcut to open the source clip in the source viewer",
+          "zhHans": "按快捷键在源监视器中打开原始素材"
+        },
+        {
+          "en": "Browse the full source content in the source viewer",
+          "zhHans": "在源监视器中可以浏览原始素材的完整内容"
+        }
+      ],
+      "summary": {
+        "en": "Open the source clip of the current timeline clip in the source viewer",
+        "zhHans": "在源监视器中打开当前时间线片段的源素材"
+      },
+      "title": {
+        "en": "Match Frame",
+        "zhHans": "匹配帧"
+      },
+      "win": [
+        "F"
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "reverse-match-frame",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Shift",
+        "F"
+      ],
+      "menu": {
+        "en": "Timeline > Reverse Match Frame",
+        "zhHans": "时间线 > 反向匹配帧"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Find the source clip's position in the timeline",
+        "zhHans": "从源素材找到时间线中对应的片段位置"
+      },
+      "title": {
+        "en": "Reverse Match Frame",
+        "zhHans": "反向匹配帧"
+      },
+      "win": [
+        "Shift",
+        "F"
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "ripple-trim-left",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Q"
+      ],
+      "menu": {
+        "en": "Timeline > Ripple Trim Left",
+        "zhHans": "时间线 > 波纹修剪左"
+      },
+      "principles": [
+        {
+          "en": "Ripple trim is much faster than manually dragging edit points",
+          "zhHans": "波纹修剪是最快的精剪方式，比手动拖拽剪辑点效率高数倍"
+        }
+      ],
+      "relatedIDs": [
+        "ripple-trim-right",
+        "tool-trim",
+        "slip-edit",
+        "slide-edit"
+      ],
+      "stages": [
+        "stage-fine"
+      ],
+      "steps": [
+        {
+          "en": "Park the playhead near the edit point to trim",
+          "zhHans": "将播放头停在要修剪的剪辑点附近"
+        },
+        {
+          "en": "Press Q to ripple trim the left edit point",
+          "zhHans": "按 Q 键波纹修剪左侧剪辑点"
+        },
+        {
+          "en": "The clip to the left of the playhead is trimmed and the gap closes",
+          "zhHans": "播放头左侧的片段被裁剪并自动闭合空隙"
+        }
+      ],
+      "summary": {
+        "en": "Ripple trim the edit point to the left of the playhead",
+        "zhHans": "波纹修剪播放头左侧的剪辑点"
+      },
+      "title": {
+        "en": "Ripple Trim Left",
+        "zhHans": "向左波纹修剪"
+      },
+      "warnings": [
+        {
+          "en": "Ripple trim may remove transitions at the edit point",
+          "zhHans": "如果剪辑点有转场，波纹修剪可能会移除转场效果"
+        }
+      ],
+      "win": [
+        "Q"
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "ripple-trim-right",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "W"
+      ],
+      "menu": {
+        "en": "Timeline > Ripple Trim Right",
+        "zhHans": "时间线 > 波纹修剪右"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Ripple trim the edit point to the right of the playhead",
+        "zhHans": "波纹修剪播放头右侧的剪辑点"
+      },
+      "title": {
+        "en": "Ripple Trim Right",
+        "zhHans": "向右波纹修剪"
+      },
+      "win": [
+        "W"
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "slip-edit",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        ","
+      ],
+      "menu": {
+        "en": "Timeline > Slip",
+        "zhHans": "时间线 > 滑移"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Keep clip position, change in/out points to use different source content",
+        "zhHans": "保持片段位置不变，改变入出点来选择不同的源内容"
+      },
+      "title": {
+        "en": "Slip Edit",
+        "zhHans": "滑移编辑"
+      },
+      "win": [
+        ","
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "slide-edit",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "."
+      ],
+      "menu": {
+        "en": "Timeline > Slide",
+        "zhHans": "时间线 > 滑动"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Keep clip content, move it between adjacent clips",
+        "zhHans": "保持片段内容不变，在相邻片段之间移动位置"
+      },
+      "title": {
+        "en": "Slide Edit",
+        "zhHans": "滑动编辑"
+      },
+      "win": [
+        "."
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "lift-delete",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Cmd",
+        "Delete"
+      ],
+      "menu": {
+        "en": "Timeline > Lift",
+        "zhHans": "时间线 > 提取"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Remove selected clips and leave a gap",
+        "zhHans": "删除选中的片段但保留空隙"
+      },
+      "title": {
+        "en": "Lift",
+        "zhHans": "提取删除"
+      },
+      "win": [
+        "Ctrl",
+        "Backspace"
+      ]
+    },
+    {
+      "category": {
+        "en": "Editing",
+        "zhHans": "剪辑"
+      },
+      "flags": [],
+      "id": "join-edit",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "J"
+      ],
+      "menu": {
+        "en": "Timeline > Join",
+        "zhHans": "时间线 > 合并"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Remove selected edit point and join adjacent clips",
+        "zhHans": "移除选中剪辑点，合并相邻片段"
+      },
+      "title": {
+        "en": "Join Edit",
+        "zhHans": "合并剪辑"
+      },
+      "win": [
+        "Ctrl",
+        "J"
+      ]
+    },
+    {
+      "category": {
+        "en": "Timeline",
+        "zhHans": "时间线"
+      },
+      "flags": [],
+      "id": "zoom-in",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "="
+      ],
+      "menu": {
+        "en": "View > Zoom In",
+        "zhHans": "视图 > 放大"
+      },
+      "stages": [
+        "stage-rough",
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Zoom in on the timeline",
+        "zhHans": "放大时间线显示比例"
+      },
+      "title": {
+        "en": "Zoom In Timeline",
+        "zhHans": "放大时间线"
+      },
+      "win": [
+        "Ctrl",
+        "="
+      ]
+    },
+    {
+      "category": {
+        "en": "Timeline",
+        "zhHans": "时间线"
+      },
+      "flags": [],
+      "id": "zoom-out",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "-"
+      ],
+      "menu": {
+        "en": "View > Zoom Out",
+        "zhHans": "视图 > 缩小"
+      },
+      "stages": [
+        "stage-rough",
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Zoom out on the timeline",
+        "zhHans": "缩小时间线显示比例"
+      },
+      "title": {
+        "en": "Zoom Out Timeline",
+        "zhHans": "缩小时间线"
+      },
+      "win": [
+        "Ctrl",
+        "-"
+      ]
+    },
+    {
+      "category": {
+        "en": "Timeline",
+        "zhHans": "时间线"
+      },
+      "flags": [],
+      "id": "zoom-fit",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "Z"
+      ],
+      "menu": {
+        "en": "View > Zoom to Fit",
+        "zhHans": "视图 > 适应窗口"
+      },
+      "stages": [
+        "stage-rough",
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Auto-fit timeline zoom to show all content",
+        "zhHans": "自动调整时间线缩放以显示全部内容"
+      },
+      "title": {
+        "en": "Zoom to Fit",
+        "zhHans": "适应窗口"
+      },
+      "win": [
+        "Shift",
+        "Z"
+      ]
+    },
+    {
+      "category": {
+        "en": "Timeline",
+        "zhHans": "时间线"
+      },
+      "flags": [],
+      "id": "track-height",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "T"
+      ],
+      "menu": {
+        "en": "Timeline > Track Height",
+        "zhHans": "时间线 > 轨道高度"
+      },
+      "stages": [
+        "stage-fine"
+      ],
+      "summary": {
+        "en": "Cycle through timeline track heights",
+        "zhHans": "循环切换时间线轨道的高度"
+      },
+      "title": {
+        "en": "Toggle Track Height",
+        "zhHans": "切换轨道高度"
+      },
+      "win": [
+        "Shift",
+        "T"
+      ]
+    },
+    {
+      "category": {
+        "en": "Timeline",
+        "zhHans": "时间线"
+      },
+      "flags": [],
+      "id": "toggle-loop",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "/"
+      ],
+      "menu": {
+        "en": "Playback > Loop",
+        "zhHans": "播放 > 循环"
+      },
+      "stages": [
+        "stage-rough",
+        "stage-qc"
+      ],
+      "summary": {
+        "en": "Toggle loop playback between in and out points",
+        "zhHans": "开启或关闭入出点之间的循环播放"
+      },
+      "title": {
+        "en": "Toggle Loop Playback",
+        "zhHans": "循环播放"
+      },
+      "win": [
+        "Ctrl",
+        "/"
+      ]
+    },
+    {
+      "category": {
+        "en": "Timeline",
+        "zhHans": "时间线"
+      },
+      "flags": [],
+      "id": "go-to-in",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "I"
+      ],
+      "menu": {
+        "en": "Timeline > Go to In",
+        "zhHans": "时间线 > 跳到入点"
+      },
+      "stages": [
+        "stage-rough",
+        "stage-qc"
+      ],
+      "summary": {
+        "en": "Move playhead to the marked in point",
+        "zhHans": "将播放头移动到标记的入点位置"
+      },
+      "title": {
+        "en": "Go to In Point",
+        "zhHans": "跳到入点"
+      },
+      "win": [
+        "Shift",
+        "I"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [],
+      "id": "add-corrector",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Opt",
+        "C"
+      ],
+      "menu": {
+        "en": "Color > Add Corrector",
+        "zhHans": "调色 > 添加校正器"
+      },
+      "stages": [
+        "stage-color"
+      ],
+      "summary": {
+        "en": "Add a corrector node after the current node",
+        "zhHans": "在当前节点后添加一个校正器节点"
+      },
+      "title": {
+        "en": "Add Corrector Node",
+        "zhHans": "添加校正器节点"
+      },
+      "win": [
+        "Alt",
+        "C"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "add-outside",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [],
+      "menu": {
+        "en": "Color > Add Outside Node",
+        "zhHans": "调色 > 添加外部节点"
+      },
+      "stages": [
+        "stage-color"
+      ],
+      "summary": {
+        "en": "Add an outside node for the current qualifier's inverse region",
+        "zhHans": "为当前限定器添加外部节点，处理限定区域以外的画面"
+      },
+      "title": {
+        "en": "Add Outside Node",
+        "zhHans": "添加外部节点"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [
+        "risk"
+      ],
+      "id": "reset-grade",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "R"
+      ],
+      "menu": {
+        "en": "Color > Reset Grade",
+        "zhHans": "调色 > 重置"
+      },
+      "stages": [
+        "stage-color"
+      ],
+      "summary": {
+        "en": "Reset all grading parameters on the current node",
+        "zhHans": "重置当前节点的所有调色参数"
+      },
+      "title": {
+        "en": "Reset Grade",
+        "zhHans": "重置调色"
+      },
+      "win": [
+        "Shift",
+        "R"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [],
+      "id": "still-prev",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "Left"
+      ],
+      "menu": {
+        "en": "Color > Previous Still",
+        "zhHans": "调色 > 上一静帧"
+      },
+      "stages": [
+        "stage-color"
+      ],
+      "summary": {
+        "en": "Switch to the previous still in the gallery",
+        "zhHans": "切换到画廊中的上一张静帧"
+      },
+      "title": {
+        "en": "Previous Still",
+        "zhHans": "上一张静帧"
+      },
+      "win": [
+        "Shift",
+        "Left"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [],
+      "id": "still-next",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "Right"
+      ],
+      "menu": {
+        "en": "Color > Next Still",
+        "zhHans": "调色 > 下一静帧"
+      },
+      "stages": [
+        "stage-color"
+      ],
+      "summary": {
+        "en": "Switch to the next still in the gallery",
+        "zhHans": "切换到画廊中的下一张静帧"
+      },
+      "title": {
+        "en": "Next Still",
+        "zhHans": "下一张静帧"
+      },
+      "win": [
+        "Shift",
+        "Right"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [],
+      "id": "toggle-scopes",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Shift",
+        "S"
+      ],
+      "menu": {
+        "en": "Color > Scopes",
+        "zhHans": "调色 > 示波器"
+      },
+      "stages": [
+        "stage-color",
+        "stage-qc"
+      ],
+      "summary": {
+        "en": "Show or hide video scopes",
+        "zhHans": "显示或隐藏视频示波器"
+      },
+      "title": {
+        "en": "Toggle Scopes",
+        "zhHans": "切换示波器"
+      },
+      "win": [
+        "Shift",
+        "S"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [],
+      "id": "grade-copy",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "Opt",
+        "C"
+      ],
+      "menu": {
+        "en": "Color > Copy Grade",
+        "zhHans": "调色 > 复制调色"
+      },
+      "principles": [
+        {
+          "en": "Copy-paste grade is the core workflow for multi-cam consistency",
+          "zhHans": "复制粘贴调色是保持多机位镜头一致性的核心工作流"
+        }
+      ],
+      "relatedIDs": [
+        "grade-paste",
+        "node-serial",
+        "grab-still"
+      ],
+      "stages": [
+        "stage-color"
+      ],
+      "steps": [
+        {
+          "en": "Select the graded clip",
+          "zhHans": "选中已调好色的镜头"
+        },
+        {
+          "en": "Press the shortcut to copy the grade",
+          "zhHans": "按快捷键复制该镜头的调色"
+        },
+        {
+          "en": "Switch to the target clip and press paste grade",
+          "zhHans": "切换到目标镜头按粘贴调色快捷键"
+        }
+      ],
+      "summary": {
+        "en": "Copy the current clip's grade to clipboard",
+        "zhHans": "复制当前镜头的调色到剪贴板"
+      },
+      "title": {
+        "en": "Copy Grade",
+        "zhHans": "复制调色"
+      },
+      "win": [
+        "Ctrl",
+        "Alt",
+        "C"
+      ]
+    },
+    {
+      "category": {
+        "en": "Color",
+        "zhHans": "调色"
+      },
+      "flags": [],
+      "id": "grade-paste",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "Opt",
+        "V"
+      ],
+      "menu": {
+        "en": "Color > Paste Grade",
+        "zhHans": "调色 > 粘贴调色"
+      },
+      "stages": [
+        "stage-color"
+      ],
+      "summary": {
+        "en": "Paste the clipboard grade to the current clip",
+        "zhHans": "将剪贴板中的调色粘贴到当前镜头"
+      },
+      "title": {
+        "en": "Paste Grade",
+        "zhHans": "粘贴调色"
+      },
+      "win": [
+        "Ctrl",
+        "Alt",
+        "V"
+      ]
+    },
+    {
+      "category": {
+        "en": "General",
+        "zhHans": "通用"
+      },
+      "flags": [],
+      "id": "save-project",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "S"
+      ],
+      "menu": {
+        "en": "File > Save",
+        "zhHans": "文件 > 保存"
+      },
+      "principles": [
+        {
+          "en": "Save after completing each stage to avoid losing progress",
+          "zhHans": "养成每完成一个阶段就保存的习惯，避免意外丢失工作进度"
+        }
+      ],
+      "relatedIDs": [
+        "new-project",
+        "project-settings",
+        "keyboard-setup"
+      ],
+      "stages": [
+        "stage-project",
+        "stage-archive"
+      ],
+      "steps": [
+        {
+          "en": "Press Cmd+S anytime to save the current project",
+          "zhHans": "随时按 Cmd+S 保存当前项目"
+        },
+        {
+          "en": "DaVinci Resolve saves to the project database",
+          "zhHans": "DaVinci Resolve 会自动保存到项目数据库"
+        }
+      ],
+      "summary": {
+        "en": "Save the current DaVinci Resolve project",
+        "zhHans": "保存当前 DaVinci Resolve 项目"
+      },
+      "title": {
+        "en": "Save Project",
+        "zhHans": "保存项目"
+      },
+      "warnings": [
+        {
+          "en": "Auto-save does not replace manual saving, always save regularly",
+          "zhHans": "DaVinci Resolve 的自动保存不会替代手动保存，务必定期手动保存"
+        }
+      ],
+      "win": [
+        "Ctrl",
+        "S"
+      ]
+    },
+    {
+      "category": {
+        "en": "General",
+        "zhHans": "通用"
+      },
+      "flags": [],
+      "id": "new-project",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "N"
+      ],
+      "menu": {
+        "en": "File > New Project",
+        "zhHans": "文件 > 新建项目"
+      },
+      "stages": [
+        "stage-project"
+      ],
+      "summary": {
+        "en": "Create a new DaVinci Resolve project",
+        "zhHans": "创建一个新的 DaVinci Resolve 项目"
+      },
+      "title": {
+        "en": "New Project",
+        "zhHans": "新建项目"
+      },
+      "win": [
+        "Ctrl",
+        "N"
+      ]
+    },
+    {
+      "category": {
+        "en": "General",
+        "zhHans": "通用"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "keyboard-setup",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Cmd",
+        "Opt",
+        "K"
+      ],
+      "menu": {
+        "en": "DaVinci Resolve > Keyboard Customization",
+        "zhHans": "DaVinci Resolve > 键盘自定义"
+      },
+      "stages": [
+        "stage-project"
+      ],
+      "summary": {
+        "en": "Open the keyboard customization panel",
+        "zhHans": "打开键盘自定义面板修改快捷键"
+      },
+      "title": {
+        "en": "Keyboard Customization",
+        "zhHans": "键盘自定义"
+      },
+      "win": [
+        "Ctrl",
+        "Alt",
+        "K"
+      ]
+    },
+    {
+      "category": {
+        "en": "General",
+        "zhHans": "通用"
+      },
+      "flags": [],
+      "id": "import-media",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "I"
+      ],
+      "menu": {
+        "en": "File > Import",
+        "zhHans": "文件 > 导入"
+      },
+      "stages": [
+        "stage-media"
+      ],
+      "summary": {
+        "en": "Open the import dialog to select media files",
+        "zhHans": "打开导入对话框选择素材文件"
+      },
+      "title": {
+        "en": "Import Media",
+        "zhHans": "导入媒体"
+      },
+      "win": [
+        "Ctrl",
+        "I"
+      ]
+    },
+    {
+      "category": {
+        "en": "General",
+        "zhHans": "通用"
+      },
+      "flags": [],
+      "id": "preferences",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Cmd",
+        ","
+      ],
+      "menu": {
+        "en": "DaVinci Resolve > Preferences",
+        "zhHans": "DaVinci Resolve > 偏好设置"
+      },
+      "stages": [
+        "stage-project"
+      ],
+      "summary": {
+        "en": "Open DaVinci Resolve preferences",
+        "zhHans": "打开 DaVinci Resolve 偏好设置"
+      },
+      "title": {
+        "en": "Preferences",
+        "zhHans": "偏好设置"
+      },
+      "win": [
+        "Ctrl",
+        ","
+      ]
+    },
+    {
+      "category": {
+        "en": "General",
+        "zhHans": "通用"
+      },
+      "flags": [],
+      "id": "project-settings",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "9"
+      ],
+      "menu": {
+        "en": "File > Project Settings",
+        "zhHans": "文件 > 项目设置"
+      },
+      "stages": [
+        "stage-project",
+        "stage-export"
+      ],
+      "summary": {
+        "en": "Open project settings to adjust resolution, frame rate, etc.",
+        "zhHans": "打开项目设置面板调整分辨率、帧率等参数"
+      },
+      "title": {
+        "en": "Project Settings",
+        "zhHans": "项目设置"
+      },
+      "win": [
+        "Ctrl",
+        "9"
+      ]
+    },
+    {
+      "category": {
+        "en": "Cut Page",
+        "zhHans": "快编"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "cut-source-tape",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [],
+      "menu": {
+        "en": "Cut > Source Tape",
+        "zhHans": "快编 > 源磁带"
+      },
+      "stages": [
+        "stage-rough"
+      ],
+      "summary": {
+        "en": "Concatenate all clips into a virtual source tape on the Cut page",
+        "zhHans": "在快编页面中将所有素材拼接为一条虚拟磁带浏览"
+      },
+      "title": {
+        "en": "Source Tape Mode",
+        "zhHans": "源磁带模式"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Cut Page",
+        "zhHans": "快编"
+      },
+      "flags": [],
+      "id": "cut-sync-bin",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "S"
+      ],
+      "menu": {
+        "en": "Cut > Sync Bin",
+        "zhHans": "快编 > 同步媒体夹"
+      },
+      "stages": [
+        "stage-rough"
+      ],
+      "summary": {
+        "en": "Sync multi-cam clips by timecode on the Cut page",
+        "zhHans": "在快编页面中按时间码同步排列多机位素材"
+      },
+      "title": {
+        "en": "Sync Bin",
+        "zhHans": "同步媒体夹"
+      },
+      "win": [
+        "S"
+      ]
+    },
+    {
+      "category": {
+        "en": "Cut Page",
+        "zhHans": "快编"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "cut-append",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [],
+      "menu": {
+        "en": "Cut > Append",
+        "zhHans": "快编 > 追加"
+      },
+      "stages": [
+        "stage-rough"
+      ],
+      "summary": {
+        "en": "Append source clip to timeline end on the Cut page",
+        "zhHans": "在快编页面中将源素材追加到时间线末尾"
+      },
+      "title": {
+        "en": "Cut Append",
+        "zhHans": "快编追加"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Cut Page",
+        "zhHans": "快编"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "cut-smart-insert",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [],
+      "menu": {
+        "en": "Cut > Smart Insert",
+        "zhHans": "快编 > 智能插入"
+      },
+      "stages": [
+        "stage-rough"
+      ],
+      "summary": {
+        "en": "Insert clip at playhead and ripple subsequent clips",
+        "zhHans": "在播放头位置插入素材并自动后移后续片段"
+      },
+      "title": {
+        "en": "Smart Insert",
+        "zhHans": "智能插入"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Cut Page",
+        "zhHans": "快编"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "cut-closeup",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [],
+      "menu": {
+        "en": "Cut > Close Up",
+        "zhHans": "快编 > 特写"
+      },
+      "stages": [
+        "stage-rough"
+      ],
+      "summary": {
+        "en": "Auto-zoom center of selected clip for a close-up",
+        "zhHans": "自动放大选中片段的中心区域创建特写"
+      },
+      "title": {
+        "en": "Close Up",
+        "zhHans": "特写放大"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Cut Page",
+        "zhHans": "快编"
+      },
+      "flags": [],
+      "id": "cut-place-on-top",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Shift",
+        "V"
+      ],
+      "menu": {
+        "en": "Cut > Place on Top",
+        "zhHans": "快编 > 置于顶层"
+      },
+      "stages": [
+        "stage-rough"
+      ],
+      "summary": {
+        "en": "Place clip on the top-most timeline track",
+        "zhHans": "将素材放在时间线最上层轨道"
+      },
+      "title": {
+        "en": "Place on Top",
+        "zhHans": "置于顶层"
+      },
+      "win": [
+        "Shift",
+        "V"
+      ]
+    },
+    {
+      "category": {
+        "en": "Media",
+        "zhHans": "媒体"
+      },
+      "flags": [],
+      "id": "reveal-finder",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "R"
+      ],
+      "menu": {
+        "en": "Media > Reveal in File Manager",
+        "zhHans": "媒体 > 在文件管理器中显示"
+      },
+      "stages": [
+        "stage-media"
+      ],
+      "summary": {
+        "en": "Reveal the media file in the system file manager",
+        "zhHans": "在系统文件管理器中定位素材文件"
+      },
+      "title": {
+        "en": "Reveal in File Manager",
+        "zhHans": "在文件管理器中显示"
+      },
+      "win": [
+        "Ctrl",
+        "R"
+      ]
+    },
+    {
+      "category": {
+        "en": "Media",
+        "zhHans": "媒体"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "bin-new",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [],
+      "menu": {
+        "en": "Media > New Bin",
+        "zhHans": "媒体 > 新建媒体夹"
+      },
+      "stages": [
+        "stage-media"
+      ],
+      "summary": {
+        "en": "Create a new bin to organize media",
+        "zhHans": "创建一个新的媒体夹来组织素材"
+      },
+      "title": {
+        "en": "New Bin",
+        "zhHans": "新建媒体夹"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Media",
+        "zhHans": "媒体"
+      },
+      "flags": [
+        "mapping"
+      ],
+      "id": "frame-display",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [],
+      "menu": {
+        "en": "Media > Find Frame",
+        "zhHans": "媒体 > 查找帧"
+      },
+      "stages": [
+        "stage-media"
+      ],
+      "summary": {
+        "en": "Find matching source clip in the media pool",
+        "zhHans": "在媒体池中查找与当前画面匹配的素材"
+      },
+      "title": {
+        "en": "Find Frame",
+        "zhHans": "查找媒体帧"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Audio",
+        "zhHans": "音频"
+      },
+      "flags": [],
+      "id": "audio-crossfade",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "Shift",
+        "C"
+      ],
+      "menu": {
+        "en": "Timeline > Audio Crossfade",
+        "zhHans": "时间线 > 音频交叉淡化"
+      },
+      "principles": [
+        {
+          "en": "Crossfades eliminate pops and clicks at audio edit points",
+          "zhHans": "交叉淡化能消除音频剪辑点的爆音和点击声"
+        }
+      ],
+      "relatedIDs": [
+        "split-playhead",
+        "toggle-mixer",
+        "arm-record"
+      ],
+      "stages": [
+        "stage-audio"
+      ],
+      "steps": [
+        {
+          "en": "Select the overlap area between two adjacent audio clips",
+          "zhHans": "选中两个相邻音频片段的重叠区域"
+        },
+        {
+          "en": "Press the shortcut to add a crossfade",
+          "zhHans": "按快捷键添加交叉淡化"
+        },
+        {
+          "en": "Adjust the fade curve for a natural transition",
+          "zhHans": "调整淡化曲线以获得自然的过渡"
+        }
+      ],
+      "summary": {
+        "en": "Add a crossfade between two audio clips",
+        "zhHans": "在两个音频片段之间添加交叉淡化"
+      },
+      "title": {
+        "en": "Audio Crossfade",
+        "zhHans": "音频交叉淡化"
+      },
+      "warnings": [
+        {
+          "en": "If clips don't overlap, crossfade creates a gap, adjust clip positions first",
+          "zhHans": "如果两个片段没有重叠，交叉淡化会自动创建间隙，需要先调整片段位置"
+        }
+      ],
+      "win": [
+        "Ctrl",
+        "Shift",
+        "C"
+      ]
+    },
+    {
+      "category": {
+        "en": "Audio",
+        "zhHans": "音频"
+      },
+      "flags": [],
+      "id": "toggle-mixer",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "Shift",
+        "M"
+      ],
+      "menu": {
+        "en": "Fairlight > Mixer",
+        "zhHans": "Fairlight > 混音器"
+      },
+      "stages": [
+        "stage-audio"
+      ],
+      "summary": {
+        "en": "Show or hide the Fairlight mixer panel",
+        "zhHans": "显示或隐藏 Fairlight 混音器面板"
+      },
+      "title": {
+        "en": "Toggle Mixer",
+        "zhHans": "显示混音器"
+      },
+      "win": [
+        "Ctrl",
+        "Shift",
+        "M"
+      ]
+    },
+    {
+      "category": {
+        "en": "Audio",
+        "zhHans": "音频"
+      },
+      "flags": [],
+      "id": "audio-normalize",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Cmd",
+        "Shift",
+        "N"
+      ],
+      "menu": {
+        "en": "Fairlight > Normalize",
+        "zhHans": "Fairlight > 标准化"
+      },
+      "stages": [
+        "stage-audio"
+      ],
+      "summary": {
+        "en": "Normalize selected audio levels to a target value",
+        "zhHans": "将选中音频的电平标准化到目标值"
+      },
+      "title": {
+        "en": "Normalize Audio",
+        "zhHans": "音频标准化"
+      },
+      "win": [
+        "Ctrl",
+        "Shift",
+        "N"
+      ]
+    },
+    {
+      "category": {
+        "en": "Audio",
+        "zhHans": "音频"
+      },
+      "flags": [
+        "risk"
+      ],
+      "id": "arm-record",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [
+        "Cmd",
+        "Shift",
+        "R"
+      ],
+      "menu": {
+        "en": "Fairlight > Arm for Recording",
+        "zhHans": "Fairlight > 录音准备"
+      },
+      "stages": [
+        "stage-audio"
+      ],
+      "summary": {
+        "en": "Arm selected track for audio recording",
+        "zhHans": "将选中轨道设为录音准备状态"
+      },
+      "title": {
+        "en": "Arm for Recording",
+        "zhHans": "录音准备"
+      },
+      "win": [
+        "Ctrl",
+        "Shift",
+        "R"
+      ]
+    },
+    {
+      "category": {
+        "en": "Delivery",
+        "zhHans": "输出"
+      },
+      "flags": [
+        "risk",
+        "mapping"
+      ],
+      "id": "render-all",
+      "kind": "shortcut",
+      "level": "advanced",
+      "mac": [],
+      "menu": {
+        "en": "Delivery > Render All",
+        "zhHans": "交付 > 渲染全部"
+      },
+      "stages": [
+        "stage-export"
+      ],
+      "summary": {
+        "en": "Render all jobs in the render queue",
+        "zhHans": "渲染渲染队列中的所有任务"
+      },
+      "title": {
+        "en": "Render All",
+        "zhHans": "渲染全部"
+      },
+      "win": []
+    },
+    {
+      "category": {
+        "en": "Delivery",
+        "zhHans": "输出"
+      },
+      "flags": [],
+      "id": "render-this-clip",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "Return"
+      ],
+      "menu": {
+        "en": "Delivery > Render This Clip",
+        "zhHans": "交付 > 渲染当前"
+      },
+      "stages": [
+        "stage-export"
+      ],
+      "summary": {
+        "en": "Render the currently selected clip on the timeline",
+        "zhHans": "渲染时间线上当前选中的片段"
+      },
+      "title": {
+        "en": "Render This Clip",
+        "zhHans": "渲染当前片段"
+      },
+      "win": [
+        "Ctrl",
+        "Enter"
+      ]
+    },
+    {
+      "category": {
+        "en": "Delivery",
+        "zhHans": "输出"
+      },
+      "flags": [],
+      "id": "toggle-render-queue",
+      "kind": "shortcut",
+      "level": "essential",
+      "mac": [
+        "Cmd",
+        "Shift",
+        "Q"
+      ],
+      "menu": {
+        "en": "Delivery > Render Queue",
+        "zhHans": "交付 > 渲染队列"
+      },
+      "stages": [
+        "stage-export"
+      ],
+      "summary": {
+        "en": "Show or hide the render queue panel",
+        "zhHans": "显示或隐藏渲染队列面板"
+      },
+      "title": {
+        "en": "Toggle Render Queue",
+        "zhHans": "显示渲染队列"
+      },
+      "win": [
+        "Ctrl",
+        "Shift",
+        "Q"
+      ]
     }
   ],
   "sources": [
@@ -5932,7 +7593,12 @@
         "nav-project",
         "nav-media",
         "nav-edit",
-        "nav-settings"
+        "nav-settings",
+        "save-project",
+        "new-project",
+        "keyboard-setup",
+        "preferences",
+        "project-settings"
       ],
       "summary": {
         "en": "Create a project foundation that will not cause problems later.",
@@ -6018,7 +7684,11 @@
         "marker-add",
         "select-all",
         "deselect-all",
-        "find-media"
+        "find-media",
+        "import-media",
+        "reveal-finder",
+        "bin-new",
+        "frame-display"
       ],
       "summary": {
         "en": "Make every shot findable within ten seconds.",
@@ -6115,7 +7785,18 @@
         "edit-append",
         "edit-place-top",
         "timeline-start",
-        "timeline-end"
+        "timeline-end",
+        "cut-source-tape",
+        "cut-sync-bin",
+        "cut-append",
+        "cut-smart-insert",
+        "cut-closeup",
+        "cut-place-on-top",
+        "zoom-in",
+        "zoom-out",
+        "zoom-fit",
+        "toggle-loop",
+        "go-to-in"
       ],
       "summary": {
         "en": "Build a complete watchable story quickly.",
@@ -6207,7 +7888,19 @@
         "edit-replace",
         "link-clips",
         "delete-normal",
-        "edit-side-toggle"
+        "edit-side-toggle",
+        "match-frame",
+        "reverse-match-frame",
+        "ripple-trim-left",
+        "ripple-trim-right",
+        "slip-edit",
+        "slide-edit",
+        "lift-delete",
+        "join-edit",
+        "zoom-in",
+        "zoom-out",
+        "zoom-fit",
+        "track-height"
       ],
       "summary": {
         "en": "Make each edit serve emotion and meet delivery standards.",
@@ -6291,7 +7984,11 @@
         "marker-add",
         "split-playhead",
         "undo",
-        "redo"
+        "redo",
+        "audio-crossfade",
+        "toggle-mixer",
+        "audio-normalize",
+        "arm-record"
       ],
       "summary": {
         "en": "Keep dialogue effortless to hear and believable in the picture.",
@@ -6387,7 +8084,15 @@
         "highlight-toggle",
         "grab-still",
         "clip-grade-prev",
-        "clip-grade-next"
+        "clip-grade-next",
+        "add-corrector",
+        "add-outside",
+        "reset-grade",
+        "still-prev",
+        "still-next",
+        "toggle-scopes",
+        "grade-copy",
+        "grade-paste"
       ],
       "summary": {
         "en": "Establish a consistent, credible image before building a look.",
@@ -6559,7 +8264,10 @@
         "full-screen",
         "marker-next",
         "timeline-start",
-        "timeline-end"
+        "timeline-end",
+        "toggle-loop",
+        "toggle-scopes",
+        "go-to-in"
       ],
       "summary": {
         "en": "Find mistakes before viewers and clients do.",
@@ -6645,7 +8353,11 @@
         "nav-deliver",
         "render-queue",
         "play-space",
-        "nav-settings"
+        "nav-settings",
+        "render-all",
+        "render-this-clip",
+        "toggle-render-queue",
+        "project-settings"
       ],
       "summary": {
         "en": "Deliver a playable, color-correct, traceable master.",

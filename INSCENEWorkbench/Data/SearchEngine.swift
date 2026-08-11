@@ -119,7 +119,7 @@ struct SearchEngine: Sendable {
         if let shortcut = record as? ShortcutDefinition {
             let keys = platform == .mac ? shortcut.mac : shortcut.win
             let normalizedKeys = Self.normalize(keys.joined(separator: " "))
-            if !normalizedKeys.isEmpty && Self.phraseMatches(normalizedKeys, query: query) {
+            if !normalizedKeys.isEmpty && Self.shortcutKeyMatches(normalizedKeys, query: query) {
                 candidates.append((65, .shortcut))
             }
             let menus = [shortcut.menu.zhHans, shortcut.menu.en].map(Self.normalize)
@@ -192,6 +192,14 @@ struct SearchEngine: Sendable {
         if field.contains(query) { return true }
         let queryTokens = query.split(separator: " ").map(String.init)
         return queryTokens.count > 1 && queryTokens.allSatisfy { field.contains($0) }
+    }
+
+    private static func shortcutKeyMatches(_ keys: String, query: String) -> Bool {
+        guard !keys.isEmpty else { return false }
+        let keyTokens = Set(keys.split(separator: " ").map(String.init))
+        let queryTokens = query.split(separator: " ").map(String.init)
+        guard !queryTokens.isEmpty else { return false }
+        return queryTokens.allSatisfy { keyTokens.contains($0) }
     }
 
     private static func bidirectionalPhraseMatch(_ alias: String, query: String) -> Bool {

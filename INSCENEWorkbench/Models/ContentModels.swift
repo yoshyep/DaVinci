@@ -30,6 +30,7 @@ enum LocalizedTextField: String, Sendable {
     case scene, step, risk, tool, scope, commonMistake, specificationLabel, specificationValue
     case bitrate, subtitle, fileCheck, cause, fix, deep, prevent, playbookStep, name, bio
     case problem, fit, nonFit, requirement, judgmentCriterion, playbookMistake, rollback, officialDifference, checklist
+    case principle, warning
 }
 
 protocol LocalizedTextCarrying: Sendable {
@@ -66,9 +67,18 @@ struct ShortcutDefinition: Codable, SearchableContent, LocalizedTextCarrying {
     let menu: LocalizedText
     let level: String
     let flags: [String]
+    let steps: [LocalizedText]?
+    let principles: [LocalizedText]?
+    let warnings: [LocalizedText]?
+    let relatedIDs: [String]?
 
     var keywords: [String] { [category.zhHans, category.en, menu.zhHans, menu.en] + mac + win + [level] + flags }
-    var localizedTexts: [(LocalizedTextField, LocalizedText)] { [(.category, category), (.title, title), (.summary, summary), (.menu, menu)] }
+    var localizedTexts: [(LocalizedTextField, LocalizedText)] {
+        [(.category, category), (.title, title), (.summary, summary), (.menu, menu)]
+            + (steps ?? []).map { (.step, $0) }
+            + (principles ?? []).map { (.principle, $0) }
+            + (warnings ?? []).map { (.warning, $0) }
+    }
 }
 
 struct RecipeDefinition: Codable, SearchableContent, LocalizedTextCarrying {

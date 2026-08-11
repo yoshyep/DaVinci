@@ -6,7 +6,7 @@ struct BundledContentLoaderTests {
     @Test func bundledGuideHasExpectedLegacyInventory() throws {
         let content = try BundledContentLoader().load()
         #expect(content.stages.count == 10)
-        #expect(content.shortcuts.count == 61)
+        #expect(content.shortcuts.count == 105)
         #expect(content.recipes.count == 18)
         #expect(content.colorPasses.count == 6)
         #expect(content.exports.count == 8)

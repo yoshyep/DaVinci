@@ -174,13 +174,13 @@ struct QuickLookupView: View {
                         systemImage: "keyboard.badge.ellipsis"
                     )
                 } else {
-                    ForEach(visibleShortcuts) { shortcut in
-                        SearchResultView(
-                            record: shortcut,
-                            settings: settings,
-                            isFavorite: favoriteIDs.contains(shortcut.id)
-                        ) { open(shortcut.id) }
-                        if shortcut.id != visibleShortcuts.last?.id { Divider() }
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                        ForEach(visibleShortcuts) { shortcut in
+                            ShortcutCardView(
+                                shortcut: shortcut,
+                                settings: settings
+                            ) { open(shortcut.id) }
+                        }
                     }
                 }
             }

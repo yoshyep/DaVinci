@@ -208,7 +208,8 @@ struct SearchEngineTests {
             title: LocalizedText(zhHans: "普通", en: "Neutral"),
             summary: LocalizedText(zhHans: "needle", en: "needle"),
             mac: ["1"], win: ["1"], menu: LocalizedText(zhHans: "菜单", en: "Menu"),
-            level: "essential", flags: []
+            level: "essential", flags: [],
+            steps: nil, principles: nil, warnings: nil, relatedIDs: nil
         )
         let favorite = ShortcutDefinition(
             id: "x-favorite", kind: .shortcut,
@@ -216,7 +217,8 @@ struct SearchEngineTests {
             title: LocalizedText(zhHans: "收藏", en: "Favorite"),
             summary: LocalizedText(zhHans: "needle", en: "needle"),
             mac: ["2"], win: ["2"], menu: LocalizedText(zhHans: "菜单", en: "Menu"),
-            level: "essential", flags: []
+            level: "essential", flags: [],
+            steps: nil, principles: nil, warnings: nil, relatedIDs: nil
         )
         let recent = ShortcutDefinition(
             id: "y-recent", kind: .shortcut,
@@ -224,7 +226,8 @@ struct SearchEngineTests {
             title: LocalizedText(zhHans: "最近", en: "Recent"),
             summary: LocalizedText(zhHans: "needle", en: "needle"),
             mac: ["3"], win: ["3"], menu: LocalizedText(zhHans: "菜单", en: "Menu"),
-            level: "essential", flags: []
+            level: "essential", flags: [],
+            steps: nil, principles: nil, warnings: nil, relatedIDs: nil
         )
         let stage = ShortcutDefinition(
             id: "z-stage", kind: .shortcut,
@@ -232,7 +235,8 @@ struct SearchEngineTests {
             title: LocalizedText(zhHans: "阶段", en: "Stage"),
             summary: LocalizedText(zhHans: "needle", en: "needle"),
             mac: ["4"], win: ["4"], menu: LocalizedText(zhHans: "菜单", en: "Menu"),
-            level: "essential", flags: []
+            level: "essential", flags: [],
+            steps: nil, principles: nil, warnings: nil, relatedIDs: nil
         )
         let content = GuideContent(
             contentVersion: fixture.contentVersion,
@@ -277,7 +281,8 @@ struct SearchEngineTests {
             win: ["P"],
             menu: LocalizedText(zhHans: "文件 > 打开", en: "File > Open"),
             level: "essential",
-            flags: []
+            flags: [],
+            steps: nil, principles: nil, warnings: nil, relatedIDs: nil
         )
         let opaqueContent = GuideContent(
             contentVersion: fixture.contentVersion,
